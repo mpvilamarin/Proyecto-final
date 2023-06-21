@@ -6,7 +6,9 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST,DB_NAME
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
+const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, 
+  {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
@@ -30,15 +32,10 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const {Donaciones, Fundaciones} = sequelize.models;
+const { Donacion, Fundacion } = sequelize.models;
 
-
-Donaciones.belongsToMany(Fundaciones,{through: 'fundacionDonacion', timestamps:false});
-Fundaciones.belongsToMany(Donaciones,{through: 'fundacionDonacion', timestamps:false});
-
-
-
-
+Fundacion.hasMany(Donacion ,{foreignKey: 'fundacionDonacionId'});
+Donacion.belongsTo(Fundacion);
 
 
 // Aca vendrian las relaciones
