@@ -1,4 +1,4 @@
-const {Mascota} = require('../db');
+const {Mascotas} = require('../db');
 
 const STATUS_OK =200;
 const STATUS_CREATED = 201;
@@ -86,7 +86,7 @@ async function updateMascota(req, res){
 
         if(!mascota){
             return res
-            .status(STATUS_ERROR).json({message:'Mascota no encontrada'})
+            .status(STATUS_ERROR).json({message:'Mascotas no encontrada'})
         }
 
         const updateMascota = await mascota.update({
@@ -108,7 +108,7 @@ async function updateMascota(req, res){
 async function deleteMascota(req,res){
     const {nombre} =req.body;
     try {
-        const deleteMascota = await Mascota.destroy({
+        const deleteMascota = await Mascotas.destroy({
             where:{
                 nombre:nombre
             },
