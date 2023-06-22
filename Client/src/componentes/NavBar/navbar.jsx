@@ -16,7 +16,7 @@ const NavBar = () => {
             <Link to="/contact">
               Contactanos
             </Link>
-            <Link to="/donaciones" >
+            <Link to="/donaciones">
               Donaciones
             </Link>
             <Link to="/fundaciones">
