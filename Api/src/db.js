@@ -30,21 +30,21 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Donaciones, Fundaciones , Mascotas , Registros } = sequelize.models;
+const { Donaciones, Fundaciones , Adopciones , Mascotas , Usuarios } = sequelize.models;
 
-Fundaciones.hasMany(Donaciones, {foreignKey: 'donacionId'});
-Donaciones.belongsTo(Fundaciones, {foreignKey: 'fundacionId'});
 Fundaciones.hasMany(Mascotas, {foreignKey: 'fundacionId'})
-// Mascotas.belongsTo(Fundaciones);
+Fundaciones.hasMany(Adopciones, {foreignKey: 'fundacionId'});
+Fundaciones.hasMany(Donaciones, {foreignKey: 'fundacionId'});
 
-/*---------------------------------VER ESTA RELACIÓN---------------------------------------------*/
-/* Creería que falta un modelo Usuario para relacionar
-  (1        -         M)
-1 Usuario --- * Donaciones 
-1 Donacion pertenece a * Usuarios 
-*/
-Fundaciones.hasMany(Registros, {foreignKey: 'registrosId'})
-Registros.belongsTo(Fundaciones, {foreignKey: 'fundacionId'});
+Usuarios.hasMany(Donaciones, {foreignKey: 'usuarioId'})
+Usuarios.hasMany(Adopciones, {foreignKey: 'usuarioId'});
+
+
+
+
+
+
+
 
 
 module.exports = {
