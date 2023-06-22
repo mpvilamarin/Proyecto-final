@@ -1,9 +1,10 @@
-const {Router} = require('express')
+const express = require('express');
+const loginRouter = express.Router();
+const { postRegistroUsuario, getRegistroUsuario } = require('../Handlers/RegistroUsuarioHandler');
 
-const loginRouter = Router();
+loginRouter.post('/',postRegistroUsuario);
+loginRouter.get('/',getRegistroUsuario)
 
-loginRouter.get("/", (req, res) => {
-    res.status(200).send("OK");
-});
 
-module.exports = loginRouter;
+
+module.exports = loginRouter
