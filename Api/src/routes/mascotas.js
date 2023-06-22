@@ -1,9 +1,10 @@
-const {Router} = require('express')
-const mascotaRouter = Router()
+const express = require('express');
+const mascotaRouter = express.Router();
+const {postMascota,getMascota} = require('../Handlers/MascotaHandler');
 
-mascotaRouter.get("/", (req, res) => {
-    res.status(200).send("OK");
-});
+mascotaRouter.post('/',postMascota);
+mascotaRouter.get('/', getMascota)
+
 
 module.exports = mascotaRouter
 
