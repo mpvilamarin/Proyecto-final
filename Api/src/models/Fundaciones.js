@@ -36,6 +36,10 @@ module.exports = (sequelize) => {
             type: DataTypes.TEXT,
             allowNull: false
         },
+        borrado: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
+        }
     },
     {
         timestamps: false,     
