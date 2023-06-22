@@ -1,8 +1,7 @@
 const {Router} = require('express');
 const fundacionRouter = Router()
+const { postFundacion } = require('../Handlers/FundacionHandler')
 
-fundacionRouter.get("/", (req, res) => {
-    res.status(200).send("OK");
-});
+fundacionRouter.post("/", postFundacion);
 
 module.exports = fundacionRouter

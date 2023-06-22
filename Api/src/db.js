@@ -2,9 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const {
-  DB_USER, DB_PASSWORD, DB_HOST,DB_NAME
-} = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST,DB_NAME } = process.env;
 
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, 
@@ -32,14 +30,22 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Donacion, Fundacion } = sequelize.models;
+const { Donaciones, Fundaciones , Mascotas , Registros } = sequelize.models;
 
-Fundacion.hasMany(Donacion ,{foreignKey: 'fundacionDonacionId'});
-Donacion.belongsTo(Fundacion);
+Fundaciones.hasMany(Donaciones, {foreignKey: 'donacionId'});
+Donaciones.belongsTo(Fundaciones, {foreignKey: 'fundacionId'});
+Fundaciones.hasMany(Mascotas, {foreignKey: 'fundacionId'})
+// Mascotas.belongsTo(Fundaciones);
 
+/*---------------------------------VER ESTA RELACIÓN---------------------------------------------*/
+/* Creería que falta un modelo Usuario para relacionar
+  (1        -         M)
+1 Usuario --- * Donaciones 
+1 Donacion pertenece a * Usuarios 
+*/
+Fundaciones.hasMany(Registros, {foreignKey: 'registrosId'})
+Registros.belongsTo(Fundaciones, {foreignKey: 'fundacionId'});
 
-// Aca vendrian las relaciones
-// Product.hasMany(Reviews);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
