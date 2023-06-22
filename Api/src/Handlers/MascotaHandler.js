@@ -1,7 +1,10 @@
-const {Mascotas} = require('../db');
-const STATUS_OK = 200;
+const {Mascota} = require('../db');
+
+const STATUS_OK =200;
 const STATUS_CREATED = 201;
-const STATUS_ERROR = 404;
+const STATUS_ERROR=404;
+
+
 
 
 
@@ -23,9 +26,9 @@ async function getMascota(req, res){
 
 /*----------------------------CREAR MASCOTAS--------------------------------------*/
 async function postMascota(req, res){
-    const {nombre, especie , edad , genero , temperamento , descripcion, fundacionId } = req.body;
+    const {nombre, especie , edad , genero , temperamento , descripcion } = req.body;
     try {
-    (nombre && especie && edad && genero && temperamento && descripcion && fundacionId)                
+    (nombre || especie || edad || genero || temperamento || descripcion)                
         ? res.status(STATUS_CREATED).json(await Mascotas.create(req.body) )      
         : res.status(STATUS_ERROR).json({message: `faltan datos para crear una mascota`})
     } catch (error) {
@@ -48,9 +51,89 @@ async function getByIdMascota(req, res){
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 
+async function deleteMascota(req,res){
+    const {nombre} =req.body;
+    try {
+        const deleteMascota = await Mascotas.destroy({
+            where:{
+                nombre:nombre
+            },
+        });
+
+        if(deleteMascota === 0){
+            res
+            .status(STATUS_ERROR).json({message:'la mascota no fue encontrada'})
+        }else{
+            res
+            .status(STATUS_OK).json({message:'la mascota fue eliminada con exito'})
+        }
+    } catch (error) {
+        res
+        .status(STATUS_ERROR).json({message:`error al eliminar la mascota ${error}`})
+    }
+}
+
+
+async function updateMascota(req, res){
+    const { nombre } = req.params
+
+    const {especie,edad,genero,temperamento,descripcion} = req.body
+
+    try {
+        const mascota = await Mascotas.findOne({
+            where: { nombre },
+        });
+
+        if(!mascota){
+            return res
+            .status(STATUS_ERROR).json({message:'Mascota no encontrada'})
+        }
+
+        const updateMascota = await mascota.update({
+            especie,
+            edad,
+            genero,
+            temperamento,
+            descripcion,
+        });
+
+        return res.status(STATUS_OK).json(updateMascota);
+
+    } catch (error) {
+        res
+        .status(STATUS_ERROR).json({message: `Error al actualizar la mascota: ${error}`})
+    }
+}
+
+async function deleteMascota(req,res){
+    const {nombre} =req.body;
+    try {
+        const deleteMascota = await Mascota.destroy({
+            where:{
+                nombre:nombre
+            },
+        });
+
+        if(deleteMascota === 0){
+            res
+            .status(STATUS_ERROR).json({message:'la mascota no fue encontrada'})
+        }else{
+            res
+            .status(STATUS_OK).json({message:'la mascota fue eliminada con exito'})
+        }
+    } catch (error) {
+        res
+        .status(STATUS_ERROR).json({message:`error al eliminar la mascota ${error}`})
+    }
+}
+
+    
+
 
 module.exports={
     postMascota,
     getMascota,
-    getByIdMascota
+    getByIdMascota,
+    deleteMascota,
+    updateMascota,
 }
