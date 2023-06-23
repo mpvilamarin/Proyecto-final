@@ -51,7 +51,7 @@ async function updateUsuario(req, res){
     const {nombre, fechaNacimiento, contraseña} = req.body
 
     try {
-        const usuario = await Usuarios.finOne({
+        const usuario = await Usuarios.findOne({
             where: {
                 email,
             },
