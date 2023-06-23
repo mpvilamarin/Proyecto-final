@@ -25,9 +25,20 @@ function rootReducer (state = initialState, action)
                     ...action.payload,
                     mascotas: action.payload.mascotas || []
                 }
-            };    
+            };
+        case GET_ORDER_AZ:
+            return{
+                ...state,
+                mascotas: state.mascotas.slice().sort((a,b) => a.nombre.localeCompare(b.nombre))
+            }
+        case GET_ORDER_ZA:
+            return{
+                ...state,
+                mascotas: state.mascotas.slice().sort((a,b) => b.nombre.localeCompare(a.nombre))
+            }            
         default:
             return state;
+
     }
 
 }
