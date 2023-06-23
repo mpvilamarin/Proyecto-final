@@ -45,8 +45,64 @@ async function postRegistroUsuario(req, res){
     }
 }
 
+async function updateUsuario(req, res){
+    const { email } = req.params
+
+    const {nombre, fechaNacimiento, contraseña} = req.body
+
+    try {
+        const usuario = await Usuarios.finOne({
+            where: {
+                email,
+            },
+        });
+
+        if(!usuario){
+            return res
+            .status(STATUS_ERROR).json({message: 'Usuario no encontrado'})
+        }
+
+        const updateUsuario = await usuario.update({
+            nombre,
+            fechaNacimiento,
+            contraseña,
+        });
+
+        return res.status(STATUS_OK).json(updateUsuario);
+    } catch (error) {
+        res.status(STATUS_ERROR).json({message:`Error al actualizar Usuario: ${error}`});
+    }
+}
+
+async function deleteUsuario(req, res){
+    const { email } = req.params;
+
+    try {
+        const usuario = await Usuarios.findOne({
+            where:{
+                email,
+                activo: true
+            }
+        });
+
+        if(!usuario){
+            return res.status(STATUS_ERROR).json({message: 'Usuario no encontrado'})
+        }
+
+        await usuario.update({
+            activo: false,
+            fechaBorrado: new Date()
+        });
+
+        return res.status(STATUS_OK).json({message: 'usuario borrado correctamente'})
+    } catch (error) {
+        return res.status(STATUS_ERROR).json({message: `error al borrar Usuario: ${error}`});
+    }
+}
 
 module.exports={
     postRegistroUsuario,
     getRegistroUsuario,
+    updateUsuario,
+    deleteUsuario,
 }
