@@ -1,4 +1,4 @@
-const {Mascotas} = require('../db');
+const {Mascotas, Fundaciones} = require('../db');
 
 const STATUS_OK =200;
 const STATUS_CREATED = 201;
@@ -26,13 +26,32 @@ async function getMascota(req, res){
 
 /*----------------------------CREAR MASCOTAS--------------------------------------*/
 async function postMascota(req, res){
-    const {nombre, especie , edad , genero , temperamento , descripcion } = req.body;
+    const {nombre, especie , edad , genero , temperamento , descripcion, fundacion} = req.body;
     try {
-    (nombre || especie || edad || genero || temperamento || descripcion)                
-        ? res.status(STATUS_CREATED).json(await Mascotas.create(req.body) )      
-        : res.status(STATUS_ERROR).json({message: `faltan datos para crear una mascota`})
+        if(!nombre || !especie || !edad || !genero || !temperamento || !descripcion ){
+            return res
+            .status(STATUS_ERROR).json({message: 'se requiere completar todos los datos'});
+        }
+
+        const newMascota = await Mascotas.create({
+            nombre,
+            especie, 
+            edad, 
+            genero, 
+            temperamento, 
+            descripcion
+        });
+
+        if(fundacion){
+            console.log(':::', newMascota);
+            let mascotas = await Fundaciones.findAll({ where : { nombre:fundacion }});
+            await newMascota.addFundaciones(mascotas);
+        }
+        res
+        .status(STATUS_CREATED).json(newMascota);
+        
     } catch (error) {
-        res.status(STATUS_ERROR).json({message: "Ocurrió un error al crear la mascotas: " + error})
+        res.status(STATUS_ERROR).json({message: "Ocurrió un error al crear la mascotas: " + error});
     }
 }
 
@@ -105,27 +124,7 @@ async function updateMascota(req, res){
     }
 }
 
-async function deleteMascota(req,res){
-    const {nombre} =req.body;
-    try {
-        const deleteMascota = await Mascotas.destroy({
-            where:{
-                nombre:nombre
-            },
-        });
 
-        if(deleteMascota === 0){
-            res
-            .status(STATUS_ERROR).json({message:'la mascota no fue encontrada'})
-        }else{
-            res
-            .status(STATUS_OK).json({message:'la mascota fue eliminada con exito'})
-        }
-    } catch (error) {
-        res
-        .status(STATUS_ERROR).json({message:`error al eliminar la mascota ${error}`})
-    }
-}
 
     
 
