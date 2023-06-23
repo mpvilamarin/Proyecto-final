@@ -11,7 +11,7 @@ export default function Detalle({ id = 0 }) {
     tamaño: 0,
     descripción: '',
     castrado: true,
-    contacto: { fundación: '', email: '', teléfono: 0 },
+    // contacto: { fundación: '', email: '', teléfono: 0 },
     temperamento: [],
   }
   return (
@@ -19,6 +19,10 @@ export default function Detalle({ id = 0 }) {
       <div>
         <h2>Nombre:</h2>
         <img src="" alt="" />
+      </div>
+
+      <div>
+        <h4>Especie:</h4>
       </div>
 
       <div>
@@ -45,9 +49,9 @@ export default function Detalle({ id = 0 }) {
         <h4>Esterilizado/Castrado</h4>
       </div>
 
-      <div>
+      {/* <div>
         <h4>Contacto:</h4>
-      </div>
+      </div> */}
 
       <div>
         <Link to={`/adopción/${id}`}>
