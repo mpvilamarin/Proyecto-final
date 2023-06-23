@@ -13,7 +13,7 @@ const NavBar = () => {
             <Link to="/about">
               Sobre nosotros
             </Link>
-            <Link to="/contact">
+            <Link to="/contact" >
               Contactanos
             </Link>
             <Link to="/donaciones">
