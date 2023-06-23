@@ -1,10 +1,12 @@
 import{
-    GET_ALL_MASCOTAS
+    GET_ALL_MASCOTAS,
+    GET_DETAIL_MASCOTAS
 } from '../Actions-type/index.js';
 
 const initialState = {
     mascotas:[],
     filtroMascotas: [],
+    mascotaDetail: [],
 }
 
 function rootReducer (state = initialState, action)
@@ -15,11 +17,21 @@ function rootReducer (state = initialState, action)
                 ...state,
                 mascotas: action.payload,
                 filtroMascotas: action.payload
-            }
+            };
+        case GET_DETAIL_MASCOTAS:
+            return{
+                ...state,
+                mascotaDetail: {
+                    ...action.payload,
+                    mascotas: action.payload.mascotas || []
+                }
+            };    
         default:
             return state;
     }
 
 }
+
+
 
 export default rootReducer;
