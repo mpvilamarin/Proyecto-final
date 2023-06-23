@@ -12,6 +12,10 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        ciudad: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         direccion: {
             type: DataTypes.STRING,
             allowNull: false
@@ -36,6 +40,10 @@ module.exports = (sequelize) => {
             type: DataTypes.TEXT,
             allowNull: false
         },
+        borrado: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
+        }
     },
     {
         timestamps: false,     
