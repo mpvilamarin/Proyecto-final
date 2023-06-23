@@ -8,7 +8,6 @@ const initialState = {
     filtroMascotas: [],
     mascotaDetail: [],
 }
-
 function rootReducer (state = initialState, action)
 {
     switch (action.type) {
