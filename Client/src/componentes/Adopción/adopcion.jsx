@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { getAllMascotas, filterMascotaByFundacion } from "../../redux/Actions";
+import { getAllMascotas } from "../../redux/Actions/get";
+import {  filterMascotaByFundacion } from "../../redux/Actions/filtroAndOrdenamiento"
 import Cartas from "../Cartas/cards";
 import Pagination from "./Paginación/paginacion";
 import styles from "./adopcion.module.css";

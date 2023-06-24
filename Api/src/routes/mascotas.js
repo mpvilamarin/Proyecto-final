@@ -5,7 +5,7 @@ const {postMascota,getMascota, getByIdMascota, deleteMascota,updateMascota} = re
 mascotaRouter.post('/',postMascota);
 mascotaRouter.get('/', getMascota);
 mascotaRouter.get('/:id', getByIdMascota)
-mascotaRouter.delete('/',deleteMascota);
+mascotaRouter.delete('/:nombre',deleteMascota);
 mascotaRouter.put('/:nombre', updateMascota);
 
 

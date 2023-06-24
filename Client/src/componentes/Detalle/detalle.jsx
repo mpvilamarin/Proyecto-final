@@ -12,7 +12,7 @@ export default function Detalle() {
   console.log(detail)
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllMascotas())
+    // dispatch(getAllMascotas())
     // dispatch(getDetailMascota(id))
   }, []);
 
