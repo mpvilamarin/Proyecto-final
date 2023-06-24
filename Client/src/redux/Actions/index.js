@@ -2,11 +2,17 @@ import axios from "axios";
 import {
   GET_ALL_MASCOTAS,
   GET_DETAIL_MASCOTAS,
+  GET_FILTER_MASCOTA_BY_FUNDACION,
+  SORT_MASCOTAS_AZ,
+  SORT_MASCOTAS_ZA,
   GET_ALL_FUNDACIONES,
   GET_DETAIL_FUNDACION,
   FILTER_FUNDACIONES_CIUDAD,
   FILTER_FUNDACIONES_NOMBRE,
+  SORT_FUNDACIONES_AZ,
+  SORT_FUNDACIONES_ZA,
   RESET_DETAIL,
+
   GET_FILTER_MASCOTA_BY_FUNDACION,
   POST_ADOPCIONES,
   POST_DONACIONES,
@@ -50,6 +56,18 @@ export const filterMascotaByFundacion = (fundacion) => {
   return {
     type: GET_FILTER_MASCOTA_BY_FUNDACION,
     payload: fundacion,
+  };
+};
+
+export const sortMascotasAZ = () => {
+  return {
+    type: SORT_MASCOTAS_AZ,
+  };
+};
+
+export const sortMascotasZA = () => {
+  return {
+    type: SORT_MASCOTAS_ZA,
   };
 };
 
@@ -211,6 +229,7 @@ export const filterFundacionesByNombre = (nombre) => {
 };
 
 
+
 export const filterFundacionByCiudad = (ciudad) =>{
   return{
     type:GET_FILTER_FUNDACTION_BY_CIUDAD,
@@ -229,6 +248,20 @@ export const orderDesc = () => {
       type: GET_ORDER_ZA,
   }
 }
+
+export const sortFundacionesAZ = () => {
+  return {
+    type: SORT_FUNDACIONES_AZ,
+  };
+};
+
+export const sortFundacionesZA = () => {
+  return {
+    type: SORT_FUNDACIONES_ZA,
+  };
+};
+
+
 export const resetDetail = () => {
   return async function (dispatch) {
     try {
