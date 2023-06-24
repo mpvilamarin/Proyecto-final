@@ -1,14 +1,16 @@
 import {
   GET_ALL_MASCOTAS,
   GET_DETAIL_MASCOTAS,
-  GET_ORDER_AZ,
-  GET_ORDER_ZA,
+  GET_FILTER_MASCOTA_BY_FUNDACION,
+  SORT_MASCOTAS_AZ,
+  SORT_MASCOTAS_ZA,
   GET_ALL_FUNDACIONES,
   GET_DETAIL_FUNDACION,
   FILTER_FUNDACIONES_CIUDAD,
   FILTER_FUNDACIONES_NOMBRE,
+  SORT_FUNDACIONES_AZ,
+  SORT_FUNDACIONES_ZA,
   RESET_DETAIL,
-  GET_FILTER_MASCOTA_BY_FUNDACION,
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -35,14 +37,14 @@ function rootReducer(state = initialState, action) {
           mascotas: action.payload.mascotas || [],
         },
       };
-    case GET_ORDER_AZ:
+    case SORT_MASCOTAS_AZ:
       return {
         ...state,
         mascotas: state.mascotas
           .slice()
           .sort((a, b) => a.nombre.localeCompare(b.nombre)),
       };
-    case GET_ORDER_ZA:
+    case SORT_MASCOTAS_ZA:
       return {
         ...state,
         mascotas: state.mascotas
@@ -75,6 +77,7 @@ function rootReducer(state = initialState, action) {
           fundaciones: action.payload.fundaciones || [],
         },
       };
+
     case FILTER_FUNDACIONES_CIUDAD:
       const { ciudad } = action.payload;
       const fundacionesByCiudad = state.fundaciones.filter(
@@ -93,6 +96,22 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         fundaciones: fundacionesByNombre,
+      };
+
+    case SORT_FUNDACIONES_AZ:
+      return {
+        ...state,
+        fundaciones: state.fundaciones
+          .slice()
+          .sort((a, b) => a.nombre.localeCompare(b.nombre)),
+      };
+
+    case SORT_FUNDACIONES_ZA:
+      return {
+        ...state,
+        fundaciones: state.fundaciones
+          .slice()
+          .sort((a, b) => b.nombre.localeCompare(a.nombre)),
       };
 
     case RESET_DETAIL:
