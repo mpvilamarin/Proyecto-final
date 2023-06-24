@@ -62,5 +62,5 @@ export const resetDetail = () => {
     } catch (error) {
       return { error: error.message };
     }
-  };
-};
+  }
+}
