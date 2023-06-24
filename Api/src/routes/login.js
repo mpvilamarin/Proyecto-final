@@ -5,7 +5,7 @@ const { postRegistroUsuario, getRegistroUsuario, updateUsuario, deleteUsuario, g
 loginRouter.post('/',postRegistroUsuario);
 loginRouter.get('/',getRegistroUsuario);
 loginRouter.get('/:id', getIdUsuario);  
-loginRouter.put('/',updateUsuario);
+loginRouter.put('/:email',updateUsuario);
 loginRouter.delete('/:email', deleteUsuario);
 
 
