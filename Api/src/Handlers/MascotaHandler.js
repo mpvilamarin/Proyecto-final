@@ -71,7 +71,7 @@ async function getByIdMascota(req, res){
 /*-----------------------------------------------------------------------------------------------------------------------*/
 
 async function deleteMascota(req,res){
-    const {nombre} =req.body;
+    const {nombre} = req.body;
     try {
         const deleteMascota = await Mascotas.destroy({
             where:{
