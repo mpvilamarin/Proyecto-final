@@ -11,6 +11,17 @@ import {
   SORT_FUNDACIONES_AZ,
   SORT_FUNDACIONES_ZA,
   RESET_DETAIL,
+
+  GET_FILTER_MASCOTA_BY_FUNDACION,
+  POST_ADOPCIONES,
+  POST_DONACIONES,
+  POST_FUNDACIONES,
+  POST_MASCOTA,
+  POST_USUARIO,
+  GET_ALL_USUARIOS,
+  GET_DETALLE_USUARIO,
+  GET_FILTER_FUNDACTION_BY_CIUDAD,
+
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -19,6 +30,7 @@ const initialState = {
   mascotaDetail: [],
   fundaciones: [],
   fundacionDetail: [],
+  usuarios : [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -78,11 +90,21 @@ function rootReducer(state = initialState, action) {
         },
       };
 
+
+    case GET_ALL_USUARIOS: 
+      return {
+        ...state,
+        usuarios :action.payload, 
+      }  
+    case GET_ORDER_AZ:
+
+
     case FILTER_FUNDACIONES_CIUDAD:
       const { ciudad } = action.payload;
       const fundacionesByCiudad = state.fundaciones.filter(
         (fundacion) => fundacion.ciudad === ciudad
       );
+
       return {
         ...state,
         fundaciones: fundacionesByCiudad,
