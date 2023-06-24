@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import SearchBar from "../componentes/SearchBar/searchBar";
 
-const NavBar = () => {
+export default function NavBar() {
   return (
     <div>
+      <SearchBar></SearchBar>
       <div>
         <div>
           <div>
@@ -31,5 +33,3 @@ const NavBar = () => {
     </div>
   );
 };
-
-export default NavBar;
