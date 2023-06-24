@@ -19,11 +19,14 @@ export default function Card() {
       <div className={style.cardMascota}>
       {allMascotas && allMascotas.map((mascota, indexMascota) => (
         <div key={indexMascota} className={style.mascota}>
+          <Link to={`/mascota/${mascota.id}`}>
           <h2>Nombre: {mascota.nombre}</h2>
-          <h3>Genero: {mascota.genero}</h3>
-          <h3>Especie: {mascota.especie}</h3>
-          <h3>Temperamento:{mascota.temperamento}</h3>
-          <p>Descripcion: {mascota.descripcion}</p>
+          </Link>
+          <h2>Tamaño: {mascota.tamaño}</h2>
+          <h2>Genero: {mascota.genero}</h2>
+          <h2>Especie: {mascota.especie}</h2>
+          <h2>Temperamento: {mascota.temperamento}</h2>
+          <h2>Descripcion: {mascota.descripcion}</h2>
         </div>
       ))}
       </div>
