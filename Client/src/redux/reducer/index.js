@@ -11,8 +11,6 @@ import {
   SORT_FUNDACIONES_AZ,
   SORT_FUNDACIONES_ZA,
   RESET_DETAIL,
-
-  GET_FILTER_MASCOTA_BY_FUNDACION,
   POST_ADOPCIONES,
   POST_DONACIONES,
   POST_FUNDACIONES,
@@ -95,16 +93,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         usuarios :action.payload, 
-      }  
-    case GET_ORDER_AZ:
-
-
+      } 
     case FILTER_FUNDACIONES_CIUDAD:
       const { ciudad } = action.payload;
       const fundacionesByCiudad = state.fundaciones.filter(
         (fundacion) => fundacion.ciudad === ciudad
       );
-
       return {
         ...state,
         fundaciones: fundacionesByCiudad,

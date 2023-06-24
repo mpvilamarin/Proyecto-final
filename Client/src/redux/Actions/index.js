@@ -12,9 +12,7 @@ import {
   SORT_FUNDACIONES_AZ,
   SORT_FUNDACIONES_ZA,
   RESET_DETAIL,
-
-  GET_FILTER_MASCOTA_BY_FUNDACION,
-  POST_ADOPCIONES,
+  POST_ADOPCIONES, 
   POST_DONACIONES,
   POST_FUNDACIONES,
   POST_MASCOTA,
@@ -22,8 +20,7 @@ import {
   GET_ALL_USUARIOS,
   GET_DETALLE_USUARIO,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
-  GET_ORDER_AZ,
-  GET_ORDER_ZA,
+
 } from "../Actions-type/index.js";
 
 //====================================>> GET'S <<=================================================================
@@ -52,12 +49,6 @@ export const getDetailMascota = (id) => {
   };
 };
 
-export const filterMascotaByFundacion = (fundacion) => {
-  return {
-    type: GET_FILTER_MASCOTA_BY_FUNDACION,
-    payload: fundacion,
-  };
-};
 
 export const sortMascotasAZ = () => {
   return {
@@ -209,7 +200,7 @@ export const filterMascotaByFundacion = (fundacion) => {
         payload: fundacion
     }
 }
-=======
+
 export const filterFundacionesByCiudad = (ciudad) => {
   return {
     type: FILTER_FUNDACIONES_CIUDAD,
@@ -237,17 +228,6 @@ export const filterFundacionByCiudad = (ciudad) =>{
   }
 }
 
-export const orderAsc = () => {
-  return{
-      type: GET_ORDER_AZ,
-  }
-}
-
-export const orderDesc = () => {
-  return{
-      type: GET_ORDER_ZA,
-  }
-}
 
 export const sortFundacionesAZ = () => {
   return {
