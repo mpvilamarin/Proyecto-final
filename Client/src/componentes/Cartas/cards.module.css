@@ -1,0 +1,37 @@
+.cardContainer {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-gap: 20px;
+  }
+.cardContainer  p {
+    font-size: 16px;
+    color: #666;
+  }
+.cardContainer  h3{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .h1{
+    text-decoration: solid;
+  }
+  
+  .cardMascota{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    align-items: center;
+  }
+  .cardFundacion{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    align-items: center;
+  }

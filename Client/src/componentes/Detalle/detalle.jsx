@@ -1,16 +1,19 @@
 import React, { useEffect, useParams } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
-import { getDetailMascota } from '../../redux/Actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { getDetailMascota } from '../../redux/Actions/get';
+
 
 
 
 export default function Detalle() {
-  const { id } = useParams();
-  var detail = useSelector((state) => state.mascotaDetail)
+  // const { id } = useParams();
+  const detail = useSelector((state) => state.mascotas)
+  console.log(detail)
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getDetailMascota(id))
+    dispatch(getAllMascotas())
+    // dispatch(getDetailMascota(id))
   }, []);
 
 
@@ -59,7 +62,7 @@ export default function Detalle() {
         <h4>Contacto:</h4>
       </div> */}
       <div>
-        <Link to={`/adopción/${id}`}>
+        <Link to={`/adopcion/`}>
           <button>Adoptar</button>
         </Link>
       </div>

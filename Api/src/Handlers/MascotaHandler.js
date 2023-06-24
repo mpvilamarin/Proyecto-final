@@ -51,7 +51,7 @@ async function postMascota(req, res){
         .status(STATUS_CREATED).json(newMascota);
         
     } catch (error) {
-        res.status(STATUS_ERROR).json({message: "Ocurrió un error al crear la mascotas: " + error});
+        res.status(STATUS_ERROR).json({message:`Ocurrió un error al crear la mascotas: ${error} `});
     }
 }
 
@@ -71,7 +71,7 @@ async function getByIdMascota(req, res){
 /*-----------------------------------------------------------------------------------------------------------------------*/
 
 async function deleteMascota(req,res){
-    const {nombre} =req.body;
+    const {nombre} = req.body;
     try {
         const deleteMascota = await Mascotas.destroy({
             where:{
