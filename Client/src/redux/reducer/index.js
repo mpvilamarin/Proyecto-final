@@ -26,9 +26,19 @@ const initialState = {
   mascotas: [],
   filtroMascotas: [],
   mascotaDetail: [],
+
   fundaciones: [],
   fundacionDetail: [],
+
   usuarios : [],
+  usuarioDetalle: [],
+
+  adopciones: [],
+  detalleAdopcion: [],
+
+  donaciones :[],
+  detallesDonacion: [],
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -92,6 +102,14 @@ function rootReducer(state = initialState, action) {
         ...state,
         usuarios :action.payload, 
       } 
+    case GET_DETALLE_USUARIO:
+      return {
+        ...state, 
+        usuarioDetalle:{
+          ...action.payload, 
+          fundaciones: action.payload.usuarios || []
+        }
+      }  
     case FILTER_FUNDACIONES_CIUDAD:
       const { ciudad } = action.payload;
       const fundacionesByCiudad = state.fundaciones.filter(
@@ -124,6 +142,31 @@ function rootReducer(state = initialState, action) {
           .slice()
           .sort((a, b) => b.nombre.localeCompare(a.nombre)),
       };
+    case POST_ADOPCIONES:
+      return{
+        ...state,
+        adopciones: state.adopciones.concat(action.payload)
+      }
+    case POST_DONACIONES:
+      return{
+        ...state,
+        donaciones: state.donaciones.concat(action.payload)
+      }
+    case POST_FUNDACIONES:
+      return{
+        ...state,
+        fundaciones: state.fundaciones.concat(action.payload)
+      }
+    case POST_MASCOTA:
+      return{
+        ...state,
+        mascotas: state.mascotas.concat(action.payload),
+      }
+    case POST_USUARIO: 
+      return{
+        ...state,
+        usuarios: state.usuarios.concat(action.payload)
+      }      
     case RESET_DETAIL:
       return { ...state, fundacionDetail: null };
 
