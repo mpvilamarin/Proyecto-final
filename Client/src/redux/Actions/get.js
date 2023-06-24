@@ -7,6 +7,7 @@ import {
   RESET_DETAIL,
   GET_ALL_USUARIOS,
   GET_DETALLE_USUARIO,
+  GET_NAME_FUNDACIONES,
 } from "../Actions-type/index.js";
 
 //====================================>> GET'S <<=================================================================
@@ -24,6 +25,17 @@ export const getAllMascotas = () => {
   };
 };
 
+export const getNameFundaciones = (nombre) => {
+  return async (dispatch) => {
+    await axios
+      .get(`http://localhost:3001/fundaciones?name=${nombre}`)
+      .then((res) => res.data)
+      .then((data) => {
+        dispatch({ type: GET_NAME_FUNDACIONES, payload: data });
+      });
+  };
+};
+
 export const getDetailMascota = (id) => {
   return async (dispatch) => {
     dispatch({ type: GET_DETAIL_MASCOTAS, payload: [] });
@@ -34,9 +46,6 @@ export const getDetailMascota = (id) => {
       .catch((err) => console.log(err));
   };
 };
-
-
-
 
 //Actions Fundaciones ------->>>
 
@@ -64,31 +73,29 @@ export const getDetailFundacion = (id) => {
   };
 };
 
-
 export const getAllUsuarios = () => {
   return async (dispatch) => {
     try {
-        const response = await axios.get("http://localhost:3001/Usuarios")
-        let usuarios = response.data?.map((e) => e)
-        dispatch(({type: GET_ALL_USUARIOS, payload: usuarios}))
+      const response = await axios.get("http://localhost:3001/Usuarios");
+      let usuarios = response.data?.map((e) => e);
+      dispatch({ type: GET_ALL_USUARIOS, payload: usuarios });
     } catch (error) {
-        console.log(`error ${error}`)
-        console.log(`no fundaciones creadas `)
+      console.log(`error ${error}`);
+      console.log(`no fundaciones creadas `);
     }
   };
 };
 
 export const getDetalleUsuario = (id) => {
   return async (dispatch) => {
-    
-      dispatch({ type: GET_DETALLE_USUARIO, payload: []});
-      await axios
+    dispatch({ type: GET_DETALLE_USUARIO, payload: [] });
+    await axios
       .get(`http://localhost:3001/usuarios/${id}`)
       .then((res) => res.data)
-      .then((data) => dispatch({type: GET_DETALLE_USUARIO, payload: data}))
+      .then((data) => dispatch({ type: GET_DETALLE_USUARIO, payload: data }))
       .catch((err) => console.log(err));
-  }
-}
+  };
+};
 
 export const resetDetail = () => {
   return async function (dispatch) {
@@ -99,5 +106,3 @@ export const resetDetail = () => {
     }
   };
 };
-
-
