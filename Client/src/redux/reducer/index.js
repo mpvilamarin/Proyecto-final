@@ -87,8 +87,6 @@ function rootReducer(state = initialState, action) {
           fundaciones: action.payload.fundaciones || [],
         },
       };
-
-
     case GET_ALL_USUARIOS: 
       return {
         ...state,
@@ -103,7 +101,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         fundaciones: fundacionesByCiudad,
       };
-
     case FILTER_FUNDACIONES_NOMBRE:
       const { nombre } = action.payload;
       const fundacionesByNombre = state.fundaciones.filter((fundacion) =>
@@ -112,8 +109,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         fundaciones: fundacionesByNombre,
-      };
-
+      }
     case SORT_FUNDACIONES_AZ:
       return {
         ...state,
@@ -121,7 +117,6 @@ function rootReducer(state = initialState, action) {
           .slice()
           .sort((a, b) => a.nombre.localeCompare(b.nombre)),
       };
-
     case SORT_FUNDACIONES_ZA:
       return {
         ...state,
@@ -129,7 +124,6 @@ function rootReducer(state = initialState, action) {
           .slice()
           .sort((a, b) => b.nombre.localeCompare(a.nombre)),
       };
-
     case RESET_DETAIL:
       return { ...state, fundacionDetail: null };
 
