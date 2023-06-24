@@ -5,6 +5,7 @@ import Detalle from './componentes/Detalle/detalle';
 import Nosotros from './componentes/Nosotros/nosotros';
 import Adopcion from './componentes/Adopción/adopcion';
 import NavBar from './componentes/NavBar/navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 // const location = useLocation();
