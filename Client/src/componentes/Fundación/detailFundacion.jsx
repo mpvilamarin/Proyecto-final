@@ -22,9 +22,14 @@ const DetailFundacion = () => {
         <h3>LOADING...</h3>
       ) : (
         <div>
-          <img src={fundacion.image} alt="Imagen no encontrada" />
-          <h2>{fundacion.name}</h2>
-          <h5>Nombre: {fundacion.nombre}</h5>
+          {fundacion.image ? (
+            <img src={fundacion.image} alt="Fundación" />
+          ) : (
+            <div>
+              <p>Imagen no encontrada</p>
+            </div>
+          )}
+          <h2>Nombre: {fundacion.nombre}</h2>
           <h5>Ciudad: {fundacion.ciudad}</h5>
           <h5>Dirección: {fundacion.direccion}</h5>
           <h5>Teléfono: {fundacion.telefono}</h5>
