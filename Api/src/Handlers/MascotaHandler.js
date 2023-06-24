@@ -26,32 +26,32 @@ async function getMascota(req, res){
 
 /*----------------------------CREAR MASCOTAS--------------------------------------*/
 async function postMascota(req, res){
-    const {nombre, especie , edad , genero , temperamento , descripcion, fundacion} = req.body;
-    try {
-        if(!nombre || !especie || !edad || !genero || !temperamento || !descripcion ){
+    const {nombre, especie , edad , genero , temperamento , descripcion, fundacionId , tamaño, castrado} = req.body;
+    try { 
+        if(!nombre || !especie || !edad || !genero || !temperamento || !descripcion || !tamaño || !castrado){
             return res
             .status(STATUS_ERROR).json({message: 'se requiere completar todos los datos'});
         }
-
         const newMascota = await Mascotas.create({
             nombre,
             especie, 
             edad, 
             genero, 
             temperamento, 
-            descripcion
-        });
-
-        if(fundacion){
+            descripcion,
+            tamaño,
+            castrado
+        });  
+        if(fundacionId){
             console.log(':::', newMascota);
-            let mascotas = await Fundaciones.findAll({ where : { nombre:fundacion }});
+            let mascotas = await Fundaciones.findAll({ where : { nombre: fundacionId }});
             await newMascota.addFundaciones(mascotas);
         }
         res
         .status(STATUS_CREATED).json(newMascota);
         
     } catch (error) {
-        res.status(STATUS_ERROR).json({message: "Ocurrió un error al crear la mascotas: " + error});
+        res.status(STATUS_ERROR).json({message:`Ocurrió un error al crear la mascotas: ${error} `});
     }
 }
 
