@@ -1,10 +1,13 @@
+import React, { useEffect } from 'react'
+import Card from '../Cartas/cards'
 
-import React from 'react'
+const Home = () => {
 
-const home = () => {
   return (
-    <div>home</div>
+    <div>
+      <Card/>
+    </div>
   )
 }
 
-export default home
+export default Home
