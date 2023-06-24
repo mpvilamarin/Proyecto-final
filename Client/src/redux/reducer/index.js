@@ -5,6 +5,8 @@ import {
   GET_ORDER_ZA,
   GET_ALL_FUNDACIONES,
   GET_DETAIL_FUNDACION,
+  FILTER_FUNDACIONES_CIUDAD,
+  FILTER_FUNDACIONES_NOMBRE,
   RESET_DETAIL,
   GET_FILTER_MASCOTA_BY_FUNDACION,
   POST_ADOPCIONES,
@@ -42,24 +44,6 @@ function rootReducer(state = initialState, action) {
           mascotas: action.payload.mascotas || [],
         },
       };
-    case GET_ALL_FUNDACIONES:
-      return {
-        ...state,
-        fundaciones: action.payload,
-      };
-    case GET_DETAIL_FUNDACION:
-      return {
-        ...state,
-        fundacionDetail: {
-          ...action.payload,
-          fundaciones: action.payload.fundaciones || [],
-        },
-      };
-    case GET_ALL_USUARIOS: 
-      return {
-        ...state,
-        usuarios :action.payload, 
-      }  
     case GET_ORDER_AZ:
       return {
         ...state,
@@ -75,12 +59,59 @@ function rootReducer(state = initialState, action) {
           .sort((a, b) => b.nombre.localeCompare(a.nombre)),
       };
 
-    case GET_FILTER_MASCOTA_BY_FUNDACION: 
-      const filterByFundacion = state.filtroMascotas.filter((mascota) => mascota.fundaciones.find((fundacion) => fundacion.nombre.includes(action.payload)))
-      return{
+    case GET_FILTER_MASCOTA_BY_FUNDACION:
+      const filterByFundacion = state.filtroMascotas.filter((mascota) =>
+        mascota.fundaciones.find((fundacion) =>
+          fundacion.nombre.includes(action.payload)
+        )
+      );
+      return {
         ...state,
-        mascotas: action.payload === 'All' ? state.filtroMascotas: filterByFundacion
-      }
+        mascotas:
+          action.payload === "All" ? state.filtroMascotas : filterByFundacion,
+      };
+
+    case GET_ALL_FUNDACIONES:
+      return {
+        ...state,
+        fundaciones: action.payload,
+      };
+    case GET_DETAIL_FUNDACION:
+      return {
+        ...state,
+        fundacionDetail: {
+          ...action.payload,
+          fundaciones: action.payload.fundaciones || [],
+        },
+      };
+
+    case GET_ALL_USUARIOS: 
+      return {
+        ...state,
+        usuarios :action.payload, 
+      }  
+    case GET_ORDER_AZ:
+
+    case FILTER_FUNDACIONES_CIUDAD:
+      const { ciudad } = action.payload;
+      const fundacionesByCiudad = state.fundaciones.filter(
+        (fundacion) => fundacion.ciudad === ciudad
+      );
+
+      return {
+        ...state,
+        fundaciones: fundacionesByCiudad,
+      };
+
+    case FILTER_FUNDACIONES_NOMBRE:
+      const { nombre } = action.payload;
+      const fundacionesByNombre = state.fundaciones.filter((fundacion) =>
+        fundacion.nombre.toLowerCase().includes(nombre.toLowerCase())
+      );
+      return {
+        ...state,
+        fundaciones: fundacionesByNombre,
+      };
 
     case RESET_DETAIL:
       return { ...state, fundacionDetail: null };

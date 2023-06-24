@@ -4,6 +4,8 @@ import {
   GET_DETAIL_MASCOTAS,
   GET_ALL_FUNDACIONES,
   GET_DETAIL_FUNDACION,
+  FILTER_FUNDACIONES_CIUDAD,
+  FILTER_FUNDACIONES_NOMBRE,
   RESET_DETAIL,
   GET_FILTER_MASCOTA_BY_FUNDACION,
   POST_ADOPCIONES,
@@ -23,14 +25,14 @@ import {
 export const getAllMascotas = () => {
   return async (dispatch) => {
     try {
-        const response = await axios.get("http://localhost:3001/mascotas")
-        let mascotas = response.data?.map((e) =>e)
-        dispatch(({type: GET_ALL_MASCOTAS, payload: mascotas}))
+      const response = await axios.get("http://localhost:3001/mascotas");
+      let mascotas = response.data?.map((e) => e);
+      dispatch({ type: GET_ALL_MASCOTAS, payload: mascotas });
     } catch (error) {
-            console.log(`error ${error}`)
-            console.log(`no hay mascotas creadas`);
-        }
+      console.log(`error ${error}`);
+      console.log(`no hay mascotas creadas`);
     }
+  };
 };
 
 export const getDetailMascota = (id) => {
@@ -44,15 +46,24 @@ export const getDetailMascota = (id) => {
   };
 };
 
-export const getAllFundacioness = () => {
+export const filterMascotaByFundacion = (fundacion) => {
+  return {
+    type: GET_FILTER_MASCOTA_BY_FUNDACION,
+    payload: fundacion,
+  };
+};
+
+//Actions Fundaciones ------->>>
+
+export const getAllFundaciones = () => {
   return async (dispatch) => {
     try {
-        const response = await axios.get("http://localhost:3001/fundaciones")
-        let fundaciones = response.data?.map((e) => e)
-        dispatch(({type: GET_ALL_FUNDACIONES, payload: fundaciones}))
+      const response = await axios.get("http://localhost:3001/fundaciones");
+      let fundaciones = response.data?.map((e) => e);
+      dispatch({ type: GET_ALL_FUNDACIONES, payload: fundaciones });
     } catch (error) {
-        console.log(`error ${error}`)
-        console.log(`no fundaciones creadas `)
+      console.log(`error ${error}`);
+      console.log(`no fundaciones creadas `);
     }
   };
 };
@@ -67,6 +78,7 @@ export const getDetailFundacion = (id) => {
       .catch((err) => console.log(err));
   };
 };
+
 
 export const getAllUsuarios = () => {
   return async (dispatch) => {
@@ -179,6 +191,25 @@ export const filterMascotaByFundacion = (fundacion) => {
         payload: fundacion
     }
 }
+=======
+export const filterFundacionesByCiudad = (ciudad) => {
+  return {
+    type: FILTER_FUNDACIONES_CIUDAD,
+    payload: {
+      ciudad,
+    },
+  };
+};
+
+export const filterFundacionesByNombre = (nombre) => {
+  return {
+    type: FILTER_FUNDACIONES_NOMBRE,
+    payload: {
+      nombre,
+    },
+  };
+};
+
 
 export const filterFundacionByCiudad = (ciudad) =>{
   return{
@@ -205,5 +236,5 @@ export const resetDetail = () => {
     } catch (error) {
       return { error: error.message };
     }
-  }
-}
+  };
+};
