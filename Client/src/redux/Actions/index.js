@@ -5,20 +5,22 @@ import {
   GET_ALL_FUNDACIONES,
   GET_DETAIL_FUNDACION,
   RESET_DETAIL,
+  GET_FILTER_MASCOTA_BY_FUNDACION,
 } from "../Actions-type/index.js";
 
 //Actions Mascotas ------->>>
 
 export const getAllMascotas = () => {
   return async (dispatch) => {
-    await axios
-      .get("http://localhost:3001/mascotas")
-      .then((res) => res.data)
-      .then((data) => {
-        console.log("payload:", data);
-        dispatch({ type: GET_ALL_MASCOTAS, payload: data });
-      });
-  };
+    try {
+        const response = await axios.get("http://localhost:3001/mascotas")
+        let mascotas = response.data?.map((e) =>e)
+        dispatch(({type: GET_ALL_MASCOTAS, payload: mascotas}))
+    } catch (error) {
+            console.log(`error ${error}`)
+            console.log(`no hay mascotas creadas`);
+        }
+    }
 };
 
 export const getDetailMascota = (id) => {
@@ -34,13 +36,14 @@ export const getDetailMascota = (id) => {
 
 export const getAllFundacioness = () => {
   return async (dispatch) => {
-    await axios
-      .get("http://localhost:3001/fundaciones")
-      .then((res) => res.data)
-      .then((data) => {
-        console.log("payload:", data);
-        dispatch({ type: GET_ALL_FUNDACIONES, payload: data });
-      });
+    try {
+        const response = await axios.get("http://localhost:3001/fundaciones")
+        let fundaciones = response.data?.map((e) => e)
+        dispatch(({type: GET_ALL_FUNDACIONES, payload: fundaciones}))
+    } catch (error) {
+        console.log(`error ${error}`)
+        console.log(`no fundaciones creadas `)
+    }
   };
 };
 
@@ -55,6 +58,13 @@ export const getDetailFundacion = (id) => {
   };
 };
 
+export const filterMascotaByFundacion = (fundacion) => {
+    return{
+        type: GET_FILTER_MASCOTA_BY_FUNDACION,
+        payload: fundacion
+    }
+}
+
 export const resetDetail = () => {
   return async function (dispatch) {
     try {
@@ -62,5 +72,5 @@ export const resetDetail = () => {
     } catch (error) {
       return { error: error.message };
     }
-  };
-};
+  }
+}
