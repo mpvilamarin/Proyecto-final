@@ -51,7 +51,7 @@ async function postMascota(req, res){
         .status(STATUS_CREATED).json(newMascota);
         
     } catch (error) {
-        res.status(STATUS_ERROR).json({message: "Ocurrió un error al crear la mascotas: " + error});
+        res.status(STATUS_ERROR).json({message:`Ocurrió un error al crear la mascotas: ${error} `});
     }
 }
 
