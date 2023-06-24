@@ -1,7 +1,8 @@
 import React, { useEffect, useParams } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getDetailMascota } from '../../redux/Actions/get';
+import { getAllMascotas, getDetailMascota } from '../../redux/Actions/get';
+
 
 
 
