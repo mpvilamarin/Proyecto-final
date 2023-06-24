@@ -15,8 +15,8 @@ const initialState = {
   mascotaDetail: [],
   fundaciones: [],
   fundacionDetail: [],
-  selectedFundacion: null,
 };
+
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_MASCOTAS:
@@ -60,14 +60,16 @@ function rootReducer(state = initialState, action) {
           .slice()
           .sort((a, b) => b.nombre.localeCompare(a.nombre)),
       };
+
     case GET_FILTER_MASCOTA_BY_FUNDACION: 
       const filterByFundacion = state.filtroMascotas.filter((mascota) => mascota.fundaciones.find((fundacion) => fundacion.nombre.includes(action.payload)))
       return{
         ...state,
         mascotas: action.payload === 'All' ? state.filtroMascotas: filterByFundacion
       }
+
     case RESET_DETAIL:
-      return { ...state, selectedFundacion: null };
+      return { ...state, fundacionDetail: null };
 
     default:
       return state;
