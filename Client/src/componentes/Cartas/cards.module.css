@@ -2,6 +2,7 @@
     display: grid;
     grid-template-rows: auto 1fr;
     grid-gap: 20px;
+    
   }
 .cardContainer  p {
     font-size: 16px;
@@ -18,13 +19,21 @@
   .cardMascota{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 20px;
+    grid-gap: 10px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     align-items: center;
   }
+  .mascota {
+    align-items:center;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('https://preview.redd.it/gigadog-dog-of-the-chad-v0-9xvqb9074sh91.jpg?width=640&crop=smart&auto=webp&s=340a53061348356bdb6aa4a0d98b7ac4f25e91ca');
+  }
+  
   .cardFundacion{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
