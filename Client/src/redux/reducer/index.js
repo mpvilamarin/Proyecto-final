@@ -6,6 +6,7 @@ import {
   GET_ALL_FUNDACIONES,
   GET_DETAIL_FUNDACION,
   RESET_DETAIL,
+  GET_FILTER_MASCOTA_BY_FUNDACION,
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -59,6 +60,12 @@ function rootReducer(state = initialState, action) {
           .slice()
           .sort((a, b) => b.nombre.localeCompare(a.nombre)),
       };
+    case GET_FILTER_MASCOTA_BY_FUNDACION: 
+      const filterByFundacion = state.filtroMascotas.filter((mascota) => mascota.fundaciones.find((fundacion) => fundacion.nombre.includes(action.payload)))
+      return{
+        ...state,
+        mascotas: action.payload === 'All' ? state.filtroMascotas: filterByFundacion
+      }
     case RESET_DETAIL:
       return { ...state, selectedFundacion: null };
 
