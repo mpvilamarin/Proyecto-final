@@ -24,7 +24,7 @@ export const deleteMascota = (nombre) => {
 export const deleteUsuario = (email) => {
     return async (dispatch) => {
         try {
-            const response = await axios.delete(`${email}`)
+            const response = await axios.delete(`http://localhost:3001/Usuarios/${email}`)
             dispatch({
                 type: DELETE_USUARIO,
                 payload: response.data
