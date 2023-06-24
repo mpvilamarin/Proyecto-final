@@ -39,6 +39,14 @@ module.exports = (sequelize) => {
         castrado: {
             type: DataTypes.BOOLEAN,
             allowNull: false
+        },
+        activo: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
+            allowNull: false
+        },
+        fechaBorrado:{
+            type: DataTypes.DATE
         }
     },
     {

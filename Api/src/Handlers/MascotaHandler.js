@@ -71,21 +71,26 @@ async function getByIdMascota(req, res){
 /*-----------------------------------------------------------------------------------------------------------------------*/
 
 async function deleteMascota(req,res){
-    const {nombre} = req.body;
+    const {nombre} = req.params;
     try {
-        const deleteMascota = await Mascotas.destroy({
+        const deleteMascota = await Mascotas.findOne({
             where:{
-                nombre:nombre
+                nombre,
+                activo: true
             },
         });
 
-        if(deleteMascota === 0){
+        if(!deleteMascota){
             res
             .status(STATUS_ERROR).json({message:'la mascota no fue encontrada'})
-        }else{
-            res
-            .status(STATUS_OK).json({message:'la mascota fue eliminada con exito'})
         }
+
+        await deleteMascota.update({
+            activo : false,
+            fechaBorrado: new Date()
+        })
+
+        res.status(STATUS_OK).json({message:`mascota borrada con exito`})
     } catch (error) {
         res
         .status(STATUS_ERROR).json({message:`error al eliminar la mascota ${error}`})

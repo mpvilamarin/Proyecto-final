@@ -19,6 +19,8 @@ import {
   GET_ALL_USUARIOS,
   GET_DETALLE_USUARIO,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
+  DELETE_MASCOTA,
+  DELETE_USUARIO,
 
 } from "../Actions-type/index.js";
 
@@ -166,7 +168,17 @@ function rootReducer(state = initialState, action) {
       return{
         ...state,
         usuarios: state.usuarios.concat(action.payload)
-      }      
+      }
+    case DELETE_MASCOTA:
+      return{
+        ...state,
+        mascotas: state.mascotas.filter((mascota) => mascota.nombre !== action.payload)
+      }  
+    case DELETE_MASCOTA:
+      return{
+        ...state,
+        usuarios: state.usuarios.filter((usuario) => usuario.email !== action.payload)
+      }     
     case RESET_DETAIL:
       return { ...state, fundacionDetail: null };
 
