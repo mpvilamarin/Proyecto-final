@@ -1,69 +1,63 @@
-import React, { useEffect , useParams} from 'react';
+import React, { useEffect, useParams } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector , useDispatch} from 'react-redux'
-import { getAllMascotas } from '../../redux/Actions';
+import { useSelector, useDispatch } from 'react-redux'
+import { getDetailMascota } from '../../redux/Actions';
+
+
 
 export default function Detalle() {
-  const {id} = useParams();
-  console.log(id)
-  const allMascotas = useSelector((state) => state.mascotas)
-  console.log(allMascotas)
+  const { id } = useParams();
+  var detail = useSelector((state) => state.mascotaDetail)
   const dispatch = useDispatch();
-
-  useEffect(()=>{
-    console.log(allMascotas)
-    dispatch(getAllMascotas(id))
-  }, [dispatch, id])
-
-
-  // const objetoDetalle = {
-  //   nombre: '',
-  //   img: '',
-  //   género: '',
-  //   edad: 0,
-  //   tamaño: 0,
-  //   descripción: '',
-  //   castrado: true,
-  //   temperamento: "",
-  //   // contacto: { fundación: '', email: '', teléfono: 0 },
-  // }
+  useEffect(() => {
+    dispatch(getDetailMascota(id))
+  }, []);
 
 
   return (
     <div>
       <div>
-        <h2>Nombre:{allMascotas.nombre}</h2>
-        <img src="" alt="" />
+        <h2>Nombre: {detail.nombre}</h2>
+        <img src={detail.imagen} alt={detail.nombre} />
       </div>
+      <br />
 
       <div>
-        <h4>Género:</h4>
+        <h4>Especie: {detail.especie}</h4>
       </div>
+      <br />
 
       <div>
-        <h4>Edad:</h4>
+        <h4>Género: {detail.genero}</h4>
       </div>
+      <br />
 
       <div>
-        <h4>Tamaño:</h4>
+        <h4>Edad: {detail.edad}</h4>
       </div>
+      <br />
 
       <div>
-        <h4>Temperamentos:</h4>
+        <h4>Tamaño: {detail.tamaño}</h4>
       </div>
+      <br />
 
       <div>
-        <h4>Descripción:</h4>
+        <h4>Temperamento: {detail.temperamento}</h4>
       </div>
+      <br />
 
       <div>
-        <h4>Esterilizado/Castrado</h4>
+        <h4>Descripción: {detail.descripcion}</h4>
       </div>
+      <br />
 
       <div>
+        <h4>Esterilizado/Castrado: {detail.castrado}</h4>
+      </div>
+      {/* <div>
         <h4>Contacto:</h4>
-      </div>
-
+      </div> */}
       <div>
         <Link to={`/adopción/${id}`}>
           <button>Adoptar</button>
