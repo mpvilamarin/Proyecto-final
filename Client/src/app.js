@@ -18,6 +18,7 @@ function App() {
             {location.pathname !== "/" && <NavBar/>}
           <Routes>
             {/* <Route exact path="/" element={<Landing/>}></Route> */}
+            <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<Nosotros />} />
             <Route path="/fundaciones" element={<CardFundaciones/>} />
