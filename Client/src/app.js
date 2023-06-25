@@ -1,26 +1,28 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes , useLocation} from 'react-router-dom';
 import Home from './componentes/Home/home'
-import Detalle from './componentes/Detalle/detalle';
+import DetalleMascota from './componentes/Mascota/detailMascota';
 import Nosotros from './componentes/Nosotros/nosotros';
 import Adopcion from './componentes/Adopción/adopcion';
 import NavBar from './componentes/NavBar/navbar';
 import FormFundaciones from './componentes/FormFundaciones/FormFundaciones.jsx'
+import CardFundaciones from './componentes/Cartas/cardFundacion'
+import DetalleFundacion from './componentes/Fundación/detailFundacion'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-// const location = useLocation();
-
 function App() {
+  const location = useLocation();
   return (
       <div>
-        <NavBar />
+            {location.pathname !== "/" && <NavBar/>}
           <Routes>
             {/* <Route exact path="/" element={<Landing/>}></Route> */}
             <Route path="/home" element={<Home />} />
-            <Route path="/detalle" element={<Detalle />} />
             <Route path="/about" element={<Nosotros />} />
-            <Route path="/detalle/:id" element={<Detalle />} />
+            <Route path="/fundaciones" element={<CardFundaciones/>} />
+            <Route path="/mascota/:id" element={<DetalleMascota/>} />
+            <Route path="/fundacion/:id" element={<DetalleFundacion/>} />
             <Route path="/adopciones" element={<Adopcion />} />
             <Route path="/formFundaciones" element={<FormFundaciones/>}/>
             {/* <Route path='*' element={<Navigate to='/error'/>}/>
