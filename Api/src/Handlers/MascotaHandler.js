@@ -11,7 +11,12 @@ const STATUS_ERROR=404;
 /*-----------------------------------------------OBTENER MASCOTAS-----------------------------------------------------*/
 async function getMascota(req, res){
     try {
-        const allMascotas = await Mascotas.findAll();
+        const allMascotas = await Mascotas.findAll({
+            include: {
+                model :Fundaciones,
+                attributes:['nombre']
+            }
+        });
         if(!allMascotas.length) 
         res
         .status(STATUS_ERROR).json({message:'no hay mascotas en la BD'})
