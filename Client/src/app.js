@@ -5,6 +5,7 @@ import Detalle from './componentes/Detalle/detalle';
 import Nosotros from './componentes/Nosotros/nosotros';
 import Adopcion from './componentes/Adopción/adopcion';
 import NavBar from './componentes/NavBar/navbar';
+import FormFundaciones from './componentes/FormFundaciones/FormFundaciones.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -21,7 +22,9 @@ function App() {
             <Route path="/about" element={<Nosotros />} />
             <Route path="/detalle/:id" element={<Detalle />} />
             <Route path="/adopciones" element={<Adopcion />} />
-           
+            <Route path="/formFundaciones" element={<FormFundaciones/>}/>
+            {/* <Route path='*' element={<Navigate to='/error'/>}/>
+            <Route path="/error" element={< Redirect/>} /> */}
           </Routes>
       </div>
   );
