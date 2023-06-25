@@ -13,16 +13,6 @@ async function postFundacion(req, res) {
 
 
 
-async function postFundacion(req, res){
-    
-    try {
-        res
-        .status(STATUS_CREATED).json(await Fundaciones.create(req.body));
-    } catch (error) {
-        res
-        .status(STATUS_ERROR).json({message: `no se puede crear ${error}`});
-    }
-}   
 
 async function getAllFundaciones(req, res){
     const {nombre} = req.params;
