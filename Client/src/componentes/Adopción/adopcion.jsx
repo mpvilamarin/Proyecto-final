@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { filterMascotaByFundacion } from "../../redux/Actions/filtroAndOrdenamiento";
 import { getAllMascotas } from '../../redux/Actions/get'
 
-import Cartas from "../Cartas/cards";
+import Cartas from "../Cartas/cardMascotas";
 import Pagination from "./Paginación/paginacion";
 import styles from "./adopcion.module.css";
 

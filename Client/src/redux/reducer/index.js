@@ -51,6 +51,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         mascotas: action.payload,
+        mascotaDetail: action.payload,    
         filtroMascotas: action.payload,
       };
     case GET_DETAIL_MASCOTAS:
@@ -92,6 +93,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         fundaciones: action.payload,
+        fundacionDetail: action.payload
       };
     case GET_DETAIL_FUNDACION:
       return {
