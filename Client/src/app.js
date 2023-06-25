@@ -5,8 +5,10 @@ import DetalleMascota from './componentes/Mascota/detailMascota';
 import Nosotros from './componentes/Nosotros/nosotros';
 import Adopcion from './componentes/Adopción/adopcion';
 import NavBar from './componentes/NavBar/navbar';
+import FormFundaciones from './componentes/FormFundaciones/FormFundaciones.jsx'
 import CardFundaciones from './componentes/Cartas/cardFundacion'
 import DetalleFundacion from './componentes/Fundación/detailFundacion'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -22,7 +24,9 @@ function App() {
             <Route path="/mascota/:id" element={<DetalleMascota/>} />
             <Route path="/fundacion/:id" element={<DetalleFundacion/>} />
             <Route path="/adopciones" element={<Adopcion />} />
-           
+            <Route path="/formFundaciones" element={<FormFundaciones/>}/>
+            {/* <Route path='*' element={<Navigate to='/error'/>}/>
+            <Route path="/error" element={< Redirect/>} /> */}
           </Routes>
       </div>
   );
