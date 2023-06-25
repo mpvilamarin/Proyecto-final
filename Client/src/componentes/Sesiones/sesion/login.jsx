@@ -41,28 +41,30 @@ const Login = () => {
 
         setErrors(validationErrors);
 
-        if (Object.keys(validationErrors).length === 0) {
-            try {
-                const response = await axios.get(`http://localhost:3001/usuarios/verificar/${input.correo}`);
-                if (response.status === 200) {
-                    // Usuario existe
-                    setInput({
-                        correo: '',
-                        contraseña: '',
-                    });
-                } else {
-                    // Usuario no existe
-                    setErrors({
-                        general: "Este usuario no existe"
-                    });
-                }
-            } catch (error) {
-                // Manejar el error de la solicitud
-                setErrors({
-                    general: "Error al verificar el usuario"
-                });
-            }
-        }
+        // se busca por id o por correo? 
+
+       // if (Object.keys(validationErrors).length === 0) {
+       //     try {
+       //         const response = await axios.get(`http://localhost:3001/login/${input.correo}`);
+       //         if (response.status === 200) {
+       //             // Usuario existe
+       //             setInput({
+       //                 correo: '',
+       //                 contraseña: '',
+       //             });
+       //         } else {
+       //             // Usuario no existe
+       //             setErrors({
+       //                 general: "Este usuario no existe"
+       //             });
+       //         }
+       //     } catch (error) {
+       //         // Manejar el error de la solicitud
+       //         setErrors({
+       //             general: "Error al verificar el usuario"
+       //         });
+       //     }
+       // }
     };
 
     useEffect(() => {
