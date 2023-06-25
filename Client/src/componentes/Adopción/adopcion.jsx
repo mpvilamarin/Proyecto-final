@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { getAllMascotas} from "../../redux/Actions/get.js";
 import { filterMascotaByFundacion } from "../../redux/Actions/filtroAndOrdenamiento.js";
-import Cartas from "../Cartas/cards";
 import Pagination from "./Paginación/paginacion";
 import styles from "./adopcion.module.css";
 import SearchBar from '../SearchBar/searchBar';
