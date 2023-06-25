@@ -1,17 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { getAllMascotas} from "../../redux/Actions/get.js";
+import { getAllMascotas, getAllFundaciones} from "../../redux/Actions/get.js";
 import { filterMascotaByFundacion } from "../../redux/Actions/filtroAndOrdenamiento.js";
-import Cartas from "../Cartas/cards";
 import Pagination from "./Paginación/paginacion";
 import styles from "./adopcion.module.css";
 import SearchBar from '../SearchBar/searchBar';
+import Card from '../Cartas/cardMascotas.jsx'
 
 const Adopcion = () => {
 
     const dispatch = useDispatch();
-    const allPets = useSelector((state) => state.Pets)
+    const allPets = useSelector((state) => state.mascotas)
     const fundState = useSelector((state) => state.fundaciones);
 
 
@@ -35,6 +35,7 @@ const Adopcion = () => {
 
     useEffect(() => {
         dispatch(getAllMascotas());
+        
     }, [dispatch]);
 
     const handleClick = (event) => {
@@ -62,7 +63,7 @@ const Adopcion = () => {
             <SearchBar></SearchBar>
             <div className={styles.selectContainer}>
                 <label className={styles.filterLabel}>Fundaciones:</label>
-                <select
+                {/* <select
                     className={styles.filterSelect}
                     onChange={(event) => handleFilterByFundacion(event)}
                 >
@@ -73,7 +74,7 @@ const Adopcion = () => {
                             {fund}
                         </option>
                     ))}
-                </select>
+                </select> */}
             </div>
             <div>
                 <button
@@ -85,10 +86,11 @@ const Adopcion = () => {
             </div>
             <div className="container" >
                 {currrentPets?.map((pet) => (
-                    <pets
+                    <Card
                         key={pet.id}
-                        name={pet.name}
-                        image={pet.image}
+                        name={pet.nombre}
+                        // image={pet.image}
+                        
                     />
                 ))}
             </div>

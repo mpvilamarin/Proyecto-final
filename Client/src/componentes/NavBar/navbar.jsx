@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import './NavBar.css'; // Importa tu archivo de estilos personalizados
+import './NavBar.css';
+import logo from './logo2.png';
 
 const NavBar = () => {
   return (
-    <Navbar className="custom-navbar justify-content-start" variant="light" expand="lg">
-      <Container>
-        <Navbar.Brand></Navbar.Brand>
+    <Navbar className="custom-navbar" variant="light" expand="lg">
+      <Container className='container'>
+        <Navbar.Brand className="logo-container d-flex align-items-center">
+          <img src={logo} alt="Logo" className="logo img-fluid" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" >
-          <Nav className="ml-auto custom-nav-links navBarItem justify-content-between"> {/* Agrega la clase personalizada */}
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
             <Link to="/home" className="nav-link">Home</Link>
             <Link to="/donaciones" className="nav-link">Donaciones</Link>
             <Link to="/fundaciones" className="nav-link">Fundaciones</Link>

@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
-import Card from '../Cartas/cards'
+import CardMascotas from '../Cartas/cardMascotas'
+import CardFundaciones from '../Cartas/cardFundacion'
 
 const Home = () => {
 
   return (
     <div>
-      <Card/>
+      <CardMascotas/>
+      <CardFundaciones/>
     </div>
   )
 }

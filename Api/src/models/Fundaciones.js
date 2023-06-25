@@ -35,11 +35,11 @@ module.exports = (sequelize) => {
         },
       },
       fundadaEn: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       mision: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       borrado: {
