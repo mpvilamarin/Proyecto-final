@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'; 
+import React, {useState} from 'react'; 
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import {postFundaciones} from '../../redux/Actions/post';
@@ -15,7 +15,8 @@ function FormFundaciones(){
         telefono: '',
         email: '',
         fundadaEn: '',
-        mision: ''
+        mision: '',
+        borrado: false
     })
  
     const handleChange = (e) => {
@@ -49,10 +50,7 @@ function FormFundaciones(){
         <Form.Group controlId="formBasicEmail"> <Form.Label>Email</Form.Label> <Form.Control type="email" name="email" value={newFundacion.email} onChange={handleChange} placeholder="Enter email" /> </Form.Group>
         <Form.Group controlId="formBasicFundadaEn"> <Form.Label>Fundada en</Form.Label> <Form.Control type="text" name="fundadaEn" value={newFundacion.fundadaEn} onChange={handleChange} /> </Form.Group>
         <Form.Group controlId="formBasicMision"> <Form.Label>Mision</Form.Label> <Form.Control type="text" name="mision" value={newFundacion.mision} onChange={handleChange} /> </Form.Group>
-        
-       
-            
-                <Button variant="primary" type="submit" onClick={(e) => handleSubmit(e)}> Submit </Button>
+        <Button variant="primary" type="submit" onClick={(e) => handleSubmit(e)}> Submit </Button>
                
         
     </Form>
