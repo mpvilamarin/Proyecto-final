@@ -64,7 +64,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         mascotaDetail: {
           ...action.payload,
-          mascotas: action.payload.mascotas || [],
           fundaciones: action.payload.fundaciones || [],
         },
       };

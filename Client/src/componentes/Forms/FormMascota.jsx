@@ -67,7 +67,7 @@ function FormFundaciones(){
 
 
     const sortedFundacion = fundaciones.slice().sort((a,b) => {
-        return a.nombre.localCompare(b.nombre);
+        return a.nombre.localeCompare(b.nombre);
     })
 
     return( 
@@ -99,7 +99,6 @@ function FormFundaciones(){
         </div>
         
         <Button variant="primary" type="submit" onClick={(e) => handleSubmit(e)}> Submit </Button>
-               
         
     </Form>
 ); }
