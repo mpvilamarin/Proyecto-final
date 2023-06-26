@@ -1,19 +1,14 @@
 .custom-navbar {
   background-color: rgb(237, 230, 230);
-  height: 200px;
     /* Ajusta la altura automáticamente según el contenido */
-    padding-top: 10px;
+    padding-top: 5px;
     /* Añade un espacio superior */
-    padding-bottom: 10px;
+    padding-bottom: 5px;
+margin-bottom: 20px;
 }
 
 .navBarItem {
   width: 100%;
-}
-
-
-.navBar {
-  height: 100;
 }
 
 .logo-container {
