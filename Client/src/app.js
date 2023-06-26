@@ -8,7 +8,7 @@ import NavBar from './componentes/NavBar/navbar';
 
 import Registro from './componentes/Sesiones/registro/registro';
 import Login from './componentes/Sesiones/sesion/login';
-
+import Contacto from './componentes/Contacto/contacto'
 
 
 
@@ -41,6 +41,7 @@ function App() {
             {/* <Route path='*' element={<Navigate to='/error'/>}/>
             <Route path="/error" element={< Redirect/>} /> */}
           </Routes>
+          <Contacto/>
       </div>
   );
 }
