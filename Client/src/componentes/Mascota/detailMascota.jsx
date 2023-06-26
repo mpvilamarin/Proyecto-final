@@ -18,6 +18,7 @@ export default function Detalle() {
 
     return(
       <div>
+
         {
           selector.hasOwnProperty('nombre') ? (
             <div className={style.container}>
@@ -43,6 +44,7 @@ export default function Detalle() {
             
           ):undefined
         }
+
       </div>
     )
   // return (

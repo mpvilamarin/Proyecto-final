@@ -44,7 +44,7 @@ export default function CardMascota() {
           showStatus={false}
           centerMode={true}
           centerSlidePercentage={33.33}
-          infiniteLoop={true}
+          infiniteLoop={false} // Cambio realizado aquí
           emulateTouch={true}
           renderArrowPrev={(onClickHandler, hasPrev, label) =>
             hasPrev && (
@@ -96,3 +96,4 @@ export default function CardMascota() {
     </div>
   );
 }
+
