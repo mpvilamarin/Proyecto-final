@@ -13,7 +13,7 @@ async function getMascota(req, res){
     try {
         const allMascotas = await Mascotas.findAll({
             include: {
-                model :Fundaciones,
+                model: Fundaciones,
                 attributes:['nombre']
             }
         });
@@ -63,10 +63,14 @@ async function postMascota(req, res){
 /*----------------------------------------------OBTENER POR ID----------------------------------------------------------*/
 
 async function getByIdMascota(req, res){
-    const {id} = req.params;
-    console.log(id)
     try {
-        const response = await Mascotas.findByPk(id);
+        const {id} = req.params;
+        const response = await Mascotas.findByPk(id, {
+            include: {
+                model: Fundaciones,
+                attributes:['nombre']
+            }
+        });
         res.status(STATUS_OK).json(response);
     } catch (error) {
         res.status(STATUS_ERROR).json({message: `no se encontró el id ${error}`})

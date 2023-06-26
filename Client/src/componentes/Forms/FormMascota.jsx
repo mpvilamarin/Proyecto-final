@@ -48,6 +48,7 @@ function FormFundaciones() {
   }
 
 
+
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(newMascota);
@@ -64,6 +65,7 @@ function FormFundaciones() {
       fundacionId: []
     })
   }
+
 
 
   const sortedFundacion = fundaciones.slice().sort((a, b) => {
@@ -98,8 +100,7 @@ function FormFundaciones() {
         </div>
       </div>
 
-      <Button variant="primary" type="submit" onClick={(e) => handleSubmit(e)}> Submit </Button>
-
+      <Button variant="primary" type="submit" onClick={(e) => handleSubmit(e)}> Submit </Button
 
     </Form>
   );
