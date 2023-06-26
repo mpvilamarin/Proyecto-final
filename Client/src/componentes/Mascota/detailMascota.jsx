@@ -20,19 +20,27 @@ export default function Detalle() {
       <div>
         {
           selector.hasOwnProperty('nombre') ? (
-            <div>
-              <p>{selector.nombre}</p>
-              <br></br><br></br>
+            <div className={style.container}>
+              <h2>Nombre: {selector.nombre}</h2>
+              <h2>Temperamento: {selector.temperamento}</h2>
+              <h2>Especie: {selector.especie}</h2>
+              <h2>Género: {selector.genero}</h2>
+              <h2>Edad: {selector.edad}</h2>
+              <h2>Tamaño: {selector.tamaño}</h2>
+              <h2>Descripción: {selector.descripcion}</h2>
+              <h2>Castrado: {selector.castrado}</h2>
+
               <div>
                 {
-                  selector.fundaciones.map((fundacion) => (
-                    <div key={fundacion.id}>
-                      <span>{fundacion.nombre}</span>
+                  selector.Fundaciones.map((fundacion,index) => (
+                    <div key={index}>
+                      <h2>Fundacion: {fundacion.nombre}</h2>
                     </div>
                   ))
                 }
+                </div> 
               </div>
-            </div>
+            
           ):undefined
         }
       </div>
@@ -45,31 +53,27 @@ export default function Detalle() {
   //     <div>
   //       <h2>Nombre: {allMascotas.nombre}</h2>
   //     </div>
-  //     <img
-  //       src="https://ih1.redbubble.net/image.3874729461.5539/st,small,507x507-pad,600x600,f8f8f8.jpg"
-  //       alt="Imagen"
-  //       className={style.image}
-  //     />
+  //     
   //     <div>
-  //       <h4>Especie: {allMascotas.especie}</h4>
+  //       
   //     </div>
   //     <div>
-  //       <h4>Género: {allMascotas.genero}</h4>
+  //       
   //     </div>
   //     <div>
-  //       <h4>Edad: {allMascotas.edad}</h4>
+  //       
   //     </div>
   //     <div>
-  //       <h4>Tamaño: {allMascotas.tamaño}</h4>
+  //       
   //     </div>
   //     <div>
   //       <h4>Temperamento: {allMascotas.temperamento}</h4>
   //     </div>
   //     <div>
-  //       <h4>Descripción: {allMascotas.descripcion}</h4>
+  //       
   //     </div>
   //     <div>
-  //       <h4>Castrado: {castrado}</h4>
+  //       
   //     </div>
   //     <div>
   //       <Link to={`/adopcion/`}>
