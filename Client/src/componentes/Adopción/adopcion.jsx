@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllMascotas, getAllFundaciones } from "../../redux/Actions/get.js";
 import {
+  filterMascotaByEspecie,
   filterMascotaByGenero,
   sortMascotasAZ,
   sortMascotasZA,
@@ -15,6 +16,7 @@ import Card from 'react-bootstrap/Card';
 import Pagination from "./Paginación/paginacion.jsx";
 import './adopcion.css';
 
+
 const Adopcion = () => {
   const dispatch = useDispatch();
 
@@ -26,6 +28,10 @@ const Adopcion = () => {
   const [ordenamiento, setOrdenamiento] = useState("");
   const [currentPage, setCurrentPage] = useState(1)
   const [elementsPerPage] = useState(3)
+  const [especie, setEspecie] = useState("");
+  const petsFilter = useSelector((state) => state.filtroMascotas);
+
+
 
   useEffect(() => {
     dispatch(getAllMascotas());
@@ -36,7 +42,7 @@ const Adopcion = () => {
 
   const indexOfLastElement = currentPage * elementsPerPage;
   const indexOfFirstElement = indexOfLastElement - elementsPerPage;
-  const currentElements = allPets.slice(indexOfFirstElement, indexOfLastElement);
+  const currentElements = petsFilter.slice(indexOfFirstElement, indexOfLastElement);
 
   const paginationButtonNext = (e) => {
     e.preventDefault();
@@ -52,13 +58,21 @@ const Adopcion = () => {
     setCurrentPage(pageNumber);
   }
 
-
-
+  const handleEspecieFilter = (e) => {
+    const especie = e.target.value;
+    setEspecie(especie);
+    dispatch(filterMascotaByEspecie(especie))
+    if (especie === 'todos') {
+      dispatch(getAllMascotas())
+    }
+  };
   const handleGeneroFilter = (event) => {
     const genero = event.target.value;
     setGeneroFilter(genero);
     dispatch(filterMascotaByGenero(genero));
   };
+
+
 
   const handleSortAsc = () => {
     setOrdenamiento("asc");
@@ -96,6 +110,19 @@ const Adopcion = () => {
         <button onClick={handleSortDesc}>Z-A</button>
       </div>
       <div>
+
+        <div>
+          <h2>Especie</h2>
+          <div>
+            <label htmlFor="especie">Especie:</label>
+            <select id="especie" value={especie} onChange={handleEspecieFilter}>
+              <option value="todos">perros y gatos</option>
+              <option value="perro">Perro</option>
+              <option value="gato">Gato</option>
+            </select>
+          </div>
+        </div>
+
         <label>Fundaciones:</label>
         {/* <select
                     className={styles.filterSelect}
@@ -155,7 +182,6 @@ const Adopcion = () => {
           </div>
         </div>
       </div>
-
       <div className="container">
         {currentElements.map((mascota, indexMascota) => (
           <Card key={indexMascota} style={{ width: '18rem' }}>
