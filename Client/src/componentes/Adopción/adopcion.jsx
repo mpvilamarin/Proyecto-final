@@ -1,69 +1,69 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { getAllMascotas, getAllFundaciones} from "../../redux/Actions/get.js";
-import { filterMascotaByFundacion } from "../../redux/Actions/filtroAndOrdenamiento.js";
-import Pagination from "./Paginación/paginacion";
-import styles from "./adopcion.module.css";
-import SearchBar from '../SearchBar/searchBar';
-import Card from '../Cartas/cardMascotas.jsx'
+import { useEffect } from "react";
+import { getAllMascotas } from "../../redux/Actions/get.js";
+import mascotas from "../Cartas/perroGato.png";
+import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import './adopcion.css'
+
+
 
 const Adopcion = () => {
 
-    const dispatch = useDispatch();
-    const allPets = useSelector((state) => state.mascotas)
-    const fundState = useSelector((state) => state.fundaciones);
+  const dispatch = useDispatch();
+  const allPets = useSelector((state) => state.mascotas)
 
 
-    // Paginación (:
+  // Paginación (:
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [petsPerPage] = useState(9);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [petsPerPage] = useState(9);
 
-    const lastPetIndex = currentPage * petsPerPage;
-    const firstPetIndex = lastPetIndex - petsPerPage;
-    const currrentPets = allPets ? allPets.slice(firstPetIndex, lastPetIndex) : [];
+  // const lastPetIndex = currentPage * petsPerPage;
+  // const firstPetIndex = lastPetIndex - petsPerPage;
+  // const currrentPets = allPets ? allPets.slice(firstPetIndex, lastPetIndex) : [];
 
-    const pagination = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
+  // const pagination = (pageNumber) => {
+  //   setCurrentPage(pageNumber);
+  // };
 
-    const resetPagination = () => {
-        setCurrentPage(1);
-    };
+  // const resetPagination = () => {
+  //   setCurrentPage(1);
+  // };
 
 
-    useEffect(() => {
-        dispatch(getAllMascotas());
-        
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(getAllMascotas());
 
-    const handleClick = (event) => {
-        event.preventDefault();
-        resetPagination();
-        dispatch(getAllMascotas());
-    };
+  }, [dispatch]);
 
-    const handleFilterByFundacion = (event) => {
-        event.preventDefault();
-        resetPagination();
-        dispatch(filterMascotaByFundacion(event.target.value));
-    };
+  // const handleClick = (event) => {
+  //   event.preventDefault();
+  //   resetPagination();
+  //   dispatch(getAllMascotas());
+  // };
 
-    // const handleSearch = (search) => {
-    //     resetPagination();
-    //     dispatch(getAllMascotas(search));
-    // };
+  // const handleFilterByFundacion = (event) => {
+  //   event.preventDefault();
+  //   resetPagination();
+  //   dispatch(filterMascotaByFundacion(event.target.value));
+  // };
 
-    const petsLength = allPets ? allPets.length : 0;
+  // const handleSearch = (search) => {
+  //     resetPagination();
+  //     dispatch(getAllMascotas(search));
+  // };
 
-    return (
-        <div className="container" >
-            <h2>Mascotas en adopción</h2>
-            <SearchBar></SearchBar>
-            <div className={styles.selectContainer}>
-                <label className={styles.filterLabel}>Fundaciones:</label>
-                {/* <select
+  // const petsLength = allPets ? allPets.length : 0;
+
+  return (
+    <div className="container" >
+      <h2>Mascotas en adopción</h2>
+      <div>
+        <label>Fundaciones:</label>
+        {/* <select
                     className={styles.filterSelect}
                     onChange={(event) => handleFilterByFundacion(event)}
                 >
@@ -75,32 +75,52 @@ const Adopcion = () => {
                         </option>
                     ))}
                 </select> */}
-            </div>
-            <div>
-                <button
-                    className={styles.reloadButton}
-                    onClick={(event) => handleClick(event)}
-                >
-                    Limpiar filtross
-                </button>
-            </div>
-            <div className="container" >
-                {currrentPets?.map((pet) => (
-                    <Card
-                        key={pet.id}
-                        name={pet.nombre}
-                        // image={pet.image}
-                        
-                    />
-                ))}
-            </div>
-            <Pagination
-                pets={petsLength}
-                petsPerPage={petsPerPage}
-                currentPage={currentPage}
-                pagination={pagination}
-            />
-        </div >
-    );
+      </div>
+      <div>
+        <button
+
+        // onClick={(event) => handleClick(event)}
+        >
+          Limpiar filtros
+        </button>
+      </div>
+      {/* <div className="container" >
+        {allPets?.map((pet) => (
+          <CardMascota
+            key={pet.id}
+            name={pet.nombre}
+          // image={pet.image}
+
+          />
+        ))}
+      </div> */}
+      {/* <Pagination
+        pets={petsLength}
+        petsPerPage={petsPerPage}
+        currentPage={currentPage}
+        pagination={pagination}
+      /> */}
+
+
+      <div className="container">
+        {allPets.map((mascota, indexMascota) => (
+          <Card key={indexMascota} style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={mascotas} alt="Mascota" className="card-image" />
+            <Card.Body>
+              <Link to={`/mascota/${mascota.id}`}>
+                <Card.Title>{mascota.nombre}</Card.Title>
+              </Link>
+              <Card.Text>
+                Género: {mascota.genero}
+                <br />
+                Temperamento: {mascota.temperamento}
+              </Card.Text>
+              <Button variant="primary">Ver más</Button>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
+    </div >
+  );
 };
 export default Adopcion;

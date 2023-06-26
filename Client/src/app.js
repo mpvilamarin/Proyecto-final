@@ -34,16 +34,12 @@ function App() {
             <Route path="/mascota/:id" element={<DetalleMascota/>} />
             <Route path="/fundacion/:id" element={<DetalleFundacion/>} />
             <Route path="/adopciones" element={<Adopcion />} />
-
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
-           
-
             <Route path="/formFundaciones" element={<FormFundaciones/>}/>
             <Route path="/formMascota" element={<FormMascota/>}/>
             {/* <Route path='*' element={<Navigate to='/error'/>}/>
             <Route path="/error" element={< Redirect/>} /> */}
-
           </Routes>
       </div>
   );

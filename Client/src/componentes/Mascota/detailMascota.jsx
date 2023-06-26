@@ -49,7 +49,7 @@ export default function Detalle() {
         <h4>Castrado: {castrado}</h4>
       </div>
       <div>
-        <Link to={`/adopcion/`}>
+        <Link to={`/adopciones`}>
           <button className={style.button}>Adoptar</button>
         </Link>
       </div>
