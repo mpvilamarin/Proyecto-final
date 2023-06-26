@@ -98,7 +98,7 @@ const Form = () => {
                                     className={styles.input}
                                     placeholder="Apellido"
                                 />
-                                {errors.apellido && <p className={styles.errors}>{errors.apellido}</p>}
+                                {errors.apellido && <p className={styles.error}>{errors.apellido}</p>}
                             </div>
                             <div className={styles.field}>
                                 <label className={styles.label}>Edad:</label>
@@ -110,7 +110,7 @@ const Form = () => {
                                     className={styles.input}
                                     placeholder="Edad"
                                 />
-                                {errors.edad && <p className={styles.errors}>{errors.edad}</p>}
+                                {errors.edad && <p className={styles.error}>{errors.edad}</p>}
                             </div>
                             <div className={styles.field}>
                                 <label className={styles.label}>Domicilio:</label>
@@ -122,7 +122,7 @@ const Form = () => {
                                     className={styles.input}
                                     placeholder="Domicilio"
                                 />
-                                {errors.domicilio && <p className={styles.errors}>{errors.domicilio}</p>}
+                                {errors.domicilio && <p className={styles.error}>{errors.domicilio}</p>}
                             </div>
                             <div className={styles.field}>
                                 <label className={styles.label}>Telefono:</label>
@@ -134,7 +134,7 @@ const Form = () => {
                                     className={styles.input}
                                     placeholder="Teléfono"
                                 />
-                                {errors.telefono && <p className={styles.errors}>{errors.telefono}</p>}
+                                {errors.telefono && <p className={styles.error}>{errors.telefono}</p>}
                             </div>
                             <div className={styles.field}>
                                 <label className={styles.label}>Correo:</label>
@@ -157,7 +157,7 @@ const Form = () => {
                                     className={styles.input}
                                     placeholder="Contraseña"
                                 />
-                                {errors.contraseña && <p className={styles.errors}>{errors.contraseña}</p>}
+                                {errors.contraseña && <p className={styles.error}>{errors.contraseña}</p>}
                             </div>
                             <button type="submit" className={styles.sendButton}>
                                 Enviar

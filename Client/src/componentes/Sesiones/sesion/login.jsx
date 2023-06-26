@@ -43,28 +43,28 @@ const Login = () => {
 
         // se busca por id o por correo? 
 
-       // if (Object.keys(validationErrors).length === 0) {
-       //     try {
-       //         const response = await axios.get(`http://localhost:3001/login/${input.correo}`);
-       //         if (response.status === 200) {
-       //             // Usuario existe
-       //             setInput({
-       //                 correo: '',
-       //                 contraseña: '',
-       //             });
-       //         } else {
-       //             // Usuario no existe
-       //             setErrors({
-       //                 general: "Este usuario no existe"
-       //             });
-       //         }
-       //     } catch (error) {
-       //         // Manejar el error de la solicitud
-       //         setErrors({
-       //             general: "Error al verificar el usuario"
-       //         });
-       //     }
-       // }
+        // if (Object.keys(validationErrors).length === 0) {
+        //     try {
+        //         const response = await axios.get(`http://localhost:3001/login/${input.correo}`);
+        //         if (response.status === 200) {
+        //             // Usuario existe
+        //             setInput({
+        //                 correo: '',
+        //                 contraseña: '',
+        //             });
+        //         } else {
+        //             // Usuario no existe
+        //             setErrors({
+        //                 general: "Este usuario no existe"
+        //             });
+        //         }
+        //     } catch (error) {
+        //         // Manejar el error de la solicitud
+        //         setErrors({
+        //             general: "Error al verificar el usuario"
+        //         });
+        //     }
+        // }
     };
 
     useEffect(() => {
@@ -103,12 +103,14 @@ const Login = () => {
                             {errors.contraseña && <p className={styles.errors}>{errors.contraseña}</p>}
                         </div>
                         {errors.general && <p className={styles.errors}>{errors.general}</p>}
-                        <Link to="/registro" className={styles.link}>
-                            ¿No estás registrado?
-                        </Link>
-                        <button type="submit" className={styles.sendButton}>
-                            Enviar
-                        </button>
+                        <div className={styles.buttonContainer}>
+                            <Link to="/registro" className={styles.link}>
+                                ¿No estás registrado?
+                            </Link>
+                            <button type="submit" className={styles.sendButton}>
+                                Enviar
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
