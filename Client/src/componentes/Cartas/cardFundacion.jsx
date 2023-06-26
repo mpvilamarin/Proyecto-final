@@ -6,6 +6,10 @@ import { getAllFundaciones } from '../../redux/Actions/get';
 import './cards.css'; // Ruta del archivo CSS
 import fundaciones from './fundacion.png';
 import Card from 'react-bootstrap/Card';
+import FundacionesFilter from "../Fundación/filterFundacion";
+import SortFundaciones from "../Fundación/sortFundacion";
+
+
 
 export default function CardsFundacion() {
   const dispatch = useDispatch();
@@ -21,6 +25,15 @@ export default function CardsFundacion() {
       <div className="title-container">
         <h1 className="card-title-highlight">FUNDACIONES</h1>
       </div>
+      <div>
+        <FundacionesFilter />
+      </div>
+
+      <div>
+        <SortFundaciones />
+      </div>
+
+
       {!allFundaciones ? (
         <h3>LOADING...</h3>
       ) : (
