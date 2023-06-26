@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllMascotas } from "../../redux/Actions/get.js";
-import { filterMascotaByGenero } from "../../redux/Actions/filtroAndOrdenamiento.js";
+import {
+  filterMascotaByGenero,
+  sortMascotasAZ,
+  sortMascotasZA,
+} from "../../redux/Actions/filtroAndOrdenamiento.js";
 import mascotas from "../Cartas/perroGato.png";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -13,11 +17,22 @@ const Adopcion = () => {
   const dispatch = useDispatch();
   const allPets = useSelector((state) => state.mascotas);
   const [generoFilter, setGeneroFilter] = useState("");
+  const [ordenamiento, setOrdenamiento] = useState("");
 
   const handleGeneroFilter = (event) => {
     const genero = event.target.value;
     setGeneroFilter(genero);
     dispatch(filterMascotaByGenero(genero));
+  };
+
+  const handleSortAsc = () => {
+    setOrdenamiento("asc");
+    dispatch(sortMascotasAZ());
+  };
+
+  const handleSortDesc = () => {
+    setOrdenamiento("desc");
+    dispatch(sortMascotasZA());
   };
 
   // Paginación (:
@@ -71,6 +86,11 @@ const Adopcion = () => {
           <option value="Hembra">Hembra</option>
           <option value="Desconocido">Desconocido</option>
         </select>
+      </div>
+      <div>
+        <label>Ordenar por nombre:</label>
+        <button onClick={handleSortAsc}>A-Z</button>
+        <button onClick={handleSortDesc}>Z-A</button>
       </div>
       <div>
         <label>Fundaciones:</label>
