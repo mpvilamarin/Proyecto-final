@@ -6,7 +6,9 @@ import { getDetailMascota } from '../../redux/Actions/get';
 
 export default function Detalle() {
   const { id } = useParams();
+
   const selector = useSelector(state => state.mascotaDetail);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
