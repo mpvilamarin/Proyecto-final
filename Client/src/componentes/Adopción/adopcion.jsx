@@ -150,7 +150,7 @@ const Adopcion = () => {
                 <br />
                 Temperamento: {mascota.temperamento}
               </Card.Text>
-              <Button variant="primary">Ver más</Button>
+              <Button variant="primary">Ver Más</Button>
             </Card.Body>
           </Card>
         ))}
