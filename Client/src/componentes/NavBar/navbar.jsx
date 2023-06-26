@@ -16,10 +16,12 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Link to="/home" className="nav-link">Home</Link>
-            <Link to="/donaciones" className="nav-link">Donaciones</Link>
+            {/* <Link to="/donaciones" className="nav-link">Donaciones</Link> */}
+            <Link to="/formFundaciones" className="nav-link">Crear Fundacion</Link>
+            <Link to="/formMascota" className="nav-link">Crear Mascota</Link>
             <Link to="/fundaciones" className="nav-link">Fundaciones</Link>
             <Link to="/adopciones" className="nav-link">Adopciones</Link>
-            <Link to="/contact" className="nav-link">Contáctanos</Link>
+            {/* <Link to="/contact" className="nav-link">Contáctanos</Link> */}
             <Link to="/about" className="nav-link">Sobre nosotros</Link>
             <Link to="/login" className="nav-link">Login</Link>
           </Nav>

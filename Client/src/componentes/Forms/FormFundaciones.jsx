@@ -14,7 +14,8 @@ function FormFundaciones() {
     telefono: '',
     email: '',
     fundadaEn: '',
-    mision: ''
+    mision: '',
+    borrado: false
   });
 
   const [showAlert, setShowAlert] = useState(false);
@@ -38,7 +39,8 @@ function FormFundaciones() {
         telefono: '',
         email: '',
         fundadaEn: '',
-        mision: ''
+        mision: '',
+        borrado: false
       });
       setShowAlert(false);
       setInvalidFields([]);
