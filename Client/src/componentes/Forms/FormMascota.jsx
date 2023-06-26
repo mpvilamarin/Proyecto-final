@@ -67,7 +67,7 @@ function FormFundaciones(){
 
 
     const sortedFundacion = fundaciones.slice().sort((a,b) => {
-        return a.nombre.localCompare(b.nombre);
+        return a.nombre.localeCompare(b.nombre);
     })
 
     return( 
@@ -88,7 +88,7 @@ function FormFundaciones(){
                         sortedFundacion?.map((elem, index) => (
                         <div key={index}>
                             <label htmlFor={`fundacionId_${index}`} key={index}>
-                                <input type="checkbox" name={`fundacionId_${index}`} value={elem} key={index} onChange={handleChecked}/>
+                                <input type="checkbox" name={`fundacionId_${index}`} value={elem.nombre} key={index} onChange={handleChecked}/>
                                 {elem.nombre}
                             </label>
                         </div>
@@ -99,7 +99,6 @@ function FormFundaciones(){
         </div>
         
         <Button variant="primary" type="submit" onClick={(e) => handleSubmit(e)}> Submit </Button>
-               
         
     </Form>
 ); }
