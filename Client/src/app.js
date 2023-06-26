@@ -5,7 +5,7 @@ import DetalleMascota from './componentes/Mascota/detailMascota';
 import Nosotros from './componentes/Nosotros/nosotros';
 import Adopcion from './componentes/Adopción/adopcion';
 import NavBar from './componentes/NavBar/navbar';
-
+import Fundacion from './componentes/Fundación/Fundacion';
 import Registro from './componentes/Sesiones/registro/registro';
 import Login from './componentes/Sesiones/sesion/login';
 
@@ -15,7 +15,7 @@ import Login from './componentes/Sesiones/sesion/login';
 // const location = useLocation();
 import FormFundaciones from './componentes/Forms/FormFundaciones.jsx'
 import FormMascota from './componentes/Forms/FormMascota.jsx'
-import CardFundaciones from './componentes/Cartas/cardFundacion'
+// import CardFundaciones from './componentes/Cartas/cardFundacion'
 import DetalleFundacion from './componentes/Fundación/detailFundacion'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -30,7 +30,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<Nosotros />} />
-            <Route path="/fundaciones" element={<CardFundaciones/>} />
+            <Route path="/fundaciones" element={<Fundacion/>} />
             <Route path="/mascota/:id" element={<DetalleMascota/>} />
             <Route path="/fundacion/:id" element={<DetalleFundacion/>} />
             <Route path="/adopciones" element={<Adopcion />} />

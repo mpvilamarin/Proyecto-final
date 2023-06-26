@@ -11,7 +11,6 @@ export default function SearchBar() {
 
     function handleInputChange(event) {
         setName(event.target.value);
-        console.log(name);
     }
     function handleSubmit(event) {
         event.preventDefault();

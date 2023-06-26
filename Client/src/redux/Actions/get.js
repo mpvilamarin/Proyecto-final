@@ -28,7 +28,7 @@ export const getAllMascotas = () => {
 export const getNameFundaciones = (nombre) => {
   return async (dispatch) => {
     await axios
-      .get(`http://localhost:3001/fundaciones?name=${nombre}`)
+      .get(`http://localhost:3001/fundaciones?nombre=${nombre}`)
       .then((res) => res.data)
       .then((data) => {
         dispatch({ type: GET_NAME_FUNDACIONES, payload: data });
