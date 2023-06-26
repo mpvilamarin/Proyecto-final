@@ -1,109 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getAllMascotas } from "../../redux/Actions/get.js";
+// import { filterMascotaByEspecie } from "../../redux/Actions/filtroAndOrdenamiento";
+import { getAllMascotas } from '../../redux/Actions/get.js'
 import mascotas from "../Cartas/perroGato.png";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './adopcion.css'
-
-
+import MascotasFilter from "./MascotasFilterByEspecie.jsx";
 
 const Adopcion = () => {
-
   const dispatch = useDispatch();
-  const allPets = useSelector((state) => state.mascotas)
-
-
-  // Paginación (:
-
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [petsPerPage] = useState(9);
-
-  // const lastPetIndex = currentPage * petsPerPage;
-  // const firstPetIndex = lastPetIndex - petsPerPage;
-  // const currrentPets = allPets ? allPets.slice(firstPetIndex, lastPetIndex) : [];
-
-  // const pagination = (pageNumber) => {
-  //   setCurrentPage(pageNumber);
-  // };
-
-  // const resetPagination = () => {
-  //   setCurrentPage(1);
-  // };
-
+  const petsFilter = useSelector((state) => state.filtroMascotas);
 
   useEffect(() => {
     dispatch(getAllMascotas());
-
   }, [dispatch]);
 
-  // const handleClick = (event) => {
-  //   event.preventDefault();
-  //   resetPagination();
-  //   dispatch(getAllMascotas());
-  // };
-
-  // const handleFilterByFundacion = (event) => {
-  //   event.preventDefault();
-  //   resetPagination();
-  //   dispatch(filterMascotaByFundacion(event.target.value));
-  // };
-
-  // const handleSearch = (search) => {
-  //     resetPagination();
-  //     dispatch(getAllMascotas(search));
-  // };
-
-  // const petsLength = allPets ? allPets.length : 0;
-
   return (
-    <div className="container" >
+    <div className="container">
       <h2>Mascotas en adopción</h2>
-      <div>
-        <label>Fundaciones:</label>
-        {/* <select
-                    className={styles.filterSelect}
-                    onChange={(event) => handleFilterByFundacion(event)}
-                >
-                    <option value="">Seleccionar</option>
-                    <option value="Todas">Todas las fundaciones</option>
-                    {fundState?.sort().map((fund) => (
-                        <option key={fund} value={fund}>
-                            {fund}
-                        </option>
-                    ))}
-                </select> */}
-      </div>
-      <div>
-        <button
-
-        // onClick={(event) => handleClick(event)}
-        >
-          Limpiar filtros
-        </button>
-      </div>
-      {/* <div className="container" >
-        {allPets?.map((pet) => (
-          <CardMascota
-            key={pet.id}
-            name={pet.nombre}
-          // image={pet.image}
-
-          />
-        ))}
-      </div> */}
-      {/* <Pagination
-        pets={petsLength}
-        petsPerPage={petsPerPage}
-        currentPage={currentPage}
-        pagination={pagination}
-      /> */}
-
-
       <div className="container">
-        {allPets.map((mascota, indexMascota) => (
+        <MascotasFilter />
+        {petsFilter.map((mascota, indexMascota) => (
           <Card key={indexMascota} style={{ width: '18rem' }}>
             <Card.Img variant="top" src={mascotas} alt="Mascota" className="card-image" />
             <Card.Body>
@@ -115,12 +34,16 @@ const Adopcion = () => {
                 <br />
                 Temperamento: {mascota.temperamento}
               </Card.Text>
-              <Button variant="primary">Ver más</Button>
+              <Link to={`/mascota/${mascota.id}`}>
+                <Button variant="primary">Ver más</Button>
+              </Link>
             </Card.Body>
-          </Card>
-        ))}
+          </Card>)
+        )
+        }
       </div>
-    </div >
+    </div>
   );
 };
+
 export default Adopcion;

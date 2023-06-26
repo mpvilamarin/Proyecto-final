@@ -25,6 +25,7 @@ import {
   UPDATE_FUNDACION,
   UPDATE_USUARIOS,
   GET_NAME_FUNDACIONES,
+  FILTER_MASCOTA_BY_ESPECIE,
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -139,6 +140,23 @@ function rootReducer(state = initialState, action) {
         ...state,
         fundaciones: fundacionesByNombre,
       };
+    case FILTER_MASCOTA_BY_ESPECIE:
+      const especie = action.payload;
+      if (especie === "todos") {
+        return {
+    ...state,
+    filtroMascotas: state.mascotas,
+    };
+      } else {
+        const filteredMascotasByEs = state.mascotas.filter(
+    (mascota) => mascota.especie === especie
+      );
+    return {
+    ...state,
+    filtroMascotas: filteredMascotasByEs,
+    };
+      }
+    
     case SORT_FUNDACIONES_AZ:
       return {
         ...state,
