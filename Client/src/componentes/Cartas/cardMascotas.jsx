@@ -25,6 +25,7 @@ export default function Card() {
           <h2>Especie: {mascota.especie}</h2>
           <h2>Temperamento: {mascota.temperamento}</h2>
           <h2>Descripcion: {mascota.descripcion}</h2>
+          <h2>Fundacion: {mascota.Fundaciones[0] && mascota.Fundaciones[0].nombre}</h2>
         </div>
       ))}
       </div>

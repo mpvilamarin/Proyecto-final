@@ -7,6 +7,7 @@ import { getDetailMascota } from '../../redux/Actions/get';
 export default function Detalle() {
   const { id } = useParams();
   const allMascotas = useSelector((state) => state.mascotaDetail);
+  console.log(allMascotas.mascotaDetail)
   var castrado = allMascotas.castrado ? 'Sí' : 'No';
   const dispatch = useDispatch();
 
@@ -44,6 +45,16 @@ export default function Detalle() {
       </div>
       <div>
         <h4>Descripción: {allMascotas.descripcion}</h4>
+      </div>
+      <div>
+        <h1>Fundacion: </h1>
+        <div>
+          {allMascotas && allMascotas.fundaciones.map((fundacion, index) => (
+            <div key={index}>
+              <span>{fundacion.nombre}</span>
+            </div>
+          ))}
+          </div>        
       </div>
       <div>
         <h4>Castrado: {castrado}</h4>
