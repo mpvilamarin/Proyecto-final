@@ -73,7 +73,7 @@ const Adopcion = () => {
   //     dispatch(getAllMascotas(search));
   // };
 
-  // const petsLength = allPets ? allPets.length : 0;
+  // const petsLength = allPets ? allPets .length : 0;
 
   return (
     <div className="container">
