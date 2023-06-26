@@ -16,6 +16,10 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        tamaño: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         edad: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -25,13 +29,25 @@ module.exports = (sequelize) => {
             allowNull: false
         },
         temperamento: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false
         },
         descripcion: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false
         },
+        castrado: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        // activo: {
+        //     type: DataTypes.BOOLEAN,
+        //     defaultValue: true,
+        //     allowNull: false
+        // },
+        // fechaBorrado:{
+        //     type: DataTypes.DATE
+        // }
     },
     {
         timestamps: false,     

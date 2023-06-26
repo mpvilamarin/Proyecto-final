@@ -20,6 +20,23 @@ async function getRegistroUsuario(req,res){
     }
 }
 
+async function getIdUsuario(req, res){
+    const {id} = req.params;
+
+    try {
+        const getById = id.toUpperCase();
+        const getUsuario = await Usuarios.findOne({
+            where:{
+                id: getById
+            }
+        });
+        if(getUsuario) return res.status(STATUS_OK).json(getUsuario)
+        else return res.status(STATUS_ERROR).json('no existe ese id para usuario')
+    } catch (error) {
+        res.status(STATUS_ERROR).json(`error ${error}`)
+    }
+}
+
 async function postRegistroUsuario(req, res){
     const {nombre, fechaNacimiento, email, contraseña} = req.body
 
@@ -51,7 +68,7 @@ async function updateUsuario(req, res){
     const {nombre, fechaNacimiento, contraseña} = req.body
 
     try {
-        const usuario = await Usuarios.finOne({
+        const usuario = await Usuarios.findOne({
             where: {
                 email,
             },
@@ -105,4 +122,5 @@ module.exports={
     getRegistroUsuario,
     updateUsuario,
     deleteUsuario,
+    getIdUsuario,
 }

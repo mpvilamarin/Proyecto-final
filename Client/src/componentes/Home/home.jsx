@@ -1,10 +1,15 @@
+import React, { useEffect } from 'react';
+import CardMascotas from '../Cartas/cardMascotas';
+import CardFundaciones from '../Cartas/cardFundacion';
+import style from './home.module.css';
 
-import React from 'react'
-
-const home = () => {
+const Home = () => {
   return (
-    <div>home</div>
-  )
-}
+    <div className={style.cardContainer}>
+      <CardMascotas />
+      <CardFundaciones />
+    </div>
+  );
+};
 
-export default home
+export default Home;
