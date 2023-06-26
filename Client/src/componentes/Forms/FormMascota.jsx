@@ -3,6 +3,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { postMascota } from '../../redux/Actions/post';
 import { getAllFundaciones } from '../../redux/Actions/get';
+import './stilosFormularioMascota.css';
 
 function FormMascota() {
   const fundaciones = useSelector((state) => state.fundaciones);
@@ -98,7 +99,9 @@ function FormMascota() {
     .sort((a, b) => a.nombre.localeCompare(b.nombre));
 
   return (
-    <Form>
+    <div className="form-container">
+      <h1>FORMULARIO PARA MASCOTAS</h1>
+      <Form>
       {showAlert && (
         <Alert variant="danger">Por favor, completa todos los campos.</Alert>
       )}
@@ -238,6 +241,8 @@ function FormMascota() {
         Submit
       </Button>
     </Form>
+    </div>
+    
   );
 } 
 

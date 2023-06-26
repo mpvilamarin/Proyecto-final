@@ -84,15 +84,16 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_FILTER_MASCOTA_BY_FUNDACION:
-      const filterByFundacion = state.filtroMascotas.filter((mascota) =>
-        mascota.fundaciones.find((fundacion) =>
-          fundacion.nombre.includes(action.payload)
-        )
+      const filterFundacion = state.filtroMascotas.filter(
+        (mascota) =>
+          mascota.Fundaciones.find(
+            (fundacion) => fundacion.nombre === action.payload
+          )
       );
+      console.log("filterFundacion:", filterFundacion);
       return {
         ...state,
-        mascotas:
-          action.payload === "All" ? state.filtroMascotas : filterByFundacion,
+        mascotas: action.payload === "All" ? state.filtroMascotas : filterFundacion,
       };
 
     case FILTER_MASCOTA_BY_GENERO:
