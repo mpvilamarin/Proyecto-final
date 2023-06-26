@@ -88,7 +88,7 @@ function FormFundaciones(){
                         sortedFundacion?.map((elem, index) => (
                         <div key={index}>
                             <label htmlFor={`fundacionId_${index}`} key={index}>
-                                <input type="checkbox" name={`fundacionId_${index}`} value={elem} key={index} onChange={handleChecked}/>
+                                <input type="checkbox" name={`fundacionId_${index}`} value={elem.nombre} key={index} onChange={handleChecked}/>
                                 {elem.nombre}
                             </label>
                         </div>

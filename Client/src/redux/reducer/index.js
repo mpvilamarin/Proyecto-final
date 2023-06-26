@@ -65,6 +65,7 @@ function rootReducer(state = initialState, action) {
         mascotaDetail: {
           ...action.payload,
           mascotas: action.payload.mascotas || [],
+          fundaciones: action.payload.fundaciones || [],
         },
       };
     case SORT_MASCOTAS_AZ:
