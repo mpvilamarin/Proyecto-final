@@ -52,8 +52,6 @@ const Adopcion = () => {
     setCurrentPage(pageNumber);
   }
 
-
-
   const handleGeneroFilter = (event) => {
     const genero = event.target.value;
     setGeneroFilter(genero);

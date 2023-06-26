@@ -4,6 +4,7 @@ const { postFundacion, getAllFundaciones , updateFundacion, getFundacionById} = 
 
 fundacionRouter.post("/", postFundacion);
 fundacionRouter.get("/", getAllFundaciones);
+// fundacionRouter.get("/:nombre", getAllFundaciones)
 fundacionRouter.put("/:id", updateFundacion);
 fundacionRouter.get("/:id", getFundacionById);
 
