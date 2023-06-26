@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postMascota } from '../../redux/Actions/post';
 import { getAllFundaciones } from '../../redux/Actions/get'
 
-function FormFundaciones(){ 
+function FormMascota(){ 
 
     const fundaciones = useSelector( state => state.fundaciones);
     const dispatch = useDispatch();
@@ -103,4 +103,4 @@ function FormFundaciones(){
     </Form>
 ); }
 
-export default FormFundaciones;
+export default FormMascota;
