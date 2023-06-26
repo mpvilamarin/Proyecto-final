@@ -19,6 +19,7 @@ import {
   GET_ALL_USUARIOS,
   GET_DETALLE_USUARIO,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
+  FILTER_MASCOTA_BY_GENERO,
   DELETE_MASCOTA,
   DELETE_USUARIO,
   UPDATE_MASCOTA,
@@ -51,7 +52,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         mascotas: action.payload,
-        mascotaDetail: action.payload,    
+        mascotaDetail: action.payload,
         filtroMascotas: action.payload,
       };
     case GET_NAME_FUNDACIONES:
@@ -94,11 +95,28 @@ function rootReducer(state = initialState, action) {
           action.payload === "All" ? state.filtroMascotas : filterByFundacion,
       };
 
+    case FILTER_MASCOTA_BY_GENERO:
+      const genero = action.payload;
+      let mascotasFiltradas = [];
+
+      if (genero === "") {
+        mascotasFiltradas = state.filtroMascotas;
+      } else {
+        mascotasFiltradas = state.filtroMascotas.filter(
+          (mascota) => mascota.genero === genero
+        );
+      }
+
+      return {
+        ...state,
+        mascotas: mascotasFiltradas,
+      };
+
     case GET_ALL_FUNDACIONES:
       return {
         ...state,
         fundaciones: action.payload,
-        fundacionDetail: action.payload
+        fundacionDetail: action.payload,
       };
     case GET_DETAIL_FUNDACION:
       return {

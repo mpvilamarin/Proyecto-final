@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllMascotas } from "../../redux/Actions/get.js";
+import { filterMascotaByGenero } from "../../redux/Actions/filtroAndOrdenamiento.js";
 import mascotas from "../Cartas/perroGato.png";
 import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import './adopcion.css'
-
-
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import "./adopcion.css";
 
 const Adopcion = () => {
-
   const dispatch = useDispatch();
-  const allPets = useSelector((state) => state.mascotas)
+  const allPets = useSelector((state) => state.mascotas);
+  const [generoFilter, setGeneroFilter] = useState("");
 
+  const handleGeneroFilter = (event) => {
+    const genero = event.target.value;
+    setGeneroFilter(genero);
+    dispatch(filterMascotaByGenero(genero));
+  };
 
   // Paginación (:
 
@@ -33,10 +37,8 @@ const Adopcion = () => {
   //   setCurrentPage(1);
   // };
 
-
   useEffect(() => {
     dispatch(getAllMascotas());
-
   }, [dispatch]);
 
   // const handleClick = (event) => {
@@ -59,8 +61,17 @@ const Adopcion = () => {
   // const petsLength = allPets ? allPets.length : 0;
 
   return (
-    <div className="container" >
+    <div className="container">
       <h2>Mascotas en adopción</h2>
+      <div>
+        <label>Género:</label>
+        <select value={generoFilter} onChange={handleGeneroFilter}>
+          <option value="">Todos</option>
+          <option value="Macho">Macho</option>
+          <option value="Hembra">Hembra</option>
+          <option value="Desconocido">Desconocido</option>
+        </select>
+      </div>
       <div>
         <label>Fundaciones:</label>
         {/* <select
@@ -101,11 +112,15 @@ const Adopcion = () => {
         pagination={pagination}
       /> */}
 
-
       <div className="container">
         {allPets.map((mascota, indexMascota) => (
-          <Card key={indexMascota} style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={mascotas} alt="Mascota" className="card-image" />
+          <Card key={indexMascota} style={{ width: "18rem" }}>
+            <Card.Img
+              variant="top"
+              src={mascotas}
+              alt="Mascota"
+              className="card-image"
+            />
             <Card.Body>
               <Link to={`/mascota/${mascota.id}`}>
                 <Card.Title>{mascota.nombre}</Card.Title>
@@ -120,7 +135,7 @@ const Adopcion = () => {
           </Card>
         ))}
       </div>
-    </div >
+    </div>
   );
 };
 export default Adopcion;
