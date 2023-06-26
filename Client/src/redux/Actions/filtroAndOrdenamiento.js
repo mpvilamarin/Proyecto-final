@@ -9,6 +9,8 @@ import {
   SORT_FUNDACIONES_AZ,
   SORT_FUNDACIONES_ZA,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
+  FILTER_MASCOTA_BY_ESPECIE
+
 } from "../Actions-type/index.js";
 
 //===============================================>> FILTROS Y ORDENAMIENTOS <<=========================================================
@@ -26,6 +28,14 @@ export const filterMascotaByGenero = (genero) => {
     payload: genero,
   };
 };
+
+export const filterMascotaByEspecie = (especie) => {
+  return {
+    type: FILTER_MASCOTA_BY_ESPECIE,
+    payload: especie
+  }
+}
+
 
 export const filterFundacionesByCiudad = (ciudad) => {
   return {

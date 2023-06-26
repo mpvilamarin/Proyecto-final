@@ -165,10 +165,11 @@ const Adopcion = () => {
                 <br />
                 Temperamento: {mascota.temperamento}
               </Card.Text>
-              <Link to={`/mascota/${mascota.id}`}><Button variant="primary">Ver más</Button></Link>      
+              <Link to={`/mascota/${mascota.id}`}><Button variant="primary">Ver más</Button></Link>
             </Card.Body>
-          </Card>
-        ))}
+          </Card>)
+        )
+        }
       </div>
     </div>
   );
