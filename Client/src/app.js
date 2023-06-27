@@ -1,7 +1,6 @@
 import './App.css';
 import { Route, Routes , useLocation} from 'react-router-dom';
 import Home from './componentes/Home/home'
-import DetalleMascota from './componentes/Mascota/detailMascota';
 import Nosotros from './componentes/Nosotros/nosotros';
 import Adopcion from './componentes/Adopción/adopcion';
 import NavBar from './componentes/NavBar/navbar';
@@ -15,8 +14,9 @@ import Contacto from './componentes/Contacto/contacto'
 // const location = useLocation();
 import FormFundaciones from './componentes/Forms/FormFundaciones.jsx'
 import FormMascota from './componentes/Forms/FormMascota.jsx'
-// import CardFundaciones from './componentes/Cartas/cardFundacion'
+import DetalleMascota from './componentes/Mascota/detailMascota';
 import DetalleFundacion from './componentes/Fundación/detailFundacion'
+// import CardFundaciones from './componentes/Cartas/cardFundacion'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -40,9 +40,9 @@ function App() {
             <Route path="/formMascota" element={<FormMascota/>}/>
             {/* <Route path='*' element={<Navigate to='/error'/>}/>
             <Route path="/error" element={< Redirect/>} /> */}
-          </Routes>
+          </Routes> 
           <Contacto/>
-      </div>
+        </div>
   );
 }
 
