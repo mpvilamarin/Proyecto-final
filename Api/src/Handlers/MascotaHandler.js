@@ -1,14 +1,10 @@
-const {Mascotas, Fundaciones} = require('../db');
+const {Mascota} = require('../db');
 
 const STATUS_OK =200;
 const STATUS_CREATED = 201;
 const STATUS_ERROR=404;
 
-
-
-
-
-/*-----------------------------------------------OBTENER MASCOTAS-----------------------------------------------------*/
+/*-------------------------------------------------OBTENER MASCOTAS-----------------------------------------------------*/
 async function getMascota(req, res){
     try {
         const allMascotas = await Mascotas.findAll();
@@ -24,7 +20,7 @@ async function getMascota(req, res){
     }
 }
 
-/*----------------------------CREAR MASCOTAS--------------------------------------*/
+/*---------------------------------------------------CREAR MASCOTAS-------------------------------------------------*/
 async function postMascota(req, res){
     const {nombre, especie , edad , genero , temperamento , descripcion, fundacionId , tamaño, castrado} = req.body;
     try { 
@@ -55,7 +51,7 @@ async function postMascota(req, res){
     }
 }
 
-/*----------------------------------------------OBTENER POR ID----------------------------------------------------------*/
+/*--------------------------------------------------OBTENER POR ID------------------------------------------------------------*/
 
 async function getByIdMascota(req, res){
     const {id} = req.params;
@@ -68,7 +64,7 @@ async function getByIdMascota(req, res){
     }
 }
 
-/*-----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------BORRAR MASCOTA-------------------------------------------------------------------*/
 
 async function deleteMascota(req,res){
     const {nombre} = req.params;
@@ -96,7 +92,7 @@ async function deleteMascota(req,res){
         .status(STATUS_ERROR).json({message:`error al eliminar la mascota ${error}`})
     }
 }
-
+/*----------------------------------------------------EDITAR MASCOTA-------------------------------------------------------------------*/
 
 async function updateMascota(req, res){
     const { nombre } = req.params
@@ -129,10 +125,29 @@ async function updateMascota(req, res){
     }
 }
 
+async function deleteMascota(req,res){
+    const {nombre} =req.body;
+    try {
+        const deleteMascota = await Mascota.destroy({
+            where:{
+                nombre:nombre
+            },
+        });
 
+        if(deleteMascota === 0){
+            res
+            .status(STATUS_ERROR).json({message:'la mascota no fue encontrada'})
+        }else{
+            res
+            .status(STATUS_OK).json({message:'la mascota fue eliminada con exito'})
+        }
+    } catch (error) {
+        res
+        .status(STATUS_ERROR).json({message:`error al eliminar la mascota ${error}`})
+    }
+}
 
     
-
 
 module.exports={
     postMascota,
