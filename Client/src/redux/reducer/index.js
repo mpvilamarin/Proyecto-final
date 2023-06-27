@@ -56,11 +56,7 @@ function rootReducer(state = initialState, action) {
         mascotaDetail: action.payload,
         filtroMascotas: action.payload,
       };
-    case GET_NAME_FUNDACIONES:
-      return {
-        ...state,
-        fundaciones: action.payload,
-      };
+  
     case GET_DETAIL_MASCOTAS:
       return {
         ...state,
@@ -150,7 +146,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         fundaciones: fundacionesByCiudad,
       };
-    case FILTER_FUNDACIONES_NOMBRE:
+    case GET_NAME_FUNDACIONES:
       const { nombre } = action.payload;
       const fundacionesByNombre = state.fundaciones.filter((fundacion) =>
         fundacion.nombre.toLowerCase().includes(nombre.toLowerCase())

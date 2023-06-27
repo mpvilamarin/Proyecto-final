@@ -7,6 +7,7 @@ const Fundacion = () => {
     <div>
         <SearchBar/>
         <CardFundacion/>
+        
     </div>
   )
 }

@@ -81,9 +81,9 @@ export const postMascota = (newMascota) =>{
           type: POST_USUARIO,
           payload: response.data,
         });
-        alert('fundacion creada con exito')
+        alert('Usuario creada con exito')
       } catch (error) {
-        alert(`error al crear la fundacion ${error}`)
+        alert(`error al crear la Usuario ${error}`)
       }
     }
   }

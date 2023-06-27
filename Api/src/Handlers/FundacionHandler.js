@@ -18,7 +18,7 @@ async function getAllFundaciones(req, res){
     const {nombre} = req.query;
     try {
         if( nombre ) {
-            const response = await Fundaciones.findOne({ where : {nombre: nombre} });
+            const response = await Fundaciones.findAll({ where : {nombre: nombre} });
             if(response)
             {
                return res.status(STATUS_OK).json(response);
