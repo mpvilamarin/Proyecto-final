@@ -11,12 +11,13 @@ import style from './Fundacion.module.css'
 const Fundacion = () => {
   return (
     <div >
-        <div className={style.filters}>
+      <div className={style.filters}>
         {/* <FundacionesFilter /> */}
         <SortFundaciones />
-        <SearchBar/>
-        <CardFundacion/>
-        
+        <SearchBar />
+      </div>
+      <CardFundacion />
+
     </div>
   )
 }

@@ -147,13 +147,9 @@ function rootReducer(state = initialState, action) {
         fundaciones: fundacionesByCiudad,
       };
     case GET_NAME_FUNDACIONES:
-      const { nombre } = action.payload;
-      const fundacionesByNombre = state.fundaciones.filter((fundacion) =>
-        fundacion.nombre.toLowerCase().includes(nombre.toLowerCase())
-      );
-      return {
+     return {
         ...state,
-        fundaciones: fundacionesByNombre,
+        fundaciones: action.payload.length === 0 ? state.fundaciones : action.payload,
       };
     case FILTER_MASCOTA_BY_ESPECIE:
       const especie = action.payload;
