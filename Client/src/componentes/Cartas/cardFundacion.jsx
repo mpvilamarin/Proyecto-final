@@ -24,18 +24,7 @@ export default function CardsFundacion() {
       <div className="title-container">
         <h1 className="card-title-highlight">FUNDACIONES</h1>
       </div>
-
-      {!allFundaciones && !allFundaciones ? (
-
-      <div>
-        <FundacionesFilter />
-      </div>
-
-      <div>
-        <SortFundaciones />
-      </div>
-
-
+      
       {!allFundaciones ? (
 
         <h3>LOADING...</h3>
