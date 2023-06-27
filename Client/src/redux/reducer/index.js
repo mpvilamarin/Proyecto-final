@@ -2,31 +2,37 @@ import {
   GET_ALL_MASCOTAS,
   GET_DETAIL_MASCOTAS,
   GET_FILTER_MASCOTA_BY_FUNDACION,
-  SORT_MASCOTAS_AZ,
-  SORT_MASCOTAS_ZA,
   GET_ALL_FUNDACIONES,
   GET_DETAIL_FUNDACION,
-  FILTER_FUNDACIONES_CIUDAD,
-  FILTER_FUNDACIONES_NOMBRE,
-  SORT_FUNDACIONES_AZ,
-  SORT_FUNDACIONES_ZA,
-  RESET_DETAIL,
+  GET_ALL_USUARIOS,
+  GET_DETALLE_USUARIO,
+  GET_FILTER_FUNDACTION_BY_CIUDAD,
+  GET_NAME_FUNDACIONES,
+  
   POST_ADOPCIONES,
   POST_DONACIONES,
   POST_FUNDACIONES,
   POST_MASCOTA,
   POST_USUARIO,
-  GET_ALL_USUARIOS,
-  GET_DETALLE_USUARIO,
-  GET_FILTER_FUNDACTION_BY_CIUDAD,
+  POST_LOGIN,
+
+  SORT_MASCOTAS_AZ,
+  SORT_MASCOTAS_ZA,
+  SORT_FUNDACIONES_AZ,
+  SORT_FUNDACIONES_ZA,
+
+  RESET_DETAIL,
+  
   FILTER_MASCOTA_BY_GENERO,
-  DELETE_MASCOTA,
-  DELETE_USUARIO,
+  FILTER_FUNDACIONES_CIUDAD,
+  FILTER_MASCOTA_BY_ESPECIE,
+  
   UPDATE_MASCOTA,
   UPDATE_FUNDACION,
   UPDATE_USUARIOS,
-  GET_NAME_FUNDACIONES,
-  FILTER_MASCOTA_BY_ESPECIE,
+
+  DELETE_MASCOTA,
+  DELETE_USUARIO,
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -38,6 +44,7 @@ const initialState = {
   fundacionDetail: [],
 
   usuarios: [],
+  sesion: [],
   usuarioDetalle: [],
 
   adopciones: [],
@@ -203,6 +210,11 @@ function rootReducer(state = initialState, action) {
         mascotas: state.mascotas.concat(action.payload),
       };
     case POST_USUARIO:
+      return {
+        ...state,
+        usuarios: state.usuarios.concat(action.payload),
+      };
+    case POST_LOGIN:
       return {
         ...state,
         usuarios: state.usuarios.concat(action.payload),

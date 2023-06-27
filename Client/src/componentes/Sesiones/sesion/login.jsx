@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { validate } from './validate';
+import { postUsuario } from '../../../redux/Actions/post'
+import { useDispatch } from 'react-redux'; 
 import { Link } from 'react-router-dom';
 import styles from './login.module.css';
 
 const Login = () => {
-
+    const dispatch = useDispatch();
+   
     const [input, setInput] = useState({
-        correo: '',
+        email: '',
         contraseña: '',
     });
 
@@ -38,41 +40,31 @@ const Login = () => {
                 validationErrors[key] = error;
             }
         }
-
         setErrors(validationErrors);
+        dispatch(postUsuario(input));
 
-        // se busca por id o por correo? 
-
-       // if (Object.keys(validationErrors).length === 0) {
-       //     try {
-       //         const response = await axios.get(`http://localhost:3001/login/${input.correo}`);
-       //         if (response.status === 200) {
-       //             // Usuario existe
-       //             setInput({
-       //                 correo: '',
-       //                 contraseña: '',
-       //             });
-       //         } else {
-       //             // Usuario no existe
-       //             setErrors({
-       //                 general: "Este usuario no existe"
-       //             });
-       //         }
-       //     } catch (error) {
-       //         // Manejar el error de la solicitud
-       //         setErrors({
-       //             general: "Error al verificar el usuario"
-       //         });
-       //     }
-       // }
     };
 
+    // if (Object.keys(validationErrors).length === 0) {
+    //     try {
+    //       const response = await axios.post('localhost:3001/usuarios/login', input);
+    //       const { token } = response.data;
+  
+    //       localStorage.setItem('token', token);
+  
+    //       history.push('/home');
+    //     } catch (error) {
+    //       console.error('Error al iniciar sesión:', error);
+    //       setErrors({ general: 'Error al iniciar sesión. Inténtalo de nuevo.' });
+    //     }
+    //   }
+    
     useEffect(() => {
         setErrors((prevErrors) => ({
             ...prevErrors
         }));
     }, []);
-
+    
     return (
         <div className={styles.container}>
             <div className={styles.formContainer}>
@@ -80,15 +72,15 @@ const Login = () => {
                     <div>
                         <h1 className={styles.title}>Inicia sesión</h1>
                         <div className={styles.field}>
-                            <label className={styles.label}>Correo:</label>
+                            <label className={styles.label}>Email:</label>
                             <input
                                 type="email"
-                                value={input.correo}
-                                name="correo"
+                                value={input.email}
+                                name="email"
                                 onChange={handleChange}
                                 className={styles.input}
-                                placeholder="Correo"
-                            />
+                                placeholder="Email"
+                                />
                         </div>
                         <div className={styles.field}>
                             <label className={styles.label}>Contraseña:</label>

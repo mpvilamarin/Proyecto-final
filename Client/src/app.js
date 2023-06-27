@@ -8,6 +8,7 @@ import Fundacion from './componentes/Fundación/Fundacion';
 import Registro from './componentes/Sesiones/registro/registro';
 import Login from './componentes/Sesiones/sesion/login';
 import Contacto from './componentes/Contacto/contacto'
+import { RequireAuth } from "react-auth-kit";
 
 
 
@@ -28,7 +29,9 @@ function App() {
           <Routes>
             {/* <Route exact path="/" element={<Landing/>}></Route> */}
             <Route path="/" element={<Home />} />
+
             <Route path="/home" element={<Home />} />
+            
             <Route path="/about" element={<Nosotros />} />
             <Route path="/fundaciones" element={<Fundacion/>} />
             <Route path="/mascota/:id" element={<DetalleMascota/>} />

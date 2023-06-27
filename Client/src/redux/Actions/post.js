@@ -1,5 +1,5 @@
-
 import axios from "axios";
+import { useSignIn } from 'react-auth-kit';
 
 import {
     POST_ADOPCIONES, 
@@ -7,6 +7,7 @@ import {
     POST_FUNDACIONES,
     POST_MASCOTA,
     POST_USUARIO,
+    POST_LOGIN
 } from "../Actions-type/index.js";
 
 
@@ -76,7 +77,7 @@ export const postMascota = (newMascota) =>{
   export const postUsuario = (newUsuario) =>{
     return async(dispatch) =>{
       try {
-        const response = await axios.post('http://localhost:3001/Usuarios', newUsuario)
+        const response = await axios.post('http://localhost:3001/usuarios', newUsuario)
         dispatch({
           type: POST_USUARIO,
           payload: response.data,
@@ -87,3 +88,28 @@ export const postMascota = (newMascota) =>{
       }
     }
   }
+
+  export const postLogin = (newLogin) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.post('http://localhost:3001/usuarios/login', newLogin);
+        const { token } = response.data; // Obtener el token de la respuesta
+        const signIn = useSignIn(); // Utilizar la función useSignIn de react-auth-kit
+        signIn({
+          token: token, 
+          expiresIn: 3600,
+          tokenType: 'Bearer',
+          authState: { email: response.data.email },
+        });
+  
+        dispatch({
+          type: POST_LOGIN,
+          payload: response.data,
+        });
+  
+        alert('Login exitoso');
+      } catch (error) {
+        alert(`error al loguearse ${error}`);
+      }
+    };
+  };
