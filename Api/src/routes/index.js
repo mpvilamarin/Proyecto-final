@@ -6,7 +6,7 @@ const mascotasRouter = require('./mascotas.js');
 const adopcionesRouter = require('./adopciones.js');
 const donacionesRouter = require('./donaciones.js');
 
-router.use('/Usuarios', loginRouter);
+router.use('/usuarios', loginRouter);
 router.use('/fundaciones', fundacionRouter);
 router.use('/mascotas', mascotasRouter);
 router.use('/adopciones', adopcionesRouter);
