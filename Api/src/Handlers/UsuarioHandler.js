@@ -45,9 +45,7 @@ async function loginUsuario(req,res) {
     if (usuarioLogin.dataValues.contraseña !== contraseña)
         return res.status(STATUS_ERROR).json({message:'contraseña incorrecta'});
     const jwtToken = jwt.sign(usuarioLogin.dataValues, "secret")
-    res.status(STATUS_CREATED).json({message: "Logueado con exito", token: jwtToken});
-
-
+    res.status(STATUS_CREATED).json({message: "Logueado con exito", token: jwtToken, email: email});
 }
 
 async function postRegistroUsuario(req, res){
