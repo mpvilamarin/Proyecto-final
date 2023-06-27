@@ -46,14 +46,7 @@ export const filterFundacionesByCiudad = (ciudad) => {
   };
 };
 
-export const filterFundacionesByNombre = (nombre) => {
-  return {
-    type: FILTER_FUNDACIONES_NOMBRE,
-    payload: {
-      nombre,
-    },
-  };
-};
+
 
 export const filterFundacionByCiudad = (ciudad) => {
   return {
