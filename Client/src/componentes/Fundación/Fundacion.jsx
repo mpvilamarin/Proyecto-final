@@ -15,10 +15,8 @@ const Fundacion = () => {
         {/* <FundacionesFilter /> */}
         <SortFundaciones />
         <SearchBar/>
-        </div>
-        <div>
-            <CardFundacion/>
-        </div>
+        <CardFundacion/>
+        
     </div>
   )
 }
