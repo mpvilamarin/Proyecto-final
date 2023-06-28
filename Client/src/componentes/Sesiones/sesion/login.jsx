@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { validate } from './validate';
 import { useSignIn } from 'react-auth-kit';
@@ -85,21 +86,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-        // const handleChange = (event) => {
-        //     const { name, value } = event.target;
-        //     const error = validate(name, value);
-        //     setInput((prevInput) => ({
-        //         ...prevInput,
-        //         [name]: value,
-        //     }));
-        //     setErrors((prevErrors) => ({
-            //         ...prevErrors,
-            //         [name]: error,
-        //     }));
-        // };
-            // const [input, setInput] = useState({
-            //     email: '',  
-            //     contraseña: '',
-            // });

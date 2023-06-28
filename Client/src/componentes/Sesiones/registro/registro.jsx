@@ -1,12 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
+
 import { useDispatch } from "react-redux";
 import { validate } from './validate';
 import { postUsuario } from '../../../redux/Actions/post';
 import styles from "../registro/registro.module.css";
 
 const Form = () => {
-    
+
     const dispatch = useDispatch();
 
     const [input, setInput] = useState({
