@@ -10,8 +10,6 @@ import Login from './componentes/Sesiones/sesion/login';
 import Contacto from './componentes/Contacto/contacto'
 import { RequireAuth } from "react-auth-kit";
 
-
-
 // const location = useLocation();
 import FormFundaciones from './componentes/Forms/FormFundaciones.jsx'
 import FormMascota from './componentes/Forms/FormMascota.jsx'
@@ -24,6 +22,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const location = useLocation();
   return (
+
       <div>
             <NavBar/>
           <Routes>
@@ -55,5 +54,3 @@ function App() {
 }
 
 export default App;
-
-
