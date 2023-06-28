@@ -1,9 +1,14 @@
-const {Router} = require('express')
-const mascotaRouter = Router()
+const express = require('express');
+const mascotaRouter = express.Router();
+const {postMascota,getMascota, getByIdMascota, deleteMascota,updateMascota} = require('../Handlers/MascotaHandler');
 
-mascotaRouter.get("/", (req, res) => {
-    res.status(200).send("OK");
-});
+mascotaRouter.post('/',postMascota);
+mascotaRouter.get('/', getMascota);
+mascotaRouter.get('/:id', getByIdMascota)
+mascotaRouter.delete('/:nombre',deleteMascota);
+mascotaRouter.put('/:nombre', updateMascota);
+
+
 
 module.exports = mascotaRouter
 
