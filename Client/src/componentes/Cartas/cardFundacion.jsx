@@ -1,19 +1,27 @@
-import React, { useEffect , useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllMascotas , getAllFundaciones , getNameFundaciones  } from '../../redux/Actions/get';
+import { getAllMascotas, getAllFundaciones, getNameFundaciones } from '../../redux/Actions/get';
 import './cards.css'; // Ruta del archivo CSS
 import fundaciones from './fundacion.png';
 import Card from 'react-bootstrap/Card';
 import FundacionesFilter from "../Fundación/filterFundacion";
 import SortFundaciones from "../Fundación/sortFundacion";
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 export default function CardsFundacion() {
   const dispatch = useDispatch();
   const allFundaciones = useSelector(state => state.fundaciones);
- 
+
+  const navigate = useNavigate();
+
+  const redirectToDonationForm = (fundacionId) => {
+    navigate(`/donation-form/${fundacionId}`);
+  };
+
   useEffect(() => {
     dispatch(getAllMascotas());
     dispatch(getAllFundaciones());
@@ -42,6 +50,9 @@ export default function CardsFundacion() {
                   <h2 className="card-info">Ciudad: {fundacion?.ciudad}</h2>
                   <h2 className="card-info">Email: {fundacion?.email}</h2>
                   <h2 className="card-info">Misión: {fundacion?.mision}</h2>
+                  
+                  <button onClick={() => redirectToDonationForm(fundacion.id)}>Donar</button>
+
                 </Card.Text>
               </Card.Body>
             </Card>
