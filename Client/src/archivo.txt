@@ -1,0 +1,6 @@
+<Route path="/" element={<Home />} />
+            <Route path="/"element={
+            <RequireAuth loginPath="/login">
+              <Home />
+            </RequireAuth> }>
+            </Route>
