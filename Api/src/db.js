@@ -32,10 +32,19 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 const { Donaciones, Fundaciones , Adopciones , Mascotas , Usuarios } = sequelize.models;
 
-Fundaciones.hasMany(Donaciones, {foreignKey: 'donacionId'});
-Donaciones.belongsTo(Fundaciones, {foreignKey: 'fundacionId'});
-Fundaciones.hasMany(Mascotas, {foreignKey: 'fundacionId'})
-// Mascotas.belongsTo(Fundaciones);
+Fundaciones.hasMany(Adopciones, {foreignKey: 'fundacionId'});
+Fundaciones.hasMany(Donaciones, {foreignKey: 'fundacionId'});
+
+Usuarios.hasMany(Donaciones, {foreignKey: 'usuarioId'})
+Usuarios.hasMany(Adopciones, {foreignKey: 'usuarioId'});
+
+Mascotas.belongsToMany(Fundaciones, { through: 'MascotasFundaciones', timestamps: false });
+Fundaciones.belongsToMany(Mascotas, { through: 'MascotasFundaciones', timestamps: false });
+
+
+
+
+
 
 
 

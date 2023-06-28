@@ -17,17 +17,19 @@ async function postFundacion(req, res) {
 
 
 async function getAllFundaciones(req, res){
-    const {nombre} = req.params;
+    const {nombre} = req.query;
     try {
         if( nombre ) {
-            const response = await Fundaciones.findOne(nombre);
-            if(response.length > 0)
+            const response = await Fundaciones.findAll({ where : {nombre: nombre} });
+            if(response)
             {
-               return res.status(200).json(response);
+               return res.status(STATUS_OK).json(response);
             }    
         }
-        let allFundaciones = await Fundaciones.findAll();
-        res.status(STATUS_OK).json(allFundaciones);
+        else {
+          let allFundaciones = await Fundaciones.findAll();
+          return res.status(STATUS_OK).json(allFundaciones);
+        }
     } catch (error) {
             return res.status(STATUS_ERROR).json({message:error});
     }

@@ -2,29 +2,37 @@ import {
   GET_ALL_MASCOTAS,
   GET_DETAIL_MASCOTAS,
   GET_FILTER_MASCOTA_BY_FUNDACION,
-  SORT_MASCOTAS_AZ,
-  SORT_MASCOTAS_ZA,
   GET_ALL_FUNDACIONES,
   GET_DETAIL_FUNDACION,
-  FILTER_FUNDACIONES_CIUDAD,
-  FILTER_FUNDACIONES_NOMBRE,
-  SORT_FUNDACIONES_AZ,
-  SORT_FUNDACIONES_ZA,
-  RESET_DETAIL,
+  GET_ALL_USUARIOS,
+  GET_DETALLE_USUARIO,
+  GET_FILTER_FUNDACTION_BY_CIUDAD,
+  GET_NAME_FUNDACIONES,
+  
   POST_ADOPCIONES,
   POST_DONACIONES,
   POST_FUNDACIONES,
   POST_MASCOTA,
   POST_USUARIO,
-  GET_ALL_USUARIOS,
-  GET_DETALLE_USUARIO,
-  GET_FILTER_FUNDACTION_BY_CIUDAD,
-  DELETE_MASCOTA,
-  DELETE_USUARIO,
+  POST_LOGIN,
+
+  SORT_MASCOTAS_AZ,
+  SORT_MASCOTAS_ZA,
+  SORT_FUNDACIONES_AZ,
+  SORT_FUNDACIONES_ZA,
+
+  RESET_DETAIL,
+  
+  FILTER_MASCOTA_BY_GENERO,
+  FILTER_FUNDACIONES_CIUDAD,
+  FILTER_MASCOTA_BY_ESPECIE,
+  
   UPDATE_MASCOTA,
   UPDATE_FUNDACION,
   UPDATE_USUARIOS,
-  GET_NAME_FUNDACIONES,
+
+  DELETE_MASCOTA,
+  DELETE_USUARIO,
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -36,6 +44,7 @@ const initialState = {
   fundacionDetail: [],
 
   usuarios: [],
+  sesion: [],
   usuarioDetalle: [],
 
   adopciones: [],
@@ -51,20 +60,16 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         mascotas: action.payload,
-        mascotaDetail: action.payload,    
+        mascotaDetail: action.payload,
         filtroMascotas: action.payload,
       };
-    case GET_NAME_FUNDACIONES:
-      return {
-        ...state,
-        fundaciones: action.payload,
-      };
+  
     case GET_DETAIL_MASCOTAS:
       return {
         ...state,
         mascotaDetail: {
           ...action.payload,
-          mascotas: action.payload.mascotas || [],
+          fundaciones: action.payload.fundaciones || [],
         },
       };
     case SORT_MASCOTAS_AZ:
@@ -83,22 +88,40 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_FILTER_MASCOTA_BY_FUNDACION:
-      const filterByFundacion = state.filtroMascotas.filter((mascota) =>
-        mascota.fundaciones.find((fundacion) =>
-          fundacion.nombre.includes(action.payload)
-        )
+      const filterFundacion = state.filtroMascotas.filter(
+        (mascota) =>
+          mascota.Fundaciones.find(
+            (fundacion) => fundacion.nombre === action.payload
+          )
       );
+      console.log("filterFundacion:", filterFundacion);
       return {
         ...state,
-        mascotas:
-          action.payload === "All" ? state.filtroMascotas : filterByFundacion,
+        mascotas: action.payload === "All" ? state.filtroMascotas : filterFundacion,
+      };
+
+    case FILTER_MASCOTA_BY_GENERO:
+      const genero = action.payload;
+      let mascotasFiltradas = [];
+
+      if (genero === "") {
+        mascotasFiltradas = state.filtroMascotas;
+      } else {
+        mascotasFiltradas = state.filtroMascotas.filter(
+          (mascota) => mascota.genero === genero
+        );
+      }
+
+      return {
+        ...state,
+        mascotas: mascotasFiltradas,
       };
 
     case GET_ALL_FUNDACIONES:
       return {
         ...state,
         fundaciones: action.payload,
-        fundacionDetail: action.payload
+        fundacionDetail: action.payload,
       };
     case GET_DETAIL_FUNDACION:
       return {
@@ -130,15 +153,28 @@ function rootReducer(state = initialState, action) {
         ...state,
         fundaciones: fundacionesByCiudad,
       };
-    case FILTER_FUNDACIONES_NOMBRE:
-      const { nombre } = action.payload;
-      const fundacionesByNombre = state.fundaciones.filter((fundacion) =>
-        fundacion.nombre.toLowerCase().includes(nombre.toLowerCase())
-      );
-      return {
+    case GET_NAME_FUNDACIONES:
+     return {
         ...state,
-        fundaciones: fundacionesByNombre,
+        fundaciones: action.payload.length === 0 ? state.fundaciones : action.payload,
       };
+    case FILTER_MASCOTA_BY_ESPECIE:
+      const especie = action.payload;
+      if (especie === "todos") {
+        return {
+    ...state,
+    filtroMascotas: state.mascotas,
+    };
+      } else {
+        const filteredMascotasByEs = state.mascotas.filter(
+    (mascota) => mascota.especie === especie
+      );
+    return {
+    ...state,
+    filtroMascotas: filteredMascotasByEs,
+    };
+      }
+    
     case SORT_FUNDACIONES_AZ:
       return {
         ...state,
@@ -177,6 +213,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         usuarios: state.usuarios.concat(action.payload),
+      };
+    case POST_LOGIN:
+      return {
+        ...state,
+        usuarios: state.sesion.concat(action.payload),
       };
     case DELETE_MASCOTA:
       return {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import {
-
   GET_FILTER_MASCOTA_BY_FUNDACION,
+  FILTER_MASCOTA_BY_GENERO,
   SORT_MASCOTAS_AZ,
   SORT_MASCOTAS_ZA,
   FILTER_FUNDACIONES_CIUDAD,
@@ -9,19 +9,33 @@ import {
   SORT_FUNDACIONES_AZ,
   SORT_FUNDACIONES_ZA,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
+  FILTER_MASCOTA_BY_ESPECIE
 
 } from "../Actions-type/index.js";
-
-
 
 //===============================================>> FILTROS Y ORDENAMIENTOS <<=========================================================
 
 export const filterMascotaByFundacion = (fundacion) => {
-    return{
-        type: GET_FILTER_MASCOTA_BY_FUNDACION,
-        payload: fundacion
-    }
+  return {
+    type: GET_FILTER_MASCOTA_BY_FUNDACION,
+    payload: fundacion,
+  };
+};
+
+export const filterMascotaByGenero = (genero) => {
+  return {
+    type: FILTER_MASCOTA_BY_GENERO,
+    payload: genero,
+  };
+};
+
+export const filterMascotaByEspecie = (especie) => {
+  return {
+    type: FILTER_MASCOTA_BY_ESPECIE,
+    payload: especie
+  }
 }
+
 
 export const filterFundacionesByCiudad = (ciudad) => {
   return {
@@ -32,24 +46,14 @@ export const filterFundacionesByCiudad = (ciudad) => {
   };
 };
 
-export const filterFundacionesByNombre = (nombre) => {
+
+
+export const filterFundacionByCiudad = (ciudad) => {
   return {
-    type: FILTER_FUNDACIONES_NOMBRE,
-    payload: {
-      nombre,
-    },
+    type: GET_FILTER_FUNDACTION_BY_CIUDAD,
+    payload: ciudad,
   };
 };
-
-
-
-export const filterFundacionByCiudad = (ciudad) =>{
-  return{
-    type:GET_FILTER_FUNDACTION_BY_CIUDAD,
-    payload : ciudad
-  }
-}
-
 
 export const sortFundacionesAZ = () => {
   return {
@@ -63,18 +67,14 @@ export const sortFundacionesZA = () => {
   };
 };
 
-
-
-
-
 export const sortMascotasAZ = () => {
-    return {
-      type: SORT_MASCOTAS_AZ,
-    };
+  return {
+    type: SORT_MASCOTAS_AZ,
   };
-  
-  export const sortMascotasZA = () => {
-    return {
-      type: SORT_MASCOTAS_ZA,
-    };
+};
+
+export const sortMascotasZA = () => {
+  return {
+    type: SORT_MASCOTAS_ZA,
   };
+};

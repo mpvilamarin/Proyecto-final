@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 import {
@@ -7,6 +6,7 @@ import {
     POST_FUNDACIONES,
     POST_MASCOTA,
     POST_USUARIO,
+    POST_LOGIN
 } from "../Actions-type/index.js";
 
 
@@ -76,14 +76,32 @@ export const postMascota = (newMascota) =>{
   export const postUsuario = (newUsuario) =>{
     return async(dispatch) =>{
       try {
-        const response = await axios.post('http://localhost:3001/Usuarios', newUsuario)
+        const response = await axios.post('http://localhost:3001/usuarios', newUsuario)
         dispatch({
           type: POST_USUARIO,
           payload: response.data,
         });
-        alert('fundacion creada con exito')
+        alert('Usuario creada con exito')
       } catch (error) {
-        alert(`error al crear la fundacion ${error}`)
+        alert(`error al crear la Usuario ${error}`)
       }
     }
   }
+
+  // export const postLogin = (newLogin) => {
+  //   return async(dispatch) => {
+  //     try {
+
+  //       const response = await axios.post('http://localhost:3001/usuarios/login', newLogin)
+  
+  //       dispatch({
+  //         type: POST_LOGIN,
+  //         payload: response.data,
+  //       })
+  //       alert('Login exitoso')
+  //     }
+  //     catch (error) {
+  //       alert(`error al loguearse ${error}`)
+  //     }
+  //   }
+  // }

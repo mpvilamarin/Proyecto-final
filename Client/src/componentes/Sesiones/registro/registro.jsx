@@ -6,6 +6,7 @@ import { postUsuario } from '../../../redux/Actions/post';
 import styles from "../registro/registro.module.css";
 
 const Form = () => {
+    const countries = useSelector()
     const dispatch = useDispatch();
 
     const [input, setInput] = useState({
