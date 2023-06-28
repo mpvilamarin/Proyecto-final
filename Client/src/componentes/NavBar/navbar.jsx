@@ -15,7 +15,7 @@ export default function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Link to="/home" className="nav-link">Home</Link>
+            <Link to="/" className="nav-link">Home</Link>
             {/* <Link to="/donaciones" className="nav-link">Donaciones</Link> */}
             <Link to="/formFundaciones" className="nav-link">Crear Fundacion</Link>
             <Link to="/formMascota" className="nav-link">Crear Mascota</Link>

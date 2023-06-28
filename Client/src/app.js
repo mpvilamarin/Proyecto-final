@@ -27,14 +27,14 @@ function App() {
       <div>
             <NavBar/>
           <Routes>
-          <Route
+          {/* <Route
           path="/"
           element={
             <RequireAuth loginPath="/login">
               <Home />
             </RequireAuth>
           }
-        ></Route>
+        ></Route> */}
             {/* <Route exact path="/" element={<Landing/>}></Route> */}
             <Route path="/" element={<Home />} />            
             <Route path="/about" element={<Nosotros />} />
