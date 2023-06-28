@@ -1,119 +1,105 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { validate } from './validate';
+import { useSignIn } from 'react-auth-kit';
+import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { Alert, Button, Form } from 'react-bootstrap'; // Importa los componentes necesarios de React-Bootstrap
+import axios, { AxiosError } from 'axios';
 import { Link } from 'react-router-dom';
 import styles from './login.module.css';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const signIn = useSignIn();
 
-    const [input, setInput] = useState({
-        correo: '',
-        contraseña: '',
-    });
+  const [error, setError] = useState('');
 
-    const [errors, setErrors] = useState({});
+  const onSubmit = async (values) => {
+    try {
+      const response = await axios.post(
+        'http://localhost:3001/usuarios/login', 
+        values
+      );
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        const error = validate(name, value);
-        setInput((prevInput) => ({
-            ...prevInput,
-            [name]: value,
-        }));
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            [name]: error,
-        }));
-    };
+      signIn({
+        token: response.data.token,
+        expiresIn: 3600,
+        tokenType: 'Bearer',
+        authState: { email: values.email },
+      });
+      navigate('/');
+    } catch (err) {
+      if (err && err instanceof AxiosError) {
+        setError(err.response?.data.message);
+      } else if (err && err instanceof Error) {
+        setError(err.message);
+        console.log(`error : ${err}`);
+      }
+    }
+  };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      contraseña: '',
+    },
+    onSubmit,
+  });
 
-        let validationErrors = {};
-
-        for (const key in input) {
-            const value = input[key];
-            const error = validate(key, value, input);
-            if (error) {
-                validationErrors[key] = error;
-            }
-        }
-
-        setErrors(validationErrors);
-
-        // se busca por id o por correo? 
-
-       // if (Object.keys(validationErrors).length === 0) {
-       //     try {
-       //         const response = await axios.get(`http://localhost:3001/login/${input.correo}`);
-       //         if (response.status === 200) {
-       //             // Usuario existe
-       //             setInput({
-       //                 correo: '',
-       //                 contraseña: '',
-       //             });
-       //         } else {
-       //             // Usuario no existe
-       //             setErrors({
-       //                 general: "Este usuario no existe"
-       //             });
-       //         }
-       //     } catch (error) {
-       //         // Manejar el error de la solicitud
-       //         setErrors({
-       //             general: "Error al verificar el usuario"
-       //         });
-       //     }
-       // }
-    };
-
-    useEffect(() => {
-        setErrors((prevErrors) => ({
-            ...prevErrors
-        }));
-    }, []);
-
-    return (
-        <div className={styles.container}>
-            <div className={styles.formContainer}>
-                <form className={styles.form} onSubmit={handleSubmit}>
-                    <div>
-                        <h1 className={styles.title}>Inicia sesión</h1>
-                        <div className={styles.field}>
-                            <label className={styles.label}>Correo:</label>
-                            <input
-                                type="email"
-                                value={input.correo}
-                                name="correo"
-                                onChange={handleChange}
-                                className={styles.input}
-                                placeholder="Correo"
-                            />
-                        </div>
-                        <div className={styles.field}>
-                            <label className={styles.label}>Contraseña:</label>
-                            <input
-                                type="password"
-                                value={input.contraseña}
-                                name="contraseña"
-                                onChange={handleChange}
-                                className={styles.input}
-                                placeholder="Contraseña"
-                            />
-                            {errors.contraseña && <p className={styles.errors}>{errors.contraseña}</p>}
-                        </div>
-                        {errors.general && <p className={styles.errors}>{errors.general}</p>}
-                        <Link to="/registro" className={styles.link}>
-                            ¿No estás registrado?
-                        </Link>
-                        <button type="submit" className={styles.sendButton}>
-                            Enviar
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    );
+  return (
+    <div className={styles.container}>
+      <div className={styles.formContainer}>
+        <Form className={styles.form} onSubmit={formik.handleSubmit}>
+          <h1 className={styles.title}>Inicia sesión</h1>
+          <Form.Group controlId="email">
+            <Form.Label>Email:</Form.Label>
+            <Form.Control
+              type="email"
+              value={formik.values.email}
+              name="email"
+              onChange={formik.handleChange}
+              placeholder="Email"
+            />
+          </Form.Group>
+          <Form.Group controlId="contraseña">
+            <Form.Label>Password:</Form.Label>
+            <Form.Control
+              type="password"
+              value={formik.values.contraseña}
+              name="contraseña"
+              onChange={formik.handleChange}
+              placeholder="Password"
+            />
+          </Form.Group>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <Link to="/registro" className={styles.link}>
+            ¿No estás registrado?
+          </Link>
+          <Button type="submit" className={styles.sendButton}>
+            Enviar
+          </Button>
+        </Form>
+      </div>
+    </div>
+  );
 };
 
 export default Login;
+
+
+        // const handleChange = (event) => {
+        //     const { name, value } = event.target;
+        //     const error = validate(name, value);
+        //     setInput((prevInput) => ({
+        //         ...prevInput,
+        //         [name]: value,
+        //     }));
+        //     setErrors((prevErrors) => ({
+            //         ...prevErrors,
+            //         [name]: error,
+        //     }));
+        // };
+            // const [input, setInput] = useState({
+            //     email: '',  
+            //     contraseña: '',
+            // });

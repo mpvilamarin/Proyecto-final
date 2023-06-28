@@ -76,7 +76,7 @@ export const getDetailFundacion = (id) => {
 export const getAllUsuarios = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/Usuarios");
+      const response = await axios.get("http://localhost:3001/usuarios");
       let usuarios = response.data?.map((e) => e);
       dispatch({ type: GET_ALL_USUARIOS, payload: usuarios });
     } catch (error) {

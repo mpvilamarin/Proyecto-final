@@ -4,7 +4,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import './NavBar.css';
 import logo from './logo2.png';
 
-const NavBar = () => {
+export default function NavBar() {
   return (
 
     <Navbar className="custom-navbar" variant="light" expand="lg">
@@ -15,7 +15,7 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Link to="/home" className="nav-link">Home</Link>
+            <Link to="/" className="nav-link">Home</Link>
             {/* <Link to="/donaciones" className="nav-link">Donaciones</Link> */}
             <Link to="/formFundaciones" className="nav-link">Crear Fundacion</Link>
             <Link to="/formMascota" className="nav-link">Crear Mascota</Link>
@@ -31,4 +31,3 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;

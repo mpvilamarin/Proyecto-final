@@ -1,12 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { validate } from './validate';
 import { postUsuario } from '../../../redux/Actions/post';
 import styles from "../registro/registro.module.css";
 
 const Form = () => {
-    const countries = useSelector()
+    
     const dispatch = useDispatch();
 
     const [input, setInput] = useState({
