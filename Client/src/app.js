@@ -20,6 +20,7 @@ import DetalleFundacion from './componentes/Fundación/detailFundacion'
 // import CardFundaciones from './componentes/Cartas/cardFundacion'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Donacion from './componentes/Donaciones/donacionesForm';
 
 function App() {
   const location = useLocation();
@@ -45,7 +46,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/formFundaciones" element={<FormFundaciones/>}/>
-            <Route path="/formMascota" element={<FormMascota/>}/>
+        <Route path="/formMascota" element={<FormMascota />} />
+        <Route path="/donation-form/:fundacionId" element={<Donacion />} />
+
             {/* <Route path='*' element={<Navigate to='/error'/>}/>
             <Route path="/error" element={< Redirect/>} /> */}
           </Routes> 
