@@ -1,4 +1,5 @@
 const { Usuarios } = require('../db');
+const jwt = require("jsonwebtoken");
 
 const STATUS_OK =200;
 const STATUS_CREATED = 201;
@@ -20,6 +21,33 @@ async function getRegistroUsuario(req,res){
     }
 }
 
+async function getIdUsuario(req, res){
+    const {id} = req.params;
+
+    try {
+        const getById = id.toUpperCase();
+        const getUsuario = await Usuarios.findOne({
+            where:{
+                id: getById
+            }
+        });
+        if(getUsuario) return res.status(STATUS_OK).json(getUsuario)
+        else return res.status(STATUS_ERROR).json('no existe ese id para usuario')
+    } catch (error) {
+        res.status(STATUS_ERROR).json(`error ${error}`)
+    }
+}
+async function loginUsuario(req,res) {
+    const { email , contraseña} = req.body;
+    const usuarioLogin = await Usuarios.findOne({ where : { email , contraseña }});
+    if(!usuarioLogin) 
+        return res.status(STATUS_ERROR).json({message:'usuario no encontrado'});
+    if (usuarioLogin.dataValues.contraseña !== contraseña)
+        return res.status(STATUS_ERROR).json({message:'contraseña incorrecta'});
+    const jwtToken = jwt.sign(usuarioLogin.dataValues, "secret")
+    res.status(STATUS_CREATED).json({message: "Logueado con exito", token: jwtToken, email: email});
+}
+
 async function postRegistroUsuario(req, res){
     const {nombre, fechaNacimiento, email, contraseña} = req.body
 
@@ -36,7 +64,6 @@ async function postRegistroUsuario(req, res){
             contraseña,
         })
 
-        console.log(':::::', newUsuario);
         res
         .status(STATUS_CREATED).json(newUsuario)
     } catch (error) {
@@ -51,7 +78,7 @@ async function updateUsuario(req, res){
     const {nombre, fechaNacimiento, contraseña} = req.body
 
     try {
-        const usuario = await Usuarios.finOne({
+        const usuario = await Usuarios.findOne({
             where: {
                 email,
             },
@@ -105,4 +132,6 @@ module.exports={
     getRegistroUsuario,
     updateUsuario,
     deleteUsuario,
+    getIdUsuario,
+    loginUsuario
 }

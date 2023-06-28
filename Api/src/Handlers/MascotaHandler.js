@@ -11,7 +11,12 @@ const STATUS_ERROR=404;
 /*-----------------------------------------------OBTENER MASCOTAS-----------------------------------------------------*/
 async function getMascota(req, res){
     try {
-        const allMascotas = await Mascotas.findAll();
+        const allMascotas = await Mascotas.findAll({
+            include: {
+                model: Fundaciones,
+                attributes:['nombre']
+            }
+        });
         if(!allMascotas.length) 
         res
         .status(STATUS_ERROR).json({message:'no hay mascotas en la BD'})
@@ -26,42 +31,46 @@ async function getMascota(req, res){
 
 /*----------------------------CREAR MASCOTAS--------------------------------------*/
 async function postMascota(req, res){
-    const {nombre, especie , edad , genero , temperamento , descripcion, fundacion} = req.body;
-    try {
-        if(!nombre || !especie || !edad || !genero || !temperamento || !descripcion ){
+    const {nombre, especie , edad , genero , temperamento , descripcion, fundacionId , tamaño, castrado} = req.body;
+    try { 
+        if(!nombre || !especie || !edad || !genero || !temperamento || !descripcion || !tamaño || !castrado){
             return res
             .status(STATUS_ERROR).json({message: 'se requiere completar todos los datos'});
         }
-
         const newMascota = await Mascotas.create({
             nombre,
             especie, 
             edad, 
             genero, 
             temperamento, 
-            descripcion
-        });
-
-        if(fundacion){
+            descripcion,
+            tamaño,
+            castrado
+        });  
+        if(fundacionId){
             console.log(':::', newMascota);
-            let mascotas = await Fundaciones.findAll({ where : { nombre:fundacion }});
+            let mascotas = await Fundaciones.findAll({ where : { nombre: fundacionId }});
             await newMascota.addFundaciones(mascotas);
         }
         res
         .status(STATUS_CREATED).json(newMascota);
         
     } catch (error) {
-        res.status(STATUS_ERROR).json({message: "Ocurrió un error al crear la mascotas: " + error});
+        res.status(STATUS_ERROR).json({message:`Ocurrió un error al crear la mascotas: ${error} `});
     }
 }
 
 /*----------------------------------------------OBTENER POR ID----------------------------------------------------------*/
 
 async function getByIdMascota(req, res){
-    const {id} = req.params;
-    console.log(id)
     try {
-        const response = await Mascotas.findByPk(id);
+        const {id} = req.params;
+        const response = await Mascotas.findByPk(id, {
+            include: {
+                model: Fundaciones,
+                attributes:['nombre']
+            }
+        });
         res.status(STATUS_OK).json(response);
     } catch (error) {
         res.status(STATUS_ERROR).json({message: `no se encontró el id ${error}`})
@@ -71,21 +80,26 @@ async function getByIdMascota(req, res){
 /*-----------------------------------------------------------------------------------------------------------------------*/
 
 async function deleteMascota(req,res){
-    const {nombre} =req.body;
+    const {nombre} = req.params;
     try {
-        const deleteMascota = await Mascotas.destroy({
+        const deleteMascota = await Mascotas.findOne({
             where:{
-                nombre:nombre
+                nombre,
+                activo: true
             },
         });
 
-        if(deleteMascota === 0){
+        if(!deleteMascota){
             res
             .status(STATUS_ERROR).json({message:'la mascota no fue encontrada'})
-        }else{
-            res
-            .status(STATUS_OK).json({message:'la mascota fue eliminada con exito'})
         }
+
+        await deleteMascota.update({
+            activo : false,
+            fechaBorrado: new Date()
+        })
+
+        res.status(STATUS_OK).json({message:`mascota borrada con exito`})
     } catch (error) {
         res
         .status(STATUS_ERROR).json({message:`error al eliminar la mascota ${error}`})

@@ -28,14 +28,14 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        activo: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true,
-            allowNull: false
-        },
-        fechaBorrado:{
-            type: DataTypes.DATE
-        }
+        // activo: {
+        //     type: DataTypes.BOOLEAN,
+        //     defaultValue: true,
+        //     allowNull: false
+        // },
+        // fechaBorrado:{
+        //     type: DataTypes.DATE
+        // }
     },
     {
         timestamps: false,     
