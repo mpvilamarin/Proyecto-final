@@ -4,7 +4,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import './NavBar.css';
 import logo from './logo2.png';
 
-const NavBar = () => {
+export default function NavBar() {
   return (
 
     <Navbar className="custom-navbar" variant="light" expand="lg">
@@ -31,4 +31,3 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
