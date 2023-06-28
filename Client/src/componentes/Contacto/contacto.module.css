@@ -1,7 +1,15 @@
 .footer {
-    margin-top: auto;
+  
     background-color: #f0f0f0;
     padding: 10px;
     text-align: center;
+  position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+    max-height: 95px;
   }
   
