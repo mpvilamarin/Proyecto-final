@@ -1,8 +1,11 @@
 const {Router} = require('express');
 const fundacionRouter = Router()
+const { postFundacion, getAllFundaciones , updateFundacion, getFundacionById} = require('../Handlers/FundacionHandler')
 
-fundacionRouter.get("/", (req, res) => {
-    res.status(200).send("OK");
-});
+fundacionRouter.post("/", postFundacion);
+fundacionRouter.get("/", getAllFundaciones);
+fundacionRouter.get("/nombre", getAllFundaciones)
+fundacionRouter.put("/:id", updateFundacion);
+fundacionRouter.get("/:id", getFundacionById);
 
 module.exports = fundacionRouter
