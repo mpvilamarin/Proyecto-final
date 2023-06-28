@@ -1,96 +1,80 @@
 import React, { useState, useEffect } from 'react';
 import { validate } from './validate';
-import { postUsuario } from '../../../redux/Actions/post'
-import { useDispatch } from 'react-redux'; 
+import { useSignIn } from 'react-auth-kit'; 
+import { useFormik } from "formik";
+import axios, {AxiosError} from 'axios';
 import { Link } from 'react-router-dom';
 import styles from './login.module.css';
 
 const Login = () => {
-    const dispatch = useDispatch();
-   
-    const [input, setInput] = useState({
-        email: '',
-        contraseña: '',
-    });
-
-    const [errors, setErrors] = useState({});
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        const error = validate(name, value);
-        setInput((prevInput) => ({
-            ...prevInput,
-            [name]: value,
-        }));
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            [name]: error,
-        }));
-    };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        let validationErrors = {};
-
-        for (const key in input) {
-            const value = input[key];
-            const error = validate(key, value, input);
-            if (error) {
-                validationErrors[key] = error;
-            }
-        }
-        setErrors(validationErrors);
-        dispatch(postUsuario(input));
-
-    };
-
-    // if (Object.keys(validationErrors).length === 0) {
-    //     try {
-    //       const response = await axios.post('localhost:3001/usuarios/login', input);
-    //       const { token } = response.data;
-  
-    //       localStorage.setItem('token', token);
-  
-    //       history.push('/home');
-    //     } catch (error) {
-    //       console.error('Error al iniciar sesión:', error);
-    //       setErrors({ general: 'Error al iniciar sesión. Inténtalo de nuevo.' });
-    //     }
-    //   }
+    const signIn = useSignIn();
     
-    useEffect(() => {
-        setErrors((prevErrors) => ({
-            ...prevErrors
-        }));
-    }, []);
+    const [errors, setErrors] = useState("");
+
+    
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        console.log("Values: ", event)
+        
+        try {
+            const response = await axios.post(
+                'http://localhost:3001/usuarios/login',
+                event
+                );
+            signIn({
+                token: response.data.token,
+                expiresIn: 3600,
+                tokenType: 'Bearer',
+                authState: { email: event.email}
+            })
+        } catch (err) {
+            if (err && err instanceof AxiosError){
+                setErrors(err.response?.data.message);
+            }
+            
+            else if (err && err instanceof Error) {
+                setErrors(err.message);
+                console.log("Error: ", err);
+            }   
+      
+        }
+        
+    };
+
+    const formik = useFormik({
+        initialValues: {
+          email: "",
+          password: "",
+        },
+        onSubmit,
+      });
     
     return (
         <div className={styles.container}>
             <div className={styles.formContainer}>
-                <form className={styles.form} onSubmit={handleSubmit}>
+                <form className={styles.form} onSubmit={formik.handleSubmit}>
                     <div>
                         <h1 className={styles.title}>Inicia sesión</h1>
                         <div className={styles.field}>
                             <label className={styles.label}>Email:</label>
                             <input
                                 type="email"
-                                value={input.email}
+                                value={`${input.email} ${formik.values.email}` }
                                 name="email"
-                                onChange={handleChange}
+                                onChange={formik.handleChange}
                                 className={styles.input}
                                 placeholder="Email"
                                 />
                         </div>
                         <div className={styles.field}>
-                            <label className={styles.label}>Contraseña:</label>
+                            <label className={styles.label}>Password:</label>
                             <input
                                 type="password"
-                                value={input.contraseña}
+                                value={`${input.contraseña} ${formik.values.contraseña}`}
                                 name="contraseña"
                                 onChange={handleChange}
                                 className={styles.input}
-                                placeholder="Contraseña"
+                                placeholder="Password"
                             />
                             {errors.contraseña && <p className={styles.errors}>{errors.contraseña}</p>}
                         </div>
@@ -109,3 +93,20 @@ const Login = () => {
 };
 
 export default Login;
+
+        // const handleChange = (event) => {
+        //     const { name, value } = event.target;
+        //     const error = validate(name, value);
+        //     setInput((prevInput) => ({
+        //         ...prevInput,
+        //         [name]: value,
+        //     }));
+        //     setErrors((prevErrors) => ({
+            //         ...prevErrors,
+            //         [name]: error,
+        //     }));
+        // };
+            // const [input, setInput] = useState({
+            //     email: '',  
+            //     contraseña: '',
+            // });
