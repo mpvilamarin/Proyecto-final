@@ -2,31 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { validate } from './validate';
 import { useSignIn } from 'react-auth-kit'; 
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom"; 
 import axios, {AxiosError} from 'axios';
 import { Link } from 'react-router-dom';
 import styles from './login.module.css';
 
 const Login = () => {
+    const navigate = useNavigate()
     const signIn = useSignIn();
     
     const [errors, setErrors] = useState("");
 
     
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        console.log("Values: ", event)
+        
+    
+    const onSubmit = async (values) => {
+        console.log("Values: ", values)
         
         try {
             const response = await axios.post(
                 'http://localhost:3001/usuarios/login',
-                event
+                values
                 );
-            signIn({
+
+            signIn({ 
                 token: response.data.token,
                 expiresIn: 3600,
                 tokenType: 'Bearer',
-                authState: { email: event.email}
+                authState: { email: values.email}
             })
+            navigate("/");
         } catch (err) {
             if (err && err instanceof AxiosError){
                 setErrors(err.response?.data.message);
@@ -34,7 +39,7 @@ const Login = () => {
             
             else if (err && err instanceof Error) {
                 setErrors(err.message);
-                console.log("Error: ", err);
+                console.log(`error : ${err}`);
             }   
       
         }
@@ -44,7 +49,7 @@ const Login = () => {
     const formik = useFormik({
         initialValues: {
           email: "",
-          password: "",
+          contraseña: "",
         },
         onSubmit,
       });
@@ -59,7 +64,7 @@ const Login = () => {
                             <label className={styles.label}>Email:</label>
                             <input
                                 type="email"
-                                value={`${input.email} ${formik.values.email}` }
+                                value={ formik.values.email }
                                 name="email"
                                 onChange={formik.handleChange}
                                 className={styles.input}
@@ -70,9 +75,9 @@ const Login = () => {
                             <label className={styles.label}>Password:</label>
                             <input
                                 type="password"
-                                value={`${input.contraseña} ${formik.values.contraseña}`}
+                                value={formik.values.contraseña}
                                 name="contraseña"
-                                onChange={handleChange}
+                                onChange={formik.handleChange}
                                 className={styles.input}
                                 placeholder="Password"
                             />
