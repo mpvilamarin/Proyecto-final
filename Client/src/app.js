@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import Home from "./componentes/Home/home";
-import Detalle from "./componentes/Detalle/detalle";
-import NavBar from "./componentes/NavBar/navbar";
-=======
 import './App.css';
 import { Route, Routes , useLocation} from 'react-router-dom';
 import Home from './componentes/Home/home'
@@ -18,7 +11,6 @@ import Contacto from './componentes/Contacto/contacto'
 import { RequireAuth } from "react-auth-kit";
 
 
->>>>>>> 2a4725b20228324cf54e66c06be32b054d8a93c0
 
 // const location = useLocation();
 import FormFundaciones from './componentes/Forms/FormFundaciones.jsx'
@@ -32,15 +24,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const location = useLocation();
   return (
-<<<<<<< HEAD
-    <div>
-      <NavBar></NavBar>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/detalle" element={<Detalle />} />
-      </Routes>
-    </div>
-=======
       <div>
             <NavBar/>
           <Routes>
@@ -68,7 +51,6 @@ function App() {
           </Routes> 
           <Contacto/>
         </div>
->>>>>>> 2a4725b20228324cf54e66c06be32b054d8a93c0
   );
 }
 

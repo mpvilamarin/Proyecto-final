@@ -1,8 +1,5 @@
 import {
   GET_ALL_MASCOTAS,
-<<<<<<< HEAD
-  GET_NAME_FUNDACIONES,
-=======
   GET_DETAIL_MASCOTAS,
   GET_FILTER_MASCOTA_BY_FUNDACION,
   GET_ALL_FUNDACIONES,
@@ -36,30 +33,11 @@ import {
 
   DELETE_MASCOTA,
   DELETE_USUARIO,
->>>>>>> 2a4725b20228324cf54e66c06be32b054d8a93c0
 } from "../Actions-type/index.js";
 
 const initialState = {
   mascotas: [],
   filtroMascotas: [],
-<<<<<<< HEAD
-  fundaciones: [],
-};
-
-function rootReducer(state = initialState, action) {
-  switch (action.type) {
-    case GET_ALL_MASCOTAS:
-      return {
-        ...state,
-        mascotas: action.payload,
-        filtroMascotas: action.payload,
-      };
-    case GET_NAME_FUNDACIONES:
-      return {
-        ...state,
-        fundaciones: action.payload,
-      };
-=======
   mascotaDetail: [],
 
   fundaciones: [],
@@ -315,7 +293,6 @@ function rootReducer(state = initialState, action) {
     case RESET_DETAIL:
       return { ...state, fundacionDetail: null };
 
->>>>>>> 2a4725b20228324cf54e66c06be32b054d8a93c0
     default:
       return state;
   }
