@@ -1,10 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSignOut } from "react-auth-kit";
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import './NavBar.css';
 import logo from './logo2.png';
 
+
+
+  
+
+
+
 export default function NavBar() {
+  const singOut = useSignOut();
+  const navigate = useNavigate();
+
+  const logout = () => {
+    singOut();
+    navigate("/login");
+  };
   return (
 
     <Navbar className="custom-navbar" variant="light" expand="lg">
@@ -24,6 +38,7 @@ export default function NavBar() {
             {/* <Link to="/contact" className="nav-link">Contáctanos</Link> */}
             <Link to="/about" className="nav-link">Sobre nosotros</Link>
             <Link to="/login" className="nav-link">Login</Link>
+            <button onClick={logout}>LOGOUT</button>
           </Nav>
         </Navbar.Collapse>
       </Container>
