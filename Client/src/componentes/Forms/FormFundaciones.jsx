@@ -13,7 +13,7 @@ function FormFundaciones() {
     direccion: '',
     telefono: '',
     email: '',
-    contraseña:'',
+    contraseña: '',
     fundadaEn: '',
     mision: '',
     borrado: false
@@ -74,7 +74,7 @@ function FormFundaciones() {
 
   return (
     <div className="form-container">
-        <h1>FORMULARIO PARA FUNDACIONES</h1>
+      <h1>FORMULARIO PARA FUNDACIONES</h1>
       <Form>
         {showAlert && (
           <Alert variant="danger">Por favor, completa todos los campos.</Alert>
@@ -137,7 +137,7 @@ function FormFundaciones() {
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Contraseña</Form.Label>
           <Form.Control
-            type="contraseña"  
+            type="contraseña"
             name="contraseña"
             value={newFundacion.contraseña}
             onChange={handleChange}

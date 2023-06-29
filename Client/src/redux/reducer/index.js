@@ -153,22 +153,24 @@ function rootReducer(state = initialState, action) {
         fundaciones:
           action.payload.length === 0 ? state.fundaciones : action.payload,
       };
-    case FILTER_MASCOTA_BY_ESPECIE:
-      const especie = action.payload;
-      if (especie === "todos") {
-        return {
-          ...state,
-          filtroMascotas: state.mascotas,
-        };
-      } else {
-        const filteredMascotasByEs = state.mascotas.filter(
-          (mascota) => mascota.especie === especie
-        );
-        return {
-          ...state,
-          filtroMascotas: filteredMascotasByEs,
-        };
-      }
+    
+case FILTER_MASCOTA_BY_ESPECIE:
+  const especie = action.payload;
+  let mascotasFiltradas2 = [];
+
+  if (especie === "") {
+    mascotasFiltradas2 = state.filtroMascotas;
+  } else {
+    mascotasFiltradas2 = state.filtroMascotas.filter(
+      (mascota) => mascota.especie === especie
+    );
+  }
+
+  return {
+    ...state,
+    mascotas: mascotasFiltradas2,
+  };
+
 
     case SORT_FUNDACIONES_AZ:
       return {

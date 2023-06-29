@@ -21,7 +21,9 @@ const Adopcion = () => {
   const dispatch = useDispatch();
 
   const allPets = useSelector((state) => state.mascotas)
+  console.log(allPets)
   const allFundations = useSelector((state) => state.fundaciones)
+  console.log(allFundations)
   const [selectedFundacion, setSelectedFundacion] = useState('All');
   const uniqueFundaciones = [...new Set(allFundations.map(fundacion => fundacion.nombre))];
   const [generoFilter, setGeneroFilter] = useState("");
@@ -29,7 +31,7 @@ const Adopcion = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [elementsPerPage] = useState(4)
   const [especie, setEspecie] = useState("");
-  const petsFilter = useSelector((state) => state.filtroMascotas);
+  const petsFilter = useSelector((state) => state.mascotas);
 
 
 
@@ -62,9 +64,6 @@ const Adopcion = () => {
     const especie = e.target.value;
     setEspecie(especie);
     dispatch(filterMascotaByEspecie(especie))
-    if (especie === 'todos') {
-      dispatch(getAllMascotas())
-    }
   };
   const handleGeneroFilter = (event) => {
     const genero = event.target.value;
@@ -104,6 +103,7 @@ const Adopcion = () => {
           <option value="Desconocido">Desconocido</option>
         </select>
       </div>
+
       <div>
         <label>Ordenar por nombre:</label>
         <button onClick={handleSortAsc}>A-Z</button>
@@ -116,14 +116,14 @@ const Adopcion = () => {
           <div>
             <label htmlFor="especie">Especie:</label>
             <select id="especie" value={especie} onChange={handleEspecieFilter}>
-              <option value="todos">perros y gatos</option>
+              <option value="">perros y gatos</option>
               <option value="perro">Perro</option>
               <option value="gato">Gato</option>
             </select>
           </div>
         </div>
 
-        <label>Fundaciones:</label>
+        {/* <label>Fundaciones:</label> */}
         {/* <select
                     className={styles.filterSelect}
                     onChange={(event) => handleFilterByFundacion(event)}
@@ -137,17 +137,10 @@ const Adopcion = () => {
                     ))}
                 </select> */}
       </div>
-      <div>
-        <button
-        // onClick={(event) => handleClick(event)}
-        >
-          Limpiar filtros
-        </button>
-      </div>
 
       <div>
         <select
-          onChange={(e) => handleFundacion(e)}
+          onChange={handleFundacion}
           className="style"
           value={selectedFundacion}
         >
