@@ -19,7 +19,7 @@ server.use(cors({
   origin: '*', // Permite cualquier origen
 }));
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*' , "https://proyecto-final-ruddy.vercel.app/"); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Origin', '*' , "https://proyecto-final-beta-sage.vercel.app/"); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');

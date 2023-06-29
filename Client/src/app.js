@@ -25,7 +25,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  axios.defaults.baseURL = 'https://fundacion-mascota.onrender.com';
+  axios.defaults.baseURL = 'https://fundacion-mascotas-uz9u.onrender.com/';
 
   const location = useLocation();
   return (
