@@ -7,10 +7,20 @@ import Adopcion from './componentes/Adopción/adopcion';
 import NavBar from './componentes/NavBar/navbar';
 import Fundacion from './componentes/Fundación/Fundacion';
 import Registro from './componentes/Sesiones/registro/registro';
-import Login from './componentes/Sesiones/sesion/login';
-import Contacto from './componentes/Contacto/contacto';
+
+//import Login from './componentes/Sesiones/sesion/login';
+import Contacto from './componentes/Contacto/contacto'
+//import { RequireAuth } from "react-auth-kit";
+import Login from './componentes/Autenticación/login';
+import LogOut from './componentes/Autenticación/logout';
+import Perfil from './componentes/Autenticación/perfil';
+import { useAuth0 } from '@auth0/auth0-react';
+
+// import Login from './componentes/Sesiones/sesion/login';
+// import Contacto from './componentes/Contacto/contacto';
 import Donacion from './componentes/Donaciones/donacionesForm';
-import { RequireAuth } from "react-auth-kit";
+// import { RequireAuth } from "react-auth-kit";
+
 
 
 // const location = useLocation();
@@ -25,8 +35,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
+
   axios.defaults.baseURL = 'http://localhost:3001/'
   const location = useLocation();
+  const { isAutheticated } = useAuth0();
+
   return (
       <div>
             <NavBar/>
@@ -34,9 +47,9 @@ function App() {
           {/* <Route
           path="/"
           element={
-            <RequireAuth loginPath="/login">
+          //  <RequireAuth loginPath="/login">
               <Home />
-            </RequireAuth>
+          //  </RequireAuth>
           }
         ></Route> */}
 
@@ -48,6 +61,8 @@ function App() {
             <Route path="/fundacion/:id" element={<DetalleFundacion/>} />
             <Route path="/adopciones" element={<Adopcion />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<LogOut />}/>
+            <Route path="/perfil" element={<Perfil />}/>
             <Route path="/registro" element={<Registro />} />
             <Route path="/formFundaciones" element={<FormFundaciones/>}/>
             <Route path="/formMascota" element={<FormMascota />} />
