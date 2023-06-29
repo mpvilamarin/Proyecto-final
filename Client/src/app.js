@@ -1,5 +1,6 @@
 import './App.css';
 import { Route, Routes , useLocation} from 'react-router-dom';
+import  axios  from 'axios';
 import Home from './componentes/Home/home'
 import Nosotros from './componentes/Nosotros/nosotros';
 import Adopcion from './componentes/Adopción/adopcion';
@@ -10,7 +11,6 @@ import Login from './componentes/Sesiones/sesion/login';
 import Contacto from './componentes/Contacto/contacto';
 import Donacion from './componentes/Donaciones/donacionesForm';
 import { RequireAuth } from "react-auth-kit";
-
 
 
 // const location = useLocation();
@@ -25,6 +25,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
+  axios.defaults.baseURL = 'http://localhost:3001/'
   const location = useLocation();
   return (
       <div>
