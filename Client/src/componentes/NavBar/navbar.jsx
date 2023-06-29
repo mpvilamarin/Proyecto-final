@@ -1,13 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSignOut } from "react-auth-kit";
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import './NavBar.css';
 import logo from './logo2.png';
 import { useAuth0 } from '@auth0/auth0-react';
 
+
 export default function NavBar() {
 
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+
+
+//   const singOut = useSignOut();
+//   const navigate = useNavigate();
+
+//   const logout = () => {
+//     singOut();
+//     navigate("/login");
+//   };
 
   return (
 
@@ -19,7 +30,7 @@ export default function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Link to="/home" className="nav-link">Home</Link>
+            <Link to="/" className="nav-link">Home</Link>
             {/* <Link to="/donaciones" className="nav-link">Donaciones</Link> */}
             <Link to="/formFundaciones" className="nav-link">Crear Fundacion</Link>
             <Link to="/formMascota" className="nav-link">Crear Mascota</Link>
@@ -28,12 +39,17 @@ export default function NavBar() {
             {/* <Link to="/contact" className="nav-link">Contáctanos</Link> */}
             <Link to="/about" className="nav-link">Sobre nosotros</Link>
             <Link to="/login" className="nav-link">Login</Link>
+
             {isAuthenticated && <li><a href="/perfil">Mi perfil</a></li>}
             {isAuthenticated && <li><a href="/logout">LogOut</a></li>}
+
+            <button onClick={logout}>LOGOUT</button>
+
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 };
+
 

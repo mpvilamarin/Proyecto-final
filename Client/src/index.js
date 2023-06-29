@@ -5,7 +5,6 @@ import App from './app';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { store } from './redux/store/index'
-//import { AuthProvider } from "react-auth-kit";
 import { Auth0Provider } from "@auth0/auth0-react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -28,6 +27,7 @@ root.render(
       </BrowserRouter>
     </Provider>
   </Auth0Provider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

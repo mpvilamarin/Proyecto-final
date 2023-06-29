@@ -15,7 +15,7 @@ import {
 export const getAllMascotas = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/mascotas");
+      const response = await axios.get("/mascotas");
       let mascotas = response.data?.map((e) => e);
       dispatch({ type: GET_ALL_MASCOTAS, payload: mascotas });
     } catch (error) {
@@ -28,7 +28,7 @@ export const getAllMascotas = () => {
 export const getNameFundaciones = (nombre) => {
   return async (dispatch) => {
     await axios
-      .get('http://localhost:3001/fundaciones?nombre='+nombre)
+      .get('/fundaciones?nombre='+nombre)
       .then((res) => res.data)
       .then((data) => {
         dispatch({ type: GET_NAME_FUNDACIONES, payload: data });
