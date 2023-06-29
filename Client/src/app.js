@@ -13,6 +13,7 @@ import axios from 'axios';
 
 
 
+
 // const location = useLocation();
 import FormFundaciones from './componentes/Forms/FormFundaciones.jsx'
 import FormMascota from './componentes/Forms/FormMascota.jsx'
@@ -23,7 +24,9 @@ import DetalleFundacion from './componentes/Fundación/detailFundacion'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+
   axios.defaults.baseURL = 'https://fundacion-mascota.onrender.com';
+
   const location = useLocation();
   return (
       <div>

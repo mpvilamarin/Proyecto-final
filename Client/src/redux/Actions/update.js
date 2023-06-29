@@ -10,6 +10,7 @@ import {
 export const updateUsuario = (email,nombre, fechaNacimiento, contraseña) => {
     return async (dispatch) => {
         try{
+
             const response = await axios.put(`/usuarios/${email}`, {
                 nombre,
                 fechaNacimiento,
@@ -49,6 +50,7 @@ export const updateMascota = (nombre, especie, edad, genero, temperamento, descr
 export const updateFundacion = (id, nombre, ciudad, direccion, telefono, email, fundadaEn, mision) => {
     return async (dispatch) => {
         try{
+
             const response = await axios.put(`/fundaciones/${id}`, {
                 nombre,
                 ciudad,

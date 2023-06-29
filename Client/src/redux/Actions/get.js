@@ -15,7 +15,9 @@ import {
 export const getAllMascotas = () => {
   return async (dispatch) => {
     try {
+
       const response = await axios.get("/mascotas/");
+
       let mascotas = response.data?.map((e) => e);
       dispatch({ type: GET_ALL_MASCOTAS, payload: mascotas });
     } catch (error) {
@@ -52,6 +54,7 @@ export const getDetailMascota = (id) => {
 export const getAllFundaciones = () => {
   return async (dispatch) => {
     try {
+
       const response = await axios.get("/fundaciones/");
       let fundaciones = response.data?.map((e) => e);
       dispatch({ type: GET_ALL_FUNDACIONES, payload: fundaciones });
@@ -66,6 +69,7 @@ export const getDetailFundacion = (id) => {
   return async (dispatch) => {
     dispatch({ type: GET_DETAIL_FUNDACION, payload: [] });
     await axios
+
       .get(`/fundaciones/${id}`)
       .then((res) => res.data)
       .then((data) => dispatch({ type: GET_DETAIL_FUNDACION, payload: data }))

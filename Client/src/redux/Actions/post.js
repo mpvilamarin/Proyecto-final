@@ -30,6 +30,7 @@ export const postMascota = (newMascota) =>{
   export const postAdopciones = (nuevaAdopcion) =>{
     return async(dispatch) => {
       try {
+
         const response = await axios.post('/adopciones/', nuevaAdopcion);
         dispatch({
           type: POST_ADOPCIONES,
@@ -45,6 +46,7 @@ export const postMascota = (newMascota) =>{
   export const postDonaciones = (nuevaDonacion) =>{
     return async(dispatch) => {
       try {
+
         const response = await axios.post('/donaciones/', nuevaDonacion)
         dispatch({
           type:POST_DONACIONES,
@@ -60,6 +62,7 @@ export const postMascota = (newMascota) =>{
   export const postFundaciones = (nuevaFundacion) =>{
     return async(dispatch) =>{
       try {
+
         const response = await axios.post('/fundaciones/', nuevaFundacion)
         dispatch({
           type: POST_FUNDACIONES,
@@ -75,6 +78,7 @@ export const postMascota = (newMascota) =>{
   export const postUsuario = (newUsuario) =>{
     return async(dispatch) =>{
       try {
+
         const response = await axios.post('/usuarios/', newUsuario)
         dispatch({
           type: POST_USUARIO,
@@ -86,3 +90,4 @@ export const postMascota = (newMascota) =>{
       }
     }
   }
+

@@ -9,6 +9,7 @@ import {
 export const deleteMascota = (nombre) => {
     return async (dispatch) => {
         try {
+
             const response = await axios.delete(`/mascotas/${nombre}`)
             dispatch({
                 type: DELETE_MASCOTA,
@@ -24,7 +25,9 @@ export const deleteMascota = (nombre) => {
 export const deleteUsuario = (email) => {
     return async (dispatch) => {
         try {
+
             const response = await axios.delete(`/usuarios/${email}`)
+
             dispatch({
                 type: DELETE_USUARIO,
                 payload: response.data
