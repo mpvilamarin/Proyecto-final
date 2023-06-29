@@ -1,38 +1,45 @@
 const {DataTypes, } = require('sequelize');
 
 module.exports = (sequelize) => {
-    sequelize.define('Usuarios', {
+    sequelize.define('Mascotas', {
         id:{
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey:true,
             allowNull: false
         },
-        nombre:{
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        fechaNacimiento: {
-            type: DataTypes.DATEONLY,
-            allowNull:false,
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-            isEmail: true
-            }
-        },
-        contraseña: {
+        nombre: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        tipo:{
+        especie: {
             type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: 'usuario'
-        }
+            allowNull: false
+        },
+        tamaño: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        edad: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        genero: {
+            type: DataTypes.ENUM('Macho', 'Hembra', 'Desconocido'),
+            allowNull: false
+        },
+        temperamento: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        descripcion: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        castrado: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         // activo: {
         //     type: DataTypes.BOOLEAN,
         //     defaultValue: true,

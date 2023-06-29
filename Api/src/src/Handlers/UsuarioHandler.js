@@ -1,7 +1,5 @@
 const { Usuarios } = require('../db');
-
 // const jwt = require("jsonwebtoken");
-
 
 const STATUS_OK =200;
 const STATUS_CREATED = 201;
@@ -10,7 +8,7 @@ const STATUS_ERROR=404;
 
 async function getRegistroUsuario(req,res){
     try {
-        const allUsuarios = await Usuarios.findAll();
+        const allUsuarios = await Usuarios.findAll(); 
         if(!allUsuarios.length) 
         res
         .status(STATUS_ERROR).json({message:'no hay Usuarios en la BD'})
@@ -39,6 +37,16 @@ async function getIdUsuario(req, res){
         res.status(STATUS_ERROR).json(`error ${error}`)
     }
 }
+// async function loginUsuario(req,res) {
+//     const { email , contraseña} = req.body;
+//     const usuarioLogin = await Usuarios.findOne({ where : { email , contraseña }});
+//     if(!usuarioLogin) 
+//         return res.status(STATUS_ERROR).json({message:'usuario no encontrado'});
+//     if (usuarioLogin.dataValues.contraseña !== contraseña)
+//         return res.status(STATUS_ERROR).json({message:'contraseña incorrecta'});
+//     const jwtToken = jwt.sign(usuarioLogin.dataValues, "secret")
+//     res.status(STATUS_CREATED).json({message: "Logueado con exito", token: jwtToken, email: email});
+// }
 
 async function postRegistroUsuario(req, res){
     const {nombre, fechaNacimiento, email, contraseña} = req.body
@@ -124,6 +132,6 @@ module.exports={
     getRegistroUsuario,
     updateUsuario,
     deleteUsuario,
-    getIdUsuario,   
-
+    getIdUsuario,
+   
 }
