@@ -9,6 +9,7 @@ import Registro from './componentes/Sesiones/registro/registro';
 import Login from './componentes/Sesiones/sesion/login';
 import Contacto from './componentes/Contacto/contacto'
 import { RequireAuth } from "react-auth-kit";
+import axios from 'axios';
 
 
 
@@ -22,6 +23,7 @@ import DetalleFundacion from './componentes/Fundación/detailFundacion'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  axios.defaults.baseURL = 'http://localhost:3001/';
   const location = useLocation();
   return (
       <div>
