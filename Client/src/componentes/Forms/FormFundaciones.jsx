@@ -13,6 +13,7 @@ function FormFundaciones() {
     direccion: '',
     telefono: '',
     email: '',
+    contraseña:'',
     fundadaEn: '',
     mision: '',
     borrado: false
@@ -38,6 +39,7 @@ function FormFundaciones() {
         direccion: '',
         telefono: '',
         email: '',
+        contraseña: '',
         fundadaEn: '',
         mision: '',
         borrado: false
@@ -56,6 +58,7 @@ function FormFundaciones() {
       'direccion',
       'telefono',
       'email',
+      'contraseña',
       'fundadaEn',
       'mision'
     ];
@@ -129,6 +132,17 @@ function FormFundaciones() {
             onChange={handleChange}
             placeholder="Email"
             className={invalidFields.includes('email') ? 'is-invalid' : ''}
+          />
+        </Form.Group>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Contraseña</Form.Label>
+          <Form.Control
+            type="contraseña"  
+            name="contraseña"
+            value={newFundacion.contraseña}
+            onChange={handleChange}
+            placeholder="contraseña"
+            className={invalidFields.includes('contraseña') ? 'is-invalid' : ''}
           />
         </Form.Group>
         <Form.Group controlId="formBasicFundadaEn">
