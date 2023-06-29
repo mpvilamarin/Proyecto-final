@@ -10,5 +10,5 @@ loginRouter.get('/:id', getIdUsuario);
 loginRouter.put('/:email',updateUsuario);
 loginRouter.delete('/:email', deleteUsuario);
 
-
 module.exports = loginRouter
+

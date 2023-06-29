@@ -2,9 +2,10 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "conexionDb.js",
+
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon -L",
+    "start": "node app.js",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
   "author": "Henry",
