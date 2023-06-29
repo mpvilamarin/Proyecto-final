@@ -11,9 +11,9 @@ import Registro from './componentes/Sesiones/registro/registro';
 //import Login from './componentes/Sesiones/sesion/login';
 import Contacto from './componentes/Contacto/contacto'
 //import { RequireAuth } from "react-auth-kit";
-import Login from './componentes/Autenticación/login';
-import LogOut from './componentes/Autenticación/logout';
-import Perfil from './componentes/Autenticación/perfil';
+import Login from './componentes/Autenticación/LogIn/login';
+import LogOut from './componentes/Autenticación/LogOut/logout';
+import Perfil from './componentes/Autenticación/Perfil/perfil';
 import { useAuth0 } from '@auth0/auth0-react';
 
 // import Login from './componentes/Sesiones/sesion/login';
