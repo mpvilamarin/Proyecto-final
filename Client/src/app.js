@@ -23,7 +23,7 @@ import DetalleFundacion from './componentes/Fundación/detailFundacion'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  axios.defaults.baseURL = 'http://localhost:3001/';
+  axios.defaults.baseURL = 'https://fundacion-mascota.onrender.com';
   const location = useLocation();
   return (
       <div>
