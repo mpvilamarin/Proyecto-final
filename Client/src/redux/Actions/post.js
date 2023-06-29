@@ -6,7 +6,6 @@ import {
     POST_FUNDACIONES,
     POST_MASCOTA,
     POST_USUARIO,
-    POST_LOGIN
 } from "../Actions-type/index.js";
 
 
@@ -16,7 +15,7 @@ import {
 export const postMascota = (newMascota) =>{
     return async(dispatch) => {
       try {
-        const response = await axios.post('http://localhost:3001/mascotas', newMascota);
+        const response = await axios.post('/mascotas', newMascota);
         dispatch({
           type: POST_MASCOTA,
           payload : response.data,
@@ -31,7 +30,8 @@ export const postMascota = (newMascota) =>{
   export const postAdopciones = (nuevaAdopcion) =>{
     return async(dispatch) => {
       try {
-        const response = await axios.post('http://localhost:3001/adopciones', nuevaAdopcion);
+
+        const response = await axios.post('/adopciones/', nuevaAdopcion);
         dispatch({
           type: POST_ADOPCIONES,
           payload : response.data,
@@ -46,7 +46,8 @@ export const postMascota = (newMascota) =>{
   export const postDonaciones = (nuevaDonacion) =>{
     return async(dispatch) => {
       try {
-        const response = await axios.post('http://localhost:3001/donaciones', nuevaDonacion)
+
+        const response = await axios.post('/donaciones/', nuevaDonacion)
         dispatch({
           type:POST_DONACIONES,
           payload:response.data,
@@ -61,7 +62,8 @@ export const postMascota = (newMascota) =>{
   export const postFundaciones = (nuevaFundacion) =>{
     return async(dispatch) =>{
       try {
-        const response = await axios.post('http://localhost:3001/fundaciones', nuevaFundacion)
+
+        const response = await axios.post('/fundaciones/', nuevaFundacion)
         dispatch({
           type: POST_FUNDACIONES,
           payload: response.data,
@@ -76,7 +78,8 @@ export const postMascota = (newMascota) =>{
   export const postUsuario = (newUsuario) =>{
     return async(dispatch) =>{
       try {
-        const response = await axios.post('http://localhost:3001/usuarios', newUsuario)
+
+        const response = await axios.post('/usuarios/', newUsuario)
         dispatch({
           type: POST_USUARIO,
           payload: response.data,
@@ -88,20 +91,3 @@ export const postMascota = (newMascota) =>{
     }
   }
 
-  // export const postLogin = (newLogin) => {
-  //   return async(dispatch) => {
-  //     try {
-
-  //       const response = await axios.post('http://localhost:3001/usuarios/login', newLogin)
-  
-  //       dispatch({
-  //         type: POST_LOGIN,
-  //         payload: response.data,
-  //       })
-  //       alert('Login exitoso')
-  //     }
-  //     catch (error) {
-  //       alert(`error al loguearse ${error}`)
-  //     }
-  //   }
-  // }
