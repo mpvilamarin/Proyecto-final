@@ -5,22 +5,29 @@ import App from './app';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { store } from './redux/store/index'
-import { AuthProvider } from "react-auth-kit";
+//import { AuthProvider } from "react-auth-kit";
+import { Auth0Provider } from "@auth0/auth0-react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-<AuthProvider 
-      authName={"_auth"} 
-      authType={"cookie"} 
-      cookieDomain={window.location.hostname} 
-      cookieSecure={false}>  
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
-</AuthProvider>  
+  <Auth0Provider
+    domain="petrescueconnect.us.auth0.com"
+    clientId="VhBi9ptBLdnm7VtcQYopEpdrGMLxooIY"
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+    authName={"_auth"}
+    authType={"cookie"}
+    cookieDomain={window.location.hostname}
+    cookieSecure={false}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </Auth0Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

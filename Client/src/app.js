@@ -6,9 +6,13 @@ import Adopcion from './componentes/Adopción/adopcion';
 import NavBar from './componentes/NavBar/navbar';
 import Fundacion from './componentes/Fundación/Fundacion';
 import Registro from './componentes/Sesiones/registro/registro';
-import Login from './componentes/Sesiones/sesion/login';
+//import Login from './componentes/Sesiones/sesion/login';
 import Contacto from './componentes/Contacto/contacto'
-import { RequireAuth } from "react-auth-kit";
+//import { RequireAuth } from "react-auth-kit";
+import Login from './componentes/Autenticación/login';
+import LogOut from './componentes/Autenticación/logout';
+import Perfil from './componentes/Autenticación/perfil';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 
@@ -22,7 +26,10 @@ import DetalleFundacion from './componentes/Fundación/detailFundacion'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+
   const location = useLocation();
+  const { isAutheticated } = useAuth0();
+
   return (
       <div>
             <NavBar/>
@@ -30,9 +37,9 @@ function App() {
           <Route
           path="/"
           element={
-            <RequireAuth loginPath="/login">
+          //  <RequireAuth loginPath="/login">
               <Home />
-            </RequireAuth>
+          //  </RequireAuth>
           }
         ></Route>
             {/* <Route exact path="/" element={<Landing/>}></Route> */}
@@ -43,6 +50,8 @@ function App() {
             <Route path="/fundacion/:id" element={<DetalleFundacion/>} />
             <Route path="/adopciones" element={<Adopcion />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<LogOut />}/>
+            <Route path="/perfil" element={<Perfil />}/>
             <Route path="/registro" element={<Registro />} />
             <Route path="/formFundaciones" element={<FormFundaciones/>}/>
             <Route path="/formMascota" element={<FormMascota/>}/>

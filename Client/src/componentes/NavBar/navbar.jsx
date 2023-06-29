@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import './NavBar.css';
 import logo from './logo2.png';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function NavBar() {
+
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+
   return (
 
     <Navbar className="custom-navbar" variant="light" expand="lg">
@@ -24,6 +28,8 @@ export default function NavBar() {
             {/* <Link to="/contact" className="nav-link">Contáctanos</Link> */}
             <Link to="/about" className="nav-link">Sobre nosotros</Link>
             <Link to="/login" className="nav-link">Login</Link>
+            {isAuthenticated && <li><a href="/perfil">Mi perfil</a></li>}
+            {isAuthenticated && <li><a href="/logout">LogOut</a></li>}
           </Nav>
         </Navbar.Collapse>
       </Container>
