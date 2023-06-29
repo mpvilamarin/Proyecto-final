@@ -4,21 +4,17 @@ import { useSignOut } from "react-auth-kit";
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import './NavBar.css';
 import logo from './logo2.png';
-import { useAuth0 } from '@auth0/auth0-react';
 
+const NavBar = () => {
 
-export default function NavBar() {
+  const singOut = useSignOut();
+  const navigate = useNavigate();
 
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  const logout = () => {
+    singOut();
+    navigate("/login");
+  };
 
-
-//   const singOut = useSignOut();
-//   const navigate = useNavigate();
-
-//   const logout = () => {
-//     singOut();
-//     navigate("/login");
-//   };
 
   return (
 
@@ -39,12 +35,7 @@ export default function NavBar() {
             {/* <Link to="/contact" className="nav-link">Contáctanos</Link> */}
             <Link to="/about" className="nav-link">Sobre nosotros</Link>
             <Link to="/login" className="nav-link">Login</Link>
-
-            {isAuthenticated && <li><a href="/perfil">Mi perfil</a></li>}
-            {isAuthenticated && <li><a href="/logout">LogOut</a></li>}
-
             <button onClick={logout}>LOGOUT</button>
-
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -52,4 +43,4 @@ export default function NavBar() {
   );
 };
 
-
+export default NavBar;
