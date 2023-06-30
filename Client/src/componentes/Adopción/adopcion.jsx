@@ -7,14 +7,11 @@ import {
   filterMascotaByGenero,
   sortMascotasAZ,
   sortMascotasZA,
+  filterMascotaByFundacion,
 } from "../../redux/Actions/filtroAndOrdenamiento.js";
-import { filterMascotaByFundacion } from "../../redux/Actions/filtroAndOrdenamiento.js";
-import mascotas from "../Cartas/perroGato.png";
-import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import Pagination from "./Paginación/paginacion.jsx";
 import './adopcion.css';
+import CardAdop from "../Cartas/cardAdopcion.jsx";
 
 
 const Adopcion = () => {
@@ -176,20 +173,9 @@ const Adopcion = () => {
         </div>
       </div>
       <div className="container">
-        {currentElements.map((mascota, indexMascota) => (
-          <Card key={indexMascota} style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={mascotas} alt="Mascota" className="card-image" />
-            <Card.Body>
-              <Card.Title>{mascota.nombre}</Card.Title>
-              <Card.Text>
-                Género: {mascota.genero}
-                <br />
-                Temperamento: {mascota.temperamento}
-              </Card.Text>
-              <Link to={`/mascota/${mascota.id}`}><Button variant="primary">Ver más</Button></Link>
-            </Card.Body>
-          </Card>)
-        )
+      {currentElements.map((mascota, indexMascota)=>{
+          return(<CardAdop mascota={mascota} indexMascota={indexMascota}/>)
+        })
         }
       </div>
     </div>
