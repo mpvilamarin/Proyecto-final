@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "Donaciones",
+    "Donacion",
     {
       id: {
         type: DataTypes.UUID,
@@ -10,22 +10,17 @@ module.exports = (sequelize) => {
         primaryKey: true,
         allowNull: false,
       },
-      monto: {
-        type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
-      },
-      fecha: {
-        type: DataTypes.DATEONLY,
-        allowNull: false,
-      },
-      descripcion: {
-        type: DataTypes.TEXT,
-        allowNull: true,
-      },
-      estado: {
+      title: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: "pending",
+      },
+      unit_price: {
+        type: DataTypes.DECIMAL,
+        allowNull: false,
+      },
+      quantity: {
+        type: DataTypes.DECIMAL,
+        allowNull: true,
       },
     },
     {
