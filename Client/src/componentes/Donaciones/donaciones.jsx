@@ -1,77 +1,67 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { postDonaciones } from "../../redux/Actions/post";
-import { Wallet } from "@mercadopago/sdk-react";
+import axios from 'axios';
+import React, { useState } from "react"
+// import { useParams } from "react-router-dom";
+import style from './Donaciones.module.css'
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+import logoMercadoPago from './mercadopago.png';
 
-const Donacion = ({ fundaciones, postDonaciones }) => {
-  const [monto, setMonto] = useState("");
-  const [fundacion, setFundacion] = useState("");
-  const [paymentInfo, setPaymentInfo] = useState({
-    showPaymentForm: false,
-    preferenceId: null,
-  });
+export default function Donacion() {
 
-  const handleDonar = async () => {
-    if (monto && fundacion) {
-      const nuevaDonacion = {
-        monto,
-        fundacionId: fundacion,
-      };
+  // const { fundacionId } = useParams();
+  const [inputValue, setInputValue] = useState('');
+  const [preferenceId, setPreferenceId] = useState(null);
+  initMercadoPago('TEST-02a2559f-5988-4feb-9e00-0b05cc1e1ab3');
 
-      const response = await postDonaciones(nuevaDonacion);
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
-      if (response && response.preferenceId) {
-        setPaymentInfo({
-          showPaymentForm: true,
-          preferenceId: response.preferenceId,
-        });
-      }
+  // mercadopago functions
+  const createPreference = async () => {
+    try {
+      const response = await axios.post("http://localhost:3001/create_preference", {
+        description: "Gracias por donar",
+        price: inputValue,
+        quantity: 1
+      });
+      const { id } = response.data;
+      return id;
+    } catch (error) {
+      console.log(error.message)
     }
   };
-
-  const handleWalletReady = () => {
-    setPaymentInfo((prevState) => ({
-      ...prevState,
-      showPaymentForm: true,
-    }));
+  const handleBuy = async () => {
+    const id = await createPreference();
+    if (id) {
+      setPreferenceId(id);
+    }
   };
-
-  const { showPaymentForm, preferenceId } = paymentInfo;
-
   return (
-    <div>
-      <input
-        type="number"
-        value={monto}
-        onChange={({ target }) => setMonto(target.value)}
-        placeholder="Monto a donar"
-      />
-      <select
-        value={fundacion}
-        onChange={({ target }) => setFundacion(target.value)}
-      >
-        <option value="">Seleccionar fundación</option>
-        {fundaciones.map((fundacion) => (
-          <option key={fundacion.id} value={fundacion.id}>
-            {fundacion.nombre}
-          </option>
-        ))}
-      </select>
-      <button onClick={handleDonar}>Donar</button>
-
-      {showPaymentForm && (
-        <Wallet initialization={{ preferenceId }} onReady={handleWalletReady} />
-      )}
+    <div className={style.container}>
+      <div><h1>Donar es darles una oportunidad de ser amados y cuidados</h1></div>
+      <div className={style.inputContainer}>
+        <input
+          type="number"
+          className={style.donateInput}
+          min="10"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        <div className={style.p}>
+          <p className={style.donateAmount}>Le donaras a los peluditos: ${inputValue} </p>
+        </div>
+      </div>
+      <div className={style.inputContainer}>
+        <button className={style.buttonDonar} onClick={handleBuy}>
+          Donar
+        </button>
+        {
+          preferenceId && <Wallet initialization={{ preferenceId: preferenceId }} />
+        }
+      </div>
+      <div className={style.mercadoPagoLogo}>
+        <img src={logoMercadoPago} alt="MercadoPago Logo" />
+      </div>
     </div>
-  );
-};
-
-const mapStateToProps = (state) => ({
-  fundaciones: state.fundaciones,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  postDonaciones: (donacion) => dispatch(postDonaciones(donacion)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Donacion);
+  )
+}

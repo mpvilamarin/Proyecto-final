@@ -1,0 +1,51 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+.container h1 {
+  font-size: 3em;
+  font-weight: 700;
+  color: #484747;
+  margin-bottom: 30px;
+  text-align: center;
+  
+}
+
+.donateAmount{
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #a6a6a6;
+}
+
+.p{
+text-align: center;
+}
+
+.inputContainer{
+  display:block;
+  text-align: center;
+}
+
+.buttonDonar{
+  color: rgb(0, 0, 0);
+  background-color: rgb(146, 201, 247);
+  border:#a6a6a6;
+  border-radius: 10px;
+  width: 90px;
+  height: 30px;
+  
+}
+.mercadoPagoLogo {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.mercadoPagoLogo img {
+  max-width: 100px;
+  height: 90px;
+  vertical-align: middle;
+  margin-left: 5px;
+}
