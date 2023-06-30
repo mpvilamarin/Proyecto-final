@@ -18,7 +18,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 // import Login from './componentes/Sesiones/sesion/login';
 // import Contacto from './componentes/Contacto/contacto';
-import Donacion from './componentes/Donaciones/donacionesForm';
+import Donacion from './componentes/Donaciones/donaciones';
 // import { RequireAuth } from "react-auth-kit";
 
 
@@ -66,7 +66,7 @@ function App() {
             <Route path="/registro" element={<Registro />} />
             <Route path="/formFundaciones" element={<FormFundaciones/>}/>
             <Route path="/formMascota" element={<FormMascota />} />
-            <Route path="/donation-form/:fundacionId" element={<Donacion />} />
+            <Route path="/donaciones" element={<Donacion />} />
             {/* <Route path='*' element={<Navigate to='/error'/>}/>
             <Route path="/error" element={< Redirect/>} /> */}
           </Routes> 

@@ -37,7 +37,7 @@ export default function NavBar() {
             <Link to="/formFundaciones" className="nav-link">Crear Fundacion</Link>
             <Link to="/formMascota" className="nav-link">Crear Mascota</Link>
             <Link to="/fundaciones" className="nav-link">Fundaciones</Link>
-            <Link to="/adopciones" className="nav-link">Adopciones</Link>
+            <Link to="/adopciones" className="nav-link">Mascotas</Link>
             {/* <Link to="/contact" className="nav-link">Contáctanos</Link> */}
             <Link to="/about" className="nav-link">Sobre nosotros</Link>
 

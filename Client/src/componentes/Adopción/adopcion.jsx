@@ -116,9 +116,9 @@ const Adopcion = () => {
           <div>
             <label htmlFor="especie">Especie:</label>
             <select id="especie" value={especie} onChange={handleEspecieFilter}>
-              <option value="">perros y gatos</option>
-              <option value="perro">Perro</option>
-              <option value="gato">Gato</option>
+              <option value="">Perros y gatos</option>
+              <option value="perro">Perros</option>
+              <option value="gato">Gatos</option>
             </select>
           </div>
         </div>

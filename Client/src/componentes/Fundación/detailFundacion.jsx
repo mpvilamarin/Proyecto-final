@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailFundacion, resetDetail } from "../../redux/Actions/get";
@@ -10,6 +10,11 @@ const DetailFundacion = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const fundacion = useSelector((state) => state.fundacionDetail);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/donaciones');
+  };
 
   useEffect(() => {
     dispatch(getDetailFundacion(id));
@@ -20,6 +25,9 @@ const DetailFundacion = () => {
 
   return (
     <div>
+      <div>
+        <button onClick={handleClick}>Donar</button>
+      </div>
       {!fundacion ? (
         <h3>LOADING...</h3>
       ) : (
@@ -40,8 +48,8 @@ const DetailFundacion = () => {
           <h5>Misión: {fundacion.mision}</h5>
 
           <div style={{ paddingLeft: '80%' }}>
-            <FormReviews/>
-            <Review/>
+            <FormReviews />
+            <Review />
           </div>
 
           <Link to="/home">
@@ -49,6 +57,7 @@ const DetailFundacion = () => {
           </Link>
         </div>
       )}
+
     </div>
   );
 };
