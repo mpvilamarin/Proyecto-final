@@ -31,6 +31,7 @@ const Profile = () => {
         </div>
         <h2 className={styles.sub}>Mis peluditos favoritos</h2>
         <div>
+          
           {mascotasFav.map((mascota)=>{
             return(
               <CardAdop mascota={mascota} indexMascota={mascota.id}/>
