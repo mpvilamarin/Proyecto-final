@@ -11,7 +11,7 @@ export default function Nosotros() {
   const [flip4, setFlip4] = useState(false);
   const [flip5, setFlip5] = useState(false);
   const [flip6, setFlip6] = useState(false);
-  
+
   const handleMouseEnter = () => {
     setFlip(true);
   };
@@ -65,23 +65,23 @@ export default function Nosotros() {
     <div className={styles.container}>
       <h2 className={styles.title} >Nuestro Equipo</h2>
       <h3 className={styles.sub} >Back-End</h3>
+
       <div className={styles.backContainer}>
 
-
-        <ReactCardFlip isFlipped={flip1} flipDirection="horizontal">
-          <div className={styles.content} onMouseEnter={handleMouseEnter1} onMouseLeave={handleMouseLeave1}>
+        <ReactCardFlip isFlipped={flip2} flipDirection="horizontal">
+          <div className={styles.content} onMouseEnter={handleMouseEnter2} onMouseLeave={handleMouseLeave2}>
             <div>
-              <img className={styles.image} src={require("../../assets/Nahuel.png")} alt="Nahuel" />
-              <p className={styles.name}>Nahuel</p>
+              <img className={styles.image} src={require("../../assets/David.png")} alt="David" />
+              <p className={styles.name}>David</p>
             </div>
           </div>
-          <div className={styles.content} onMouseEnter={handleMouseEnter1} onMouseLeave={handleMouseLeave1}>
+          <div className={styles.content} onMouseEnter={handleMouseEnter2} onMouseLeave={handleMouseLeave2}>
             <p className={styles.info}>Hola, soy estudiante de Full Stack Developer en constante aprendizaje. Habilidades en HTML, CSS, JavaScript y frameworks como React y Angular. Resolutivo y creativo, buscando soluciones innovadoras..</p>
             <div className={styles.contRedes}>
-              <a href="https://www.linkedin.com/in/nahuel-castilla-dev/" target="_blank">
+              <a href="http://linkedin.com/in/david-alejandro-orozco-casas" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Linkedin.png")} alt="LinkedIn" />
               </a>
-              <a href="https://github.com/nahuc22" target="_blank">
+              <a href="https://github.com/Dalejandro31" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Github.png")} alt="Github" />
               </a>
             </div>
@@ -98,31 +98,30 @@ export default function Nosotros() {
           <div className={styles.content} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <p className={styles.info}>Hola, soy estudiante de Full Stack Developer en constante aprendizaje. Habilidades en HTML, CSS, JavaScript y frameworks como React y Angular. Resolutivo y creativo, buscando soluciones innovadoras..</p>
             <div className={styles.contRedes}>
-              <a href=" https://www.linkedin.com/in/santiago-marich/" target="_blank">
+              <a href=" https://www.linkedin.com/in/santiago-marich/" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Linkedin.png")} alt="LinkedIn" />
               </a>
-              <a href="https://github.com/SantiMarich" target="_blank">
+              <a href="https://github.com/SantiMarich" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Github.png")} alt="Github" />
               </a>
             </div>
-        </div>
-         
+          </div>
         </ReactCardFlip>
-          
-         <ReactCardFlip isFlipped={flip2} flipDirection="horizontal">
-          <div className={styles.content} onMouseEnter={handleMouseEnter2} onMouseLeave={handleMouseLeave2}>
+
+        <ReactCardFlip isFlipped={flip1} flipDirection="horizontal">
+          <div className={styles.content} onMouseEnter={handleMouseEnter1} onMouseLeave={handleMouseLeave1}>
             <div>
-              <img className={styles.image} src={require("../../assets/David.png")} alt="David" />
-              <p className={styles.name}>David</p>
+              <img className={styles.image} src={require("../../assets/Nahuel.png")} alt="Nahuel" />
+              <p className={styles.name}>Nahuel</p>
             </div>
           </div>
-          <div className={styles.content} onMouseEnter={handleMouseEnter2} onMouseLeave={handleMouseLeave2}>
+          <div className={styles.content} onMouseEnter={handleMouseEnter1} onMouseLeave={handleMouseLeave1}>
             <p className={styles.info}>Hola, soy estudiante de Full Stack Developer en constante aprendizaje. Habilidades en HTML, CSS, JavaScript y frameworks como React y Angular. Resolutivo y creativo, buscando soluciones innovadoras..</p>
             <div className={styles.contRedes}>
-              <a href="http://linkedin.com/in/david-alejandro-orozco-casas" target="_blank">
+              <a href="https://www.linkedin.com/in/nahuel-castilla-dev/" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Linkedin.png")} alt="LinkedIn" />
               </a>
-              <a href="https://github.com/Dalejandro31" target="_blank">
+              <a href="https://github.com/nahuc22" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Github.png")} alt="Github" />
               </a>
             </div>
@@ -130,22 +129,27 @@ export default function Nosotros() {
         </ReactCardFlip>
 
 
+
+
+      </div>
+
       <h3 className={styles.sub} >Front-End</h3>
+
       <div className={styles.frontContainer}>
         <ReactCardFlip isFlipped={flip3} flipDirection="horizontal">
           <div className={styles.content} onMouseEnter={handleMouseEnter3} onMouseLeave={handleMouseLeave3}>
             <div>
               <img className={styles.image} src={require("../../assets/Mari.png")} alt="Mari" />
-              <p className={styles.name}>Maria</p>
+              <p className={styles.name}>María</p>
             </div>
           </div>
           <div className={styles.content} onMouseEnter={handleMouseEnter3} onMouseLeave={handleMouseLeave3}>
             <p className={styles.info}>Hola, soy estudiante de Full Stack Developer en constante aprendizaje. Habilidades en HTML, CSS, JavaScript y frameworks como React y Angular. Resolutivo y creativo, buscando soluciones innovadoras..</p>
             <div className={styles.contRedes}>
-              <a href="www.linkedin.com/in/maria-salazar-18b907140" target="_blank">
+              <a href="www.linkedin.com/in/maria-salazar-18b907140" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Linkedin.png")} alt="LinkedIn" />
               </a>
-              <a href="https://github.com/mvsalazarf" target="_blank">
+              <a href="https://github.com/mvsalazarf" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Github.png")} alt="Github" />
               </a>
             </div>
@@ -161,10 +165,10 @@ export default function Nosotros() {
           <div className={styles.content} onMouseEnter={handleMouseEnter4} onMouseLeave={handleMouseLeave4}>
             <p className={styles.info}>Hola, soy estudiante de Full Stack Developer en constante aprendizaje. Habilidades en HTML, CSS, JavaScript y frameworks como React y Angular. Resolutivo y creativo, buscando soluciones innovadoras..</p>
             <div className={styles.contRedes}>
-              <a href="https://www.linkedin.com/in/nahuel-castilla-dev/" target="_blank">
+              <a href="https://www.linkedin.com/in/nahuel-castilla-dev/" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Linkedin.png")} alt="LinkedIn" />
               </a>
-              <a href="https://github.com/nahuc22" target="_blank">
+              <a href="https://github.com/nahuc22" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Github.png")} alt="Github" />
               </a>
             </div>
@@ -180,10 +184,10 @@ export default function Nosotros() {
           <div className={styles.content} onMouseEnter={handleMouseEnter5} onMouseLeave={handleMouseLeave5}>
             <p className={styles.info}>Hola, soy estudiante de Full Stack Developer en constante aprendizaje. Habilidades en HTML, CSS, JavaScript y frameworks como React y Angular. Resolutivo y creativo, buscando soluciones innovadoras..</p>
             <div className={styles.contRedes}>
-              <a href="https://www.linkedin.com/in/ramiro-andino-74455a1b9/" target="_blank">
+              <a href="https://www.linkedin.com/in/ramiro-andino-74455a1b9/" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Linkedin.png")} alt="LinkedIn" />
               </a>
-              <a href="https://github.com/ramiandino" target="_blank">
+              <a href="https://github.com/ramiandino" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Github.png")} alt="Github" />
               </a>
             </div>
@@ -199,16 +203,15 @@ export default function Nosotros() {
           <div className={styles.content} onMouseEnter={handleMouseEnter6} onMouseLeave={handleMouseLeave6}>
             <p className={styles.info}>Hola, soy estudiante de Full Stack Developer en constante aprendizaje. Habilidades en HTML, CSS, JavaScript y frameworks como React y Angular. Resolutivo y creativo, buscando soluciones innovadoras..</p>
             <div className={styles.contRedes}>
-              <a href="https://www.linkedin.com/in/nahuel-castilla-dev/" target="_blank">
+              <a href="https://www.linkedin.com/in/mar%C3%ADa-paula-villamarin-543599222/" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Linkedin.png")} alt="LinkedIn" />
               </a>
-              <a href="https://github.com/nahuc22" target="_blank">
+              <a href="https://github.com/mpvilamarin" target="_blank" rel="noreferrer">
                 <img className={styles.buttonImage} src={require("../../assets/Github.png")} alt="Github" />
               </a>
             </div>
           </div>
         </ReactCardFlip>
-        </div>
       </div>
     </div>
   );
