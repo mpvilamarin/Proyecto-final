@@ -3,6 +3,7 @@ const { Usuarios } = require('../db');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 const { PASS } = process.env;
+const emailer = require('../emailer')
 // const jwt = require("jsonwebtoken");
 
 
@@ -69,31 +70,31 @@ async function postRegistroUsuario(req, res){
             contraseña,
         })
 
-        const config ={
-            service: 'gmail',
-            auth : {
-                user : email,
-                pass : PASS,
-            }
-        }
+        // const config ={
+        //     service: 'gmail',
+        //     auth : {
+        //         user : email,
+        //         pass : PASS,
+        //     }
+        // }
 
-        const transport = nodemailer.createTransport(config);
+        // const transport = nodemailer.createTransport(config);
 
-        let mailOptions = {
-            from : email, 
-            to :  'fundaciones@gmail.com',
-            subject : 'correo pruebas',
-            text : `gracias por crear tu cuenta en nuestra app ${email}`
-        }
+        // let mailOptions = {
+        //     from : email, 
+        //     to :  'fundaciones@gmail.com',
+        //     subject : 'correo pruebas',
+        //     text : `gracias por crear tu cuenta en nuestra app ${email}`
+        // }
 
-        transport.sendMail(mailOptions, function(error, info){
-            if(error){
-                console.log(`error al enviar correo ${error}`)
-            }else{
-                console.log(`email enviado ${info.response}`)
-            }
-        })
-
+        // transport.sendMail(mailOptions, function(error, info){
+        //     if(error){
+        //         console.log(`error al enviar correo ${error}`)
+        //     }else{
+        //         console.log(`email enviado ${info.response}`)
+        //     }
+        // })
+        emailer.sendMail(newUsuario);
         res
         .status(STATUS_CREATED).json(newUsuario)
     } catch (error) {
