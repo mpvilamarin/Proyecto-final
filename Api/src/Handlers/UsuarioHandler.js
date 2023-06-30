@@ -2,7 +2,8 @@ const { config } = require('dotenv');
 const { Usuarios } = require('../db');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
-const { PASS } = process.env;
+const {USER_EMAIL, PASS_EMAIL} = process.env;
+
 // const jwt = require("jsonwebtoken");
 
 
@@ -28,7 +29,7 @@ async function getRegistroUsuario(req,res){
 
 async function getIdUsuario(req, res){
     const {id} = req.params;
-
+ 
     try {
         const getById = id.toUpperCase();
         const getUsuario = await Usuarios.findOne({
@@ -69,36 +70,58 @@ async function postRegistroUsuario(req, res){
             contraseña,
         })
 
-        const config ={
-            service: 'gmail',
-            auth : {
-                user : email,
-                pass : PASS,
-            }
-        }
-
-        const transport = nodemailer.createTransport(config);
-
-        let mailOptions = {
-            from : email, 
-            to :  'fundaciones@gmail.com',
-            subject : 'correo pruebas',
-            text : `gracias por crear tu cuenta en nuestra app ${email}`
-        }
-
-        transport.sendMail(mailOptions, function(error, info){
-            if(error){
-                console.log(`error al enviar correo ${error}`)
-            }else{
-                console.log(`email enviado ${info.response}`)
-            }
-        })
+        await enviarCorreoBienvenida(email,nombre);
 
         res
         .status(STATUS_CREATED).json(newUsuario)
     } catch (error) {
         res
         .status(STATUS_ERROR).json({message:'error al crear Usuario' + error})
+    }
+}
+
+async function enviarCorreoBienvenida(email, nombre) {
+    
+    try {
+        
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: USER_EMAIL,
+                pass: PASS_EMAIL
+            } 
+        });
+
+        let correo = {
+            from: USER_EMAIL,
+            to: email,
+            subject: 'Bienvenido a nuestra aplicación',
+            text: '¡Hola! Gracias por crear tu perfil en nuestra aplicación. Esperamos que disfrutes de todas las funciones que ofrecemos.',
+            html: `
+            <table border="0" cellpadding="0" cellspacing="0" width="600px" background-color="#2d3436" bgcolor="#2d3436">
+                <tr height="200px">
+                    <td bgcolor="" width="600px">
+                        <h1 style="color: #fff text-aling:center">Bienvenido</h1>
+                        <p  style="color: #fff text-aling:center">
+                            <span style="color: #e84393">${nombre}</span>
+                            a la aplicacion
+                        </p>
+                    </td>
+                </tr>
+
+                <tr bgcolor="#fff">
+                    <td style="text-aling:center">
+                        <p style="color: #000">Adopta a tu mejor compañia con un Click!</p>
+                    </td>
+                </tr>
+            </table>` 
+                
+        };
+
+        let info = await transporter.sendMail(correo);
+        console.log('Correo de bienvenida enviado: ' + info.messageId);
+    } catch (error) {
+        console.error('Error al enviar el correo de bienvenida:', error);
     }
 }
 
