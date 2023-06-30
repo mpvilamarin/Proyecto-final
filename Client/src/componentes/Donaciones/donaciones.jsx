@@ -10,7 +10,7 @@ export default function Donacion() {
   // const { fundacionId } = useParams();
   const [inputValue, setInputValue] = useState('');
   const [preferenceId, setPreferenceId] = useState(null);
-  initMercadoPago('YOUR_PUBLIC_KEY');
+  initMercadoPago('TEST-02a2559f-5988-4feb-9e00-0b05cc1e1ab3');
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -30,16 +30,12 @@ export default function Donacion() {
       console.log(error.message)
     }
   };
-
   const handleBuy = async () => {
     const id = await createPreference();
     if (id) {
       setPreferenceId(id);
     }
   };
-
-
-
   return (
     <div className={style.container}>
       <div><h1>Donar es darles una oportunidad de ser amados y cuidados</h1></div>
@@ -66,8 +62,6 @@ export default function Donacion() {
       <div className={style.mercadoPagoLogo}>
         <img src={logoMercadoPago} alt="MercadoPago Logo" />
       </div>
-
-
     </div>
   )
 }
