@@ -67,6 +67,7 @@ async function postRegistroUsuario(req, res){
             contraseña,
         })
 
+
         await enviarCorreoBienvenida(email,nombre);
 
         res

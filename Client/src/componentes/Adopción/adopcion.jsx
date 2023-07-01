@@ -11,7 +11,7 @@ import {
 } from "../../redux/Actions/filtroAndOrdenamiento.js";
 import Pagination from "./Paginación/paginacion.jsx";
 
-import './adopcion.css';
+import styles from './adopcion.module.css';
 import CardAdop from "../Cartas/cardAdopcion.jsx";
 
 
@@ -92,79 +92,85 @@ const Adopcion = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Escoje las características de tu mascota</h1>
+      <h1>Elige las características de tu mascota</h1>
       <div className={styles.selectoresWrapper}>
-        <div className={styles.divSelector}>
-          <label>Género:</label>
-          <select value={generoFilter} onChange={handleGeneroFilter} className={styles.options}>
-            <option value="">Todos</option>
-            <option value="Macho">Macho</option>
-            <option value="Hembra">Hembra</option>
-            <option value="Desconocido">Desconocido</option>
-          </select>
-        </div>
-
-        <div className={styles.divSelector}>
+          <div className={styles.divSelector}>
+            <label>Género:</label>
+            <select value={generoFilter} onChange={handleGeneroFilter} className={styles.options}>
+              <option value="">Todos</option>
+              <option value="Macho">Macho</option>
+              <option value="Hembra">Hembra</option>
+              <option value="Desconocido">Desconocido</option>
+            </select>
+          </div>
+          <div>
           <label>Ordenar por nombre:</label>
           <button onClick={handleSortAsc}>A-Z</button>
           <button onClick={handleSortDesc}>Z-A</button>
-        </div>
-        <div>
-
-          <div className={styles.divSelector}>
-            <label htmlFor="especie">Especie:</label>
+          </div>
+          <div>
+          <label htmlFor="especie">Especie:</label>
             <select id="especie" value={especie} onChange={handleEspecieFilter} className={styles.options}>
               <option value="">Perros y gatos</option>
               <option value="perro">Perros</option>
               <option value="gato">Gatos</option>
             </select>
           </div>
-
-        </div>
-
-        <div className={styles.divSelector}>
-          <select className={styles.options}
+          <div>
+          <label htlmFor="fundacion">Fundación:</label>
+            <select 
+            className={styles.options}
             onChange={handleFundacion}
             value={selectedFundacion}
-          >
-            <option value='All'>fundaciones</option>
+            >
+            <option value='All'>Ver todas las fundaciones</option>
             {
               uniqueFundaciones.map((x, index) => (
                 <option value={x} key={index}>{x}</option>
               ))
             }
           </select>
-        </div>
+          </div>
       </div>
 
-      <div className={styles.divSelector}>
-        <div>
-          {
-            currentPage === 1 ? (<span></span>) : (<button className="" onClick={e => paginationButtonPrev(e)}>Prev</button>)
-          }
-        </div>
-        <div className={styles.divSelector}>
+      <div className={styles.containerAnimales}>
+        {currentElements.map((mascota, indexMascota) => (
+          <CardAdop mascota={mascota} indexMascota={mascota.id} key={indexMascota} />
+        ))}
+      </div>
+
+      <div className={styles.paginationContainer}>
+        <div className={styles.pagination}>
+          <div>
+            {currentPage > 1 && (
+              <button className={styles.button} onClick={paginationButtonPrev}>
+                Prev
+              </button>
+            )}
+          </div>
+
           <Pagination
             currentPage={currentPage}
             elementsPerPage={elementsPerPage}
             totalElements={allPets.length}
             onPageChange={handlePageCh}
           />
+
           <div>
-            {
-              Math.ceil(allPets.length / elementsPerPage) > currentPage ? (
-                <button className="" onClick={e => paginationButtonNext(e)}>next</button>
-              ) : (<span></span>)
-            }
+            {Math.ceil(allPets.length / elementsPerPage) > currentPage && (
+              <button className={styles.button} onClick={paginationButtonNext}>
+                Next
+              </button>
+            )}
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+export default Adopcion;
 
-      <div className="container">
-      {currentElements.map((mascota, indexMascota)=>{
-          return(<CardAdop mascota={mascota} indexMascota={indexMascota}/>)
-        })
-// =======
+/*
 //       <div className={styles.cardContainer}>
 //         {currentElements.map((mascota, indexMascota) => (
 //           <Card key={indexMascota} style={{ width: '18rem' }}>
@@ -180,11 +186,4 @@ const Adopcion = () => {
 //             </Card.Body>
 //           </Card>)
 //         )
-// >>>>>>> develop
-        }
-      </div>
-    </div>
-  );
-};
-
-export default Adopcion;
+*/
