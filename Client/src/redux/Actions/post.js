@@ -6,7 +6,9 @@ import {
     POST_FUNDACIONES,
     POST_MASCOTA,
     POST_USUARIO,
-    POST_LOGIN
+    POST_LOGIN,
+    ADDFAV,
+
 } from "../Actions-type/index.js";
 
 
@@ -105,3 +107,13 @@ export const postMascota = (newMascota) =>{
   //     }
   //   }
   // }
+  export const addFav = (mascota) => {
+    if (mascota !== undefined) {
+      console.log('Se pasó el payload:', mascota);
+    } else {
+      console.log('No se pasó el payload');
+    }
+  
+    return { type: ADDFAV, payload: mascota };
+  };
+  

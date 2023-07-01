@@ -27,6 +27,7 @@ import {
   UPDATE_USUARIOS,
   DELETE_MASCOTA,
   DELETE_USUARIO,
+  ADDFAV,
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -40,6 +41,7 @@ const initialState = {
   usuarios: [],
   sesion: [],
   usuarioDetalle: [],
+  mascotasFav:[],
 
   adopciones: [],
   detalleAdopcion: [],
@@ -289,6 +291,9 @@ case FILTER_MASCOTA_BY_ESPECIE:
       };
     case RESET_DETAIL:
       return { ...state, fundacionDetail: null };
+
+    case ADDFAV:
+      return { ...state, mascotasFav: action.payload}
 
     default:
       return state;
