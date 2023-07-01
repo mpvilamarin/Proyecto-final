@@ -31,7 +31,8 @@
   font-size: 14px;
   margin: 0 8px;
 } */
-
+/* Esta es la que usabamos*/
+/* 
 .pagePagination{
   border-radius: 20px;
   margin-left: .2rem;
@@ -39,4 +40,25 @@
   margin-top: .8rem;
   margin-bottom: .3rem;
   box-shadow: 0 8px 32px 0 rgba(180, 249, 4, 0.794);
+} */
+
+.divPagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagePagination {
+  background-color: #f2f2f2;
+  border: none;
+  color: #555;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0 4px;
+  transition: background-color 0.3s ease;
+}
+
+.pagePagination:hover {
+  background-color: #ddd;
 }

@@ -30,16 +30,12 @@ const Profile = () => {
           <p className={styles.text}>Correo: {user.email}</p>
         </div>
         <h2 className={styles.sub}>Mis peluditos favoritos</h2>
-        </div>
-        <div>
-          {mascotasFav.map((mascota)=>{
-            return(
+          <div>
+            {mascotasFav.map((mascota)=>{
               <CardAdop mascota={mascota} indexMascota={mascota.id}/>
-            )
-          })} 
+            })} 
+          </div>
         </div>
-      </div>
-      
     )
   );
 };

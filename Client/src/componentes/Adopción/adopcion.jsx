@@ -11,7 +11,7 @@ import {
 } from "../../redux/Actions/filtroAndOrdenamiento.js";
 import Pagination from "./Paginación/paginacion.jsx";
 
-import './adopcion.css';
+import styles from './adopcion.module.css';
 import CardAdop from "../Cartas/cardAdopcion.jsx";
 
 
@@ -143,6 +143,12 @@ const Adopcion = () => {
             currentPage === 1 ? (<span></span>) : (<button className="" onClick={e => paginationButtonPrev(e)}>Prev</button>)
           }
         </div>
+        <div className={"container"}>
+          {currentElements.map((mascota, indexMascota)=>{
+              return(<CardAdop mascota={mascota} indexMascota={indexMascota}/>)
+            })
+          }
+        </div>
         <div className={styles.divSelector}>
           <Pagination
             currentPage={currentPage}
@@ -153,17 +159,18 @@ const Adopcion = () => {
           <div>
             {
               Math.ceil(allPets.length / elementsPerPage) > currentPage ? (
-                <button className="" onClick={e => paginationButtonNext(e)}>next</button>
+                <button className={styles.pagination} onClick={e => paginationButtonNext(e)}>next</button>
               ) : (<span></span>)
             }
           </div>
         </div>
       </div>
+    </div>
+  );
+};
 
-      <div className="container">
-      {currentElements.map((mascota, indexMascota)=>{
-          return(<CardAdop mascota={mascota} indexMascota={indexMascota}/>)
-        })
+export default Adopcion;
+
 // =======
 //       <div className={styles.cardContainer}>
 //         {currentElements.map((mascota, indexMascota) => (
@@ -181,10 +188,3 @@ const Adopcion = () => {
 //           </Card>)
 //         )
 // >>>>>>> develop
-        }
-      </div>
-    </div>
-  );
-};
-
-export default Adopcion;
