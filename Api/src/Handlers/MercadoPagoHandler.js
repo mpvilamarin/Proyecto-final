@@ -12,8 +12,8 @@ const postDonacion = (req, res) => {
     ],
     back_urls: {
       success: "http://localhost:3000/feedback",
-      failure: "",
-      pending: "",
+      failure: " ",
+      pending: " ",
     },
     auto_return: "approved",
   };
