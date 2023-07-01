@@ -27,7 +27,7 @@ const Donaciones = () => {
 
   return (
     <div>
-      <h1>Donar es darles una oportunidad de ser amados y cuidados</h1>
+      <h1>Donar es darles una oportunidad de ser Amados y Cuidados</h1>
       <form>
         <input
           type="text"
