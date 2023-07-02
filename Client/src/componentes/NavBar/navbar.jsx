@@ -34,7 +34,7 @@ export default function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             {isAuthenticated && <Link to="/donaciones" className="nav-link">Donaciones</Link>}
-            {/*<Link to="/formFundaciones" className="nav-link">Crear Fundacion</Link>*/}
+            <Link to="/formFundaciones" className="nav-link">Crear Fundacion</Link>
             {/*<Link to="/formMascota" className="nav-link">Crear Mascota</Link>*/}
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/fundaciones" className="nav-link">Fundaciones</Link>

@@ -45,7 +45,7 @@ export const postMascota = (newMascota) =>{
     }
   }
   
-  export const postDonaciones = (nuevaDonacion) =>{
+export const postDonaciones = (nuevaDonacion) => {
     return async(dispatch) => {
       try {
         const response = await axios.post('http://localhost:3001/donaciones', nuevaDonacion)
