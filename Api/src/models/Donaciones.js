@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       monto: {
-        type: DataTypes.DECIMAL(10, 2),
+        type: DataTypes.DECIMAL,
         allowNull: false,
       },
       fecha: {
@@ -22,11 +22,11 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      estado: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        defaultValue: "pending",
-      },
+      // estado: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      //   defaultValue: "pending",
+      // },
     },
     {
       timestamps: false,

@@ -1,67 +1,119 @@
-import axios from 'axios';
-import React, { useState } from "react"
-// import { useParams } from "react-router-dom";
-import style from './Donaciones.module.css'
-import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
-import logoMercadoPago from './mercadopago.png';
+import axios from "axios";
+import React, { useState } from "react";
+import logoMercadoPago from "./mercadopago.png";
+import { useDispatch } from "react-redux";
+import { postDonaciones } from "../../redux/Actions/post";
+import { useLocation } from "react-router-dom";
 
-export default function Donacion() {
+const Donaciones = () => {
 
-  // const { fundacionId } = useParams();
-  const [inputValue, setInputValue] = useState('');
-  const [preferenceId, setPreferenceId] = useState(null);
-  initMercadoPago('TEST-02a2559f-5988-4feb-9e00-0b05cc1e1ab3');
+  const currentDate = new Date();
+  const formattedDate = currentDate.toISOString().slice(0, 10);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const defaultFundacionId = location.state ? location.state.fundacionId : "";
+  const [newDonacion, setNewDonacion] = useState({
+    monto: null,
+    fecha: "",
+    descripcion: "",
+    fundacionId: defaultFundacionId
+  });
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+  const handleChange = (e) => {
+    setNewDonacion({
+      ...newDonacion,
+      [e.target.name]: e.target.value
+    });
   };
 
-  // mercadopago functions
-  const createPreference = async () => {
-    try {
-      const response = await axios.post("http://localhost:3001/create_preference", {
-        description: "Gracias por donar",
-        price: inputValue,
-        quantity: 1
+  const handleDonar = (e) => {
+    const donacion = {
+      title: "Donacion",
+      unit_price: parseInt(newDonacion.monto),
+      quantity: 1,
+      monto: newDonacion.monto,
+      fecha: newDonacion.fecha,
+      descripcion: newDonacion.descripcion,
+      fundacionId: newDonacion.fundacionId
+    };
+
+    axios
+      .post("http://localhost:3001/donaciones", donacion)
+      .then((res) => {
+        const initPoint = res.data.response.body.init_point;
+        window.location.href = initPoint;
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      const { id } = response.data;
-      return id;
-    } catch (error) {
-      console.log(error.message)
-    }
+    console.log(donacion)
+    // e.preventDefault();
+    // if (newDonacion.monto) {
+    //   dispatch(postDonaciones(newDonacion));
+    //   setNewDonacion({
+    //     monto: null,
+    //     fecha: "",
+    //     descripcion: "",
+    //     fundacionId: ""
+    //   })
+    // } else {
+    //   alert('colocar un monto')
+    // }
+
   };
-  const handleBuy = async () => {
-    const id = await createPreference();
-    if (id) {
-      setPreferenceId(id);
-    }
-  };
+
   return (
-    <div className={style.container}>
-      <div><h1>Donar es darles una oportunidad de ser amados y cuidados</h1></div>
-      <div className={style.inputContainer}>
-        <input
-          type="number"
-          className={style.donateInput}
-          min="10"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        <div className={style.p}>
-          <p className={style.donateAmount}>Le donaras a los peluditos: ${inputValue} </p>
+    <div>
+      <h1>Donar es darles una oportunidad de ser amados y cuidados</h1>
+      <form>
+
+        <div>
+          <label>Monto:</label>
+          <input
+            type="number"
+            name="monto"
+            min="10"
+            value={newDonacion.monto}
+            onChange={handleChange}
+          />
+
+          <label>Id fundación:</label>
+          <input
+            type="text"
+            name="fundacionId"
+            value={newDonacion.fundacionId}
+            onChange={handleChange}
+            readOnly
+          />
+
+          <label>Fecha:</label>
+          <input
+            type="date"
+            name="fecha"
+            defaultValue={formattedDate}
+            // value={newDonacion.fecha}
+            onChange={handleChange}
+            readOnly
+          />
+
+          <label>Descripción:</label>
+          <input
+            type="text"
+            name="descripcion"
+            value={newDonacion.descripcion}
+            onChange={handleChange}
+          />
+          {newDonacion.monto && <p>Le donarás a los peluditos: ${newDonacion.monto}</p>}
         </div>
+      </form>
+      <div>
+        <button onClick={handleDonar}>Donar</button>
       </div>
-      <div className={style.inputContainer}>
-        <button className={style.buttonDonar} onClick={handleBuy}>
-          Donar
-        </button>
-        {
-          preferenceId && <Wallet initialization={{ preferenceId: preferenceId }} />
-        }
-      </div>
-      <div className={style.mercadoPagoLogo}>
+      <div>
         <img src={logoMercadoPago} alt="MercadoPago Logo" />
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default Donaciones;

@@ -1,8 +1,11 @@
 const express = require("express");
 const mercadoPagoRouter = express.Router();
-const { postDonacion, getDonacion } = require("../Handlers/DonacionHandler");
+const {
+  postDonacion,
+  getDonacion,
+} = require("../Handlers/MercadoPagoHandler.js");
 
-mercadoPagoRouter.post("/create_preference", postDonacion);
+mercadoPagoRouter.post("/", postDonacion);
 mercadoPagoRouter.get("/feedback", getDonacion);
 
 module.exports = mercadoPagoRouter;
