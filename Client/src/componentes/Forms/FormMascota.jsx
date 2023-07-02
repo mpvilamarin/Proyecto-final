@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postMascota } from '../../redux/Actions/post';
 import { getAllFundaciones } from '../../redux/Actions/get';
 import './stilosFormularioMascota.css';
+import UploadWidget from "../../componentes/Upload/UploadWidget";
 
 function FormMascota() {
   const fundaciones = useSelector((state) => state.fundaciones);
@@ -209,7 +210,7 @@ function FormMascota() {
             }
           />
         </Form.Group>
-
+        <UploadWidget />
         <div>
           <div>
             {sortedFundacion.length >= 1 ? (
