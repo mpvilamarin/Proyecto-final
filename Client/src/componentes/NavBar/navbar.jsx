@@ -9,6 +9,7 @@ import LogOutButton from '../Autenticación/LogOut/logout';
 import LogInButton from '../Autenticación/LogIn/login';
 
 
+
 export default function NavBar() {
 
   const { isAuthenticated, user } = useAuth0();
@@ -32,16 +33,17 @@ export default function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            {/* <Link to="/donaciones" className="nav-link">Donaciones</Link> */}
-            <Link to="/formFundaciones" className="nav-link">Crear Fundacion</Link>
-            <Link to="/formMascota" className="nav-link">Crear Mascota</Link>
+            {isAuthenticated && <Link to="/donaciones" className="nav-link">Donaciones</Link>}
+            {/*<Link to="/formFundaciones" className="nav-link">Crear Fundacion</Link>*/}
+            {/*<Link to="/formMascota" className="nav-link">Crear Mascota</Link>*/}
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/fundaciones" className="nav-link">Fundaciones</Link>
             <Link to="/adopciones" className="nav-link">Mascotas</Link>
             {/* <Link to="/contact" className="nav-link">Contáctanos</Link> */}
             <Link to="/about" className="nav-link">Sobre nosotros</Link>
+            {!isAuthenticated && <Link to="/login" className="nav-link">Log in</Link>}
 
-            {!isAuthenticated && <li><LogInButton /></li>}
+            {/*!isAuthenticated && <li><LogInButton /></li>*/}
             {isAuthenticated && <li><a href="/perfil">Mi perfil</a></li>}
             {isAuthenticated && <li><LogOutButton /></li>}
 

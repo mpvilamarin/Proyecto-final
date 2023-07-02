@@ -2,7 +2,6 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-
   "main": "app.js",
   "scripts": {
     "start": "nodemon -L",
@@ -21,11 +20,11 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
-
-    "mercadopago": "^1.5.16",
     "jsonwebtoken": "^9.0.0",
-
+    "mercadopago": "^1.5.16",
     "morgan": "^1.10.0",
+    "nodemailer": "^6.9.3",
+    "nodemailer-sendgrid": "^1.0.3",
     "pg": "^8.5.1",
     "sequelize": "^6.3.5"
   },

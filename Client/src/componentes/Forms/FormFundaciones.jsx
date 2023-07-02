@@ -74,8 +74,8 @@ function FormFundaciones() {
 
   return (
     <div className="form-container">
-      <h1>FORMULARIO PARA FUNDACIONES</h1>
-      <Form>
+      <h1 className="title-form">FORMULARIO PARA FUNDACIONES</h1>
+      <Form className="custom-form">
         {showAlert && (
           <Alert variant="danger">Por favor, completa todos los campos.</Alert>
         )}
@@ -166,7 +166,7 @@ function FormFundaciones() {
           />
         </Form.Group>
         <Button variant="primary" type="submit" onClick={handleSubmit}>
-          Submit
+          Enviar
         </Button>
       </Form>
     </div>

@@ -101,13 +101,13 @@ function FormMascota() {
 
   return (
     <div className="form-container">
-      <h1>FORMULARIO PARA MASCOTAS</h1>
-      <Form>
+      <h1 className="title-form">FORMULARIO PARA MASCOTAS</h1>
+      <Form className="custom-form">
         {showAlert && (
           <Alert variant="danger">Por favor, completa todos los campos.</Alert>
         )}
         <Form.Group controlId="formBasicNombre">
-          <Form.Label>Nombre</Form.Label>
+          <Form.Label className="form-label">Nombre</Form.Label>
           <Form.Control
             type="text"
             name="nombre"
@@ -119,6 +119,7 @@ function FormMascota() {
             }
           />
         </Form.Group>
+
         <Form.Group controlId="formBasicEspecie">
           <Form.Label>Especie</Form.Label>
           <Form.Control
@@ -132,19 +133,22 @@ function FormMascota() {
             }
           />
         </Form.Group>
+
         <Form.Group controlId="formBasicTamaño">
           <Form.Label>Tamaño</Form.Label>
-          <Form.Control
-            type="text"
+          <Form.Select
             name="tamaño"
             value={newMascota.tamaño}
             onChange={handleChange}
-            placeholder="Tamaño"
-            className={
-              invalidFields.includes('tamaño') ? 'is-invalid' : ''
-            }
-          />
+            className={invalidFields.includes('tamaño') ? 'is-invalid' : ''}
+          >
+            <option value="">Seleccionar tamaño</option>
+            <option value="grande">Grande</option>
+            <option value="mediano">Mediano</option>
+            <option value="pequeño">Pequeño</option>
+          </Form.Select>
         </Form.Group>
+
         <Form.Group controlId="formBasicEdad">
           <Form.Label>Edad</Form.Label>
           <Form.Control
@@ -158,19 +162,33 @@ function FormMascota() {
             }
           />
         </Form.Group>
+
         <Form.Group controlId="formBasicGenero">
           <Form.Label>Genero</Form.Label>
-          <Form.Control
-            type="text"
-            name="genero"
-            value={newMascota.genero}
-            onChange={handleChange}
-            placeholder="Genero"
-            className={
-              invalidFields.includes('genero') ? 'is-invalid' : ''
-            }
-          />
+          <div>
+            <Form.Check
+              inline
+              type="radio"
+              id="generoHembra"
+              name="genero"
+              label="Hembra"
+              value="hembra"
+              checked={newMascota.genero === "hembra"}
+              onChange={handleChange}
+            />
+            <Form.Check
+              inline
+              type="radio"
+              id="generoMacho"
+              name="genero"
+              label="Macho"
+              value="macho"
+              checked={newMascota.genero === "macho"}
+              onChange={handleChange}
+            />
+          </div>
         </Form.Group>
+
         <Form.Group controlId="formBasicTemperamento">
           <Form.Label>Temperamento</Form.Label>
           <Form.Control
@@ -183,6 +201,7 @@ function FormMascota() {
               invalidFields.includes('temperamento') ? 'is-invalid' : ''
             }
           />
+
         </Form.Group>
         <Form.Group controlId="formBasicDescripcion">
           <Form.Label>Descripcion</Form.Label>
@@ -196,19 +215,32 @@ function FormMascota() {
               invalidFields.includes('descripcion') ? 'is-invalid' : ''
             }
           />
+
         </Form.Group>
         <Form.Group controlId="formBasicCastrado">
-          <Form.Label>Castrado</Form.Label>
-          <Form.Control
-            type="text"
-            name="castrado"
-            value={newMascota.castrado}
-            onChange={handleChange}
-            placeholder="Castrado"
-            className={
-              invalidFields.includes('castrado') ? 'is-invalid' : ''
-            }
-          />
+          <Form.Label>Opción de castración</Form.Label>
+          <div>
+            <Form.Check
+              inline
+              type="radio"
+              id="castrado"
+              name="castrado"
+              label="Castrado/a"
+              value="castrado"
+              checked={newMascota.castrado === 'castrado'}
+              onChange={handleChange}
+            />
+            <Form.Check
+              inline
+              type="radio"
+              id="noCastrado"
+              name="castrado"
+              label="No castrado/a"
+              value="noCastrado"
+              checked={newMascota.castrado === 'noCastrado'}
+              onChange={handleChange}
+            />
+          </div>
         </Form.Group>
         <UploadWidget />
         <div>
@@ -239,7 +271,7 @@ function FormMascota() {
           type="submit"
           onClick={(e) => handleSubmit(e)}
         >
-          Submit
+          Enviar
         </Button>
       </Form>
     </div>
