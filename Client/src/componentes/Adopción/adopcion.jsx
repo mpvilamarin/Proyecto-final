@@ -10,8 +10,10 @@ import {
   filterMascotaByFundacion,
 } from "../../redux/Actions/filtroAndOrdenamiento.js";
 import Pagination from "./Paginación/paginacion.jsx";
-import './adopcion.css';
+
+import styles from './adopcion.module.css';
 import CardAdop from "../Cartas/cardAdopcion.jsx";
+
 
 
 const Adopcion = () => {
@@ -89,97 +91,99 @@ const Adopcion = () => {
   }
 
   return (
-    <div className="container">
-      <h2>Mascotas en adopción</h2>
-      <div>
-        <label>Género:</label>
-        <select value={generoFilter} onChange={handleGeneroFilter}>
-          <option value="">Todos</option>
-          <option value="Macho">Macho</option>
-          <option value="Hembra">Hembra</option>
-          <option value="Desconocido">Desconocido</option>
-        </select>
-      </div>
-
-      <div>
-        <label>Ordenar por nombre:</label>
-        <button onClick={handleSortAsc}>A-Z</button>
-        <button onClick={handleSortDesc}>Z-A</button>
-      </div>
-      <div>
-
-        <div>
-          <h2>Especie</h2>
-          <div>
-            <label htmlFor="especie">Especie:</label>
-            <select id="especie" value={especie} onChange={handleEspecieFilter}>
-              <option value="">perros y gatos</option>
-              <option value="perro">Perro</option>
-              <option value="gato">Gato</option>
+    <div className={styles.container}>
+      <h1>Elige las características de tu mascota</h1>
+      <div className={styles.selectoresWrapper}>
+          <div className={styles.divSelector}>
+            <label>Género:</label>
+            <select value={generoFilter} onChange={handleGeneroFilter} className={styles.options}>
+              <option value="">Todos</option>
+              <option value="Macho">Macho</option>
+              <option value="Hembra">Hembra</option>
+              <option value="Desconocido">Desconocido</option>
             </select>
           </div>
-        </div>
-
-        {/* <label>Fundaciones:</label> */}
-        {/* <select
-                    className={styles.filterSelect}
-                    onChange={(event) => handleFilterByFundacion(event)}
-                >
-                    <option value="">Seleccionar</option>
-                    <option value="Todas">Todas las fundaciones</option>
-                    {fundState?.sort().map((fund) => (
-                        <option key={fund} value={fund}>
-                            {fund}
-                        </option>
-                    ))}
-                </select> */}
+          <div>
+          <label>Ordenar por nombre:</label>
+          <button onClick={handleSortAsc}>A-Z</button>
+          <button onClick={handleSortDesc}>Z-A</button>
+          </div>
+          <div>
+          <label htmlFor="especie">Especie:</label>
+            <select id="especie" value={especie} onChange={handleEspecieFilter} className={styles.options}>
+              <option value="">Perros y gatos</option>
+              <option value="perro">Perros</option>
+              <option value="gato">Gatos</option>
+            </select>
+          </div>
+          <div>
+          <label htlmFor="fundacion">Fundación:</label>
+            <select 
+            className={styles.options}
+            onChange={handleFundacion}
+            value={selectedFundacion}
+            >
+            <option value='All'>Ver todas las fundaciones</option>
+            {
+              uniqueFundaciones.map((x, index) => (
+                <option value={x} key={index}>{x}</option>
+              ))
+            }
+          </select>
+          </div>
       </div>
 
-      <div>
-        <select
-          onChange={handleFundacion}
-          className="style"
-          value={selectedFundacion}
-        >
-          <option value='All'>fundaciones</option>
-          {
-            uniqueFundaciones.map((x, index) => (
-              <option value={x} key={index}>{x}</option>
-            ))
-          }
-        </select>
+      <div className={styles.containerAnimales}>
+        {currentElements.map((mascota, indexMascota) => (
+          <CardAdop mascota={mascota} indexMascota={mascota.id} key={indexMascota} />
+        ))}
       </div>
 
-      <div className="stilos">
-        <div>
-          {
-            currentPage === 1 ? (<span></span>) : (<button className="" onClick={e => paginationButtonPrev(e)}>Prev</button>)
-          }
-        </div>
-        <div className="stilos">
+      <div className={styles.paginationContainer}>
+        <div className={styles.pagination}>
+          <div>
+            {currentPage > 1 && (
+              <button className={styles.button} onClick={paginationButtonPrev}>
+                Prev
+              </button>
+            )}
+          </div>
+
           <Pagination
             currentPage={currentPage}
             elementsPerPage={elementsPerPage}
             totalElements={allPets.length}
             onPageChange={handlePageCh}
           />
+
           <div>
-            {
-              Math.ceil(allPets.length / elementsPerPage) > currentPage ? (
-                <button className="" onClick={e => paginationButtonNext(e)}>next</button>
-              ) : (<span></span>)
-            }
+            {Math.ceil(allPets.length / elementsPerPage) > currentPage && (
+              <button className={styles.button} onClick={paginationButtonNext}>
+                Next
+              </button>
+            )}
           </div>
         </div>
       </div>
-      <div className="container">
-      {currentElements.map((mascota, indexMascota)=>{
-          return(<CardAdop mascota={mascota} indexMascota={indexMascota}/>)
-        })
-        }
-      </div>
     </div>
   );
-};
-
+}
 export default Adopcion;
+
+/*
+//       <div className={styles.cardContainer}>
+//         {currentElements.map((mascota, indexMascota) => (
+//           <Card key={indexMascota} style={{ width: '18rem' }}>
+//             <Card.Img variant="top" src={mascotas} alt="Mascota" className="card-image" />
+//             <Card.Body>
+//               <Card.Title>{mascota.nombre}</Card.Title>
+//               <Card.Text>
+//                 Género: {mascota.genero}
+//                 <br />
+//                 Temperamento: {mascota.temperamento}
+//               </Card.Text>
+//               <Link to={`/mascota/${mascota.id}`}><Button variant="primary">Ver más</Button></Link>
+//             </Card.Body>
+//           </Card>)
+//         )
+*/

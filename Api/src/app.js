@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const routes = require('./routes/index.js');
+const mercadopago = require("mercadopago");
+require("dotenv").config();
+const { MERCADOPAGO_KEY } = process.env;
 
 require('./db.js');
 
@@ -34,6 +37,10 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   const message = err.message || err;
   console.error(err);
   res.status(status).send(message);
+});
+
+mercadopago.configure({
+  access_token: MERCADOPAGO_KEY,
 });
 
 module.exports = server;

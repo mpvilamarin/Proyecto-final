@@ -21,7 +21,7 @@ const Profile = () => {
   }
 
   return (
-    isAuthenticated && (
+    isAuthenticated && (    
       <div className={styles.container}>
         <h1 className={styles.title}>Mi perfil</h1>
         <div className={styles.infoPrincipal}>
@@ -30,16 +30,12 @@ const Profile = () => {
           <p className={styles.text}>Correo: {user.email}</p>
         </div>
         <h2 className={styles.sub}>Mis peluditos favoritos</h2>
-        <div>
-          
-          {mascotasFav.map((mascota)=>{
-            return(
+          <div>
+            {mascotasFav.map((mascota)=>{
               <CardAdop mascota={mascota} indexMascota={mascota.id}/>
-            )
-          })} 
+            })} 
+          </div>
         </div>
-      </div>
-      
     )
   );
 };
