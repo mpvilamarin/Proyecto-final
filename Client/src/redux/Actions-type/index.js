@@ -36,3 +36,6 @@ export const UPDATE_MASCOTA = "UPDATE_MASCOTA";
 export const UPDATE_USUARIOS = "UPDATE_USUARIOS";
 
 export const RESET_DETAIL = "RESET_DETAIL";
+
+export const ADDFAV = "ADDFAV";
+

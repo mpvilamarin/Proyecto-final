@@ -28,6 +28,7 @@ import {
   DELETE_MASCOTA,
   DELETE_USUARIO,
   POST_REVIEWS,
+  ADDFAV,
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -41,6 +42,7 @@ const initialState = {
   usuarios: [],
   sesion: [],
   usuarioDetalle: [],
+  mascotasFav:[],
 
   adopciones: [],
   detalleAdopcion: [],
@@ -299,6 +301,9 @@ function rootReducer(state = initialState, action) {
       };
     case RESET_DETAIL:
       return { ...state, fundacionDetail: null };
+
+    case ADDFAV:
+      return { ...state, mascotasFav: action.payload}
 
     default:
       return state;

@@ -2,7 +2,8 @@ import style from './contacto.module.css';
 
 const contacto = () => {
   return (
-    <footer className={style.footer}>
+    <div className={style.container}>
+      <footer className={style.footer}>
       <div>
         <small>Ponte en contacto con nosotros:</small>
       </div>
@@ -13,6 +14,7 @@ const contacto = () => {
         <small>7-654-891</small>
       </div>
     </footer>
+    </div>
   )
 }
 
