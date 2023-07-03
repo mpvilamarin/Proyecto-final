@@ -49,6 +49,7 @@ const DetailFundacion = () => {
               <img src={fundaciones} alt="fundacion"></img>
             </div>
           )}
+          <FormReviews/>
           <h2>Nombre: {fundacion.nombre}</h2>
           <h5>Ciudad: {fundacion.ciudad}</h5>
           <h5>Dirección: {fundacion.direccion}</h5>
@@ -56,14 +57,17 @@ const DetailFundacion = () => {
           <h5>Email: {fundacion.email}</h5>
           <h5>Fecha de Fundación: {fundacion.fundadaEn}</h5>
           <h5>Misión: {fundacion.mision}</h5>
+
           <div style={{ paddingLeft: '80%' }}>
             <FormReviews />
-            <Review />
+            
           </div>
+
 
           <Link to="/home">
             <button>BACK TO HOME</button>
           </Link>
+           
         </div>
       )}
 
