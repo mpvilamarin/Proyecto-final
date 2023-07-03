@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postMascota } from '../../redux/Actions/post';
 import { getAllFundaciones } from '../../redux/Actions/get';
 import './stilosFormularioMascota.css';
+import UploadWidget from "../../componentes/Upload/UploadWidget";
 
 function FormMascota() {
   const fundaciones = useSelector((state) => state.fundaciones);
@@ -22,9 +23,9 @@ function FormMascota() {
     temperamento: '',
     descripcion: '',
     castrado: '',
+    imagen_url: '',
     fundacionId: [],
   });
-
   const [showAlert, setShowAlert] = useState(false);
   const [invalidFields, setInvalidFields] = useState([]);
 
@@ -54,6 +55,7 @@ function FormMascota() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid()) {
+      console.log(newMascota)
       dispatch(postMascota(newMascota));
       setNewMascota({
         nombre: '',
@@ -64,6 +66,7 @@ function FormMascota() {
         temperamento: '',
         descripcion: '',
         castrado: '',
+        imagen_url: '',
         fundacionId: [],
       });
       setShowAlert(false);
@@ -241,7 +244,7 @@ function FormMascota() {
             />
           </div>
         </Form.Group>
-
+        <UploadWidget onImageUpload={(imageUrl) => setNewMascota({ ...newMascota, imagen_url: imageUrl })} />
         <div>
           <div>
             {sortedFundacion.length >= 1 ? (
@@ -264,6 +267,8 @@ function FormMascota() {
             )}
           </div>
         </div>
+        
+        
 
         <Button
           variant="primary"

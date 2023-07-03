@@ -1,13 +1,13 @@
-import './App.css';
-import { Route, Routes , useLocation, Navigate} from 'react-router-dom';
-import  axios  from 'axios';
-import Home from './componentes/Home/home'
-import Nosotros from './componentes/Nosotros/nosotros';
-import Adopcion from './componentes/Adopción/adopcion';
-import NavBar from './componentes/NavBar/navbar';
-import Fundacion from './componentes/Fundación/Fundacion';
-import Registro from './componentes/Sesiones/registro/registro';
-import Redirect from './componentes/Redirect/Redirect';
+import "./App.css";
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+import axios from "axios";
+import Home from "./componentes/Home/home";
+import Nosotros from "./componentes/Nosotros/nosotros";
+import Adopcion from "./componentes/Adopción/adopcion";
+import NavBar from "./componentes/NavBar/navbar";
+import Fundacion from "./componentes/Fundación/Fundacion";
+import Registro from "./componentes/Sesiones/registro/registro";
+import Redirect from "./componentes/Redirect/Redirect";
 
 
 import Contacto from './componentes/Contacto/contacto'
@@ -16,38 +16,33 @@ import LogOut from './componentes/Autenticación/LogOut/logout';
 import Perfil from './componentes/Autenticación/Perfil/perfil';
 import { useAuth0 } from '@auth0/auth0-react';
 import Inicio from './componentes/Inicio/inicio';
-
-
 import Login2 from './componentes/Sesiones/sesion/login2';
 // import Contacto from './componentes/Contacto/contacto';
 import Donacion from './componentes/Donaciones/donaciones';
+
 import Feedback from './componentes/Donaciones/feedback/Feedback';
+
 // import { RequireAuth } from "react-auth-kit";
 
-
-
 // const location = useLocation();
-import FormFundaciones from './componentes/Forms/FormFundaciones.jsx'
-import FormMascota from './componentes/Forms/FormMascota.jsx'
-import DetalleMascota from './componentes/Mascota/detailMascota';
-import DetalleFundacion from './componentes/Fundación/detailFundacion'
+import FormFundaciones from "./componentes/Forms/FormFundaciones.jsx";
+import FormMascota from "./componentes/Forms/FormMascota.jsx";
+import DetalleMascota from "./componentes/Mascota/detailMascota";
+import DetalleFundacion from "./componentes/Fundación/detailFundacion";
 // import CardFundaciones from './componentes/Cartas/cardFundacion'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-
-  axios.defaults.baseURL = 'http://localhost:3001/'
+  axios.defaults.baseURL = "http://localhost:3001/";
   const location = useLocation();
   const { isAutheticated } = useAuth0();
 
   return (
-      <div>
-            <NavBar/>
-          <Routes>
-          {/* <Route
+    <div>
+      <NavBar />
+      <Routes>
+        {/* <Route
           path="/"
           element={
           //  <RequireAuth loginPath="/login">
@@ -55,7 +50,6 @@ function App() {
           //  </RequireAuth>
           }
         ></Route> */}
-
             {/* <Route exact path="/" element={<Landing/>}></Route> */}
             <Route path="/" element={<Home />} />            
             <Route path="/about" element={<Nosotros />} />
@@ -77,6 +71,7 @@ function App() {
           </Routes> 
           <footer><Contacto/></footer>
         </div>
+
   );
 }
 
