@@ -15,6 +15,6 @@
 
 .filters {
   display: flex;
-  justify-content: center; /* Centrar horizontalmente los elementos */
-  align-items: center; /* Centrar verticalmente los elementos */
+  justify-content: center;
+  align-items: center;
 }
