@@ -54,15 +54,20 @@ class CloudinaryUploadWidget extends Component {
       (error, result) => {
         if (!error && result && result.event === "success") {
           console.log("Done! Here is the image info: ", result.info);
-          document
-            .getElementById("uploadedimage")
-            .setAttribute("src", result.info.secure_url);
+          // document
+          //   .getElementById("uploadedimage")
+          //   .setAttribute("src", result.info.secure_url);
+          const uploadedImage = document.getElementById("uploadedimage");
+          if (uploadedImage) {
+            uploadedImage.setAttribute("src", result.info.secure_url);
+          }
         }
       }
     );
     document.getElementById("upload_widget").addEventListener(
       "click",
       function () {
+        event.preventDefault();
         myWidget.open();
       },
       false
