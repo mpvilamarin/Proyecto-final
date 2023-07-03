@@ -10,7 +10,7 @@ import mascotas from "./perroGato.png";
 export default function CardMascota() {
   const dispatch = useDispatch();
   const allMascotas = useSelector((state) => state.mascotas);
-
+  console.log(allMascotas);
   useEffect(() => {
     dispatch(getAllMascotas());
   }, [dispatch]);
@@ -55,7 +55,7 @@ export default function CardMascota() {
               <div className="image-container">
                 <Link to={`/mascota/${mascota.id}`}>
                   <img
-                    src={mascotas}
+                    src={mascota.imagen_url}
                     alt="Mascota"
                     className="card-image"
                   />
