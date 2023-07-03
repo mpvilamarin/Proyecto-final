@@ -56,14 +56,14 @@ const Login2 = () => {
 
        return (
            <div className={styles.container}>
-               <div className={styles.formContainer}>
+               <div className={styles.loginbox}>
                    <form className={styles.form} 
                    //onSubmit={formik.handleSubmit}
                    >
                        <div>
-                           <h1 className={styles.title}>Inicia sesión</h1>
+                           <h1 className={styles.title}>Inicia sesión como fundación</h1>
                            <div className={styles.field}>
-                               <label className={styles.label}>Email:</label>
+                               
                                <input
                                    type="email"
                                  //  value={ formik.values.email }
@@ -74,7 +74,7 @@ const Login2 = () => {
                                    />
                            </div>
                            <div className={styles.field}>
-                               <label className={styles.label}>Password:</label>
+                              
                                <input
                                    type="password"
                                 //   value={formik.values.contraseña}
@@ -86,13 +86,37 @@ const Login2 = () => {
                                {/*errors.contraseña && <p className={styles.errors}>{errors.contraseña}</p>*/}
                            </div>
                            {/*errors.general && <p className={styles.errors}>{errors.general}</p>*/}
+                           <br></br>
+                           <div className={styles.divBtn}>
+                           <button type="submit" className={styles.btn}>
+                               Enviar
+                           </button>
+                           </div>
                            <Link to="/registro" className={styles.link}>
                                ¿No estás registrado?
                            </Link>
-                           <button type="submit" className={styles.sendButton}>
-                               Enviar
-                           </button>
                        </div>
+{/* <div class="login-box">
+  <p>Login</p>
+  <form>
+    <div class="user-box">
+      <input required="" name="" type="text">
+      <label>Email</label>
+    </div>
+    <div class="user-box">
+      <input required="" name="" type="password">
+      <label>Password</label>
+    </div>
+    <a href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </a>
+  </form>
+  <p>Don't have an account? <a href="" class="a2">Sign up!</a></p>
+</div> */}
                    </form>
                </div>
            </div>

@@ -1,6 +1,5 @@
 .container {
     background-color: #171717;
-    justify-content: space-evenly;
 }
 .loginbox{
     height: 75vh;
@@ -11,6 +10,7 @@
 .form {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     gap: 10px;
     background-color: white;
     padding: 2.5em;
