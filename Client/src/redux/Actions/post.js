@@ -6,6 +6,7 @@ import {
     POST_FUNDACIONES,
     POST_MASCOTA,
     POST_USUARIO,
+    POST_REVIEWS,
     POST_LOGIN
 } from "../Actions-type/index.js";
 
