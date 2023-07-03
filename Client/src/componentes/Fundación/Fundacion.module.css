@@ -1,3 +1,20 @@
+.containerFundaciones {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  background-image: url(https://www.vidanimal.org.ar/wp-content/uploads/2023/03/chico-cargando-cachorro-golden-retriever.jpg);
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  height: 90vh;
+}
+
 .filters {
-    display: flex;
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente los elementos */
+  align-items: center; /* Centrar verticalmente los elementos */
 }

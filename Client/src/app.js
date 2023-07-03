@@ -9,18 +9,17 @@ import Fundacion from "./componentes/Fundación/Fundacion";
 import Registro from "./componentes/Sesiones/registro/registro";
 import Redirect from "./componentes/Redirect/Redirect";
 
-
-import Contacto from './componentes/Contacto/contacto'
+import Contacto from "./componentes/Contacto/contacto";
 //import { RequireAuth } from "react-auth-kit";
-import LogOut from './componentes/Autenticación/LogOut/logout';
-import Perfil from './componentes/Autenticación/Perfil/perfil';
-import { useAuth0 } from '@auth0/auth0-react';
-import Inicio from './componentes/Inicio/inicio';
-import Login2 from './componentes/Sesiones/sesion/login2';
+import LogOut from "./componentes/Autenticación/LogOut/logout";
+import Perfil from "./componentes/Autenticación/Perfil/perfil";
+import { useAuth0 } from "@auth0/auth0-react";
+import Inicio from "./componentes/Inicio/inicio";
+import Login2 from "./componentes/Sesiones/sesion/login2";
 // import Contacto from './componentes/Contacto/contacto';
-import Donacion from './componentes/Donaciones/donaciones';
+import Donacion from "./componentes/Donaciones/donaciones";
 
-import Feedback from './componentes/Donaciones/feedback/Feedback';
+import Feedback from "./componentes/Donaciones/feedback/Feedback";
 
 // import { RequireAuth } from "react-auth-kit";
 
@@ -50,28 +49,29 @@ function App() {
           //  </RequireAuth>
           }
         ></Route> */}
-            {/* <Route exact path="/" element={<Landing/>}></Route> */}
-            <Route path="/" element={<Home />} />            
-            <Route path="/about" element={<Nosotros />} />
-            <Route path="/fundaciones" element={<Fundacion/>} />
-            <Route path="/mascota/:id" element={<DetalleMascota/>} />
-            <Route path="/fundacion/:id" element={<DetalleFundacion/>} />
-            <Route path="/adopciones" element={<Adopcion />} />
-            <Route path="/login" element={<Inicio />} />
-            <Route path="/login2" element={<Login2/>}/>
-            <Route path="/logout" element={<LogOut />}/>
-            <Route path="/perfil" element={<Perfil />}/>
-            <Route path="/registro" element={<Registro />} />
-            <Route path="/formFundaciones" element={<FormFundaciones/>}/>
-            <Route path="/formMascota" element={<FormMascota />} />
-            <Route path="/donaciones" element={<Donacion />} />
-            <Route path="/donaciones/feedback" element={<Feedback />} />
-            <Route path='*' element={<Navigate to='/error'/>}/>
-            <Route path="/error" element={< Redirect/>} />
-          </Routes> 
-          <footer><Contacto/></footer>
-        </div>
-
+        {/* <Route exact path="/" element={<Landing/>}></Route> */}
+        <Route path="/" element={<Adopcion />} />
+        <Route path="/about" element={<Nosotros />} />
+        <Route path="/fundaciones" element={<Fundacion />} />
+        <Route path="/mascota/:id" element={<DetalleMascota />} />
+        <Route path="/fundacion/:id" element={<DetalleFundacion />} />
+        <Route path="/adopciones" element={<Adopcion />} />
+        <Route path="/login" element={<Inicio />} />
+        <Route path="/login2" element={<Login2 />} />
+        <Route path="/logout" element={<LogOut />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="/formFundaciones" element={<FormFundaciones />} />
+        <Route path="/formMascota" element={<FormMascota />} />
+        <Route path="/donaciones" element={<Donacion />} />
+        <Route path="/donaciones/feedback" element={<Feedback />} />
+        <Route path="*" element={<Navigate to="/error" />} />
+        <Route path="/error" element={<Redirect />} />
+      </Routes>
+      <footer>
+        <Contacto />
+      </footer>
+    </div>
   );
 }
 
