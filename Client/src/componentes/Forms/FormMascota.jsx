@@ -23,7 +23,7 @@ function FormMascota() {
     temperamento: '',
     descripcion: '',
     castrado: '',
-    imagen_url: '',
+    // imagen_url: '',
     fundacionId: [],
   });
   const [showAlert, setShowAlert] = useState(false);
@@ -66,7 +66,7 @@ function FormMascota() {
         temperamento: '',
         descripcion: '',
         castrado: '',
-        imagen_url: '',
+        // imagen_url: '',
         fundacionId: [],
       });
       setShowAlert(false);
@@ -244,7 +244,8 @@ function FormMascota() {
             />
           </div>
         </Form.Group>
-        <UploadWidget onImageUpload={(imageUrl) => setNewMascota({ ...newMascota, imagen_url: imageUrl })} />
+        <UploadWidget />
+        {/*onImageUpload={(imageUrl) => setNewMascota({ ...newMascota, imagen_url: imageUrl })}*/}  
         <div>
           <div>
             {sortedFundacion.length >= 1 ? (
