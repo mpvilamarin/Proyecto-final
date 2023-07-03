@@ -99,6 +99,19 @@ export const getDetalleUsuario = (id) => {
   };
 };
 
+export const getReviews = () =>{
+  return async (dispatch) => {
+    try {
+      const response = await axios.get('http://localhost:3001/usuarios/reviews');
+      let reviews = response.data?.map((e) => e);
+      dispatch({type: GET_REVIEWS, payload: reviews})
+    } catch (error) {
+      console.log(`error ${error}`);
+      console.log(`no hay reviews aun`);
+    }
+  };
+};
+
 export const resetDetail = () => {
   return async function (dispatch) {
     try {
@@ -115,9 +128,9 @@ export const reviews = () =>{
         const response = await axios.get('http://localhost:3001/usuarios/reviews');
         let allReviews = response.data?.map((e) => e);
         dispatch({ type: GET_REVIEWS, payload: allReviews });
-      } catch (error) {
+    } catch (error) {
         console.log(`error ${error}`);
         console.log(`no reviews creadas `);
-      }
     }
+  }
 }

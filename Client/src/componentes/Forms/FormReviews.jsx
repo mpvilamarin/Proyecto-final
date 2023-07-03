@@ -1,45 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { postReview } from '../../redux/Actions/post';
 
-const FormReviews = () => {
-  const [text, setText] = useState('');
-  const [rating, setRating] = useState(0);
-
-  const handleTextChange = (e) => {
-    setText(e.target.value);
-  };
-
-  const handleRatingChange = (newRating) => {
-    setRating(newRating);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Espacio para enviar los datos al back, el texto y el rating
-    console.log('Texto:', text);
-    console.log('Rating:', rating);
-    setText('');
-    setRating(0);
-  };
-
-  return (
-    <div>
-      <h2>Escribe tu reseña</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="text">Comentario:</label>
-          <textarea id="text" value={text} onChange={handleTextChange} />
-        </div>
-        <div>
-          <label htmlFor="rating">Calificación:</label>
-          <StarRating rating={rating} onRatingChange={handleRatingChange} />
-        </div>
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
-  );
-};
-
-// Componente de sistema de calificación de estrellas
 const StarRating = ({ rating, onRatingChange }) => {
   const handleStarClick = (newRating) => {
     onRatingChange(newRating);
@@ -56,6 +18,48 @@ const StarRating = ({ rating, onRatingChange }) => {
           ★
         </span>
       ))}
+    </div>
+  );
+};
+
+const FormReviews = () => {
+  const dispatch = useDispatch();
+  const [text, setText] = useState('');
+  const [rating, setRating] = useState(0);
+
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const handleRatingChange = (selectedRating) => {
+    setRating(selectedRating);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const reviewData = {
+      comentarios: text,
+      calificacion: rating,
+    };
+    dispatch(postReview(reviewData));
+    setText('');
+    setRating(0);
+  };
+
+  return (
+    <div>
+      <h3>Calificar Fundación:</h3>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Calificación:</label>
+          <StarRating rating={rating} onRatingChange={handleRatingChange} />
+        </div>
+        <div>
+          <label>Comentarios:</label>
+          <textarea value={text} onChange={handleTextChange} />
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
     </div>
   );
 };
