@@ -38,6 +38,8 @@ const postDonacion = async (req, res) => {
   }
 };
 
+
+
 const getDonacion = async (req, res) => {
   try {
     const donaciones = await Donaciones.findAll();
