@@ -20,6 +20,8 @@ import Login2 from './componentes/Sesiones/sesion/login2';
 // import Contacto from './componentes/Contacto/contacto';
 import Donacion from './componentes/Donaciones/donaciones';
 
+import Feedback from './componentes/Donaciones/feedback/Feedback';
+
 // import { RequireAuth } from "react-auth-kit";
 
 // const location = useLocation();
@@ -63,6 +65,7 @@ function App() {
             <Route path="/formFundaciones" element={<FormFundaciones/>}/>
             <Route path="/formMascota" element={<FormMascota />} />
             <Route path="/donaciones" element={<Donacion />} />
+            <Route path="/donaciones/feedback" element={<Feedback />} />
             <Route path='*' element={<Navigate to='/error'/>}/>
             <Route path="/error" element={< Redirect/>} />
           </Routes> 
