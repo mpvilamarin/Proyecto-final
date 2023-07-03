@@ -139,7 +139,7 @@ export default function Nosotros() {
         <ReactCardFlip isFlipped={flip3} flipDirection="horizontal">
           <div className={styles.content} onMouseEnter={handleMouseEnter3} onMouseLeave={handleMouseLeave3}>
             <div>
-              <img className={styles.image} src={require("../../assets/mari.png")} alt="Mari" />
+              <img className={styles.image} src={require("../../assets/Mari.png")} alt="Mari" />
               <p className={styles.name}>María</p>
             </div>
           </div>
