@@ -10,7 +10,8 @@ import {
 export const updateUsuario = (email,nombre, fechaNacimiento, contraseña) => {
     return async (dispatch) => {
         try{
-            const response = await axios.put(`http://localhost:3001/Usuarios/${email}`, {
+
+            const response = await axios.put(`/usuarios/${email}`, {
                 nombre,
                 fechaNacimiento,
                 contraseña,
@@ -28,7 +29,7 @@ export const updateUsuario = (email,nombre, fechaNacimiento, contraseña) => {
 export const updateMascota = (nombre, especie, edad, genero, temperamento, descripcion) => {
     return async (dispatch) => {
         try{
-            const response = await axios.put(`http://localhost:3001/mascotas/${nombre}`, {
+            const response = await axios.put(`/mascotas/${nombre}`, {
                 especie,
                 edad,
                 genero,
@@ -49,7 +50,8 @@ export const updateMascota = (nombre, especie, edad, genero, temperamento, descr
 export const updateFundacion = (id, nombre, ciudad, direccion, telefono, email, fundadaEn, mision) => {
     return async (dispatch) => {
         try{
-            const response = await axios.put(`http://localhost:3001/fundaciones/${id}`, {
+
+            const response = await axios.put(`/fundaciones/${id}`, {
                 nombre,
                 ciudad,
                 direccion,

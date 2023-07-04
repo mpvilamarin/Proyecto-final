@@ -1,3 +1,4 @@
+
 import "./App.css";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import axios from "axios";
@@ -33,7 +34,10 @@ import DetalleFundacion from "./componentes/Fundación/detailFundacion";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:3001/";
+
+
+  axios.defaults.baseURL = 'https://fundacion-mascotas-uz9u.onrender.com/';
+
   const location = useLocation();
   const { isAutheticated } = useAuth0();
 
