@@ -50,7 +50,7 @@ function App() {
           }
         ></Route> */}
         {/* <Route exact path="/" element={<Landing/>}></Route> */}
-        <Route path="/" element={<Adopcion />} />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<Nosotros />} />
         <Route path="/fundaciones" element={<Fundacion />} />
         <Route path="/mascota/:id" element={<DetalleMascota />} />
