@@ -8,6 +8,8 @@ import {
   GET_ALL_USUARIOS,
   GET_DETALLE_USUARIO,
   GET_NAME_FUNDACIONES,
+  GET_REVIEWS,
+
 } from "../Actions-type/index.js";
 
 //====================================>> GET'S <<=================================================================
@@ -16,7 +18,7 @@ export const getAllMascotas = () => {
   return async (dispatch) => {
     try {
 
-      const response = await axios.get("/mascotas/");
+      const response = await axios.get("/mascotas");
 
       let mascotas = response.data?.map((e) => e);
       dispatch({ type: GET_ALL_MASCOTAS, payload: mascotas });
@@ -101,6 +103,19 @@ export const getDetalleUsuario = (id) => {
   };
 };
 
+export const getReviews = () =>{
+  return async (dispatch) => {
+    try {
+      const response = await axios.get('http://localhost:3001/usuarios/reviews');
+      let reviews = response.data?.map((e) => e);
+      dispatch({type: GET_REVIEWS, payload: reviews})
+    } catch (error) {
+      console.log(`error ${error}`);
+      console.log(`no hay reviews aun`);
+    }
+  };
+};
+
 export const resetDetail = () => {
   return async function (dispatch) {
     try {
@@ -110,3 +125,16 @@ export const resetDetail = () => {
     }
   };
 };
+
+export const reviews = () =>{
+  return async(dispatch) => {  
+  try {
+        const response = await axios.get('http://localhost:3001/usuarios/reviews');
+        let allReviews = response.data?.map((e) => e);
+        dispatch({ type: GET_REVIEWS, payload: allReviews });
+    } catch (error) {
+        console.log(`error ${error}`);
+        console.log(`no reviews creadas `);
+    }
+  }
+}

@@ -28,6 +28,11 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        tipo:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: 'usuario'
+        }
         // activo: {
         //     type: DataTypes.BOOLEAN,
         //     defaultValue: true,

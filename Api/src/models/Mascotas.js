@@ -40,6 +40,10 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        // imagen_url: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        //   },
         // activo: {
         //     type: DataTypes.BOOLEAN,
         //     defaultValue: true,

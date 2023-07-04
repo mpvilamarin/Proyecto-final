@@ -13,6 +13,7 @@ function FormFundaciones() {
     direccion: '',
     telefono: '',
     email: '',
+    contraseña: '',
     fundadaEn: '',
     mision: '',
     borrado: false
@@ -38,6 +39,7 @@ function FormFundaciones() {
         direccion: '',
         telefono: '',
         email: '',
+        contraseña: '',
         fundadaEn: '',
         mision: '',
         borrado: false
@@ -56,6 +58,7 @@ function FormFundaciones() {
       'direccion',
       'telefono',
       'email',
+      'contraseña',
       'fundadaEn',
       'mision'
     ];
@@ -71,8 +74,8 @@ function FormFundaciones() {
 
   return (
     <div className="form-container">
-        <h1>FORMULARIO PARA FUNDACIONES</h1>
-      <Form>
+      <h1 className="title-form">FORMULARIO PARA FUNDACIONES</h1>
+      <Form className="custom-form">
         {showAlert && (
           <Alert variant="danger">Por favor, completa todos los campos.</Alert>
         )}
@@ -131,6 +134,17 @@ function FormFundaciones() {
             className={invalidFields.includes('email') ? 'is-invalid' : ''}
           />
         </Form.Group>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Contraseña</Form.Label>
+          <Form.Control
+            type="contraseña"
+            name="contraseña"
+            value={newFundacion.contraseña}
+            onChange={handleChange}
+            placeholder="contraseña"
+            className={invalidFields.includes('contraseña') ? 'is-invalid' : ''}
+          />
+        </Form.Group>
         <Form.Group controlId="formBasicFundadaEn">
           <Form.Label>Fundada en</Form.Label>
           <Form.Control
@@ -152,7 +166,7 @@ function FormFundaciones() {
           />
         </Form.Group>
         <Button variant="primary" type="submit" onClick={handleSubmit}>
-          Submit
+          Enviar
         </Button>
       </Form>
     </div>

@@ -8,31 +8,27 @@ import {
   GET_DETALLE_USUARIO,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
   GET_NAME_FUNDACIONES,
-  
   POST_ADOPCIONES,
   POST_DONACIONES,
   POST_FUNDACIONES,
   POST_MASCOTA,
   POST_USUARIO,
   POST_LOGIN,
-
   SORT_MASCOTAS_AZ,
   SORT_MASCOTAS_ZA,
   SORT_FUNDACIONES_AZ,
   SORT_FUNDACIONES_ZA,
-
   RESET_DETAIL,
-  
   FILTER_MASCOTA_BY_GENERO,
   FILTER_FUNDACIONES_CIUDAD,
   FILTER_MASCOTA_BY_ESPECIE,
-  
   UPDATE_MASCOTA,
   UPDATE_FUNDACION,
   UPDATE_USUARIOS,
-
   DELETE_MASCOTA,
   DELETE_USUARIO,
+  POST_REVIEWS,
+  ADDFAV,
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -46,12 +42,15 @@ const initialState = {
   usuarios: [],
   sesion: [],
   usuarioDetalle: [],
+  mascotasFav:[],
 
   adopciones: [],
   detalleAdopcion: [],
 
   donaciones: [],
   detallesDonacion: [],
+
+  reviews: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -63,7 +62,7 @@ function rootReducer(state = initialState, action) {
         mascotaDetail: action.payload,
         filtroMascotas: action.payload,
       };
-  
+
     case GET_DETAIL_MASCOTAS:
       return {
         ...state,
@@ -88,16 +87,16 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_FILTER_MASCOTA_BY_FUNDACION:
-      const filterFundacion = state.filtroMascotas.filter(
-        (mascota) =>
-          mascota.Fundaciones.find(
-            (fundacion) => fundacion.nombre === action.payload
-          )
+      const filterFundacion = state.filtroMascotas.filter((mascota) =>
+        mascota.Fundaciones.find(
+          (fundacion) => fundacion.nombre === action.payload
+        )
       );
       console.log("filterFundacion:", filterFundacion);
       return {
         ...state,
-        mascotas: action.payload === "All" ? state.filtroMascotas : filterFundacion,
+        mascotas:
+          action.payload === "All" ? state.filtroMascotas : filterFundacion,
       };
 
     case FILTER_MASCOTA_BY_GENERO:
@@ -154,27 +153,30 @@ function rootReducer(state = initialState, action) {
         fundaciones: fundacionesByCiudad,
       };
     case GET_NAME_FUNDACIONES:
-     return {
+      return {
         ...state,
-        fundaciones: action.payload.length === 0 ? state.fundaciones : action.payload,
+        fundaciones:
+          action.payload.length === 0 ? state.fundaciones : action.payload,
       };
+    
     case FILTER_MASCOTA_BY_ESPECIE:
       const especie = action.payload;
-      if (especie === "todos") {
-        return {
-    ...state,
-    filtroMascotas: state.mascotas,
-    };
+      let mascotasFiltradas2 = [];
+
+      if (especie === "") {
+        mascotasFiltradas2 = state.filtroMascotas;
       } else {
-        const filteredMascotasByEs = state.mascotas.filter(
-    (mascota) => mascota.especie === especie
-      );
-    return {
-    ...state,
-    filtroMascotas: filteredMascotasByEs,
-    };
+        mascotasFiltradas2 = state.filtroMascotas.filter(
+          (mascota) => mascota.especie === especie
+        );
       }
     
+      return {
+        ...state,
+        mascotas: mascotasFiltradas2,
+      };
+
+
     case SORT_FUNDACIONES_AZ:
       return {
         ...state,
@@ -219,6 +221,13 @@ function rootReducer(state = initialState, action) {
         ...state,
         usuarios: state.sesion.concat(action.payload),
       };
+
+    case POST_REVIEWS:
+      return {
+        ...state,
+        reviews: state.reviews.concat(action.payload),
+      }
+      
     case DELETE_MASCOTA:
       return {
         ...state,
@@ -292,6 +301,9 @@ function rootReducer(state = initialState, action) {
       };
     case RESET_DETAIL:
       return { ...state, fundacionDetail: null };
+
+    case ADDFAV:
+      return { ...state, mascotasFav: action.payload}
 
     default:
       return state;

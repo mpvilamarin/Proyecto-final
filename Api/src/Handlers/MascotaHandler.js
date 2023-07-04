@@ -31,7 +31,7 @@ async function getMascota(req, res){
 
 /*----------------------------CREAR MASCOTAS--------------------------------------*/
 async function postMascota(req, res){
-    const {nombre, especie , edad , genero , temperamento , descripcion, fundacionId , tamaño, castrado} = req.body;
+    const {nombre, especie , edad , genero , temperamento , descripcion, fundacionId , tamaño, castrado,} = req.body;
     try { 
         if(!nombre || !especie || !edad || !genero || !temperamento || !descripcion || !tamaño || !castrado){
             return res
@@ -45,7 +45,7 @@ async function postMascota(req, res){
             temperamento, 
             descripcion,
             tamaño,
-            castrado
+            castrado,
         });  
         if(fundacionId){
             console.log(':::', newMascota);

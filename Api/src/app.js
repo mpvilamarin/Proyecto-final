@@ -5,6 +5,11 @@ const morgan = require('morgan');
 const cors = require('cors');
 const routes = require('./routes/index.js');
 
+const mercadopago = require("mercadopago");
+require("dotenv").config();
+const { MERCADOPAGO_KEY } = process.env;
+
+
 require('./db.js');
 
 const server = express();
@@ -19,7 +24,9 @@ server.use(cors({
   origin: '*', // Permite cualquier origen
 }));
 server.use((req, res, next) => {
+
   res.header('Access-Control-Allow-Origin', '*' , "https://proyecto-final-beta-sage.vercel.app/"); // update to match the domain you will make the request from
+
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
@@ -36,5 +43,12 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(status).send(message);
 });
 
+
+mercadopago.configure({
+  access_token: MERCADOPAGO_KEY,
+});
+
 module.exports = server;
+
+
 

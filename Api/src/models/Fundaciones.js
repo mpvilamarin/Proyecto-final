@@ -34,6 +34,10 @@ module.exports = (sequelize) => {
           isEmail: true,
         },
       },
+      contraseña: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
       fundadaEn: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -46,6 +50,11 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
+      tipo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'fundacion'
+      }
     },
     {
       timestamps: false,

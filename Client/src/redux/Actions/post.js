@@ -6,6 +6,11 @@ import {
     POST_FUNDACIONES,
     POST_MASCOTA,
     POST_USUARIO,
+
+    POST_REVIEWS,
+    POST_LOGIN,
+    ADDFAV,
+
 } from "../Actions-type/index.js";
 
 
@@ -43,7 +48,7 @@ export const postMascota = (newMascota) =>{
     }
   }
   
-  export const postDonaciones = (nuevaDonacion) =>{
+export const postDonaciones = (nuevaDonacion) => {
     return async(dispatch) => {
       try {
 
@@ -90,4 +95,47 @@ export const postMascota = (newMascota) =>{
       }
     }
   }
+
+
+  export const postReview = (crearReview ) => {
+    return async(dispatch) =>{
+      try {
+        const response = await axios.post('http://localhost:3001/usuarios/reviews', crearReview);
+        dispatch({
+          type: POST_REVIEWS,
+          payload: response.data,
+        })
+        console.log("review",response);
+      } catch (error) {
+        console.log("Error en el get de reviews:", error);
+      }
+    }
+  }
+  // export const postLogin = (newLogin) => {
+  //   return async(dispatch) => {
+  //     try {
+
+  //       const response = await axios.post('http://localhost:3001/usuarios/login', newLogin)
+  
+  //       dispatch({
+  //         type: POST_LOGIN,
+  //         payload: response.data,
+  //       })
+  //       alert('Login exitoso')
+  //     }
+  //     catch (error) {
+  //       alert(`error al loguearse ${error}`)
+  //     }
+  //   }
+  // }
+  export const addFav = (mascota) => {
+    if (mascota !== undefined) {
+      console.log('Se pasó el payload:', mascota);
+    } else {
+      console.log('No se pasó el payload');
+    }
+  
+    return { type: ADDFAV, payload: mascota };
+  };
+  
 

@@ -1,0 +1,92 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  background-image: url(https://www.savoringthegood.com/wp-content/uploads/2020/04/puppy-zoom-virtual-background.jpg);
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.containerAnimales{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.container h1 {
+  font-family: 'PlayFair display', sans-serif;
+  font-weight: 700;
+  color: #2d4d7a;
+  padding: 1em;
+  width: 100%;
+  margin-bottom: 10 px;
+  text-align: center;
+}
+.container label {
+  color: black
+}
+.paginationContainer {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex; /* Muestra los botones en la misma línea */
+  justify-content: center; /* Centra los botones horizontalmente */
+  align-items: center; /* Centra los botones verticalmente */
+  margin-top: 1rem; /* Añade un espacio superior entre el contenedor de tarjetas y el paginado */
+}
+
+.button {
+  margin: 0 0.5rem; /* Añade un espacio entre los botones Prev y Next */
+  transition: none;
+}
+
+.pagination button:first-child {
+  margin-right: 10px; 
+}
+
+.pagination button:last-child {
+  margin-left: 10px;
+}
+.cardContainer{
+  display: flex;
+  margin-top: 20px;
+}
+.divSelector{
+  font-family: "Trebuchet MS",
+    Arial,
+    Helvetica,
+    sans-serif;;
+    color: #000000;
+}
+.options{
+   font-family: "Trebuchet MS",
+    Arial,
+    Helvetica,
+    sans-serif;;
+    color: #050000;
+}
+.selectoresWrapper {
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.selectoresWrapper > * {
+  margin: 10px;
+}
+@media (max-width: 768px) {
+  .selectoresWrapper {
+    flex-direction: column;
+    /* Cambia a una disposición vertical en dispositivos con un ancho máximo de 768px */
+  }
+}
