@@ -23,8 +23,8 @@ function FormMascota() {
     temperamento: '',
     descripcion: '',
     castrado: '',
-    imagen_url: '',
     fundacionId: [],
+    // imagen_url: '',
   });
   const [showAlert, setShowAlert] = useState(false);
   const [invalidFields, setInvalidFields] = useState([]);
@@ -66,8 +66,7 @@ function FormMascota() {
         temperamento: '',
         descripcion: '',
         castrado: '',
-        imagen_url: '',
-        fundacionId: [],
+        // imagen_url: '',
       });
       setShowAlert(false);
       setInvalidFields([]);
@@ -86,6 +85,7 @@ function FormMascota() {
       'temperamento',
       'descripcion',
       'castrado',
+      
     ];
 
     const invalidFields = requiredFields.filter(
@@ -100,6 +100,7 @@ function FormMascota() {
   const sortedFundacion = fundaciones
     .slice()
     .sort((a, b) => a.nombre.localeCompare(b.nombre));
+
 
   return (
     <div className="form-container">
@@ -174,8 +175,8 @@ function FormMascota() {
               id="generoHembra"
               name="genero"
               label="Hembra"
-              value="hembra"
-              checked={newMascota.genero === "hembra"}
+              value="Hembra"
+              checked={newMascota.genero === "Hembra"}
               onChange={handleChange}
             />
             <Form.Check
@@ -184,8 +185,8 @@ function FormMascota() {
               id="generoMacho"
               name="genero"
               label="Macho"
-              value="macho"
-              checked={newMascota.genero === "macho"}
+              value="Macho"
+              checked={newMascota.genero === "Macho"}
               onChange={handleChange}
             />
           </div>
@@ -244,7 +245,8 @@ function FormMascota() {
             />
           </div>
         </Form.Group>
-        <UploadWidget onImageUpload={(imageUrl) => setNewMascota({ ...newMascota, imagen_url: imageUrl })} />
+        {/* <UploadWidget /> */}
+        {/*onImageUpload={(imageUrl) => setNewMascota({ ...newMascota, imagen_url: imageUrl })}*/}  
         <div>
           <div>
             {sortedFundacion.length >= 1 ? (
