@@ -3,7 +3,7 @@ const mercadoPagoRouter = express.Router();
 const {
   postDonacion,
   getDonacion,
-} = require("../Handlers/mercadoPagoHandler")
+} = require("../Handlers/MercadoPagoHandler")
 
 mercadoPagoRouter.post("/", postDonacion);
 mercadoPagoRouter.get("/", getDonacion);
