@@ -55,7 +55,7 @@ export default function CardMascota() {
               <div className="image-container">
                 <Link to={`/mascota/${mascota.id}`}>
                   <img
-                    src={mascota.imagen_url}
+                    src={mascotas}
                     alt="Mascota"
                     className="card-image"
                   />
