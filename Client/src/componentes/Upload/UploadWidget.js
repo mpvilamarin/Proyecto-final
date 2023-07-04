@@ -25,6 +25,7 @@ import React, { Component } from "react";
 
 class CloudinaryUploadWidget extends Component {
   componentDidMount() {
+    if (typeof window !== "undefined") {
     const cloudName = "drnfubuwt"; // replace with your own cloud name
     const uploadPreset = "yta9cllk"; // replace with your own upload preset
 
@@ -34,7 +35,7 @@ class CloudinaryUploadWidget extends Component {
     // the full list of possible parameters that you
     // can add see:
     //   https://cloudinary.com/documentation/upload_widget_reference
-
+    
     var myWidget = window.cloudinary.createUploadWidget(
       {
         cloudName: cloudName,
@@ -66,14 +67,14 @@ class CloudinaryUploadWidget extends Component {
     );
     document.getElementById("upload_widget").addEventListener(
       "click",
-      function () {
+      function (event) {
         event.preventDefault();
         myWidget.open();
       },
       false
     );
   }
-
+  }
   render() {
     return (
       <button id="upload_widget" className="cloudinary-button">
