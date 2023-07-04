@@ -27,6 +27,7 @@ import {
   UPDATE_USUARIOS,
   DELETE_MASCOTA,
   DELETE_USUARIO,
+  POST_REVIEWS,
   ADDFAV,
 } from "../Actions-type/index.js";
 
@@ -48,6 +49,8 @@ const initialState = {
 
   donaciones: [],
   detallesDonacion: [],
+
+  reviews: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -156,22 +159,22 @@ function rootReducer(state = initialState, action) {
           action.payload.length === 0 ? state.fundaciones : action.payload,
       };
     
-case FILTER_MASCOTA_BY_ESPECIE:
-  const especie = action.payload;
-  let mascotasFiltradas2 = [];
+    case FILTER_MASCOTA_BY_ESPECIE:
+      const especie = action.payload;
+      let mascotasFiltradas2 = [];
 
-  if (especie === "") {
-    mascotasFiltradas2 = state.filtroMascotas;
-  } else {
-    mascotasFiltradas2 = state.filtroMascotas.filter(
-      (mascota) => mascota.especie === especie
-    );
-  }
-
-  return {
-    ...state,
-    mascotas: mascotasFiltradas2,
-  };
+      if (especie === "") {
+        mascotasFiltradas2 = state.filtroMascotas;
+      } else {
+        mascotasFiltradas2 = state.filtroMascotas.filter(
+          (mascota) => mascota.especie === especie
+        );
+      }
+    
+      return {
+        ...state,
+        mascotas: mascotasFiltradas2,
+      };
 
 
     case SORT_FUNDACIONES_AZ:
@@ -218,6 +221,13 @@ case FILTER_MASCOTA_BY_ESPECIE:
         ...state,
         usuarios: state.sesion.concat(action.payload),
       };
+
+    case POST_REVIEWS:
+      return {
+        ...state,
+        reviews: state.reviews.concat(action.payload),
+      }
+      
     case DELETE_MASCOTA:
       return {
         ...state,

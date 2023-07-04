@@ -12,9 +12,9 @@ const Profile = () => {
 
   if (isLoading) {
     return (
-      <div>
+      <div className={styles.containerLoading}>
         <div className={styles.loading}>
-          <img src={require("../../../assets/LoadingCat.gif")} alt="cargando" />
+          <img className={styles.img}src={require("../../../assets/LoadingCat.gif")} alt="cargando" />
         </div>
       </div>
     )
