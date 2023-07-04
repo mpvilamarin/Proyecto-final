@@ -5,8 +5,10 @@ const morgan = require('morgan');
 const cors = require('cors');
 const routes = require('./routes/index.js');
 const mercadopago = require("mercadopago");
+const cloudinary = require('cloudinary').v2;
 require("dotenv").config();
-const { MERCADOPAGO_KEY } = process.env;
+const { MERCADOPAGO_KEY , CLOUD_NAME, CLOUD_KEY, CLOUD_KEY_SECRET} = process.env;
+
 
 require('./db.js');
 
@@ -42,5 +44,9 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 mercadopago.configure({
   access_token: MERCADOPAGO_KEY,
 });
-
+cloudinary.config({ 
+  cloud_name: CLOUD_NAME, 
+  api_key: CLOUD_KEY, 
+  api_secret: CLOUD_KEY_SECRET
+});
 module.exports = server;

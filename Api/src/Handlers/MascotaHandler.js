@@ -1,4 +1,5 @@
 const {Mascotas, Fundaciones} = require('../db');
+const cloudinary = require("cloudinary")
 
 const STATUS_OK =200;
 const STATUS_CREATED = 201;
@@ -31,9 +32,14 @@ async function getMascota(req, res){
 
 /*----------------------------CREAR MASCOTAS--------------------------------------*/
 async function postMascota(req, res){
-    const {nombre, especie , edad , genero , temperamento , descripcion, fundacionId , tamaño, castrado,} = req.body;
+    const {nombre, especie , edad , genero , temperamento , descripcion, tamaño, castrado, image , fundacionId} = req.body;
     try { 
-        if(!nombre || !especie || !edad || !genero || !temperamento || !descripcion || !tamaño || !castrado){
+        const result = await cloudinary.uploader.upload(image, {
+            folder: "animals",
+           // width: 300,
+           //  crop: "scale"
+        })
+            if(!nombre || !especie || !edad || !genero || !temperamento || !descripcion || !tamaño || !castrado || !image){
             return res
             .status(STATUS_ERROR).json({message: 'se requiere completar todos los datos'});
         }
@@ -46,6 +52,10 @@ async function postMascota(req, res){
             descripcion,
             tamaño,
             castrado,
+            image: {
+                public_id: result.public_id,
+                url: result.secure_url
+            }
         });  
         if(fundacionId){
             console.log(':::', newMascota);
