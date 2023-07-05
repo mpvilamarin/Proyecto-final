@@ -63,22 +63,27 @@ export const postDonaciones = (nuevaDonacion) => {
       }
     }
   }
+
   
-  export const postFundaciones = (nuevaFundacion) =>{
-    return async(dispatch) =>{
+  export const postFundaciones = (nuevaFundacion, email, nombre) => {
+    return async (dispatch) => {
       try {
 
-        const response = await axios.post('/fundaciones/', nuevaFundacion)
+        const response = await axios.post(
+          "http://localhost:3001/fundaciones",
+          nuevaFundacion, email, nombre
+        );
+
         dispatch({
           type: POST_FUNDACIONES,
           payload: response.data,
         });
-        alert('fundacion creada con exito')
+        alert("fundacion creada con exito");
       } catch (error) {
-        alert(`error al crear la fundacion ${error}`)
+        alert(`error al crear la fundacion ${error}`);
       }
-    }
-  }
+    };
+  };
   
   export const postUsuario = (newUsuario) =>{
     return async(dispatch) =>{

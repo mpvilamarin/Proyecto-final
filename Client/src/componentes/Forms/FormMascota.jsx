@@ -28,6 +28,7 @@ function FormMascota() {
   });
   const [showAlert, setShowAlert] = useState(false);
   const [invalidFields, setInvalidFields] = useState([]);
+  const [selectedFundacion, setSelectedFundacion] = useState(null);
 
   const handleChange = (e) => {
     setNewMascota({
@@ -37,19 +38,12 @@ function FormMascota() {
   };
 
   const handleChecked = (e) => {
-    if (e.target.checked) {
-      setNewMascota({
-        ...newMascota,
-        fundacionId: [...newMascota.fundacionId, e.target.value],
-      });
-    } else {
-      setNewMascota({
-        ...newMascota,
-        fundacionId: newMascota.fundacionId.filter(
-          (fundacion) => fundacion !== e.target.value
-        ),
-      });
-    }
+    const value = e.target.value;
+    setSelectedFundacion(value);
+    setNewMascota({
+      ...newMascota,
+      fundacionId: [value],
+    });
   };
 
   const handleSubmit = (e) => {
@@ -70,6 +64,7 @@ function FormMascota() {
       });
       setShowAlert(false);
       setInvalidFields([]);
+      setSelectedFundacion(null);
     } else {
       setShowAlert(true);
     }
@@ -259,6 +254,7 @@ function FormMascota() {
                       value={elem.nombre}
                       key={index}
                       onChange={handleChecked}
+                      checked={selectedFundacion === elem.nombre}
                     />
                     {elem.nombre}
                   </label>
