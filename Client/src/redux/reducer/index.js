@@ -167,7 +167,7 @@ function rootReducer(state = initialState, action) {
         mascotasFiltradas2 = state.filtroMascotas;
       } else {
         mascotasFiltradas2 = state.filtroMascotas.filter(
-          (mascota) => mascota.especie == especie
+          (mascota) => mascota.especie === especie
         );
       }
     
