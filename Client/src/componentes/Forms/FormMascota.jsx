@@ -123,20 +123,6 @@ function FormMascota() {
           />
         </Form.Group>
 
-        {/* <Form.Group controlId="formBasicEspecie">
-          <Form.Label>Especie</Form.Label>
-          <Form.Control
-            type="text"
-            name="especie"
-            value={newMascota.especie}
-            onChange={handleChange}
-            placeholder="Especie"
-            className={
-              invalidFields.includes('especie') ? 'is-invalid' : ''
-            }
-          />
-        </Form.Group> */}
-
         <Form.Group controlId="formBasicEspecie">
           <Form.Label>Epecie</Form.Label>
           <Form.Select

@@ -170,20 +170,3 @@ const Adopcion = () => {
 }
 export default Adopcion;
 
-/*
-//       <div className={styles.cardContainer}>
-//         {currentElements.map((mascota, indexMascota) => (
-//           <Card key={indexMascota} style={{ width: '18rem' }}>
-//             <Card.Img variant="top" src={mascotas} alt="Mascota" className="card-image" />
-//             <Card.Body>
-//               <Card.Title>{mascota.nombre}</Card.Title>
-//               <Card.Text>
-//                 Género: {mascota.genero}
-//                 <br />
-//                 Temperamento: {mascota.temperamento}
-//               </Card.Text>
-//               <Link to={`/mascota/${mascota.id}`}><Button variant="primary">Ver más</Button></Link>
-//             </Card.Body>
-//           </Card>)
-//         )
-*/
