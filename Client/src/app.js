@@ -69,9 +69,9 @@ function App() {
         <Route path="*" element={<Navigate to="/error" />} />
         <Route path="/error" element={<Redirect />} />
       </Routes>
-      <footer>
+      {/* <footer>
         <Contacto />
-      </footer>
+      </footer> */}
     </div>
   );
 }
