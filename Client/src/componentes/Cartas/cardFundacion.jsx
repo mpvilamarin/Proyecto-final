@@ -1,12 +1,13 @@
 import React, { useEffect , useState} from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllMascotas , getAllFundaciones , getNameFundaciones  } from '../../redux/Actions/get';
+import { getAllMascotas , getAllFundaciones , getNameFundaciones,getReviews  } from '../../redux/Actions/get';
 import './cards.css'; // Ruta del archivo CSS
 import fundaciones from './fundacion.png';
 import Card from 'react-bootstrap/Card';
 import FundacionesFilter from "../Fundación/filterFundacion";
 import SortFundaciones from "../Fundación/sortFundacion";
+import StarRating from "./StarRating";
 
 
 
@@ -42,6 +43,7 @@ export default function CardsFundacion() {
                   <h2 className="card-info">Ciudad: {fundacion?.ciudad}</h2>
                   <h2 className="card-info">Email: {fundacion?.email}</h2>
                   <h2 className="card-info">Misión: {fundacion?.mision}</h2>
+                  <StarRating rating={Number(fundacion.Reviews && fundacion.Reviews[0]?.calificacion)} />
                 </Card.Text>
               </Card.Body>
             </Card>

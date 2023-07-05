@@ -85,7 +85,7 @@ function FormMascota() {
       'temperamento',
       'descripcion',
       'castrado',
-      
+
     ];
 
     const invalidFields = requiredFields.filter(
@@ -123,7 +123,7 @@ function FormMascota() {
           />
         </Form.Group>
 
-        <Form.Group controlId="formBasicEspecie">
+        {/* <Form.Group controlId="formBasicEspecie">
           <Form.Label>Especie</Form.Label>
           <Form.Control
             type="text"
@@ -135,6 +135,20 @@ function FormMascota() {
               invalidFields.includes('especie') ? 'is-invalid' : ''
             }
           />
+        </Form.Group> */}
+
+        <Form.Group controlId="formBasicEspecie">
+          <Form.Label>Epecie</Form.Label>
+          <Form.Select
+            name="especie"
+            value={newMascota.especie}
+            onChange={handleChange}
+            className={invalidFields.includes('especie') ? 'is-invalid' : ''}
+          >
+            <option value="">Seleccionar tamaño</option>
+            <option value="Perro">Perro</option>
+            <option value="Gato">Gato</option>
+          </Form.Select>
         </Form.Group>
 
         <Form.Group controlId="formBasicTamaño">
@@ -246,7 +260,7 @@ function FormMascota() {
           </div>
         </Form.Group>
         {/* <UploadWidget /> */}
-        {/*onImageUpload={(imageUrl) => setNewMascota({ ...newMascota, imagen_url: imageUrl })}*/}  
+        {/*onImageUpload={(imageUrl) => setNewMascota({ ...newMascota, imagen_url: imageUrl })}*/}
         <div>
           <div>
             {sortedFundacion.length >= 1 ? (
@@ -269,8 +283,8 @@ function FormMascota() {
             )}
           </div>
         </div>
-        
-        
+
+
 
         <Button
           variant="primary"
