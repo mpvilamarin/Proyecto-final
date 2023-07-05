@@ -66,7 +66,7 @@ class CloudinaryUploadWidget extends Component {
     );
     document.getElementById("upload_widget").addEventListener(
       "click",
-      function () {
+      function (event) {
         event.preventDefault();
         myWidget.open();
       },
