@@ -30,6 +30,8 @@ import DetalleMascota from "./componentes/Mascota/detailMascota";
 import DetalleFundacion from "./componentes/Fundación/detailFundacion";
 // import CardFundaciones from './componentes/Cartas/cardFundacion'
 
+import { ProtectedRouter } from "./componentes/ProtectedRouter/protectedRouter";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -68,6 +70,18 @@ function App() {
         <Route path="/donaciones/rejected" element={<Rejected />} />
         <Route path="*" element={<Navigate to="/error" />} />
         <Route path="/error" element={<Redirect />} />
+        <Route element={<ProtectedRouter isAuthenticated={isAutheticated} />}>
+          <Route
+            path="/users"
+            element={
+              <ProtectedRouter
+                isAuthenticated={isAutheticated}
+                children={`${((<FormMascota />), (<FormFundaciones />))}`}
+              />
+            }
+          />
+          {/* Aquí van las rutas protegidas. La estructura es la misma. Ejemplo: <Route path="/checkout" element={<Checkout /> } /> */}
+        </Route>
       </Routes>
       {/* <footer>
         <Contacto />
