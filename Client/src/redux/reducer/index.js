@@ -1,3 +1,4 @@
+import review from "../../componentes/Reviews/reviews.jsx";
 import {
   GET_ALL_MASCOTAS,
   GET_DETAIL_MASCOTAS,
@@ -29,6 +30,7 @@ import {
   DELETE_USUARIO,
   POST_REVIEWS,
   ADDFAV,
+  GET_REVIEWS,
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -158,6 +160,12 @@ function rootReducer(state = initialState, action) {
         fundaciones:
           action.payload.length === 0 ? state.fundaciones : action.payload,
       };
+
+    case GET_REVIEWS: 
+      return{
+        ...state,
+        reviews: action.payload
+      };  
     
     case FILTER_MASCOTA_BY_ESPECIE:
       const especie = action.payload;
