@@ -22,7 +22,7 @@ const StarRating = ({ rating, onRatingChange }) => {
   );
 };
 
-const FormReviews = () => {
+const FormReviews = ({fundacionNombre}) => {
   const dispatch = useDispatch();
   const [text, setText] = useState('');
   const [rating, setRating] = useState(0);
@@ -40,6 +40,7 @@ const FormReviews = () => {
     const reviewData = {
       comentarios: text,
       calificacion: rating,
+      fundacion: fundacionNombre
     };
     dispatch(postReview(reviewData));
     setText('');
@@ -48,7 +49,7 @@ const FormReviews = () => {
 
   return (
     <div>
-      <h3>Calificar Fundación:</h3>
+      <h3>Calificar Fundación: {fundacionNombre}</h3>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Calificación:</label>

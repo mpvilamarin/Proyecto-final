@@ -1,4 +1,4 @@
-const { Fundaciones } = require("../db");
+const { Fundaciones,Reviews } = require("../db");
 const STATUS_CREATED = 201;
 const STATUS_ERROR = 404;
 const STATUS_OK = 200;
@@ -14,24 +14,34 @@ async function postFundacion(req, res) {
 
 
 
-async function getAllFundaciones(req, res){
-    const {nombre} = req.query;
-    try {
-        if( nombre ) {
-            const response = await Fundaciones.findAll({ where : {nombre: nombre} });
-            if(response)
-            {
-               return res.status(STATUS_OK).json(response);
-            }    
-        }
-        else {
-          let allFundaciones = await Fundaciones.findAll();
-          return res.status(STATUS_OK).json(allFundaciones);
-        }
-    } catch (error) {
-            return res.status(STATUS_ERROR).json({message:error});
+async function getAllFundaciones(req, res) {
+  const { nombre } = req.query;
+  try {
+    if (nombre) {
+      const response = await Fundaciones.findAll({
+        where: { nombre: nombre },
+        include: {
+          model: Reviews,
+          attributes: ['calificacion', 'comentarios'],
+        },
+      });
+      if (response) {
+        return res.status(STATUS_OK).json(response);
+      }
+    } else {
+      let allFundaciones = await Fundaciones.findAll({
+        include: {
+          model: Reviews,
+          attributes: ['calificacion', 'comentarios'],
+        },
+      });
+      return res.status(STATUS_OK).json(allFundaciones);
     }
+  } catch (error) {
+    return res.status(STATUS_ERROR).json({ message: `Error: ${error}` });
+  }
 }
+
 async function updateFundacion(req, res){
     const { id } = req.params
 

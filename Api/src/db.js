@@ -43,7 +43,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Donaciones, Fundaciones , Adopciones , Mascotas , Usuarios, Reviews } = sequelize.models;
 
 Reviews.belongsToMany(Fundaciones, { through: 'ReviewsFundaciones', timestamps: false });
-Fundaciones.belongsToMany(Reviews, { through: 'ReviewsFundacioness', timestamps: false });
+Fundaciones.belongsToMany(Reviews, { through: 'ReviewsFundaciones', timestamps: false });
 
 Fundaciones.hasMany(Adopciones, { foreignKey: "fundacionId" });
 Fundaciones.hasMany(Donaciones, { foreignKey: "fundacionId" });
