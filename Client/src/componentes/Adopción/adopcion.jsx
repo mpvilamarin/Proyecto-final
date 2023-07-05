@@ -94,35 +94,35 @@ const Adopcion = () => {
     <div className={styles.container}>
       <h1>Elige las características de tu mascota</h1>
       <div className={styles.selectoresWrapper}>
-          <div className={styles.divSelector}>
-            <label>Género:</label>
-            <select value={generoFilter} onChange={handleGeneroFilter} className={styles.options}>
-              <option value="">Todos</option>
-              <option value="Macho">Macho</option>
-              <option value="Hembra">Hembra</option>
-              <option value="Desconocido">Desconocido</option>
-            </select>
-          </div>
-          <div>
+        <div className={styles.divSelector}>
+          <label>Género:</label>
+          <select value={generoFilter} onChange={handleGeneroFilter} className={styles.options}>
+            <option value="">Todos</option>
+            <option value="Macho">Macho</option>
+            <option value="Hembra">Hembra</option>
+            <option value="Desconocido">Desconocido</option>
+          </select>
+        </div>
+        <div>
           <label>Ordenar por nombre:</label>
           <button onClick={handleSortAsc}>A-Z</button>
           <button onClick={handleSortDesc}>Z-A</button>
-          </div>
-          <div>
+        </div>
+        <div>
           <label htmlFor="especie">Especie:</label>
-            <select id="especie" value={especie} onChange={handleEspecieFilter} className={styles.options}>
-              <option value="">Perros y gatos</option>
-              <option value="perro">Perros</option>
-              <option value="gato">Gatos</option>
-            </select>
-          </div>
-          <div>
+          <select id="especie" value={especie} onChange={handleEspecieFilter} className={styles.options}>
+            <option value="">Perros y gatos</option>
+            <option value="Perro">Perros</option>
+            <option value="Gato">Gatos</option>
+          </select>
+        </div>
+        <div>
           <label htlmFor="fundacion">Fundación:</label>
-            <select 
+          <select
             className={styles.options}
             onChange={handleFundacion}
             value={selectedFundacion}
-            >
+          >
             <option value='All'>Ver todas las fundaciones</option>
             {
               uniqueFundaciones.map((x, index) => (
@@ -130,7 +130,7 @@ const Adopcion = () => {
               ))
             }
           </select>
-          </div>
+        </div>
       </div>
 
       <div className={styles.containerAnimales}>
@@ -170,20 +170,3 @@ const Adopcion = () => {
 }
 export default Adopcion;
 
-/*
-//       <div className={styles.cardContainer}>
-//         {currentElements.map((mascota, indexMascota) => (
-//           <Card key={indexMascota} style={{ width: '18rem' }}>
-//             <Card.Img variant="top" src={mascotas} alt="Mascota" className="card-image" />
-//             <Card.Body>
-//               <Card.Title>{mascota.nombre}</Card.Title>
-//               <Card.Text>
-//                 Género: {mascota.genero}
-//                 <br />
-//                 Temperamento: {mascota.temperamento}
-//               </Card.Text>
-//               <Link to={`/mascota/${mascota.id}`}><Button variant="primary">Ver más</Button></Link>
-//             </Card.Body>
-//           </Card>)
-//         )
-*/

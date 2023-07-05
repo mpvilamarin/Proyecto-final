@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  position: fixed;
-  top: 100px;
   left: 0;
   right: 0;
   background-image: url(https://www.savoringthegood.com/wp-content/uploads/2020/04/puppy-zoom-virtual-background.jpg);

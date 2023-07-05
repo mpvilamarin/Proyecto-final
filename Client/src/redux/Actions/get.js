@@ -126,15 +126,3 @@ export const resetDetail = () => {
   };
 };
 
-export const reviews = () =>{
-  return async(dispatch) => {  
-  try {
-        const response = await axios.get('http://localhost:3001/usuarios/reviews');
-        let allReviews = response.data?.map((e) => e);
-        dispatch({ type: GET_REVIEWS, payload: allReviews });
-    } catch (error) {
-        console.log(`error ${error}`);
-        console.log(`no reviews creadas `);
-    }
-  }
-}
