@@ -108,7 +108,7 @@ export default function Detalle() {
     // Obtener el ID de la mascota y el ID de la fundación
     const mascotaId = selector.id;
     const fundacionId =
-      selector.Fundaciones[0].MascotasFundaciones.FundacioneId;
+      selector.Fundaciones[0];
 
     // Pasar los IDs al componente mediante useNavigate
     navigate(`/formAdopcion?mascotaId=${mascotaId}&fundacionId=${fundacionId}`);

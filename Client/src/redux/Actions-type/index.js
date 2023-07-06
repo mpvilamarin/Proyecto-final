@@ -40,4 +40,6 @@ export const UPDATE_USUARIOS = "UPDATE_USUARIOS";
 
 export const RESET_DETAIL = "RESET_DETAIL";
 
+export const LOG_OUT = "LOG_OUT";
+
 export const ADDFAV = "ADDFAV";

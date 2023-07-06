@@ -31,6 +31,7 @@ import {
   DELETE_MASCOTA,
   DELETE_USUARIO,
   POST_REVIEWS,
+  LOG_OUT,
   ADDFAV,
   GET_REVIEWS,
 } from "../Actions-type/index.js";
@@ -43,6 +44,7 @@ const initialState = {
   fundaciones: [],
   fundacionDetail: [],
 
+  usuario: "0",
   usuarios: [],
   sesion: [],
   usuarioDetalle: [],
@@ -239,7 +241,8 @@ function rootReducer(state = initialState, action) {
     case POST_LOGIN:
       return {
         ...state,
-        usuarios: state.sesion.concat(action.payload),
+        sesion: state.sesion.concat(action.payload),
+        usuario: 1
       };
 
     case POST_REVIEWS:
@@ -321,6 +324,9 @@ function rootReducer(state = initialState, action) {
       };
     case RESET_DETAIL:
       return { ...state, fundacionDetail: null };
+
+    case LOG_OUT:
+      return { ...state, usuario: 0}
 
     case ADDFAV:
       return { ...state, mascotasFav: action.payload };

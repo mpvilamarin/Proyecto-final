@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { postAdopciones } from "../../redux/Actions/post";
@@ -28,6 +28,7 @@ function FormAdopciones() {
   const [showAlert, setShowAlert] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -54,6 +55,7 @@ function FormAdopciones() {
       };
 
       dispatch(postAdopciones(dataToSend));
+      console.log(dataToSend)
       setFormData({
         nombreCompleto: "",
         email: "",

@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { validate } from "./validate";
-import { postUsuario } from "../../../redux/Actions/post";
+import { postFundaciones } from "../../../redux/Actions/post";
 import styles from "../registro/registro.module.css";
 
 const Form = () => {
@@ -10,12 +10,13 @@ const Form = () => {
 
   const [input, setInput] = useState({
     nombre: "",
-    apellido: "",
-    edad: "",
-    domicilio: "",
+    ciudad: "",
+    direccion: "",
     telefono: "",
-    correo: "",
+    email: "",
     contraseña: "",
+    fundadaEn: "",
+    mision:"",
   });
 
   const [errors, setErrors] = useState({});
@@ -49,15 +50,17 @@ const Form = () => {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      dispatch(postUsuario(input));
+      dispatch(postFundaciones(input));
       setInput({
         nombre: "",
-        apellido: "",
-        edad: "",
-        domicilio: "",
+        ciudad: "",
+        direccion: "",
         telefono: "",
-        correo: "",
+        email: "",
         contraseña: "",
+        fundadaEn: "",
+        mision:"",
+        borrado: false
       });
     }
   };
@@ -70,8 +73,8 @@ const Form = () => {
   }, []);
 
   return (
-    <form className={styles.form}>
-      <p className={styles.heading}>Regístro Nuevo Usuario</p>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <p className={styles.heading}>Regístro Nueva fundacion</p>
       <input
         className={styles.input}
         type="text"
@@ -84,30 +87,21 @@ const Form = () => {
       <input
         className={styles.input}
         type="text"
-        value={input.apellido}
-        name="apellido"
+        value={input.ciudad}
+        name="ciudad"
         onChange={handleChange}
-        placeholder="Apellido"
+        placeholder="Ciudad"
       />
-      {errors.apellido && <p className={styles.errors}>{errors.apellido}</p>}
-      <input
-        className={styles.input}
-        type="number"
-        value={input.edad}
-        name="edad"
-        onChange={handleChange}
-        placeholder="Edad"
-      />
-      {errors.edad && <p className={styles.errors}>{errors.edad}</p>}
+      {errors.ciudad && <p className={styles.errors}>{errors.ciudad}</p>}
       <input
         className={styles.input}
         type="text"
-        value={input.domicilio}
-        name="domicilio"
+        value={input.direccion}
+        name="direccion"
         onChange={handleChange}
-        placeholder="Domicilio"
+        placeholder="Direccion"
       />
-      {errors.domicilio && <p className={styles.errors}>{errors.domicilio}</p>}
+      {errors.direccion && <p className={styles.errors}>{errors.direccion}</p>}
       <input
         className={styles.input}
         type="text"
@@ -120,11 +114,12 @@ const Form = () => {
       <input
         className={styles.input}
         type="email"
-        value={input.correo}
-        name="correo"
+        value={input.email}
+        name="email"
         onChange={handleChange}
         placeholder="Correo"
       />
+      {errors.email && <p className={styles.errors}>{errors.email}</p>}
       <input
         className={styles.input}
         type="password"
@@ -136,8 +131,26 @@ const Form = () => {
       {errors.contraseña && (
         <p className={styles.errors}>{errors.contraseña}</p>
       )}
+      <input
+        className={styles.input}
+        type="date"
+        value={input.fundadaEn}
+        name="fundadaEn"
+        onChange={handleChange}
+        placeholder="Fundada en"
+        />
+      <textarea
+        className={styles.input}
+        value={input.mision}
+        name="mision"
+        onChange={handleChange}
+        placeholder="Mision"
+        />
+
+
+
       <button type="submit" className={styles.btn}>
-        Enviar
+        Registrarse
       </button>
     </form>
   );
