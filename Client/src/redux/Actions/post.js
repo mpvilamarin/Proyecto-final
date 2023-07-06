@@ -65,6 +65,7 @@ export const postDonaciones = (nuevaDonacion) => {
     }
   }
   
+
   export const postFundaciones = (nuevaFundacion, email, nombre) => {
     return async (dispatch) => {
       try {

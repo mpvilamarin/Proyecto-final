@@ -1,4 +1,3 @@
-
 import "./App.css";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import axios from "axios";
@@ -30,25 +29,19 @@ import Feedback from "./componentes/Donaciones/feedback/Feedback";
 
 import FormFundaciones from "./componentes/Forms/FormFundaciones.jsx";
 import FormMascota from "./componentes/Forms/FormMascota.jsx";
+import FormAdopcion from "./componentes/Forms/FormAdopcion.jsx";
 import DetalleMascota from "./componentes/Mascota/detailMascota";
 import DetalleFundacion from "./componentes/Fundación/detailFundacion";
 
-
-
 // import CardFundaciones from './componentes/Cartas/cardFundacion'
-
-
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-
-
-  axios.defaults.baseURL = 'https://fundacion-mascotas-uz9u.onrender.com/';
+  axios.defaults.baseURL = "https://fundacion-mascotas-uz9u.onrender.com/";
 
   const location = useLocation();
   const { isAuthenticated, user } = useAuth0();
-
 
   return (
     <div>
@@ -74,26 +67,38 @@ function App() {
         <Route path="/logout" element={<LogOut />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/registro" element={<Registro />} />
+        {/* <Route
+          path="/formFundaciones"
+          element={
+            isAuthenticated && user && user.role === "Fundacion" ? (
+              <FormFundaciones user={user} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/formMascota"
+          element={
+            isAuthenticated && user && user.role === "Fundacion" ? (
+              <FormMascota user={user} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        /> */}
+        <Route path="/formMascota" element={<FormMascota />} />
+        <Route path="/formFundaciones" element={<FormFundaciones />} />
+        <Route path="/formAdopcion" element={<FormAdopcion />} />
 
-        <Route path="/formFundaciones" element={isAuthenticated && user && user.role === "Fundacion" ? (
-          <FormFundaciones user={user} />
-        ):(<Navigate to="/login"/>)} />
-
-        <Route path="/formMascota" element={isAuthenticated && user && user.role === "Fundacion" ? (
-          <FormMascota user={user} />
-        ):(<Navigate to="/login"/>)} />
-        
         <Route path="/donaciones" element={<Donacion />} />
         <Route path="/donaciones/feedback" element={<Feedback />} />
         <Route path="/donaciones/rejected" element={<Rejected />} />
-        <Route path="/DashboardAdmin" element={<Dashboard/>}/>
+        <Route path="/DashboardAdmin" element={<Dashboard />} />
         <Route path="*" element={<Navigate to="/error" />} />
         <Route path="/error" element={<Redirect />} />
-        
-
-
       </Routes>
-      <Footer/>
+      <Footer />
       {/* <footer>
         <Contacto />
       </footer> */}

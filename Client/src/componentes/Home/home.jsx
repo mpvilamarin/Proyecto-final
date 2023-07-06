@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import CardMascotas from '../Cartas/cardMascotas';
-import CardFundaciones from '../Cartas/cardFundacion';
-import style from './home.module.css';
+import React, { useEffect } from "react";
+import CardMascotas from "../Cartas/cardMascotas";
+import CardFundaciones from "../Cartas/cardFundacion";
+import style from "./home.module.css";
 
 const Home = () => {
   return (
