@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { postAdopciones } from "../../redux/Actions/post";
@@ -54,6 +54,7 @@ function FormAdopciones() {
       };
 
       dispatch(postAdopciones(dataToSend));
+
       setFormData({
         nombreCompleto: "",
         email: "",

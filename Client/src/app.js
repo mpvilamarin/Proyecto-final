@@ -67,7 +67,7 @@ function App() {
         <Route path="/logout" element={<LogOut />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/registro" element={<Registro />} />
-        <Route
+        {/* <Route
           path="/formFundaciones"
           element={
             isAuthenticated && user && user.role === "Fundacion" ? (
@@ -86,7 +86,10 @@ function App() {
               <Navigate to="/login" />
             )
           }
-        />
+        /> */}
+        <Route path="/formMascota" element={<FormMascota />} />
+        <Route path="/formFundaciones" element={<FormFundaciones />} />
+        <Route path="/formAdopcion" element={<FormAdopcion />} />
         <Route path="/donaciones" element={<Donacion />} />
         <Route path="/donaciones/feedback" element={<Feedback />} />
         <Route path="/donaciones/rejected" element={<Rejected />} />
