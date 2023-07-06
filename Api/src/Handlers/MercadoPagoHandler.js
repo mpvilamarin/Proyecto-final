@@ -16,7 +16,7 @@ const postDonacion = async (req, res) => {
       ],
       back_urls: {
         success: "http://localhost:3000/donaciones/feedback",
-        failure: "http://localhost:3000/donaciones/feedback",
+        failure: "http://localhost:3000/donaciones/rejected",
         pending: "http://localhost:3000/donaciones/feedback",
       },
       auto_return: "approved",

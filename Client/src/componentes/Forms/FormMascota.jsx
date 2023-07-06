@@ -28,6 +28,7 @@ function FormMascota() {
   });
   const [showAlert, setShowAlert] = useState(false);
   const [invalidFields, setInvalidFields] = useState([]);
+  const [selectedFundacion, setSelectedFundacion] = useState(null);
 
   const handleChange = (e) => {
     setNewMascota({
@@ -37,19 +38,12 @@ function FormMascota() {
   };
 
   const handleChecked = (e) => {
-    if (e.target.checked) {
-      setNewMascota({
-        ...newMascota,
-        fundacionId: [...newMascota.fundacionId, e.target.value],
-      });
-    } else {
-      setNewMascota({
-        ...newMascota,
-        fundacionId: newMascota.fundacionId.filter(
-          (fundacion) => fundacion !== e.target.value
-        ),
-      });
-    }
+    const value = e.target.value;
+    setSelectedFundacion(value);
+    setNewMascota({
+      ...newMascota,
+      fundacionId: [value],
+    });
   };
 
   const handleSubmit = (e) => {
@@ -70,6 +64,7 @@ function FormMascota() {
       });
       setShowAlert(false);
       setInvalidFields([]);
+      setSelectedFundacion(null);
     } else {
       setShowAlert(true);
     }
@@ -85,7 +80,7 @@ function FormMascota() {
       'temperamento',
       'descripcion',
       'castrado',
-      
+
     ];
 
     const invalidFields = requiredFields.filter(
@@ -124,17 +119,17 @@ function FormMascota() {
         </Form.Group>
 
         <Form.Group controlId="formBasicEspecie">
-          <Form.Label>Especie</Form.Label>
-          <Form.Control
-            type="text"
+          <Form.Label>Epecie</Form.Label>
+          <Form.Select
             name="especie"
             value={newMascota.especie}
             onChange={handleChange}
-            placeholder="Especie"
-            className={
-              invalidFields.includes('especie') ? 'is-invalid' : ''
-            }
-          />
+            className={invalidFields.includes('especie') ? 'is-invalid' : ''}
+          >
+            <option value="">Seleccionar tamaño</option>
+            <option value="Perro">Perro</option>
+            <option value="Gato">Gato</option>
+          </Form.Select>
         </Form.Group>
 
         <Form.Group controlId="formBasicTamaño">
@@ -246,7 +241,7 @@ function FormMascota() {
           </div>
         </Form.Group>
         {/* <UploadWidget /> */}
-        {/*onImageUpload={(imageUrl) => setNewMascota({ ...newMascota, imagen_url: imageUrl })}*/}  
+        {/*onImageUpload={(imageUrl) => setNewMascota({ ...newMascota, imagen_url: imageUrl })}*/}
         <div>
           <div>
             {sortedFundacion.length >= 1 ? (
@@ -259,6 +254,7 @@ function FormMascota() {
                       value={elem.nombre}
                       key={index}
                       onChange={handleChecked}
+                      checked={selectedFundacion === elem.nombre}
                     />
                     {elem.nombre}
                   </label>
@@ -269,8 +265,8 @@ function FormMascota() {
             )}
           </div>
         </div>
-        
-        
+
+
 
         <Button
           variant="primary"

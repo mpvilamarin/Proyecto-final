@@ -1,3 +1,4 @@
+
 import "./App.css";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import axios from "axios";
@@ -8,32 +9,40 @@ import NavBar from "./componentes/NavBar/navbar";
 import Fundacion from "./componentes/Fundación/Fundacion";
 import Registro from "./componentes/Sesiones/registro/registro";
 import Redirect from "./componentes/Redirect/Redirect";
+import Footer from "./componentes/Footer/Footer";
 
-import Contacto from "./componentes/Contacto/contacto";
 //import { RequireAuth } from "react-auth-kit";
+
 import LogOut from "./componentes/Autenticación/LogOut/logout";
 import Perfil from "./componentes/Autenticación/Perfil/perfil";
 import { useAuth0 } from "@auth0/auth0-react";
 import Inicio from "./componentes/Inicio/inicio";
 import Login2 from "./componentes/Sesiones/sesion/login2";
-// import Contacto from './componentes/Contacto/contacto';
-import Donacion from "./componentes/Donaciones/donaciones";
 
+import Donacion from "./componentes/Donaciones/donaciones";
+import Rejected from "./componentes/Donaciones/Rejected/Rejected";
 import Feedback from "./componentes/Donaciones/feedback/Feedback";
 
 // import { RequireAuth } from "react-auth-kit";
 
 // const location = useLocation();
+
 import FormFundaciones from "./componentes/Forms/FormFundaciones.jsx";
 import FormMascota from "./componentes/Forms/FormMascota.jsx";
 import DetalleMascota from "./componentes/Mascota/detailMascota";
 import DetalleFundacion from "./componentes/Fundación/detailFundacion";
+
 // import CardFundaciones from './componentes/Cartas/cardFundacion'
+
+import { ProtectedRouter } from "./componentes/ProtectedRouter/protectedRouter";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:3001/";
+
+
+  axios.defaults.baseURL = 'https://fundacion-mascotas-uz9u.onrender.com/';
+
   const location = useLocation();
   const { isAutheticated } = useAuth0();
 
@@ -50,7 +59,7 @@ function App() {
           }
         ></Route> */}
         {/* <Route exact path="/" element={<Landing/>}></Route> */}
-        <Route path="/" element={<Adopcion />} />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<Nosotros />} />
         <Route path="/fundaciones" element={<Fundacion />} />
         <Route path="/mascota/:id" element={<DetalleMascota />} />
@@ -65,12 +74,26 @@ function App() {
         <Route path="/formMascota" element={<FormMascota />} />
         <Route path="/donaciones" element={<Donacion />} />
         <Route path="/donaciones/feedback" element={<Feedback />} />
+        <Route path="/donaciones/rejected" element={<Rejected />} />
         <Route path="*" element={<Navigate to="/error" />} />
         <Route path="/error" element={<Redirect />} />
+        <Route element={<ProtectedRouter isAuthenticated={isAutheticated} />}>
+          <Route
+            path="/users"
+            element={
+              <ProtectedRouter
+                isAuthenticated={isAutheticated}
+                children={`${((<FormMascota />), (<FormFundaciones />))}`}
+              />
+            }
+          />
+          {/* Aquí van las rutas protegidas. La estructura es la misma. Ejemplo: <Route path="/checkout" element={<Checkout /> } /> */}
+        </Route>
       </Routes>
-      <footer>
+      <Footer/>
+      {/* <footer>
         <Contacto />
-      </footer>
+      </footer> */}
     </div>
   );
 }

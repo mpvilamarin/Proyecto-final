@@ -6,7 +6,7 @@ import { getDetailFundacion, resetDetail } from "../../redux/Actions/get";
 import FormReviews from "../Forms/FormReviews";
 import Review from "../Reviews/reviews";
 import fundaciones from '../Cartas/fundacion.png';
-
+import style from './detailFundacion.module.css'
 const DetailFundacion = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -33,44 +33,64 @@ const DetailFundacion = () => {
     }
   }, [fundacion]);
 
+
   return (
-    <div>
-      <div>
-        <button onClick={handleClick}>Donar</button>
-      </div>
+    <div className={style.contenedorPadre}>
+      
+      
       {!fundacion ? (
         <h3>LOADING...</h3>
       ) : (
-        <div>
+        <div className={style.contenedorHijo}>
           {fundacion.image ? (
             <img src={fundacion.image} alt="Fundación" />
           ) : (
-            <div>
-              <img src={fundaciones} alt="fundacion"></img>
+            <div className={style.contenedorInfo}>
+              <div className={style.imagenFundacion}>
+                <img src={fundaciones} alt="fundacion"></img>
+              </div>
+              <div className={style.infoFundacion}>
+                <h2>Nombre: {fundacion.nombre}</h2>
+                <h5>Ciudad: {fundacion.ciudad}</h5>
+                <h5>Dirección: {fundacion.direccion}</h5>
+                <h5>Teléfono: {fundacion.telefono}</h5>
+                <h5>Email: {fundacion.email}</h5>
+                <h5>Fecha de Fundación: {fundacion.fundadaEn}</h5>
+              </div>
             </div>
-          )}
-          <FormReviews/>
-          <h2>Nombre: {fundacion.nombre}</h2>
-          <h5>Ciudad: {fundacion.ciudad}</h5>
-          <h5>Dirección: {fundacion.direccion}</h5>
-          <h5>Teléfono: {fundacion.telefono}</h5>
-          <h5>Email: {fundacion.email}</h5>
-          <h5>Fecha de Fundación: {fundacion.fundadaEn}</h5>
-          <h5>Misión: {fundacion.mision}</h5>
-
-          <div style={{ paddingLeft: '80%' }}>
-            <FormReviews />
             
+          )}
+          <div className={style.contenedorMision}>
+            <div className={style.mision}>
+                <h5>Misión: {fundacion.mision}</h5>
+            </div>
+            <div className={style.buttonDonar}>
+              <button onClick={handleClick}>Donar</button>
+            </div>
           </div>
-
-
-          <Link to="/home">
-            <button>BACK TO HOME</button>
-          </Link>
-           
+          
+          <div className={style.contenedorComentarios}>
+            <div className={style.Comentarios}>
+              <h1>Comentarios aqui</h1>
+            </div>
+          </div>
+          
+          <div className={style.contenedorReviews}>
+            <div className={style.reviews}>
+              <FormReviews fundacionNombre={fundacion.nombre}/>
+            </div>
+          </div>
+          
+          <div className={style.contenedorHome}>
+            <div className={style.buttonHome}>
+              <Link to="/home">
+                <button>BACK TO HOME</button>
+              </Link>
+            </div>  
+          </div>
+          
         </div>
       )}
-
     </div>
   );
 };

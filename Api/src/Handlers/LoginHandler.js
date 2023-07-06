@@ -8,17 +8,17 @@ async function loginUsuarios(req, res) {
   const { email, contraseña } = req.body;
 
 
-  const usuarioLogin = await Usuarios.findOne({ where: { email, contraseña } });
-  if (usuarioLogin) {
-    const tipoUsuario = 'usuario';
-    const jwtToken = jwt.sign(usuarioLogin.dataValues, 'secret');
-    return res.status(STATUS_CREATED).json({
-      message: 'Logueado con éxito como usuario',
-      token: jwtToken,
-      email, 
-      tipo: tipoUsuario
-    });
-  }
+  // const usuarioLogin = await Usuarios.findOne({ where: { email, contraseña } });
+  // if (usuarioLogin) {
+  //   const tipoUsuario = 'usuario';
+  //   const jwtToken = jwt.sign(usuarioLogin.dataValues, 'secret');
+  //   return res.status(STATUS_CREATED).json({
+  //     message: 'Logueado con éxito como usuario',
+  //     token: jwtToken,
+  //     email, 
+  //     tipo: tipoUsuario
+  //   });
+  // }
 
 
   const fundacionLogin = await Fundaciones.findOne({ where: { email, contraseña } });
