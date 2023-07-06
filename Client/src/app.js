@@ -75,19 +75,17 @@ function App() {
         <Route path="/logout" element={<LogOut />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/registro" element={<Registro />} />
-<<<<<<< HEAD
-        <Route path="/formFundaciones" element={<FormFundaciones />} />
-        <Route path="/formMascota" element={<FormMascota />} />
-        <Route path="/formAdopcion" element={<FormAdopcion />} />
-=======
-        <Route path="/formFundaciones" element={isAuthenticated && user && user.role === "Fundacion" ? (
+        <Route path="/formFundaciones" element={<FormFundaciones/>} />
+        <Route path="/formMascota" element={<FormMascota/>} />
+               
+        {/* <Route path="/formFundaciones" element={isAuthenticated && user && user.role === "Fundacion" ? (
           <FormFundaciones user={user} />
         ):(<Navigate to="/login"/>)} />
         <Route path="/formMascota" element={isAuthenticated && user && user.role === "Fundacion" ? (
           <FormMascota user={user} />
-        ):(<Navigate to="/login"/>)} />
->>>>>>> 4fd8851fefe13ee7b89af4ec24761743a10ee8a7
+        ):(<Navigate to="/login"/>)} /> */}
         <Route path="/donaciones" element={<Donacion />} />
+         <Route path="/formAdopcion" element={<FormAdopcion />} />
         <Route path="/donaciones/feedback" element={<Feedback />} />
         <Route path="/donaciones/rejected" element={<Rejected />} />
         <Route path="/DashboardAdmin" element={<Dashboard/>}/>
