@@ -90,6 +90,7 @@ function App() {
         <Route path="/formMascota" element={<FormMascota />} />
         <Route path="/formFundaciones" element={<FormFundaciones />} />
         <Route path="/formAdopcion" element={<FormAdopcion />} />
+
         <Route path="/donaciones" element={<Donacion />} />
         <Route path="/donaciones/feedback" element={<Feedback />} />
         <Route path="/donaciones/rejected" element={<Rejected />} />
