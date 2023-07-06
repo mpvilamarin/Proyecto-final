@@ -14,7 +14,7 @@ import StarRating from "./StarRating";
 export default function CardsFundacion() {
   const dispatch = useDispatch();
   const allFundaciones = useSelector(state => state.fundaciones);
- 
+  console.log(allFundaciones)
   useEffect(() => {
     dispatch(getAllMascotas());
     dispatch(getAllFundaciones());

@@ -44,9 +44,17 @@ const getAdopcionById = async (req, res) => {
 
 const postAdopciones = async (req, res) => {
   try {
+    const { mascotaId, fundacionId, ...restData } = req.body;
+
+    console.log("mascotaId:", mascotaId); // Verifica el ID de la mascota
+    console.log("fundacionId:", fundacionId); // Verifica el ID de la fundación
+    console.log("Resto de datos:", restData); // Verifica el resto de los datos
+
     const nuevaAdopcion = await Adopciones.create({
-      ...req.body,
+      mascotaId,
+      fundacionId,
       fechaAdopcion: new Date().toISOString().slice(0, 10),
+      ...restData,
     });
     res.status(STATUS_CREATED).json(nuevaAdopcion);
   } catch (error) {

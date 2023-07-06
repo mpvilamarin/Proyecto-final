@@ -11,9 +11,9 @@ export const validate = (name, value, input) => {
             break;
         case "ciudad":
             if (!value.trim()) {
-                error = "Apellido es requerido";
+                error = "Ciudad es requerida";
             } else if (!/^[A-Za-z ]+$/.test(value)) {
-                error = "El apellido solo debe tener letras";
+                error = "La ciudad solo debe tener letras";
             }
             break;
         case "direccion":

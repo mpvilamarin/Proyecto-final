@@ -56,13 +56,12 @@ export const getDetailMascota = (id) => {
 export const getAllFundaciones = () => {
   return async (dispatch) => {
     try {
-
-      const response = await axios.get("/fundaciones/");
+      const response = await axios.get("http://localhost:3001/fundaciones/");
       let fundaciones = response.data?.map((e) => e);
       dispatch({ type: GET_ALL_FUNDACIONES, payload: fundaciones });
     } catch (error) {
       console.log(`error ${error}`);
-      console.log(`no fundaciones creadas `);
+      console.log(`no hay fundaciones creadas `);
     }
   };
 };

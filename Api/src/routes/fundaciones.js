@@ -1,5 +1,5 @@
-const {Router} = require('express');
-const fundacionRouter = Router()
+const express = require('express');
+const fundacionRouter = express.Router()
 const { postFundacion, getAllFundaciones , updateFundacion, getFundacionById} = require('../Handlers/FundacionHandler')
 const enviarCorreoBienvenida = require('../Handlers/CorreosHandler')
 fundacionRouter.post("/", postFundacion

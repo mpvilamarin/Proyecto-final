@@ -55,7 +55,6 @@ function FormAdopciones() {
       };
 
       dispatch(postAdopciones(dataToSend));
-      console.log(dataToSend)
       setFormData({
         nombreCompleto: "",
         email: "",
