@@ -8,6 +8,8 @@ import {
   GET_ALL_USUARIOS,
   GET_DETALLE_USUARIO,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
+  GET_ALL_ADOPCIONES,
+  GET_DETAIL_ADOPCION,
   GET_NAME_FUNDACIONES,
   POST_ADOPCIONES,
   POST_DONACIONES,
@@ -44,7 +46,7 @@ const initialState = {
   usuarios: [],
   sesion: [],
   usuarioDetalle: [],
-  mascotasFav:[],
+  mascotasFav: [],
 
   adopciones: [],
   detalleAdopcion: [],
@@ -145,6 +147,17 @@ function rootReducer(state = initialState, action) {
           fundaciones: action.payload.usuarios || [],
         },
       };
+    case GET_ALL_ADOPCIONES:
+      return {
+        ...state,
+        adopciones: action.payload,
+      };
+    case GET_DETAIL_ADOPCION:
+      return {
+        ...state,
+        detalleAdopcion: action.payload,
+      };
+
     case FILTER_FUNDACIONES_CIUDAD:
       const { ciudad } = action.payload;
       const fundacionesByCiudad = state.fundaciones.filter(
@@ -161,12 +174,12 @@ function rootReducer(state = initialState, action) {
           action.payload.length === 0 ? state.fundaciones : action.payload,
       };
 
-    case GET_REVIEWS: 
-      return{
+    case GET_REVIEWS:
+      return {
         ...state,
-        reviews: action.payload
-      };  
-    
+        reviews: action.payload,
+      };
+
     case FILTER_MASCOTA_BY_ESPECIE:
       const especie = action.payload;
       let mascotasFiltradas2 = [];
@@ -178,12 +191,11 @@ function rootReducer(state = initialState, action) {
           (mascota) => mascota.especie === especie
         );
       }
-    
+
       return {
         ...state,
         mascotas: mascotasFiltradas2,
       };
-
 
     case SORT_FUNDACIONES_AZ:
       return {
@@ -202,7 +214,7 @@ function rootReducer(state = initialState, action) {
     case POST_ADOPCIONES:
       return {
         ...state,
-        adopciones: state.adopciones.concat(action.payload),
+        adopciones: [...state.adopciones, action.payload],
       };
     case POST_DONACIONES:
       return {
@@ -234,8 +246,8 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         reviews: state.reviews.concat(action.payload),
-      }
-      
+      };
+
     case DELETE_MASCOTA:
       return {
         ...state,
@@ -311,7 +323,7 @@ function rootReducer(state = initialState, action) {
       return { ...state, fundacionDetail: null };
 
     case ADDFAV:
-      return { ...state, mascotasFav: action.payload}
+      return { ...state, mascotasFav: action.payload };
 
     default:
       return state;

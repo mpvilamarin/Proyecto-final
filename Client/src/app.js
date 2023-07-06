@@ -26,6 +26,7 @@ import Feedback from "./componentes/Donaciones/feedback/Feedback";
 // const location = useLocation();
 import FormFundaciones from "./componentes/Forms/FormFundaciones.jsx";
 import FormMascota from "./componentes/Forms/FormMascota.jsx";
+import FormAdopcion from "./componentes/Forms/FormAdopcion.jsx";
 import DetalleMascota from "./componentes/Mascota/detailMascota";
 import DetalleFundacion from "./componentes/Fundación/detailFundacion";
 // import CardFundaciones from './componentes/Cartas/cardFundacion'
@@ -63,6 +64,7 @@ function App() {
         <Route path="/registro" element={<Registro />} />
         <Route path="/formFundaciones" element={<FormFundaciones />} />
         <Route path="/formMascota" element={<FormMascota />} />
+        <Route path="/formAdopcion" element={<FormAdopcion />} />
         <Route path="/donaciones" element={<Donacion />} />
         <Route path="/donaciones/feedback" element={<Feedback />} />
         <Route path="/donaciones/rejected" element={<Rejected />} />
