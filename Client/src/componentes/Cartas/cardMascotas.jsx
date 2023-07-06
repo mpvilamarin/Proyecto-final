@@ -11,10 +11,6 @@ export default function CardMascota() {
     dispatch(getAllMascotas());
   }, [dispatch]);
 
-  const handleAdoptar = (nombre) => {
-    dispatch(deleteMascota(nombre));
-  };
-
   return (
     <div className="card-container">
       {allMascotas.map((mascota, index) => (
@@ -22,12 +18,6 @@ export default function CardMascota() {
           <img src={mascota.imagen} alt={mascota.nombre} />
           <h2>{mascota.nombre}</h2>
           <p>{mascota.descripcion}</p>
-          <button
-            onClick={() => handleAdoptar(mascota.nombre)}
-            disabled={mascota.adoptado}
-          >
-            {mascota.adoptado ? "Adoptado" : "Adoptar"}
-          </button>
         </div>
       ))}
     </div>

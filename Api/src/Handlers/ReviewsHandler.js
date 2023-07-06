@@ -17,7 +17,7 @@ async function CalificarFundacines(req, res){
 
         if(fundacion){
           console.log(':::::', crearReview);
-          let fundacionreview = await Fundaciones.findAll({where: { nombre: fundacion}});
+          let fundacionreview = await Fundaciones.findOne({where: { nombre: fundacion}});
           await crearReview.addFundaciones(fundacionreview);
         }
         res.status(STATUS_CREATED).json(crearReview);

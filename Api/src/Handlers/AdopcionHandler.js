@@ -27,7 +27,9 @@ const getAdopcionById = async (req, res) => {
   try {
     const adopcion = await Adopciones.findByPk(id);
     if (!adopcion) {
-      res.status(STATUS_ERROR).json({ message: "No existe adopcion con este ID" });
+      res
+        .status(STATUS_ERROR)
+        .json({ message: "No existe adopcion con este ID" });
     } else {
       res.status(STATUS_OK).json(adopcion);
     }
@@ -41,16 +43,12 @@ const getAdopcionById = async (req, res) => {
 /*----------------------------NUEVA ADOPCION--------------------------------------*/
 
 const postAdopciones = async (req, res) => {
-  const { fecha } = req.body;
   try {
-    if ( fecha ) {
-      const nuevaAdopcion = await Adopciones.create(req.body);
-      res.status(STATUS_CREATED).json(nuevaAdopcion);
-    } else {
-      res
-        .status(STATUS_ERROR)
-        .json({ message: "Faltan datos para crear adopción" });
-    }
+    const nuevaAdopcion = await Adopciones.create({
+      ...req.body,
+      fechaAdopcion: new Date().toISOString().slice(0, 10),
+    });
+    res.status(STATUS_CREATED).json(nuevaAdopcion);
   } catch (error) {
     res
       .status(STATUS_ERROR)

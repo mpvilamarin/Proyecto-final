@@ -18,7 +18,7 @@ import Inicio from "./componentes/Inicio/inicio";
 import Login2 from "./componentes/Sesiones/sesion/login2";
 // import Contacto from './componentes/Contacto/contacto';
 import Donacion from "./componentes/Donaciones/donaciones";
-
+import Rejected from "./componentes/Donaciones/Rejected/Rejected";
 import Feedback from "./componentes/Donaciones/feedback/Feedback";
 
 // import { RequireAuth } from "react-auth-kit";
@@ -26,6 +26,7 @@ import Feedback from "./componentes/Donaciones/feedback/Feedback";
 // const location = useLocation();
 import FormFundaciones from "./componentes/Forms/FormFundaciones.jsx";
 import FormMascota from "./componentes/Forms/FormMascota.jsx";
+import FormAdopcion from "./componentes/Forms/FormAdopcion.jsx";
 import DetalleMascota from "./componentes/Mascota/detailMascota";
 import DetalleFundacion from "./componentes/Fundación/detailFundacion";
 // import CardFundaciones from './componentes/Cartas/cardFundacion'
@@ -63,14 +64,16 @@ function App() {
         <Route path="/registro" element={<Registro />} />
         <Route path="/formFundaciones" element={<FormFundaciones />} />
         <Route path="/formMascota" element={<FormMascota />} />
+        <Route path="/formAdopcion" element={<FormAdopcion />} />
         <Route path="/donaciones" element={<Donacion />} />
         <Route path="/donaciones/feedback" element={<Feedback />} />
+        <Route path="/donaciones/rejected" element={<Rejected />} />
         <Route path="*" element={<Navigate to="/error" />} />
         <Route path="/error" element={<Redirect />} />
       </Routes>
-      <footer>
+      {/* <footer>
         <Contacto />
-      </footer>
+      </footer> */}
     </div>
   );
 }
