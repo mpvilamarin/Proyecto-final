@@ -65,10 +65,14 @@ export const postDonaciones = (nuevaDonacion) => {
     }
   }
   
-  export const postFundaciones = (nuevaFundacion, email, nombre) =>{
-    return async(dispatch) =>{
-      try { 
-        const response = await axios.post('/fundaciones/', nuevaFundacion, email, nombre)
+
+  export const postFundaciones = (nuevaFundacion, email, nombre) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.post(
+          "http://localhost:3001/fundaciones",
+          nuevaFundacion, email, nombre
+        );
         dispatch({
           type: POST_FUNDACIONES,
           payload: response.data,
