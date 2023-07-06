@@ -9,6 +9,7 @@ import {
 
     POST_REVIEWS,
     POST_LOGIN,
+    LOG_OUT,
     ADDFAV,
 
 } from "../Actions-type/index.js";
@@ -63,17 +64,11 @@ export const postDonaciones = (nuevaDonacion) => {
       }
     }
   }
-
   
-  export const postFundaciones = (nuevaFundacion, email, nombre) => {
-    return async (dispatch) => {
-      try {
-
-        const response = await axios.post(
-          "http://localhost:3001/fundaciones",
-          nuevaFundacion, email, nombre
-        );
-
+  export const postFundaciones = (nuevaFundacion) =>{
+    return async(dispatch) =>{
+      try { 
+        const response = await axios.post('/fundaciones/', nuevaFundacion)
         dispatch({
           type: POST_FUNDACIONES,
           payload: response.data,
@@ -116,23 +111,26 @@ export const postDonaciones = (nuevaDonacion) => {
       }
     }
   }
-  // export const postLogin = (newLogin) => {
-  //   return async(dispatch) => {
-  //     try {
+   export const postLogin = (newLogin) => {
+     return async(dispatch) => {
+       try {
+        console.log("newLogin")
+         const response = await axios.post('http://localhost:3001/usuarios/login', newLogin)
+        console.log(response)
+         dispatch({
+           type: POST_LOGIN,
+           payload: response.data,
+         })
+       }
+       catch (error) {
+         alert(`error al loguearse ${error}`)
+       }
+     }
+   }
 
-  //       const response = await axios.post('http://localhost:3001/usuarios/login', newLogin)
-  
-  //       dispatch({
-  //         type: POST_LOGIN,
-  //         payload: response.data,
-  //       })
-  //       alert('Login exitoso')
-  //     }
-  //     catch (error) {
-  //       alert(`error al loguearse ${error}`)
-  //     }
-  //   }
-  // }
+   export const logOut = () =>{
+    return { type: LOG_OUT}
+   }
   export const addFav = (mascota) => {
     if (mascota !== undefined) {
       console.log('Se pasó el payload:', mascota);
