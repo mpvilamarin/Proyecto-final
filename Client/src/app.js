@@ -74,12 +74,15 @@ function App() {
         <Route path="/logout" element={<LogOut />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/registro" element={<Registro />} />
+
         <Route path="/formFundaciones" element={isAuthenticated && user && user.role === "Fundacion" ? (
           <FormFundaciones user={user} />
         ):(<Navigate to="/login"/>)} />
+
         <Route path="/formMascota" element={isAuthenticated && user && user.role === "Fundacion" ? (
           <FormMascota user={user} />
         ):(<Navigate to="/login"/>)} />
+        
         <Route path="/donaciones" element={<Donacion />} />
         <Route path="/donaciones/feedback" element={<Feedback />} />
         <Route path="/donaciones/rejected" element={<Rejected />} />

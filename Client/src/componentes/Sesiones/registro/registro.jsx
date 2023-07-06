@@ -17,6 +17,7 @@ const Form = () => {
     contraseña: "",
     fundadaEn: "",
     mision:"",
+    borrado: false
   });
 
   const [errors, setErrors] = useState({});
