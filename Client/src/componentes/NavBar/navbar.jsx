@@ -20,7 +20,7 @@ export default function NavBar() {
 
       const logout = () => {
         dispatch(logOut());
-        navigate("/home");
+        navigate("/");
       };
 
       useEffect(()=>{
