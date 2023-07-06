@@ -1,13 +1,43 @@
 const { Fundaciones,Reviews } = require("../db");
+const enviarCorreoBienvenida = require('./CorreosHandler');
 const STATUS_CREATED = 201;
 const STATUS_ERROR = 404;
 const STATUS_OK = 200;
 
 async function postFundacion(req, res) {
+  const {nombre, ciudad, direccion, telefono, email, contraseña, fundadaEn, mision, borrado} = req.body;
   try {
-    res.status(STATUS_CREATED).json(await Fundaciones.create(req.body));
+    if(!req.body){
+      return res
+      .status(STATUS_ERROR).json({message:`error de informacion `})
+    };
+
+    const validarCorreo = await Fundaciones.findOne({
+      where:{email: email},
+    });
+
+    if(validarCorreo){
+      return res.status(STATUS_ERROR).json({message: `el usuario ${email} ya esta registrado`})
+    }
+
+    const newFundacion = await Fundaciones.create({
+      nombre,
+      ciudad,
+      direccion,
+      telefono,
+      email,
+      contraseña,
+      fundadaEn,
+      mision,
+      borrado,
+    });
+
+    await enviarCorreoBienvenida(email, nombre);
+
+    res.status(STATUS_CREATED).json(newFundacion)
+
   } catch (error) {
-    res.status(STATUS_ERROR).json({ message: `no se puede crear ${error}` });
+    res.status(STATUS_ERROR).json({message:`error al crear fundacion ${error}`})
   }
 }
 
