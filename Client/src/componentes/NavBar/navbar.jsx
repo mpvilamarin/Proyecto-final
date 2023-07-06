@@ -32,13 +32,16 @@ export default function NavBar() {
               <Link to="/donaciones" className="nav-link">
                 Donaciones
               </Link>
+              
             )}
             <Link to="/adopciones" className="nav-link">
               Mascotas
             </Link>
-            <Link to="/formFundaciones" className="nav-link">
-              Crear Fundacion
-            </Link>
+            {user && user.role === "Fundación" && (
+              <Link to="/formFundaciones" className="nav-link">
+                Crear Fundacion
+              </Link>
+            )}
             {/*<Link to="/formMascota" className="nav-link">Crear Mascota</Link>*/}
             <Link to="/" className="nav-link">
               Home
