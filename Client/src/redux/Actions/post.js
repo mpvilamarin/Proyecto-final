@@ -119,12 +119,11 @@ export const postDonaciones = (nuevaDonacion) => {
    export const postLogin = (newLogin) => {
      return async(dispatch) => {
        try {
-        console.log("newLogin")
          const response = await axios.post('http://localhost:3001/usuarios/login', newLogin)
         console.log(response)
          dispatch({
            type: POST_LOGIN,
-           payload: response.data,
+           payload: response.data.data,
          })
        }
        catch (error) {

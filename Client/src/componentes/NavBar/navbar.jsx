@@ -73,6 +73,11 @@ export default function NavBar() {
                 <a href="/perfil">Mi perfil</a>
               </li>
             )}
+            {numUsuario === 1 && (
+              <li>
+                <a href="/perfilfund">Mi perfil</a>
+              </li>
+            )}
             {isAuthenticated && (
               <li>
                 <LogOutButton />
