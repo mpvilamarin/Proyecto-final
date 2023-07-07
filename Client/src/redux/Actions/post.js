@@ -21,7 +21,7 @@ import {
 export const postMascota = (newMascota) =>{
     return async(dispatch) => {
       try {
-        const response = await axios.post('/mascotas', newMascota);
+        const response = await axios.post('/mascotas/', newMascota);
         dispatch({
           type: POST_MASCOTA,
           payload : response.data,
@@ -69,8 +69,7 @@ export const postDonaciones = (nuevaDonacion) => {
   export const postFundaciones = (nuevaFundacion, email, nombre) => {
     return async (dispatch) => {
       try {
-        const response = await axios.post(
-          "http://localhost:3001/fundaciones",
+        const response = await axios.post("/fundaciones/",
           nuevaFundacion, email, nombre
         );
         dispatch({
