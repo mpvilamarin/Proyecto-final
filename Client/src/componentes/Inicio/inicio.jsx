@@ -21,8 +21,8 @@ const inicio = () =>{
                <div className={styles.loginbox}>
                 <form className={styles.form}>
                     <div className={styles.inicioAuth}>
-                    <h1 className={styles.title}>Login</h1>
-                        <h1 className={styles.title}>user</h1>
+                    <h1 className={styles.title}>Iniciar sesión</h1>
+                        <h1 className={styles.title}>Usuario</h1>
                         <span className={styles.span}><Login/></span>
                     </div>
                 </form>
@@ -30,8 +30,8 @@ const inicio = () =>{
                    //onSubmit={formik.handleSubmit}
                    >
                        <div>
-                           <h1 className={styles.title}>Login</h1>
-                           <h1 className={styles.title}>fundation</h1>
+                           <h1 className={styles.title}>Iniciar sesión</h1>
+                           <h1 className={styles.title}>Fundación</h1>
                            <div className={styles.field}>
                                
                                <input
@@ -59,7 +59,7 @@ const inicio = () =>{
                            <br></br>
                            <div className={styles.divBtn}>
                            <button type="submit" className={styles.btn}>
-                               Enviar
+                               Iniciar sesión
                            </button>
                            </div>
                            <Link to="/registro" className={styles.link}>

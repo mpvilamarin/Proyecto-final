@@ -38,4 +38,5 @@ export const UPDATE_USUARIOS = "UPDATE_USUARIOS";
 export const RESET_DETAIL = "RESET_DETAIL";
 
 export const ADDFAV = "ADDFAV";
+export const REMOVEFAV = 'REMOVEFAV';
 

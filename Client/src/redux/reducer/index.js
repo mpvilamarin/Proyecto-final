@@ -30,6 +30,7 @@ import {
   DELETE_USUARIO,
   POST_REVIEWS,
   ADDFAV,
+  REMOVEFAV,
   GET_REVIEWS,
 } from "../Actions-type/index.js";
 
@@ -44,7 +45,7 @@ const initialState = {
   usuarios: [],
   sesion: [],
   usuarioDetalle: [],
-  mascotasFav:[],
+  favoritos: [],
 
   adopciones: [],
   detalleAdopcion: [],
@@ -55,7 +56,7 @@ const initialState = {
   reviews: [],
 };
 
-function rootReducer(state = initialState, action) {
+function rootReducer(state = initialState, action, payload) {
   switch (action.type) {
     case GET_ALL_MASCOTAS:
       return {
@@ -161,12 +162,12 @@ function rootReducer(state = initialState, action) {
           action.payload.length === 0 ? state.fundaciones : action.payload,
       };
 
-    case GET_REVIEWS: 
-      return{
+    case GET_REVIEWS:
+      return {
         ...state,
         reviews: action.payload
-      };  
-    
+      };
+
     case FILTER_MASCOTA_BY_ESPECIE:
       const especie = action.payload;
       let mascotasFiltradas2 = [];
@@ -178,7 +179,7 @@ function rootReducer(state = initialState, action) {
           (mascota) => mascota.especie === especie
         );
       }
-    
+
       return {
         ...state,
         mascotas: mascotasFiltradas2,
@@ -235,7 +236,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         reviews: state.reviews.concat(action.payload),
       }
-      
+
     case DELETE_MASCOTA:
       return {
         ...state,
@@ -311,11 +312,14 @@ function rootReducer(state = initialState, action) {
       return { ...state, fundacionDetail: null };
 
     case ADDFAV:
-      return { ...state, mascotasFav: action.payload}
+      return { ...state, mascotasFav: action.payload }
+
+    case REMOVEFAV:
+      return { ...state, favoritos: state.favoritos.filter(fav => fav.indexMascotas !== payload) }
 
     default:
-      return state;
-  }
+      return { ...state }
+  };
 }
 
 export default rootReducer;

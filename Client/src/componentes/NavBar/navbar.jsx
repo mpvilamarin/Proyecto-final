@@ -52,7 +52,7 @@ export default function NavBar() {
             </Link>
             {!isAuthenticated && (
               <Link to="/login" className="nav-link">
-                Log in
+                Iniciar sesión
               </Link>
             )}
 
