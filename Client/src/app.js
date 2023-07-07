@@ -32,6 +32,7 @@ import FormMascota from "./componentes/Forms/FormMascota.jsx";
 import FormAdopcion from "./componentes/Forms/FormAdopcion.jsx";
 import DetalleMascota from "./componentes/Mascota/detailMascota";
 import DetalleFundacion from "./componentes/Fundación/detailFundacion";
+import PerfilFund from "./componentes/Sesiones/perfilFun/perfilFund";
 
 // import CardFundaciones from './componentes/Cartas/cardFundacion'
 
@@ -67,6 +68,7 @@ function App() {
         <Route path="/logout" element={<LogOut />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/registro" element={<Registro />} />
+        <Route path="/perfilfund" element={<PerfilFund/>}/>
         {/* <Route
           path="/formFundaciones"
           element={

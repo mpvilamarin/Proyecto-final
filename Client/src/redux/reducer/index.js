@@ -325,7 +325,9 @@ function rootReducer(state = initialState, action) {
       return { ...state, fundacionDetail: null };
 
     case LOG_OUT:
-      return { ...state, usuario: 0}
+      return { ...state, 
+        usuario: 0,
+        sesion: [],}
 
     case ADDFAV:
       return { ...state, mascotasFav: action.payload };
