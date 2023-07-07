@@ -42,6 +42,7 @@ async function postMascota(req, res){
      !temperamento || 
       !descripcion || 
            !tamaño ||
+           !image  ||
            !castrado){
             return res
             .status(STATUS_ERROR).json({message: 'se requiere completar todos los datos'});

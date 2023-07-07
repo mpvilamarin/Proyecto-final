@@ -26,7 +26,7 @@ const CardAdop = ({mascota, indexMascota}) =>{
         <div>
             <Card key={indexMascota} style={{ width: '18rem' }}>
             <Button onClick={() => handleFavorite(mascota)}>{isFav ? '❤️' : '🤍'}</Button>
-            <Card.Img variant="top" src={mascota.imagen_url} alt="Mascota" className="card-image" />
+            <Card.Img variant="top" src={mascota?.image} alt="Mascota" className="card-image" />
             <Card.Body>
               <Card.Title>{mascota?.nombre}</Card.Title>
               <Card.Text>
