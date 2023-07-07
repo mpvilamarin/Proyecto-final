@@ -12,49 +12,48 @@ module.exports = (sequelize) => {
       },
       nombre: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       especie: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
-      tamaño: {
+      tamanio: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       edad: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+        type: DataTypes.STRING,
+        // allowNull: false,
       },
       genero: {
-        type: DataTypes.ENUM("Macho", "Hembra", "Desconocido"),
-        allowNull: false,
+        type: DataTypes.STRING,
+        // allowNull: false,
       },
       temperamento: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       descripcion: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       castrado: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
-      // imagen_url: {
-      //     type: DataTypes.STRING,
-      //     allowNull: false,
-      //   },
-      activo: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true,
-        allowNull: false,
+      image: {
+        type: DataTypes.STRING,
       },
-      fechaBorrado: {
-        type: DataTypes.DATE,
-        allowNull: true,
-      },
+      // activo: {
+      //   type: DataTypes.BOOLEAN,
+      //   defaultValue: true,
+      //   allowNull: false,
+      // },
+      // fechaBorrado: {
+      //   type: DataTypes.DATE,
+      //   allowNull: true,
+      // },
     },
     {
       timestamps: false,

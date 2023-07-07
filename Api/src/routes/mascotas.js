@@ -1,6 +1,6 @@
 const express = require('express');
-const mascotaRouter = express.Router();
 const {postMascota,getMascota, getByIdMascota, deleteMascota,updateMascota} = require('../Handlers/MascotaHandler');
+const mascotaRouter = express.Router();
 
 mascotaRouter.post('/',postMascota);
 mascotaRouter.get('/', getMascota);
