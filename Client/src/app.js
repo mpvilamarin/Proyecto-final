@@ -39,7 +39,7 @@ import PerfilFund from "./componentes/Sesiones/perfilFun/perfilFund";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  axios.defaults.baseURL = "https://fundacion-mascotas-uz9u.onrender.com/";
+  axios.defaults.baseURL = "http://localhost:3001/";
 
   const location = useLocation();
   const { isAuthenticated, user } = useAuth0();
