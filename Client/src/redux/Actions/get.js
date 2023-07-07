@@ -56,7 +56,7 @@ export const getDetailMascota = (id) => {
 export const getAllFundaciones = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/fundaciones/");
+      const response = await axios.get("http://localhost:3001/fundaciones");
       let fundaciones = response.data?.map((e) => e);
       dispatch({ type: GET_ALL_FUNDACIONES, payload: fundaciones });
     } catch (error) {
@@ -69,9 +69,7 @@ export const getAllFundaciones = () => {
 export const getDetailFundacion = (id) => {
   return async (dispatch) => {
     dispatch({ type: GET_DETAIL_FUNDACION, payload: [] });
-    await axios
-
-      .get(`/fundaciones/${id}`)
+    await axios.get(`http://localhost:3001/fundaciones/${id}`)
       .then((res) => res.data)
       .then((data) => dispatch({ type: GET_DETAIL_FUNDACION, payload: data }))
       .catch((err) => console.log(err));

@@ -109,6 +109,7 @@ export const postDonaciones = (nuevaDonacion) => {
           type: POST_REVIEWS,
           payload: response.data,
         })
+        
         console.log("review",response);
       } catch (error) {
         console.log("Error en el get de reviews:", error);
