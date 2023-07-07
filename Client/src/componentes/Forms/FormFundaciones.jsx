@@ -75,7 +75,7 @@ function FormFundaciones() {
 
   return (
     <div className="form-container">
-      {isAuthenticated ? (
+     
         <>
             <h1 className="title-form">FORMULARIO PARA FUNDACIONES</h1>
       <Form className="custom-form">
@@ -173,7 +173,7 @@ function FormFundaciones() {
         </Button>
       </Form>
         </>
-      ):(<p>debes iniciar secion</p>)}
+
       
     </div>
   );
