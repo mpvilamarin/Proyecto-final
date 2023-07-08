@@ -5,20 +5,24 @@ import { useAuth0 } from "@auth0/auth0-react";
 import logoMercadoPago from "./mercadopago.png";
 import styles from "./Donaciones.module.css";
 
+
 const Donaciones = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().slice(0, 10);
-  const { user, isAuthenticated } = useAuth0();
+  const { user } = useAuth0();
   const location = useLocation();
   const defaultFundacionId = location.state ? location.state.fundacionId : "";
+
+  // ...
+
   const [newDonacion, setNewDonacion] = useState({
     monto: "",
     fecha: "",
     descripcion: "",
     fundacionId: defaultFundacionId,
     fundacionNombre: "",
-    userId: user ? user.sub : "",
+    usuarioId: user ? user.sub : "",
   });
 
   useEffect(() => {
@@ -26,9 +30,14 @@ const Donaciones = () => {
       setNewDonacion({
         // ...
         fundacionNombre: location.state.fundacionNombre,
+        fundacionId: newDonacion.fundacionId,
+        usuarioId: newDonacion.usuarioId,
       });
     }
-  }, [location.state]);
+
+
+  }, [location.state, newDonacion.fundacionId, newDonacion.usuarioId]);
+
 
   const handleChange = (e) => {
     setNewDonacion({
@@ -47,15 +56,19 @@ const Donaciones = () => {
       fecha: newDonacion.fecha,
       descripcion: newDonacion.descripcion,
       fundacionId: newDonacion.fundacionId,
-      userId: newDonacion.userId,
+      usuarioId: newDonacion.fundacionId,
     };
+
 
     axios
       .post("http://localhost:3001/donaciones", donacion)
       .then((res) => {
         const initPoint = res.data.response.body.init_point;
-        window.location.href = initPoint;
+        window.open(initPoint);
+
         console.log(initPoint);
+        console.log(donacion)
+
       })
       .catch((error) => {
         console.log(error);
@@ -64,7 +77,10 @@ const Donaciones = () => {
     setTimeout(() => {
       setIsAnimating(false);
     }, 1000); // Tiempo en milisegundos de la animación
+
   };
+
+
 
   return (
     <div className={styles.container}>
@@ -98,7 +114,7 @@ const Donaciones = () => {
             <input
               className={styles.inputContainer}
               type="text"
-              name="userId"
+              name="usuarioId"
               value={user ? user.sub : ""}
               readOnly
             />
@@ -135,9 +151,8 @@ const Donaciones = () => {
       <div>
         <button
           onClick={handleDonar}
-          className={`${styles.buttonDonar} ${
-            isAnimating ? styles.donarAnimation : ""
-          }`}
+          className={`${styles.buttonDonar} ${isAnimating ? styles.donarAnimation : ""
+            }`}
         >
           Donar
         </button>

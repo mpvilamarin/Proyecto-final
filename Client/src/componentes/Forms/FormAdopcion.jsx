@@ -28,6 +28,7 @@ function FormAdopciones() {
   const [showAlert, setShowAlert] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -54,7 +55,6 @@ function FormAdopciones() {
       };
 
       dispatch(postAdopciones(dataToSend));
-
       setFormData({
         nombreCompleto: "",
         email: "",

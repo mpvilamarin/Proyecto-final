@@ -11,6 +11,7 @@ const postDonacion = async (req, res) => {
           unit_price: donacion.unit_price,
           quantity: donacion.quantity,
           fundacionId: donacion.fundacionId,
+          // usuarioId: donacion.usuarioId
 
         },
       ],
