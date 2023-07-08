@@ -35,6 +35,7 @@ import {
   ADDFAV,
   REMOVEFAV,
   GET_REVIEWS,
+  FILTER_FUNDACIONES_BY_RATING
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -44,6 +45,7 @@ const initialState = {
   favoritos: [],
 
   fundaciones: [],
+  fundacionesFiltradas: [],
   fundacionDetail: [],
 
   usuario: "0",
@@ -129,6 +131,7 @@ function rootReducer(state = initialState, action, payload) {
       return {
         ...state,
         fundaciones: action.payload,
+        fundacionesFiltradas: action.payload
       };
     case GET_DETAIL_FUNDACION:
       return {
@@ -183,6 +186,21 @@ function rootReducer(state = initialState, action, payload) {
         ...state,
         reviews: action.payload,
       };
+    
+case FILTER_FUNDACIONES_BY_RATING:
+      const rating = action.payload;
+      let filteredFundaciones = []
+      if (rating === "") {
+        filteredFundaciones = state.fundacionesFiltradas
+      } else {
+        filteredFundaciones = state.fundacionesFiltradas.filter((fundacion) => {
+          return fundacion.Reviews?.some((reviews) => reviews.calificacion === rating);
+        });
+      }
+  return {
+    ...state,
+    fundaciones: filteredFundaciones,
+};
 
     case FILTER_MASCOTA_BY_ESPECIE:
       const especie = action.payload;

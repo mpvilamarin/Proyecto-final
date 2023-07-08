@@ -9,7 +9,8 @@ import {
   SORT_FUNDACIONES_AZ,
   SORT_FUNDACIONES_ZA,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
-  FILTER_MASCOTA_BY_ESPECIE
+  FILTER_MASCOTA_BY_ESPECIE,
+  FILTER_FUNDACIONES_BY_RATING
 
 } from "../Actions-type/index.js";
 
@@ -67,6 +68,12 @@ export const sortFundacionesZA = () => {
   };
 };
 
+export const filterFundacionesByRating = (rating) => {
+  return {
+    type: FILTER_FUNDACIONES_BY_RATING,
+    payload: rating
+  }
+}
 export const sortMascotasAZ = () => {
   return {
     type: SORT_MASCOTAS_AZ,
