@@ -64,13 +64,20 @@ export default function NavBar() {
             </Link>
             {numUsuario === 1 || isAuthenticated ? null : (
               <Link to="/login" className="nav-link">
-              Log in
+
+                Iniciar sesión
+
               </Link>
             )}
             {/*!isAuthenticated && <li><LogInButton /></li>*/}
             {isAuthenticated && (
               <li>
                 <a href="/perfil">Mi perfil</a>
+              </li>
+            )}
+            {numUsuario === 1 && (
+              <li>
+                <a href="/perfilfund">Mi perfil</a>
               </li>
             )}
             {isAuthenticated && (

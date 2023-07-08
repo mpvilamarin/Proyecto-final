@@ -19,7 +19,7 @@ export default function Detalle() {
   const handleClickAdoptar = () => {
     const mascotaId = selector.id;
     const fundacionId =
-      selector.Fundaciones[0].MascotasFundaciones.FundacioneId;
+      selector.Fundaciones[0];
 
     navigate(`/formAdopcion?mascotaId=${mascotaId}&fundacionId=${fundacionId}`);
   };

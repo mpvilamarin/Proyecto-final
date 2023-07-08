@@ -29,7 +29,8 @@ async function loginUsuarios(req, res) {
       message: 'Logueado con éxito como fundación',
       token: jwtToken,
       email,
-      tipo: tipoUsuario
+      tipo: tipoUsuario,
+      data: fundacionLogin
     });
   }
 

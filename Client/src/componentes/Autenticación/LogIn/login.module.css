@@ -1,52 +1,58 @@
-.container{
-    display: flex;
-    justify-content: center;
+.container {
+  display: flex;
+  justify-content: center;
 }
+
 .form {
-    justify-content: space-between;
+  justify-content: space-between;
 }
+
 .btn {
-    height: 50px;
-    width: 200px;
-    position: relative;
-    background-color: transparent;
-    cursor: pointer;
-    border: 2px solid #252525;
-    overflow: hidden;
-    border-radius: 30px;
-    color: #333;
-    transition: all 0.5s ease-in-out;
-  }
-  
-  .btn-txt {
-    z-index: 1;
-    font-weight: 800;
-    letter-spacing: 4px;
-  }
-  
-  .type1::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    transition: all 0.5s ease-in-out;
-    background-color: #333;
-    border-radius: 30px;
-    visibility: hidden;
-    height: 10px;
-    width: 10px;
-    z-index: -1;
-    font-style: white;
-  }
-  
-  .button:hover {
-    box-shadow: 1px 1px 200px #252525;
-    color: #fff;
-    border: none;
-    
-  }
-  
-  .type1:hover::after {
-    visibility: visible;
-    transform: scale(100) translateX(2px);
-  }
+  height: 50px;
+  width: 200px;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  border: 2px solid #252525;
+  font-family: 'Merryweather';
+  font-size: large;
+  font-weight: 400;
+  overflow: hidden;
+  border-radius: 30px;
+  color: #333;
+  transition: all 0.5s ease-in-out;
+  margin-top: 15px;
+}
+
+.btn-txt {
+  z-index: 1;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.type1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.5s ease-in-out;
+  background-color: #333;
+  border-radius: 30px;
+  visibility: hidden;
+  height: 10px;
+  width: 10px;
+  z-index: -1;
+  font-style: white;
+}
+
+.btn:hover {
+  box-shadow: 1px 1px 200px #252525;
+  border: none;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.type1:hover::after {
+  visibility: visible;
+  transform: scale(100) translateX(2px);
+}

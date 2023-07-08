@@ -89,7 +89,7 @@ const Adopcion = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.containerAnimales}>
+      {/* <div className={styles.containerAnimales}>
         {currentElements.map((mascota, indexMascota) => (
           <CardAdop
             mascota={mascota}
@@ -97,7 +97,7 @@ const Adopcion = () => {
             key={indexMascota}
           />
         ))}
-      </div>
+      </div> */}
       <h1>Elige las características de tu mascota</h1>
       <div className={styles.selectoresWrapper}>
         <div className={styles.divSelector}>

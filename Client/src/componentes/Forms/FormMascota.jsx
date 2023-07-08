@@ -23,14 +23,14 @@ function FormMascota() {
     temperamento: '',
     descripcion: '',
     castrado: '',
-    fundacionId: [],
-    // imagen_url: '',
+    image: '',
+    fundacionId: '',
   });
   const [showAlert, setShowAlert] = useState(false);
   const [invalidFields, setInvalidFields] = useState([]);
-  const [selectedFundacion, setSelectedFundacion] = useState(null);
 
   const handleChange = (e) => {
+    console.log(e.target.value)
     setNewMascota({
       ...newMascota,
       [e.target.name]: e.target.value,
@@ -38,13 +38,27 @@ function FormMascota() {
   };
 
   const handleChecked = (e) => {
-    const value = e.target.value;
-    setSelectedFundacion(value);
-    setNewMascota({
-      ...newMascota,
-      fundacionId: [value],
-    });
+    if (e.target.checked) {
+      setNewMascota({
+        ...newMascota,
+        fundacionId: [...newMascota.fundacionId, e.target.value],
+      });
+    } else {
+      setNewMascota({
+        ...newMascota,
+        fundacionId: newMascota.fundacionId.filter(
+          (fundacion) => fundacion !== e.target.value
+        ),
+      });
+    }
   };
+
+  const handleImageUpload = (url) => {
+    setNewMascota((prevMascota) => ({
+      ...prevMascota,
+      image: url
+    }));
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,11 +74,11 @@ function FormMascota() {
         temperamento: '',
         descripcion: '',
         castrado: '',
-        // imagen_url: '',
+        image: '',
+        fundacionId: ''
       });
       setShowAlert(false);
       setInvalidFields([]);
-      setSelectedFundacion(null);
     } else {
       setShowAlert(true);
     }
@@ -80,11 +94,16 @@ function FormMascota() {
       'temperamento',
       'descripcion',
       'castrado',
-
+      'image',
     ];
 
-    const invalidFields = requiredFields.filter(
-      (field) => newMascota[field].trim() === ''
+    const invalidFields = requiredFields.filter((field) =>  {
+      if(field === 'image') {
+        return newMascota[field] === ''
+      } else {
+        return newMascota[field].trim() === ''
+        }
+      }  
     );
 
     setInvalidFields(invalidFields);
@@ -119,17 +138,17 @@ function FormMascota() {
         </Form.Group>
 
         <Form.Group controlId="formBasicEspecie">
-          <Form.Label>Epecie</Form.Label>
-          <Form.Select
+          <Form.Label>Especie</Form.Label>
+          <Form.Control
+            type="text"
             name="especie"
             value={newMascota.especie}
             onChange={handleChange}
-            className={invalidFields.includes('especie') ? 'is-invalid' : ''}
-          >
-            <option value="">Seleccionar tamaño</option>
-            <option value="Perro">Perro</option>
-            <option value="Gato">Gato</option>
-          </Form.Select>
+            placeholder="Especie"
+            className={
+              invalidFields.includes('especie') ? 'is-invalid' : ''
+            }
+          />
         </Form.Group>
 
         <Form.Group controlId="formBasicTamaño">
@@ -140,10 +159,10 @@ function FormMascota() {
             onChange={handleChange}
             className={invalidFields.includes('tamaño') ? 'is-invalid' : ''}
           >
-            <option value="">Seleccionar tamaño</option>
-            <option value="grande">Grande</option>
-            <option value="mediano">Mediano</option>
-            <option value="pequeño">Pequeño</option>
+            <option value="">Seleccionar </option>
+            <option value="Grande">Grande</option>
+            <option value="Mediano">Mediano</option>
+            <option value="Pequeño">Pequeño</option>
           </Form.Select>
         </Form.Group>
 
@@ -213,10 +232,9 @@ function FormMascota() {
               invalidFields.includes('descripcion') ? 'is-invalid' : ''
             }
           />
-
         </Form.Group>
         <Form.Group controlId="formBasicCastrado">
-          <Form.Label>Opción de castración</Form.Label>
+          <Form.Label>Castrado</Form.Label>
           <div>
             <Form.Check
               inline
@@ -238,10 +256,16 @@ function FormMascota() {
               checked={newMascota.castrado === 'noCastrado'}
               onChange={handleChange}
             />
+
+ 
+            </div>
+            </Form.Group>
+
+          <div>
+            {newMascota.image && <img src={newMascota.image} alt="image"></img>}
+            <UploadWidget onImageUpload={handleImageUpload}/>
           </div>
-        </Form.Group>
-        {/* <UploadWidget /> */}
-        {/*onImageUpload={(imageUrl) => setNewMascota({ ...newMascota, imagen_url: imageUrl })}*/}
+
         <div>
           <div>
             {sortedFundacion.length >= 1 ? (
@@ -254,7 +278,6 @@ function FormMascota() {
                       value={elem.nombre}
                       key={index}
                       onChange={handleChecked}
-                      checked={selectedFundacion === elem.nombre}
                     />
                     {elem.nombre}
                   </label>
@@ -265,8 +288,8 @@ function FormMascota() {
             )}
           </div>
         </div>
-
-
+        
+        
 
         <Button
           variant="primary"

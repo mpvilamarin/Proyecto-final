@@ -4,10 +4,8 @@ import { useDispatch } from "react-redux";
 import { validate } from "./validate";
 import { postFundaciones } from "../../../redux/Actions/post";
 import styles from "../registro/registro.module.css";
-
 const Form = () => {
   const dispatch = useDispatch();
-
   const [input, setInput] = useState({
     nombre: "",
     ciudad: "",
@@ -19,9 +17,7 @@ const Form = () => {
     mision:"",
     borrado: false
   });
-
   const [errors, setErrors] = useState({});
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     const error = validate(name, value);
@@ -34,12 +30,9 @@ const Form = () => {
       [name]: error,
     }));
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
     let validationErrors = {};
-
     for (const key in input) {
       const value = input[key];
       const error = validate(key, value, input);
@@ -47,9 +40,7 @@ const Form = () => {
         validationErrors[key] = error;
       }
     }
-
     setErrors(validationErrors);
-
     if (Object.keys(validationErrors).length === 0) {
       dispatch(postFundaciones(input));
       setInput({
@@ -65,7 +56,6 @@ const Form = () => {
       });
     }
   };
-
   useEffect(() => {
     setErrors((prevErrors) => ({
       ...prevErrors,
