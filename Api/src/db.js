@@ -1,19 +1,15 @@
+require("dotenv").config();
+const { Sequelize } = require("sequelize");
+const fs = require("fs");
+const path = require("path");
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
-require('dotenv').config();
-const { Sequelize } = require('sequelize');
-const fs = require('fs');
-const path = require('path');
-const { DB_DEPLOY } = process.env;
-
-// `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, 
-const sequelize = new Sequelize(DB_DEPLOY, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  dialectOptions : {
-    ssl: {
-      require: true,
-    }
-
+// `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+  {
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   }
 );
 const basename = path.basename(__filename);
@@ -43,11 +39,17 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
+const { Donaciones, Fundaciones, Adopciones, Mascotas, Usuarios, Reviews } =
+  sequelize.models;
 
-const { Donaciones, Fundaciones , Adopciones , Mascotas , Usuarios, Reviews } = sequelize.models;
-
-Reviews.belongsToMany(Fundaciones, { through: 'ReviewsFundaciones', timestamps: false });
-Fundaciones.belongsToMany(Reviews, { through: 'ReviewsFundaciones', timestamps: false });
+Reviews.belongsToMany(Fundaciones, {
+  through: "ReviewsFundaciones",
+  timestamps: false,
+});
+Fundaciones.belongsToMany(Reviews, {
+  through: "ReviewsFundaciones",
+  timestamps: false,
+});
 
 Fundaciones.hasMany(Adopciones, { foreignKey: "fundacionId" });
 Fundaciones.hasMany(Donaciones, { foreignKey: "fundacionId" });
@@ -64,6 +66,9 @@ Fundaciones.belongsToMany(Mascotas, {
   through: "MascotasFundaciones",
   timestamps: false,
 });
+
+Adopciones.belongsTo(Mascotas, { foreignKey: "mascotaId" });
+Mascotas.hasMany(Adopciones, { foreignKey: "mascotaId" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

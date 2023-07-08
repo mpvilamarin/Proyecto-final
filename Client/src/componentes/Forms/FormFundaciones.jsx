@@ -3,8 +3,9 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { postFundaciones } from '../../redux/Actions/post';
 import './stilosFormularioMascota.css';
-
+import { useAuth0 } from '@auth0/auth0-react';
 function FormFundaciones() {
+  const { isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
 
   const [newFundacion, setNewFundacion] = useState({
@@ -74,7 +75,9 @@ function FormFundaciones() {
 
   return (
     <div className="form-container">
-      <h1 className="title-form">FORMULARIO PARA FUNDACIONES</h1>
+     
+        <>
+            <h1 className="title-form">FORMULARIO PARA FUNDACIONES</h1>
       <Form className="custom-form">
         {showAlert && (
           <Alert variant="danger">Por favor, completa todos los campos.</Alert>
@@ -169,6 +172,9 @@ function FormFundaciones() {
           Enviar
         </Button>
       </Form>
+        </>
+
+      
     </div>
   );
 }

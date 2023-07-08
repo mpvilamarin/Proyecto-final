@@ -41,7 +41,7 @@ const CardAdop = ({ mascota, indexMascota, addFav, removeFav, favoritos }) => {
             <img src={huella} alt="No favorito" className="favorite-icon" />
           )}
         </Button>
-        <Card.Img variant="top" src={mascota.imagen_url} alt="Mascota" className="card-image" />
+        <Card.Img variant="top" src={mascota?.image} alt="Mascota" className="card-image" />
         <Card.Body>
           <Card.Title className="card-title">{mascota?.nombre}</Card.Title>
           <Card.Text className="card-text">

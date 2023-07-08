@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { validate } from "./validate";
-import { postUsuario } from "../../../redux/Actions/post";
+import { postFundaciones } from "../../../redux/Actions/post";
 import styles from "../registro/registro.module.css";
 
 const Form = () => {
@@ -10,12 +10,14 @@ const Form = () => {
 
   const [input, setInput] = useState({
     nombre: "",
-    apellido: "",
-    edad: "",
-    domicilio: "",
+    ciudad: "",
+    direccion: "",
     telefono: "",
-    correo: "",
+    email: "",
     contraseña: "",
+    fundadaEn: "",
+    mision:"",
+    borrado: false
   });
 
   const [errors, setErrors] = useState({});
@@ -49,15 +51,17 @@ const Form = () => {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      dispatch(postUsuario(input));
+      dispatch(postFundaciones(input));
       setInput({
         nombre: "",
-        apellido: "",
-        edad: "",
-        domicilio: "",
+        ciudad: "",
+        direccion: "",
         telefono: "",
-        correo: "",
+        email: "",
         contraseña: "",
+        fundadaEn: "",
+        mision:"",
+        borrado: false
       });
     }
   };
@@ -70,6 +74,7 @@ const Form = () => {
   }, []);
 
   return (
+
     <div className={styles.container}>
       <form className={styles.form}>
         <p className={styles.heading}>Regístro Nuevo Usuario</p>

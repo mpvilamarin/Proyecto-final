@@ -1,22 +1,11 @@
 import Login from "../Autenticación/LogIn/login"
 import { Link } from "react-router-dom";
-import styles from './inicio.module.css'
+import styles from './inicio.module.css';
+import Login2 from "../Sesiones/sesion/login2";
 
 
 const inicio = () =>{
     return(
-        // <div className={styles.container}>
-        //     <div className={styles.inicioAuth}>
-        //         <h1>Inicia sesion</h1>
-        //         <h1>como usuario</h1>
-        //         <Login/>
-        //     </div>
-        //     <div className={styles.inicioFundacion}>
-        //         <h1>Inicia sesion</h1>
-        //         <h1>Como fundacion</h1>
-        //         <Link to="/login2" className={styles.link}>Log in</Link>
-        //     </div>
-        // </div>
         <div className={styles.container}>
                <div className={styles.loginbox}>
                 <form className={styles.form}>
@@ -26,6 +15,7 @@ const inicio = () =>{
                         <span className={styles.span}><Login/></span>
                     </div>
                 </form>
+
                    <form className={styles.form} 
                    //onSubmit={formik.handleSubmit}
                    >
@@ -66,7 +56,9 @@ const inicio = () =>{
                                ¿No estás registrado?
                            </Link>
                        </div>
-                   </form>
+
+//                    <Login2/>
+
                </div>
            </div>
     )

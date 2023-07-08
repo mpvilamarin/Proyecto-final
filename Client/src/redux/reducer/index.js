@@ -8,6 +8,8 @@ import {
   GET_ALL_USUARIOS,
   GET_DETALLE_USUARIO,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
+  GET_ALL_ADOPCIONES,
+  GET_DETAIL_ADOPCION,
   GET_NAME_FUNDACIONES,
   POST_ADOPCIONES,
   POST_DONACIONES,
@@ -29,6 +31,7 @@ import {
   DELETE_MASCOTA,
   DELETE_USUARIO,
   POST_REVIEWS,
+  LOG_OUT,
   ADDFAV,
   REMOVEFAV,
   GET_REVIEWS,
@@ -38,14 +41,17 @@ const initialState = {
   mascotas: [],
   filtroMascotas: [],
   mascotaDetail: [],
+  favoritos: [],
 
   fundaciones: [],
   fundacionDetail: [],
 
+  usuario: "0",
   usuarios: [],
   sesion: [],
   usuarioDetalle: [],
-  favoritos: [],
+  
+
 
   adopciones: [],
   detalleAdopcion: [],
@@ -123,7 +129,6 @@ function rootReducer(state = initialState, action, payload) {
       return {
         ...state,
         fundaciones: action.payload,
-        fundacionDetail: action.payload,
       };
     case GET_DETAIL_FUNDACION:
       return {
@@ -146,6 +151,17 @@ function rootReducer(state = initialState, action, payload) {
           fundaciones: action.payload.usuarios || [],
         },
       };
+    case GET_ALL_ADOPCIONES:
+      return {
+        ...state,
+        adopciones: action.payload,
+      };
+    case GET_DETAIL_ADOPCION:
+      return {
+        ...state,
+        detalleAdopcion: action.payload,
+      };
+
     case FILTER_FUNDACIONES_CIUDAD:
       const { ciudad } = action.payload;
       const fundacionesByCiudad = state.fundaciones.filter(
@@ -165,7 +181,7 @@ function rootReducer(state = initialState, action, payload) {
     case GET_REVIEWS:
       return {
         ...state,
-        reviews: action.payload
+        reviews: action.payload,
       };
 
     case FILTER_MASCOTA_BY_ESPECIE:
@@ -185,7 +201,6 @@ function rootReducer(state = initialState, action, payload) {
         mascotas: mascotasFiltradas2,
       };
 
-
     case SORT_FUNDACIONES_AZ:
       return {
         ...state,
@@ -203,7 +218,7 @@ function rootReducer(state = initialState, action, payload) {
     case POST_ADOPCIONES:
       return {
         ...state,
-        adopciones: state.adopciones.concat(action.payload),
+        adopciones: [...state.adopciones, action.payload],
       };
     case POST_DONACIONES:
       return {
@@ -228,14 +243,16 @@ function rootReducer(state = initialState, action, payload) {
     case POST_LOGIN:
       return {
         ...state,
-        usuarios: state.sesion.concat(action.payload),
+        sesion: state.sesion.concat(action.payload),
+        usuario: 1
       };
 
     case POST_REVIEWS:
       return {
         ...state,
         reviews: state.reviews.concat(action.payload),
-      }
+      };
+
 
     case DELETE_MASCOTA:
       return {
@@ -310,6 +327,11 @@ function rootReducer(state = initialState, action, payload) {
       };
     case RESET_DETAIL:
       return { ...state, fundacionDetail: null };
+
+    case LOG_OUT:
+      return { ...state, 
+        usuario: 0,
+        sesion: [],}
 
     case ADDFAV:
       return { ...state, mascotasFav: action.payload }
