@@ -234,7 +234,7 @@ function FormMascota() {
           />
         </Form.Group>
         <Form.Group controlId="formBasicCastrado">
-          <Form.Label>Opción de castración</Form.Label>
+          <Form.Label>Castrado</Form.Label>
           <div>
             <Form.Check
               inline

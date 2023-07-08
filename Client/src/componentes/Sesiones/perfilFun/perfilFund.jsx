@@ -1,12 +1,26 @@
-import { useSelector } from "react-redux";
-import style from './perfilFund.module.css'
-import FormReviews from "../../Forms/FormReviews";
-import fundaciones from "../../Cartas/fundacion.png"
+import React, {useEffect} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getDetailFundacion, resetDetail } from "../../../redux/Actions/get";
+import style from './perfilFund.module.css';
+import fundaciones from "../../Cartas/fundacion.png";
+import CardAdop from "../../Cartas/cardAdopcion";
+import Review from "../../Reviews/reviews";
 
 export default function PerfilFund () {
 
     const data = useSelector((state) => state.sesion);
-    const {image, nombre, ciudad, direccion, telefono, fundadaEn, email, mision } = data[0];
+    const info = useSelector((state) => state.fundacionDetail)
+    const mascotas = info[0]?.Mascotas
+    const reviews = info[0]?.Reviews
+    const dispatch = useDispatch();
+    console.log(info)
+    const {image, nombre, ciudad, direccion, telefono, fundadaEn, email, mision, id } = data[0];
+
+    useEffect(() => {
+      dispatch(resetDetail());
+      dispatch(getDetailFundacion(id));
+    }, [dispatch, id]);
+
     return (
         <div className={style.contenedorPadre}>
       
@@ -43,8 +57,25 @@ export default function PerfilFund () {
             <div className={style.reviews}>
               <h1>Mis reviews</h1>
             </div>
+            {reviews && reviews.map((review, indexReview) => (
+              <Review
+               review={review}
+               key={indexReview}
+              />
+            ))}
           </div>
-          
+          <div display="center">
+          <h1>Mis mascotas</h1>
+          </div>
+          <div className={style.containerAnimales}>
+            {mascotas && mascotas.map((mascota, indexMascota) => (
+              <CardAdop
+               mascota={mascota}
+              indexMascota={mascota.id}
+              key={indexMascota}
+              />
+            ))}
+          </div>
         </div>
       )}
     </div>

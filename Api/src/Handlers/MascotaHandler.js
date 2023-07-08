@@ -59,6 +59,7 @@ async function postMascota(req, res) {
       tamaño,
       castrado,
     });
+      console.log(fundacionId)
     if (fundacionId) {
       console.log(":::", newMascota);
       let mascotas = await Fundaciones.findAll({
