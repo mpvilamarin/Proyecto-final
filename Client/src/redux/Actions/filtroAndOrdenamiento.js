@@ -11,6 +11,8 @@ import {
   SORT_FUNDACIONES_REVIEWS,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
   FILTER_MASCOTA_BY_ESPECIE,
+  FILTER_FUNDACIONES_BY_RATING
+
 } from "../Actions-type/index.js";
 
 //===============================================>> FILTROS Y ORDENAMIENTOS <<=========================================================
@@ -64,12 +66,21 @@ export const sortFundacionesZA = () => {
   };
 };
 
+
+export const filterFundacionesByRating = (rating) => {
+  return {
+    type: FILTER_FUNDACIONES_BY_RATING,
+    payload: rating
+  }
+}
+
 export const sortFundacionesReviews = (order) => {
   return {
     type: SORT_FUNDACIONES_REVIEWS,
     payload: order,
   };
 };
+
 
 export const sortMascotasAZ = () => {
   return {
