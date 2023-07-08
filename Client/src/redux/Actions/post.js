@@ -11,6 +11,7 @@ import {
     POST_LOGIN,
     LOG_OUT,
     ADDFAV,
+    REMOVEFAV
 
 } from "../Actions-type/index.js";
 
@@ -144,4 +145,7 @@ export const postDonaciones = (nuevaDonacion) => {
     return { type: ADDFAV, payload: mascota };
   };
   
+  export const removeFav = (indexMascota) => {
+    return { type: REMOVEFAV, payload: indexMascota }
+  };
 

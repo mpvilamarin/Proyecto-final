@@ -16,7 +16,7 @@ const inicio = () =>{
                     </div>
                 </form>
 
-                   <form className={styles.form} 
+                   <form className={styles.form}
                    //onSubmit={formik.handleSubmit}
                    >
                        <div>
@@ -56,8 +56,8 @@ const inicio = () =>{
                                ¿No estás registrado?
                            </Link>
                        </div>
-
-//                    <Login2/>
+                       </form>
+                 {/* <Login2> */}
 
                </div>
            </div>
