@@ -2,25 +2,34 @@ import mascotas from "../Cartas/perroGato.png";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import React, { useState } from "react";
-import { addFav } from "../../redux/Actions/post.js";
+import React, { useState, useEffect } from "react";
+import { addFav, removeFav } from "../../redux/Actions/post.js";
+import { connect } from 'react-redux'
 import huella from '../../assets/huellitabg.png'
 import huellaoscura from '../../assets/huellitaOscurabg.png'
 
-const CardAdop = ({ mascota, indexMascota }) => {
+const CardAdop = ({ mascota, indexMascota, addFav, removeFav, favoritos }) => {
   const [isFav, setIsFav] = useState(false);
-  console.log(mascota, indexMascota);
+  
 
-  const handleFavorite = (mascota) => {
+  const handleFavorite = () => {
     if (isFav) {
       setIsFav(false);
-      // removeFav();
+      removeFav(indexMascota);
     } else {
       setIsFav(true);
-      addFav(mascota);
-      console.log(mascota);
+      addFav(mascota, indexMascota);
+      //console.log(mascota);
     }
   };
+
+  useEffect(() => {
+    favoritos.forEach((fav) => {
+      if (fav.indexMascota == indexMascota) {
+        setIsFav(true);
+      }
+    });
+  }, [favoritos])
 
   return (
     <div>
@@ -49,4 +58,20 @@ const CardAdop = ({ mascota, indexMascota }) => {
   );
 };
 
-export default CardAdop;
+const mapStateToProps = (state) => {
+  return {
+    favoritos: state.favoritos
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addFav: (mascota) => { dispatch(addFav(mascota)) },
+    removeFav: (indexMascota) => { dispatch(removeFav(indexMascota)) }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CardAdop);

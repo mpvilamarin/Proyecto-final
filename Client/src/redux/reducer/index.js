@@ -33,6 +33,7 @@ import {
   POST_REVIEWS,
   LOG_OUT,
   ADDFAV,
+  REMOVEFAV,
   GET_REVIEWS,
 } from "../Actions-type/index.js";
 
@@ -40,6 +41,7 @@ const initialState = {
   mascotas: [],
   filtroMascotas: [],
   mascotaDetail: [],
+  favoritos: [],
 
   fundaciones: [],
   fundacionDetail: [],
@@ -48,7 +50,8 @@ const initialState = {
   usuarios: [],
   sesion: [],
   usuarioDetalle: [],
-  mascotasFav: [],
+  
+
 
   adopciones: [],
   detalleAdopcion: [],
@@ -59,7 +62,7 @@ const initialState = {
   reviews: [],
 };
 
-function rootReducer(state = initialState, action) {
+function rootReducer(state = initialState, action, payload) {
   switch (action.type) {
     case GET_ALL_MASCOTAS:
       return {
@@ -250,6 +253,7 @@ function rootReducer(state = initialState, action) {
         reviews: state.reviews.concat(action.payload),
       };
 
+
     case DELETE_MASCOTA:
       return {
         ...state,
@@ -330,11 +334,14 @@ function rootReducer(state = initialState, action) {
         sesion: [],}
 
     case ADDFAV:
-      return { ...state, mascotasFav: action.payload };
+      return { ...state, mascotasFav: action.payload }
+
+    case REMOVEFAV:
+      return { ...state, favoritos: state.favoritos.filter(fav => fav.indexMascotas !== payload) }
 
     default:
-      return state;
-  }
+      return { ...state }
+  };
 }
 
 export default rootReducer;

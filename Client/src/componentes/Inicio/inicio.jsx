@@ -10,12 +10,55 @@ const inicio = () =>{
                <div className={styles.loginbox}>
                 <form className={styles.form}>
                     <div className={styles.inicioAuth}>
-                    <h1 className={styles.title}>Login</h1>
-                        <h1 className={styles.title}>user</h1>
+                    <h1 className={styles.title}>Iniciar sesión</h1>
+                        <h1 className={styles.title}>Usuario</h1>
                         <span className={styles.span}><Login/></span>
                     </div>
                 </form>
-                   <Login2/>
+
+                   <form className={styles.form} 
+                   //onSubmit={formik.handleSubmit}
+                   >
+                       <div>
+                           <h1 className={styles.title}>Iniciar sesión</h1>
+                           <h1 className={styles.title}>Fundación</h1>
+                           <div className={styles.field}>
+                               
+                               <input
+                                   type="email"
+                                 //  value={ formik.values.email }
+                                   name="email"
+                                 //  onChange={formik.handleChange}
+                                   className={styles.input}
+                                   placeholder="Email"
+                                   />
+                           </div>
+                           <div className={styles.field}>
+                              
+                               <input
+                                   type="password"
+                                //   value={formik.values.contraseña}
+                                   name="contraseña"
+                                 //  onChange={formik.handleChange}
+                                   className={styles.input}
+                                   placeholder="Password"
+                               />
+                               {/*errors.contraseña && <p className={styles.errors}>{errors.contraseña}</p>*/}
+                           </div>
+                           {/*errors.general && <p className={styles.errors}>{errors.general}</p>*/}
+                           <br></br>
+                           <div className={styles.divBtn}>
+                           <button type="submit" className={styles.btn}>
+                               Iniciar sesión
+                           </button>
+                           </div>
+                           <Link to="/registro" className={styles.link}>
+                               ¿No estás registrado?
+                           </Link>
+                       </div>
+
+//                    <Login2/>
+
                </div>
            </div>
     )

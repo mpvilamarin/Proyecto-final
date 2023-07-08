@@ -103,7 +103,7 @@ export const postDonaciones = (nuevaDonacion) => {
   export const postReview = (crearReview ) => {
     return async(dispatch) =>{
       try {
-        const response = await axios.post('http://localhost:3001/usuarios/reviews', crearReview);
+        const response = await axios.post('/usuarios/reviews', crearReview);
         dispatch({
           type: POST_REVIEWS,
           payload: response.data,
@@ -118,7 +118,7 @@ export const postDonaciones = (nuevaDonacion) => {
    export const postLogin = (newLogin) => {
      return async(dispatch) => {
        try {
-         const response = await axios.post('http://localhost:3001/usuarios/login', newLogin)
+         const response = await axios.post('/usuarios/login', newLogin)
         console.log(response)
          dispatch({
            type: POST_LOGIN,
