@@ -68,7 +68,7 @@ function App() {
         <Route path="/logout" element={<LogOut />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/registro" element={<Registro />} />
-        <Route path="/perfilfund" element={<PerfilFund/>}/>
+        <Route path="/perfilfund" element={<PerfilFund />} />
         {/* <Route
           path="/formFundaciones"
           element={

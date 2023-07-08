@@ -2,7 +2,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 1400px;
+  height: 1400px;
   margin: 4rem auto;
+  margin-top: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  max-height: 100vh;
+  margin-bottom: -50px;
 }
 
 .sideleft {
@@ -10,10 +17,7 @@
   flex-direction: column;
   justify-content: center;
   background: linear-gradient(270deg, #c6a2fe 0%, #aeacff 89.62%);
-  width: 721px;
-  height: 429px;
 }
-
 
 .sideleft h1 {
   font-size: 61px;
@@ -29,26 +33,7 @@
   margin: 0 auto;
   padding: 18px 0;
 }
-/* ======= */
-/* .backContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  grid-gap: 0px;
-  justify-items: center;
-  align-items: start;
-  margin-bottom: 80px;
-  margin-top: 30px;
-}
 
-.frontContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 0.5fr);
-  grid-gap: 1px;
-  justify-items: center;
-  align-items: start;
-  margin-top: 30px;
-  margin-bottom: 80px;
-*/
 .sideright img {
   height: 429px;
   width: 670px;
@@ -65,7 +50,76 @@
 }
 
 .imagen2 {
-  margin-top: 20px;
+  margin-top: 45px;
   height: 565px;
   width: 750px;
+}
+
+.github {
+  font-size: 20px;
+}
+
+.linkedin {
+  font-size: 20px;
+}
+
+.card {
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+  cursor: default;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 45%;
+  max-width: 1100px;
+  margin: 30px;
+  margin-left: 0px;
+}
+
+.alinear {
+  display: flex;
+  width: 191%;
+}
+
+.alinear2 {
+  display: flex;
+  width: 191%;
+  position: relative;
+  right: 200%;
+  bottom: 35%;
+}
+
+.alinear3 {
+  display: flex;
+  width: 191%;
+  position: relative;
+  right: 150%;
+  bottom: 35%;
+  margin-bottom: -250px;
+}
+
+.img {
+  width: 30%;
+}
+
+.title {
+  font-size: 1.1rem;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.titleDev {
+  color: gray;
 }
