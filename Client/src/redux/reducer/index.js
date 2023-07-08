@@ -21,6 +21,7 @@ import {
   SORT_MASCOTAS_ZA,
   SORT_FUNDACIONES_AZ,
   SORT_FUNDACIONES_ZA,
+  SORT_FUNDACIONES_REVIEWS,
   RESET_DETAIL,
   FILTER_MASCOTA_BY_GENERO,
   FILTER_FUNDACIONES_CIUDAD,
@@ -171,6 +172,7 @@ function rootReducer(state = initialState, action, payload) {
         ...state,
         fundaciones: fundacionesByCiudad,
       };
+
     case GET_NAME_FUNDACIONES:
       return {
         ...state,
@@ -215,6 +217,17 @@ function rootReducer(state = initialState, action, payload) {
           .slice()
           .sort((a, b) => b.nombre.localeCompare(a.nombre)),
       };
+    case SORT_FUNDACIONES_REVIEWS:
+      return {
+        ...state,
+        fundaciones: state.fundaciones.slice().sort((a, b) => {
+          const ratingA = (a.Reviews && a.Reviews[0]?.calificacion) || 0;
+          const ratingB = (b.Reviews && b.Reviews[0]?.calificacion) || 0;
+          return action.payload === "asc"
+            ? ratingA - ratingB
+            : ratingB - ratingA;
+        }),
+      };
     case POST_ADOPCIONES:
       return {
         ...state,
@@ -244,7 +257,7 @@ function rootReducer(state = initialState, action, payload) {
       return {
         ...state,
         sesion: state.sesion.concat(action.payload),
-        usuario: 1
+        usuario: 1,
       };
 
     case POST_REVIEWS:
@@ -332,6 +345,7 @@ function rootReducer(state = initialState, action, payload) {
       return { ...state, 
         usuario: 0,
         sesion: [],}
+
 
     case ADDFAV:
       return { ...state, mascotasFav: action.payload }
