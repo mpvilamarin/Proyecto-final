@@ -9,7 +9,8 @@
     border-width: 3px;
     border-style: solid;
     border-bottom-width: 0;
-
+    flex: 1;
+    position: relative;
 }
 
 .footer {
@@ -18,7 +19,9 @@
     text-align: center;
     align-items: center;
     max-height: min-content;
+    flex-shrink: 0;
 }
+
 
 .title {
     font-family: 'Playfair Display';
