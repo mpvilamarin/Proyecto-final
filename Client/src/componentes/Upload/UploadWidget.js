@@ -15,7 +15,7 @@ const UploadWidget = ({ onImageUpload }) => {
         }
       }
     );
-
+    
     const imageElement = document.getElementById('image');
     if( imageElement ) {
       imageElement.addEventListener('click', handleClick);
