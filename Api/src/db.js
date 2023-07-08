@@ -57,6 +57,7 @@ Donaciones.belongsTo(Fundaciones, { foreignKey: "fundacionId" });
 
 Usuarios.hasMany(Donaciones, { foreignKey: "usuarioId" });
 Usuarios.hasMany(Adopciones, { foreignKey: "usuarioId" });
+Adopciones.belongsTo(Usuarios, { foreignKey: "usuarioId" });
 
 Mascotas.belongsToMany(Fundaciones, {
   through: "MascotasFundaciones",

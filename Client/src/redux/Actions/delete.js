@@ -6,7 +6,7 @@ import { DELETE_MASCOTA, DELETE_USUARIO } from "../Actions-type/index.js";
 export const deleteMascota = (nombre) => {
   return async (dispatch) => {
     try {
-      await axios.delete(`http://localhost:3001/mascotas/${nombre}`);
+      await axios.delete(`/mascotas/${nombre}`);
       dispatch({
         type: DELETE_MASCOTA,
         payload: nombre,
@@ -21,9 +21,7 @@ export const deleteMascota = (nombre) => {
 export const deleteUsuario = (email) => {
   return async (dispatch) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3001/Usuarios/${email}`
-      );
+      const response = await axios.delete(`/Usuarios/${email}`);
       dispatch({
         type: DELETE_USUARIO,
         payload: response.data,
