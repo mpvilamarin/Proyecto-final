@@ -11,6 +11,7 @@ import {
     POST_LOGIN,
     LOG_OUT,
     ADDFAV,
+    REMOVEFAV
 
 } from "../Actions-type/index.js";
 
@@ -21,7 +22,7 @@ import {
 export const postMascota = (newMascota) =>{
     return async(dispatch) => {
       try {
-        const response = await axios.post('/mascotas', newMascota);
+        const response = await axios.post('/mascotas/', newMascota);
         dispatch({
           type: POST_MASCOTA,
           payload : response.data,
@@ -69,8 +70,7 @@ export const postDonaciones = (nuevaDonacion) => {
   export const postFundaciones = (nuevaFundacion, email, nombre) => {
     return async (dispatch) => {
       try {
-        const response = await axios.post(
-          "http://localhost:3001/fundaciones",
+        const response = await axios.post("/fundaciones/",
           nuevaFundacion, email, nombre
         );
         dispatch({
@@ -104,7 +104,7 @@ export const postDonaciones = (nuevaDonacion) => {
   export const postReview = (crearReview ) => {
     return async(dispatch) =>{
       try {
-        const response = await axios.post('http://localhost:3001/usuarios/reviews', crearReview);
+        const response = await axios.post('/usuarios/reviews', crearReview);
         dispatch({
           type: POST_REVIEWS,
           payload: response.data,
@@ -119,12 +119,11 @@ export const postDonaciones = (nuevaDonacion) => {
    export const postLogin = (newLogin) => {
      return async(dispatch) => {
        try {
-        console.log("newLogin")
-         const response = await axios.post('http://localhost:3001/usuarios/login', newLogin)
+         const response = await axios.post('/usuarios/login', newLogin)
         console.log(response)
          dispatch({
            type: POST_LOGIN,
-           payload: response.data,
+           payload: response.data.data,
          })
        }
        catch (error) {
@@ -146,4 +145,7 @@ export const postDonaciones = (nuevaDonacion) => {
     return { type: ADDFAV, payload: mascota };
   };
   
+  export const removeFav = (indexMascota) => {
+    return { type: REMOVEFAV, payload: indexMascota }
+  };
 

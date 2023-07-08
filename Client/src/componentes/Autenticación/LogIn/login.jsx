@@ -10,7 +10,7 @@ const Login = () => {
             <div>
                 <form className={styles.form}>
                 <button className={styles.btn} onClick={() => loginWithRedirect()}>
-                     Log In
+                     Iniciar sesión
                 </button>
                 </form>
             </div>

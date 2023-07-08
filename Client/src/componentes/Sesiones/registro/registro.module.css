@@ -1,68 +1,92 @@
+.container {
+  background-image: url('../../../assets/Registro.png');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 80vh;
+  justify-content: flex-end;
+}
+
 .form {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: white;
-    padding: 2em;
-    border-radius: 25px;
-    transition: 0.4s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.4) 1px 2px 2px;
-    width: 25%; /* Puedes ajustar el ancho del formulario según tus necesidades */
-    margin: 0 auto; /* Centra el formulario horizontalmente */
-  }
-  
-  .form:hover {
-    transform: translateX(-0.5em) translateY(-0.5em);
-    border: 1px solid #171717;
-    box-shadow: 10px 10px 0px #666666;
-  }
-  
-  .heading {
-    color: black;
-    padding-bottom: 0.5em;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .input {
-    border-radius: 5px;
-    border: 1px solid whitesmoke;
-    background-color: whitesmoke;
-    outline: none;
-    padding: 0.3em;
-    transition: 0.4s ease-in-out;
-  }
-  
-  .input:hover {
-    box-shadow: 4px 4px 0px #969696, -2px -2px 8px #ffffff;
-  }
-  
-  .input:focus {
-    background: #ffffff;
-    box-shadow: inset 1px 3px 6px rgba(0, 0, 0, 0.3);
-  }
-  
-  .form .btn {
-    margin-top: 1em;
-    align-self: center;
-    padding: 0.5em;
-    padding-left: 0.8em;
-    padding-right: 0.8em;
-    border-radius: 10px;
-    border: none;
-    color: black;
-    transition: 0.4s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 1px;
-  }
-  
-  .form .btn:hover {
-    box-shadow: 4px 4px 0px #969696, -2px -2px 8px #ffffff;
-    transform: translateX(-0.3em) translateY(-0.3em);
-  }
-  
-  .form .btn:active {
-    transition: 0.2s;
-    transform: translateX(0em) translateY(0em);
-    box-shadow: none;
-  }
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background-color: white;
+  padding: 2em;
+  border-radius: 25px;
+  transition: 0.4s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.4) 1px 2px 2px;
+  width: 25%;
+  margin-left: auto;
+  margin-right: 300px;
+  margin-top: 50px;
+  font-family: 'Merryweather';
+  font-size: large;
+}
+
+.form:hover {
+  transform: translateX(-0.5em) translateY(-0.5em);
+  border: 1px solid #171717;
+  box-shadow: 10px 10px 0px #689fb3;
+}
+
+.heading {
+  color: black;
+  padding-bottom: 0.5em;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Playfair display';
+  font-size: large;
+}
+
+.input {
+  border-radius: 5px;
+  border: 1px solid whitesmoke;
+  background-color: whitesmoke;
+  outline: none;
+  padding: 0.3em;
+  transition: 0.4s ease-in-out;
+}
+
+.input:hover {
+  box-shadow: 4px 4px 0px #969696, -2px -2px 8px #ffffff;
+}
+
+.input:focus {
+  background: #ffffff;
+  box-shadow: inset 1px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.form .btn {
+  height: 50px;
+  width: 170px;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  border: 2px solid #252525;
+  font-family: 'Merryweather';
+  font-size: large;
+  font-weight: 400;
+  overflow: hidden;
+  border-radius: 30px;
+  color: #333;
+  transition: all 0.5s ease-in-out;
+  margin-top: 15px;
+  margin-left: 90px;
+}
+
+.form .btn:hover {
+  box-shadow: 1px 1px 200px #252525;
+  border: none;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.form .btn:active {
+  transition: 0.2s;
+  transform: translateX(0em) translateY(0em);
+  box-shadow: none;
+}

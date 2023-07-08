@@ -38,10 +38,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false
     },
-      fundadaEn: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
+      // fundadaEn: {
+      //   type: DataTypes.DATE,
+      //   allowNull: false,
+      // },
       mision: {
         type: DataTypes.STRING,
         allowNull: false,

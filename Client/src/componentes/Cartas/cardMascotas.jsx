@@ -15,7 +15,7 @@ export default function CardMascota() {
     <div className="card-container">
       {allMascotas.map((mascota, index) => (
         <div key={index} className="card">
-          <img src={mascota.imagen} alt={mascota.nombre} />
+          <img src={mascota.image} alt={mascota.nombre} />
           <h2>{mascota.nombre}</h2>
           <p>{mascota.descripcion}</p>
         </div>
