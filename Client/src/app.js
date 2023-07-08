@@ -38,7 +38,7 @@ import DetalleFundacion from "./componentes/Fundación/detailFundacion";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  axios.defaults.baseURL = "https://fundacion-mascotas-uz9u.onrender.com/";
+  axios.defaults.baseURL = "https://localhost:3001";
 
   const location = useLocation();
   const { isAuthenticated, user } = useAuth0();
