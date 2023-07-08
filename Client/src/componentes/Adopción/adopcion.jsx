@@ -11,28 +11,25 @@ import {
 } from "../../redux/Actions/filtroAndOrdenamiento.js";
 import Pagination from "./Paginación/paginacion.jsx";
 
-import styles from './adopcion.module.css';
+import styles from "./adopcion.module.css";
 import CardAdop from "../Cartas/cardAdopcion.jsx";
-
-
 
 const Adopcion = () => {
   const dispatch = useDispatch();
 
-  const allPets = useSelector((state) => state.mascotas)
-  console.log(allPets)
-  const allFundations = useSelector((state) => state.fundaciones)
-  console.log(allFundations)
-  const [selectedFundacion, setSelectedFundacion] = useState('All');
-  const uniqueFundaciones = [...new Set(allFundations.map(fundacion => fundacion.nombre))];
+  const allPets = useSelector((state) => state.mascotas);
+  const allFundations = useSelector((state) => state.fundaciones);
+  console.log(allFundations);
+  const [selectedFundacion, setSelectedFundacion] = useState("All");
+  const uniqueFundaciones = [
+    ...new Set(allFundations.map((fundacion) => fundacion.nombre)),
+  ];
   const [generoFilter, setGeneroFilter] = useState("");
   const [ordenamiento, setOrdenamiento] = useState("");
-  const [currentPage, setCurrentPage] = useState(1)
-  const [elementsPerPage] = useState(4)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [elementsPerPage] = useState(4);
   const [especie, setEspecie] = useState("");
   const petsFilter = useSelector((state) => state.mascotas);
-
-
 
   useEffect(() => {
     dispatch(getAllMascotas());
@@ -43,7 +40,10 @@ const Adopcion = () => {
 
   const indexOfLastElement = currentPage * elementsPerPage;
   const indexOfFirstElement = indexOfLastElement - elementsPerPage;
-  const currentElements = petsFilter.slice(indexOfFirstElement, indexOfLastElement);
+  const currentElements = petsFilter.slice(
+    indexOfFirstElement,
+    indexOfLastElement
+  );
 
   const paginationButtonNext = (e) => {
     e.preventDefault();
@@ -57,20 +57,18 @@ const Adopcion = () => {
 
   const handlePageCh = (pageNumber) => {
     setCurrentPage(pageNumber);
-  }
+  };
 
   const handleEspecieFilter = (e) => {
     const especie = e.target.value;
     setEspecie(especie);
-    dispatch(filterMascotaByEspecie(especie))
+    dispatch(filterMascotaByEspecie(especie));
   };
   const handleGeneroFilter = (event) => {
     const genero = event.target.value;
     setGeneroFilter(genero);
     dispatch(filterMascotaByGenero(genero));
   };
-
-
 
   const handleSortAsc = () => {
     setOrdenamiento("asc");
@@ -82,21 +80,33 @@ const Adopcion = () => {
     dispatch(sortMascotasZA());
   };
 
-
   const handleFundacion = (e) => {
     e.preventDefault();
     dispatch(filterMascotaByFundacion(e.target.value));
     setSelectedFundacion(e.target.value);
     setCurrentPage(1);
-  }
+  };
 
   return (
     <div className={styles.container}>
+      {/* <div className={styles.containerAnimales}>
+        {currentElements.map((mascota, indexMascota) => (
+          <CardAdop
+            mascota={mascota}
+            indexMascota={mascota.id}
+            key={indexMascota}
+          />
+        ))}
+      </div> */}
       <h1>Elige las características de tu mascota</h1>
       <div className={styles.selectoresWrapper}>
         <div className={styles.divSelector}>
           <label>Género:</label>
-          <select value={generoFilter} onChange={handleGeneroFilter} className={styles.options}>
+          <select
+            value={generoFilter}
+            onChange={handleGeneroFilter}
+            className={styles.options}
+          >
             <option value="">Todos</option>
             <option value="Macho">Macho</option>
             <option value="Hembra">Hembra</option>
@@ -110,7 +120,12 @@ const Adopcion = () => {
         </div>
         <div>
           <label htmlFor="especie">Especie:</label>
-          <select id="especie" value={especie} onChange={handleEspecieFilter} className={styles.options}>
+          <select
+            id="especie"
+            value={especie}
+            onChange={handleEspecieFilter}
+            className={styles.options}
+          >
             <option value="">Perros y gatos</option>
             <option value="Perro">Perros</option>
             <option value="Gato">Gatos</option>
@@ -123,19 +138,23 @@ const Adopcion = () => {
             onChange={handleFundacion}
             value={selectedFundacion}
           >
-            <option value='All'>Ver todas las fundaciones</option>
-            {
-              uniqueFundaciones.map((x, index) => (
-                <option value={x} key={index}>{x}</option>
-              ))
-            }
+            <option value="All">Ver todas las fundaciones</option>
+            {uniqueFundaciones.map((x, index) => (
+              <option value={x} key={index}>
+                {x}
+              </option>
+            ))}
           </select>
         </div>
       </div>
 
       <div className={styles.containerAnimales}>
         {currentElements.map((mascota, indexMascota) => (
-          <CardAdop mascota={mascota} indexMascota={mascota.id} key={indexMascota} />
+          <CardAdop
+            mascota={mascota}
+            indexMascota={mascota.id}
+            key={indexMascota}
+          />
         ))}
       </div>
 
@@ -167,23 +186,5 @@ const Adopcion = () => {
       </div>
     </div>
   );
-}
+};
 export default Adopcion;
-
-/*
-//       <div className={styles.cardContainer}>
-//         {currentElements.map((mascota, indexMascota) => (
-//           <Card key={indexMascota} style={{ width: '18rem' }}>
-//             <Card.Img variant="top" src={mascotas} alt="Mascota" className="card-image" />
-//             <Card.Body>
-//               <Card.Title>{mascota.nombre}</Card.Title>
-//               <Card.Text>
-//                 Género: {mascota.genero}
-//                 <br />
-//                 Temperamento: {mascota.temperamento}
-//               </Card.Text>
-//               <Link to={`/mascota/${mascota.id}`}><Button variant="primary">Ver más</Button></Link>
-//             </Card.Body>
-//           </Card>)
-//         )
-*/

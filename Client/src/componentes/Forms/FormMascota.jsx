@@ -23,13 +23,14 @@ function FormMascota() {
     temperamento: '',
     descripcion: '',
     castrado: '',
-    fundacionId: [],
-    // imagen_url: '',
+    image: '',
+    fundacionId: '',
   });
   const [showAlert, setShowAlert] = useState(false);
   const [invalidFields, setInvalidFields] = useState([]);
 
   const handleChange = (e) => {
+    console.log(e.target.value)
     setNewMascota({
       ...newMascota,
       [e.target.name]: e.target.value,
@@ -52,6 +53,13 @@ function FormMascota() {
     }
   };
 
+  const handleImageUpload = (url) => {
+    setNewMascota((prevMascota) => ({
+      ...prevMascota,
+      image: url
+    }));
+};
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid()) {
@@ -66,7 +74,8 @@ function FormMascota() {
         temperamento: '',
         descripcion: '',
         castrado: '',
-        // imagen_url: '',
+        image: '',
+        fundacionId: ''
       });
       setShowAlert(false);
       setInvalidFields([]);
@@ -85,11 +94,16 @@ function FormMascota() {
       'temperamento',
       'descripcion',
       'castrado',
-
+      'image',
     ];
 
-    const invalidFields = requiredFields.filter(
-      (field) => newMascota[field].trim() === ''
+    const invalidFields = requiredFields.filter((field) =>  {
+      if(field === 'image') {
+        return newMascota[field] === ''
+      } else {
+        return newMascota[field].trim() === ''
+        }
+      }  
     );
 
     setInvalidFields(invalidFields);
@@ -123,7 +137,7 @@ function FormMascota() {
           />
         </Form.Group>
 
-        {/* <Form.Group controlId="formBasicEspecie">
+        <Form.Group controlId="formBasicEspecie">
           <Form.Label>Especie</Form.Label>
           <Form.Control
             type="text"
@@ -135,20 +149,6 @@ function FormMascota() {
               invalidFields.includes('especie') ? 'is-invalid' : ''
             }
           />
-        </Form.Group> */}
-
-        <Form.Group controlId="formBasicEspecie">
-          <Form.Label>Epecie</Form.Label>
-          <Form.Select
-            name="especie"
-            value={newMascota.especie}
-            onChange={handleChange}
-            className={invalidFields.includes('especie') ? 'is-invalid' : ''}
-          >
-            <option value="">Seleccionar tamaño</option>
-            <option value="Perro">Perro</option>
-            <option value="Gato">Gato</option>
-          </Form.Select>
         </Form.Group>
 
         <Form.Group controlId="formBasicTamaño">
@@ -159,10 +159,10 @@ function FormMascota() {
             onChange={handleChange}
             className={invalidFields.includes('tamaño') ? 'is-invalid' : ''}
           >
-            <option value="">Seleccionar tamaño</option>
-            <option value="grande">Grande</option>
-            <option value="mediano">Mediano</option>
-            <option value="pequeño">Pequeño</option>
+            <option value="">Seleccionar </option>
+            <option value="Grande">Grande</option>
+            <option value="Mediano">Mediano</option>
+            <option value="Pequeño">Pequeño</option>
           </Form.Select>
         </Form.Group>
 
@@ -232,7 +232,6 @@ function FormMascota() {
               invalidFields.includes('descripcion') ? 'is-invalid' : ''
             }
           />
-
         </Form.Group>
         <Form.Group controlId="formBasicCastrado">
           <Form.Label>Opción de castración</Form.Label>
@@ -257,10 +256,16 @@ function FormMascota() {
               checked={newMascota.castrado === 'noCastrado'}
               onChange={handleChange}
             />
+
+ 
+            </div>
+            </Form.Group>
+
+          <div>
+            {newMascota.image && <img src={newMascota.image} alt="image"></img>}
+            <UploadWidget onImageUpload={handleImageUpload}/>
           </div>
-        </Form.Group>
-        {/* <UploadWidget /> */}
-        {/*onImageUpload={(imageUrl) => setNewMascota({ ...newMascota, imagen_url: imageUrl })}*/}
+
         <div>
           <div>
             {sortedFundacion.length >= 1 ? (
@@ -283,8 +288,8 @@ function FormMascota() {
             )}
           </div>
         </div>
-
-
+        
+        
 
         <Button
           variant="primary"

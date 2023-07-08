@@ -1,37 +1,27 @@
 import Login from "../Autenticación/LogIn/login"
 import { Link } from "react-router-dom";
-import styles from './inicio.module.css'
+import styles from './inicio.module.css';
+import Login2 from "../Sesiones/sesion/login2";
 
 
 const inicio = () =>{
     return(
-        // <div className={styles.container}>
-        //     <div className={styles.inicioAuth}>
-        //         <h1>Inicia sesion</h1>
-        //         <h1>como usuario</h1>
-        //         <Login/>
-        //     </div>
-        //     <div className={styles.inicioFundacion}>
-        //         <h1>Inicia sesion</h1>
-        //         <h1>Como fundacion</h1>
-        //         <Link to="/login2" className={styles.link}>Log in</Link>
-        //     </div>
-        // </div>
         <div className={styles.container}>
                <div className={styles.loginbox}>
                 <form className={styles.form}>
                     <div className={styles.inicioAuth}>
-                    <h1 className={styles.title}>Login</h1>
-                        <h1 className={styles.title}>user</h1>
+                    <h1 className={styles.title}>Iniciar sesión</h1>
+                        <h1 className={styles.title}>Usuario</h1>
                         <span className={styles.span}><Login/></span>
                     </div>
                 </form>
-                   <form className={styles.form} 
+
+                   <form className={styles.form}
                    //onSubmit={formik.handleSubmit}
                    >
                        <div>
-                           <h1 className={styles.title}>Login</h1>
-                           <h1 className={styles.title}>fundation</h1>
+                           <h1 className={styles.title}>Iniciar sesión</h1>
+                           <h1 className={styles.title}>Fundación</h1>
                            <div className={styles.field}>
                                
                                <input
@@ -59,14 +49,16 @@ const inicio = () =>{
                            <br></br>
                            <div className={styles.divBtn}>
                            <button type="submit" className={styles.btn}>
-                               Enviar
+                               Iniciar sesión
                            </button>
                            </div>
                            <Link to="/registro" className={styles.link}>
                                ¿No estás registrado?
                            </Link>
                        </div>
-                   </form>
+                       </form>
+                 {/* <Login2> */}
+
                </div>
            </div>
     )

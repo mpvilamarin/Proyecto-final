@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
         allowNull: false
     },
       fundadaEn: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
         allowNull: false,
       },
       mision: {
