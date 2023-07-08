@@ -81,3 +81,8 @@
     margin-bottom: 3rem;
   }
   
+  .containerAnimales{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }

@@ -68,11 +68,20 @@ export const getAllFundaciones = () => {
 
 export const getDetailFundacion = (id) => {
   return async (dispatch) => {
-    dispatch({ type: GET_DETAIL_FUNDACION, payload: [] });
-    await axios.get(`http://localhost:3001/fundaciones/${id}`)
-      .then((res) => res.data)
-      .then((data) => dispatch({ type: GET_DETAIL_FUNDACION, payload: data }))
-      .catch((err) => console.log(err));
+     dispatch({ type: GET_DETAIL_FUNDACION, payload: [] });
+     await axios.get(`http://localhost:3001/fundaciones/${id}`)
+       .then((res) => res.data)
+       .then((data) => dispatch({ type: GET_DETAIL_FUNDACION, payload: data }))
+       .catch((err) => console.log(err));
+    // try{
+    //   console.log('por aca pase')
+    //   const response = await axios.get(`http://localhost:3001/fundaciones/${id}`)
+    //   console.log(response)
+    //   dispatch({ type: GET_DETAIL_FUNDACION, payload: response })
+    // } catch(error) {
+    //   console.log(`error ${error}`);
+    //   console.log(`no hay fundaciones creadas con ese id`);
+    // }
   };
 };
 

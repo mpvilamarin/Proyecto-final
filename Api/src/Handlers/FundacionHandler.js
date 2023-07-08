@@ -1,4 +1,4 @@
-const { Fundaciones,Reviews } = require("../db");
+const { Fundaciones,Reviews, Mascotas } = require("../db");
 const enviarCorreoBienvenida = require('./CorreosHandler');
 const STATUS_CREATED = 201;
 const STATUS_ERROR = 404;
@@ -50,20 +50,31 @@ async function getAllFundaciones(req, res) {
     if (nombre) {
       const response = await Fundaciones.findAll({
         where: { nombre: nombre },
-        include: {
+        include: [{
           model: Reviews,
           attributes: ['calificacion', 'comentarios'],
         },
+        {
+          model: Mascotas,
+          attributes: ['nombre']
+        }
+      ],
       });
+      
       if (response) {
         return res.status(STATUS_OK).json(response);
       }
     } else {
       let allFundaciones = await Fundaciones.findAll({
-        include: {
+        include: [{
           model: Reviews,
           attributes: ['calificacion', 'comentarios'],
         },
+        {
+          model: Mascotas,
+          attributes: ['nombre']
+        }
+      ],
       });
       return res.status(STATUS_OK).json(allFundaciones);
     }
@@ -112,7 +123,18 @@ async function updateFundacion(req, res){
 async function getFundacionById(req, res) {
   const { id } = req.params;
   try {
-    const response = await Fundaciones.findByPk(id);
+    const response = await Fundaciones.findAll({
+      where: { id: id },
+      include: [{
+        model: Reviews,
+        attributes: ['calificacion', 'comentarios'],
+      },
+      {
+        model: Mascotas,
+        attributes: ['nombre','genero', 'temperamento', 'id']
+      }
+    ],
+    });
     res.status(STATUS_OK).json(response);
   } catch (error) {
     res.status(STATUS_ERROR).json({ message: `no se encontró el id ${error}` });
