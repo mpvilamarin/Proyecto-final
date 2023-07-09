@@ -1,3 +1,10 @@
+.containerPrincipal {
+  display: flex;
+  flex-direction: column;
+  min-height: auto;
+
+}
+
 .headercontainer {
   display: grid;
   grid-template-columns: 1fr 1fr;

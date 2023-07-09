@@ -6,13 +6,13 @@ import style from "./Fundacion.module.css";
 
 const Fundacion = () => {
   return (
-    <div className={style.containerFundaciones}>
-      <div className={style.filters}>
-        <SortFundaciones />
-        <SearchBar />
+      <div className={style.containerFundaciones}>
+        <div className={style.filters}>
+          <SortFundaciones />
+          <SearchBar />
+        </div>
+        <CardFundacion />
       </div>
-      <CardFundacion />
-    </div>
   );
 };
 
