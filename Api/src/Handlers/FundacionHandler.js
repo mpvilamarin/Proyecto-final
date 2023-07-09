@@ -5,7 +5,7 @@ const STATUS_ERROR = 404;
 const STATUS_OK = 200;
 
 async function postFundacion(req, res) {
-  const {nombre, ciudad, direccion, telefono, email, contraseña, fundadaEn, mision, borrado} = req.body;
+  const {nombre, ciudad, direccion, telefono, email, contraseña, fundadaEn, mision, borrado,tipo} = req.body;
   try {
     if(!req.body){
       return res
@@ -30,6 +30,7 @@ async function postFundacion(req, res) {
       fundadaEn,
       mision,
       borrado,
+      tipo:'fundacion',
     });
 
     await enviarCorreoBienvenida(email, nombre);
@@ -119,12 +120,32 @@ async function getFundacionById(req, res) {
   }
 }
 
+async function postAutenticarFundacion(req,res){
+  const { email, contraseña } = req.body;
 
+  try {
+    const fundacionLogin = await Fundaciones.findOne({ where: { email, contraseña } });
+    if (fundacionLogin) {
+      return res.status(STATUS_CREATED).json({
+        message: 'Logueado con éxito como fundación',
+        email,
+        usuario:'fundacion',
+        isLogued:true,
+
+      });
+    }
+
+    return res.status(STATUS_ERROR).json({ message: 'Usuario no encontrado' });
+  } catch (error) {
+    return res.status(STATUS_ERROR).json({ message: 'Error al autenticar al usuario' });
+  }
+}
 
 module.exports = { 
     postFundacion,
     getAllFundaciones,
     updateFundacion,
-    getFundacionById
+    getFundacionById,
+    postAutenticarFundacion,
 }
 
