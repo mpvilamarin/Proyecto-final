@@ -10,6 +10,8 @@ const Profile = () => {
   const mascotasFav = useSelector((state) => state.mascotasFav)
   console.log(mascotasFav)
 
+  console.log("aqui esta:" , user.sub);
+
   if (isLoading) {
     return (
       <div className={styles.containerLoading}>
@@ -31,9 +33,7 @@ const Profile = () => {
         </div>
         <h2 className={styles.sub}>Mis peluditos favoritos</h2>
         <div>
-          {mascotasFav.map((mascota) => {
-            <CardAdop mascota={mascota} indexMascota={mascota.id} />
-          })}
+
         </div>
       </div>
     )
