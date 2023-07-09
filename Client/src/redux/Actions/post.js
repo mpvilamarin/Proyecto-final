@@ -30,7 +30,7 @@ export const postMascota = (newMascota) =>{
       }
     }
   };
-};
+
 
 export const postAdopciones = (nuevaAdopcion) => {
   return async (dispatch) => {
@@ -78,7 +78,7 @@ export const postDonaciones = (nuevaDonacion) => {
       }
     };
   };
-};
+
 
 export const postUsuario = (newUsuario) => {
   return async (dispatch) => {
@@ -103,16 +103,6 @@ export const postReview = (crearReview) => {
         type: POST_REVIEWS,
         payload: response.data,
       });
-
-
-  export const postReview = (crearReview ) => {
-    return async(dispatch) =>{
-      try {
-        const response = await axios.post('/usuarios/reviews', crearReview);
-        dispatch({
-          type: POST_REVIEWS,
-          payload: response.data,
-        })
         
         console.log("review",response);
       } catch (error) {
@@ -152,6 +142,6 @@ export const postReview = (crearReview) => {
     return { type: REMOVEFAV, payload: indexMascota }
   };
 
+  
 
-  return { type: ADDFAV, payload: mascota };
-};
+
