@@ -94,7 +94,7 @@ function App() {
         <Route path="/formAdopcion" element={<FormAdopcion />} />
 
         <Route path="/donaciones" element={<Donacion />} />
-         <Route path="/formAdopcion" element={<FormAdopcion />} />
+        <Route path="/formAdopcion" element={<FormAdopcion />} />
         <Route path="/donaciones/feedback" element={<Feedback />} />
         <Route path="/donaciones/rejected" element={<Rejected />} />
         <Route path="/DashboardAdmin" element={<Dashboard />} />
