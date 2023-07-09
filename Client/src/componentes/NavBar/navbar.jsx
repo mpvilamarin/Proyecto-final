@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import "./NavBar.css";
@@ -15,24 +15,26 @@ export default function NavBar() {
 
   const numUsuario = useSelector((state) => state.usuario);
 
-      const navigate = useNavigate();
-      const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-      const logout = () => {
-        dispatch(logOut());
-        navigate("/");
-      };
+  const logout = () => {
+    dispatch(logOut());
+    navigate("/");
+  };
 
-      useEffect(()=>{
+  useEffect(() => {
 
-      },[numUsuario])
-  
+  }, [numUsuario])
+
 
   return (
     <Navbar className="custom-navbar" variant="light" expand="lg">
       <Container className="container">
         <Navbar.Brand className="logo-container d-flex align-items-center">
-          <img src={logo} alt="Logo" className="logo img-fluid" />
+          <Link to="/">
+            <img src={logo} alt="Logo" className="logo img-fluid" />
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -41,45 +43,46 @@ export default function NavBar() {
               <Link to="/donaciones" className="nav-link">
                 Donaciones
               </Link>
-              
             )}
             <Link to="/adopciones" className="nav-link">
               Mascotas
             </Link>
-            {numUsuario === 1 &&(<Link to="/formMascota" className="nav-link">Crear Mascota</Link>)}
+            {numUsuario === 1 && (<Link to="/formMascota" className="nav-link">Crear Mascota</Link>)}
 
             {user && user.role === "Fundación" && (
               <Link to="/formFundaciones" className="nav-link">
                 Crear Fundacion
               </Link>
             )}
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
             <Link to="/fundaciones" className="nav-link">
               Fundaciones
             </Link>
             <Link to="/about" className="nav-link">
-              Sobre nosotros
+              Nosotros
             </Link>
             {numUsuario === 1 || isAuthenticated ? null : (
               <Link to="/login" className="nav-link">
-              Log in
+                Iniciar Sesión
               </Link>
             )}
-            {/*!isAuthenticated && <li><LogInButton /></li>*/}
+            {/* {/!isAuthenticated && <li><LogInButton /></li>/} */}
             {isAuthenticated && (
+              <Link to="/perfil" className="nav-link">
+                Mi Perfil
+              </Link>
+            )}
+            {numUsuario === 1 && (
               <li>
-                <a href="/perfil">Mi perfil</a>
+                <a href="/perfilfund">Mi perfil</a>
               </li>
             )}
             {isAuthenticated && (
-              <li>
-                <LogOutButton />
+              <li className="nav-link">
+                <LogOutButton/>
               </li>
             )}
 
-            {numUsuario === 1 &&(<button onClick={logout}>LOGOUT</button>)}
+            {numUsuario === 1 && (<button onClick={logout}>LOGOUT</button>)}
           </Nav>
         </Navbar.Collapse>
       </Container>

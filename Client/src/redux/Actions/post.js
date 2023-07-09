@@ -11,6 +11,8 @@ import {
     POST_LOGIN,
     LOG_OUT,
     ADDFAV,
+    POST_ADMIN,
+    POST_LOGIN_FUNDACION
 
 } from "../Actions-type/index.js";
 
@@ -116,23 +118,44 @@ export const postDonaciones = (nuevaDonacion) => {
       }
     }
   }
-   export const postLogin = (newLogin) => {
-     return async(dispatch) => {
-       try {
-        console.log("newLogin")
-         const response = await axios.post('http://localhost:3001/usuarios/login', newLogin)
-        console.log(response)
-         dispatch({
-           type: POST_LOGIN,
-           payload: response.data,
-         })
-       }
-       catch (error) {
-         alert(`error al loguearse ${error}`)
-       }
-     }
-   }
+  export const postLoginAdmin = (newLogin) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.post('http://localhost:3001/usuarios/login', newLogin);
+        const { usuario, email } = response.data;
+        dispatch({
+          type: POST_LOGIN,
+          payload: {
+           usuario,email,
+          },
+        });
+        alert(`inicio de sesion exitoso para ${usuario}`);
+      } catch (error) {
+       
+        alert(`Error al iniciar sesión: ${error}`);
+        
+      }
+    };
+  };
 
+  export const postLoginFundacion = (newLogin) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.post('http://localhost:3001/fundaciones/login', newLogin);
+        const { usuario, email } = response.data;
+        dispatch({
+          type: POST_LOGIN_FUNDACION,
+          payload: {
+           usuario,email,
+          },
+        });
+        alert(`inicio de sesion exitoso para ${usuario}`);
+      } catch (error) {
+
+        alert(`Error al iniciar sesión: ${error}`);
+      }
+    };
+  };
    export const logOut = () =>{
     return { type: LOG_OUT}
    }
@@ -145,5 +168,22 @@ export const postDonaciones = (nuevaDonacion) => {
   
     return { type: ADDFAV, payload: mascota };
   };
-  
+
+
+  // export const postAdmin = (newAdmin) =>{
+  //   return async(dispatch) => {
+
+  //     try {
+  //       const response = await axios.post('http://localhost:3001/admin', newAdmin);
+  //       dispatch({
+  //         type: POST_ADMIN,
+  //         payload: response.payload
+  //       })
+  //       alert('el admin se creo exitosamente')
+  //     } catch (error) {
+  //       alert(`no se creo el admin ${error}`)
+  //     }
+  //   }
+  // }
+
 

@@ -34,6 +34,8 @@ import {
   LOG_OUT,
   ADDFAV,
   GET_REVIEWS,
+  GET_ADMIN,
+  POST_LOGIN_FUNDACION
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -44,10 +46,13 @@ const initialState = {
   fundaciones: [],
   fundacionDetail: [],
 
-  usuario: "0",
+  usuarioAdmin: [],
+  usuarioFundacion: [],
   usuarios: [],
   sesion: [],
+
   usuarioDetalle: [],
+
   mascotasFav: [],
 
   adopciones: [],
@@ -57,10 +62,18 @@ const initialState = {
   detallesDonacion: [],
 
   reviews: [],
+
+  admin:[],
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case GET_ADMIN:
+      return{
+        ...state,
+        admin: action.payload
+      }; 
+      
     case GET_ALL_MASCOTAS:
       return {
         ...state,
@@ -237,12 +250,38 @@ function rootReducer(state = initialState, action) {
         ...state,
         usuarios: state.usuarios.concat(action.payload),
       };
-    case POST_LOGIN:
-      return {
-        ...state,
-        sesion: state.sesion.concat(action.payload),
-        usuario: 1
-      };
+
+      case POST_LOGIN:
+  if (action.payload.usuario === 'fundacion') {
+    return {
+      ...state,
+      usuarioFundacion: {
+        email: action.payload.email,
+        tipo: action.payload.usuario,
+      },
+      usuarioAdmin: null,
+    };
+  } else if (action.payload.usuario === 'admin') {
+    return {
+      ...state,
+      usuarioAdmin: {
+        email: action.payload.email,
+        tipo: action.payload.usuario,
+      },
+      usuarioFundacion: null,
+    };
+  }
+ 
+
+        case POST_LOGIN_FUNDACION:
+          return {
+            ...state,
+            usuarioFundacion: {
+              email: action.payload.email,
+              tipo: action.payload.usuario,
+            },
+          };
+      
 
     case POST_REVIEWS:
       return {
@@ -325,7 +364,11 @@ function rootReducer(state = initialState, action) {
       return { ...state, fundacionDetail: null };
 
     case LOG_OUT:
-      return { ...state, usuario: 0}
+    return {
+      ...state,
+      usuarioAdmin: null,
+      usuarioFundacion: null,
+    };
 
     case ADDFAV:
       return { ...state, mascotasFav: action.payload };
