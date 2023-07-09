@@ -17,14 +17,14 @@ import {
 export const postMascota = (newMascota) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post("/mascotas/", newMascota);
+      const response = await axios.post(`/mascotas/`, newMascota);
       dispatch({
         type: POST_MASCOTA,
         payload: response.data,
       });
       alert("Mascota creada con éxito");
     } catch (error) {
-      alert(`Error al crear la mascota: ${error}`);
+      alert(`Error al crear la mascota ${error}`);
     }
   };
 };
@@ -39,7 +39,7 @@ export const postAdopciones = (nuevaAdopcion) => {
       });
       alert("La adopción fue exitosa");
     } catch (error) {
-      alert(`Error al crear la adopción: ${error}`);
+      alert(`Error al crear la adopcion ${error}`);
     }
   };
 };
@@ -54,7 +54,7 @@ export const postDonaciones = (nuevaDonacion) => {
       });
       alert("Donación exitosa");
     } catch (error) {
-      alert(`Error en la donación: ${error}`);
+      alert(`Error en la donacion ${error}`);
     }
   };
 };
@@ -62,18 +62,19 @@ export const postDonaciones = (nuevaDonacion) => {
 export const postFundaciones = (nuevaFundacion, email, nombre) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post("/fundaciones/", {
+      const response = await axios.post(
+        `/fundaciones`,
         nuevaFundacion,
         email,
-        nombre,
-      });
+        nombre
+      );
       dispatch({
         type: POST_FUNDACIONES,
         payload: response.data,
       });
-      alert("Fundación creada con éxito");
+      alert("fundacion creada con exito");
     } catch (error) {
-      alert(`Error al crear la fundación: ${error}`);
+      alert(`error al crear la fundacion ${error}`);
     }
   };
 };
@@ -110,14 +111,14 @@ export const postReview = (crearReview) => {
 export const postLogin = (newLogin) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post("/usuarios/login", newLogin);
+      const response = await axios.post(`/usuarios/login`, newLogin);
       console.log(response);
       dispatch({
         type: POST_LOGIN,
         payload: response.data.data,
       });
     } catch (error) {
-      alert(`Error al iniciar sesión: ${error}`);
+      alert(`error al loguearse ${error}`);
     }
   };
 };
@@ -126,15 +127,10 @@ export const logOut = () => {
   return { type: LOG_OUT };
 };
 
-export const addFav = (mascota) => {
-  if (mascota !== undefined) {
-    console.log("Se pasó el payload:", mascota);
-    return { type: ADDFAV, payload: mascota };
-  } else {
-    console.log("No se pasó el payload");
-  }
-};
-
 export const removeFav = (indexMascota) => {
   return { type: REMOVEFAV, payload: indexMascota };
+};
+
+export const addFav = (mascota) => {
+  return { type: ADDFAV, payload: mascota };
 };

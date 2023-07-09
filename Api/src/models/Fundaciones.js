@@ -36,12 +36,12 @@ module.exports = (sequelize) => {
       },
       contraseña: {
         type: DataTypes.STRING,
-        allowNull: false
-    },
-      // fundadaEn: {
-      //   type: DataTypes.DATE,
-      //   allowNull: false,
-      // },
+        allowNull: false,
+      },
+      fundadaEn: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
       mision: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -53,8 +53,8 @@ module.exports = (sequelize) => {
       tipo: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: 'fundacion'
-      }
+        defaultValue: "fundacion",
+      },
     },
     {
       timestamps: false,
