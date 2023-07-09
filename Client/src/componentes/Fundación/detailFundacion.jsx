@@ -13,7 +13,7 @@ const DetailFundacion = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const detail = useSelector((state) => state.fundacionDetail);
-  const fundacion = detail[0]
+  const fundacion = detail
   console.log(fundacion)
   const reviews = fundacion?.Reviews
   const mascotas = fundacion?.Mascotas
@@ -40,8 +40,8 @@ const DetailFundacion = () => {
 
   return (
     <div className={style.contenedorPadre}>
-      
-      
+
+
       {!fundacion ? (
         <h3>LOADING...</h3>
       ) : (
@@ -62,11 +62,11 @@ const DetailFundacion = () => {
                 <h5>Fecha de Fundación: {fundacion?.fundadaEn}</h5>
               </div>
             </div>
-            
+
           )}
           <div className={style.contenedorMision}>
             <div className={style.mision}>
-                <h5>Misión: {fundacion?.mision}</h5>
+              <h5>Misión: {fundacion?.mision}</h5>
             </div>
             <div className={style.buttonDonar}>
               <button onClick={handleClick}>Donar</button>
@@ -74,46 +74,46 @@ const DetailFundacion = () => {
           </div>
 
           <div display="center">
-          <h1>Mis mascotas</h1>
+            <h1>Mis mascotas</h1>
           </div>
           <div className={style.containerAnimales}>
             {mascotas && mascotas.map((mascota, indexMascota) => (
               <CardAdop
-               mascota={mascota}
-              indexMascota={mascota.id}
-              key={indexMascota}
+                mascota={mascota}
+                indexMascota={mascota.id}
+                key={indexMascota}
               />
             ))}
           </div>
-          
+
           <div className={style.contenedorComentarios}>
             <div className={style.Comentarios}>
               <h1>Comentarios aqui</h1>
               <div>
-              {reviews && reviews.map((review, indexReview) => (
-              <Review
-               review={review}
-               key={indexReview}
-              />
-            ))}
-            </div>
+                {reviews && reviews.map((review, indexReview) => (
+                  <Review
+                    review={review}
+                    key={indexReview}
+                  />
+                ))}
+              </div>
             </div>
           </div>
-          
+
           <div className={style.contenedorReviews}>
             <div className={style.reviews}>
-              <FormReviews fundacionNombre={fundacion?.nombre}/>
+              <FormReviews fundacionNombre={fundacion?.nombre} />
             </div>
           </div>
-          
+
           <div className={style.contenedorHome}>
             <div className={style.buttonHome}>
               <Link to="/home">
                 <button>BACK TO HOME</button>
               </Link>
-            </div>  
+            </div>
           </div>
-          
+
         </div>
       )}
     </div>

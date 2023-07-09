@@ -8,6 +8,7 @@ const Fundacion = () => {
   return (
     <div className={style.containerFundaciones}>
       <div className={style.filters}>
+
         <SortFundaciones />
         <SearchBar />
       </div>

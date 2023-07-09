@@ -47,7 +47,11 @@ const SortFundaciones = () => {
 
       <div>
         <label>Por puntuación</label>
-        <select name="" id="" onChange={(e) => handleFilterByRating(e.target.value)}>
+        <select
+          name=""
+          id=""
+          onChange={(e) => handleFilterByRating(e.target.value)}
+        >
           <option value="">Todos</option>
           <option value="1">1 Estrella</option>
           <option value="2">2 Estrellas</option>

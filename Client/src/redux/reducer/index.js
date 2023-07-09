@@ -190,15 +190,24 @@ function rootReducer(state = initialState, action, payload) {
       };
     
 case FILTER_FUNDACIONES_BY_RATING:
-      const rating = action.payload;
-      let filteredFundaciones = []
-      if (rating === "") {
-        filteredFundaciones = state.fundacionesFiltradas
-      } else {
-        filteredFundaciones = state.fundacionesFiltradas.filter((fundacion) => {
-          return fundacion.Reviews?.some((reviews) => reviews.calificacion === rating);
-        });
-      }
+  const rating = action.payload;
+  let filteredFundaciones = [];
+  if (rating === "") {
+    filteredFundaciones = state.fundacionesFiltradas;
+  } else {
+    filteredFundaciones = state.fundacionesFiltradas.filter((fundacion) => {
+      // Calcula el promedio de las puntuaciones de la fundación
+      const totalReviews = fundacion.Reviews.length;
+      const sumPuntuaciones = fundacion.Reviews.reduce(
+        (total, review) => total + review.calificacion,
+        0
+      );
+      const promedioPuntuaciones = sumPuntuaciones / totalReviews;
+
+      // Filtra las fundaciones cuyo promedio de puntuaciones coincida con la puntuación seleccionada
+      return Math.round(promedioPuntuaciones) === parseInt(rating);
+    });
+  }
   return {
     ...state,
     fundaciones: filteredFundaciones,
