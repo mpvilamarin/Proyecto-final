@@ -36,12 +36,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-left: 75%;
   }
 
   .contenedorReviews{
     background-color: #f7f7f2;
     width: 200vh;
-    
+    padding-left:75%
   }
   .Comentarios{
     border: solid 2px #1b1b1e;
@@ -93,5 +94,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .containerAnimales{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   

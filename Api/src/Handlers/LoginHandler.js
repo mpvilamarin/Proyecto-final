@@ -7,6 +7,7 @@ const STATUS_ERROR = 404;
 async function loginUsuarios(req, res) {
   const { email, contraseña } = req.body;
 
+
   try {
     const adminLogin = await Admin.findOne({ where: { email, contraseña } });
     if (adminLogin) {
@@ -33,6 +34,7 @@ async function loginUsuarios(req, res) {
     return res.status(STATUS_ERROR).json({ message: 'Usuario no encontrado' });
   } catch (error) {
     return res.status(STATUS_ERROR).json({ message: 'Error al autenticar al usuario' });
+
   }
 }
 

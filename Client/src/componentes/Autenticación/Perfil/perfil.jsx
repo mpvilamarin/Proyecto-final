@@ -11,18 +11,20 @@ const Profile = () => {
   const mascotasFav = useSelector((state) => state.mascotasFav)
   console.log(mascotasFav)
 
+  console.log("aqui esta:" , user.sub);
+
   if (isLoading) {
     return (
       <div className={styles.containerLoading}>
         <div className={styles.loading}>
-          <img className={styles.img}src={require("../../../assets/LoadingCat.gif")} alt="cargando" />
+          <img className={styles.img} src={require("../../../assets/LoadingCat.gif")} alt="cargando" />
         </div>
       </div>
     )
   }
 
   return (
-    isAuthenticated && (    
+    isAuthenticated && (
       <div className={styles.container}>
         <h1 className={styles.title}>Mi perfil</h1>
         <div className={styles.infoPrincipal}>
@@ -31,12 +33,10 @@ const Profile = () => {
           <p className={styles.text}>Correo: {user.email}</p>
         </div>
         <h2 className={styles.sub}>Mis peluditos favoritos</h2>
-          <div>
-            {mascotasFav.map((mascota)=>{
-              <CardAdop mascota={mascota} indexMascota={mascota.id}/>
-            })} 
-          </div>
+        <div>
+
         </div>
+      </div>
     )
   );
 };

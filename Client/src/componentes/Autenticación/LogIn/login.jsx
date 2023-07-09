@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './login.module.css'
+import styles from "./login.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
             <div>
                 <form className={styles.form}>
                 <button className={styles.btn} onClick={() => loginWithRedirect()}>
-                     Log In
+                     Iniciar sesión
                 </button>
                 </form>
             </div>

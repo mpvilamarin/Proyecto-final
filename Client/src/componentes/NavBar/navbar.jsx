@@ -78,7 +78,9 @@ export default function NavBar() {
             )}
             {isAuthenticated && (
               <li className="nav-link">
-                <LogOutButton/>
+
+                <LogOutButton />
+
               </li>
             )}
 

@@ -21,6 +21,25 @@ const getDonaciones = async (req, res) => {
 };
 
 /*----------------------------OBTENER DONACIONES POR ID--------------------------------------*/
+const userId = req.user.sub;
+console.log(userId)
+
+const getDonacionesByUserId = async (req, res) => {
+  const userId = req.user.sub; // Obtener el ID del usuario autenticado desde Auth0
+  try {
+    const donaciones = await Donaciones.findAll({
+      where: { userId: userId },
+    });
+    if (!donaciones.length) {
+      res.status(STATUS_ERROR).json({ message: "No se encontraron donaciones para este usuario" });
+    } else {
+      res.status(STATUS_OK).json(donaciones);
+    }
+  } catch (error) {
+    res.status(STATUS_ERROR).json({ message: "Error al obtener las donaciones del usuario" });
+  }
+};
+
 
 const getDonacionById = async (req, res) => {
   const { id } = req.params;
@@ -41,9 +60,9 @@ const getDonacionById = async (req, res) => {
 /*----------------------------NUEVA DONACION--------------------------------------*/
 
 const postDonaciones = async (req, res) => {
-  const { monto, fecha, descripcion } = req.body;
+  const { monto, fecha, descripcion, fundacionId, usuarioId } = req.body;
   try {
-    if (monto && fecha && descripcion) {
+    if (monto && fecha && descripcion && fundacionId && usuarioId) {
       const nuevaDonacion = await Donaciones.create(req.body);
       res.status(STATUS_CREATED).json(nuevaDonacion);
     } else {
@@ -58,4 +77,4 @@ const postDonaciones = async (req, res) => {
   }
 };
 
-module.exports = { getDonaciones, getDonacionById, postDonaciones };
+module.exports = { getDonaciones, postDonaciones, getDonacionesByUserId, getDonacionById };

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { postAdopciones } from "../../redux/Actions/post";
 import { useLocation } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function FormAdopciones() {
   const dispatch = useDispatch();
@@ -12,9 +13,10 @@ function FormAdopciones() {
   const mascotaId = searchParams.get("mascotaId");
   const fundacionId = searchParams.get("fundacionId");
 
+  const { user, isAuthenticated } = useAuth0();
+
   const [formData, setFormData] = useState({
     nombreCompleto: "",
-    email: "",
     direccion: "",
     ciudad: "",
     pais: "",
@@ -27,6 +29,7 @@ function FormAdopciones() {
 
   const [showAlert, setShowAlert] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -52,12 +55,15 @@ function FormAdopciones() {
         mascotaId: mascotaId,
         fundacionId: fundacionId,
       };
+      if (isAuthenticated) {
+        dataToSend.email = user.email;
+      }
+
+      console.log("Data to send:", dataToSend);
 
       dispatch(postAdopciones(dataToSend));
-
       setFormData({
         nombreCompleto: "",
-        email: "",
         direccion: "",
         ciudad: "",
         pais: "",
@@ -78,7 +84,6 @@ function FormAdopciones() {
   const isFormValid = () => {
     const {
       nombreCompleto,
-      email,
       direccion,
       ciudad,
       pais,
@@ -91,7 +96,6 @@ function FormAdopciones() {
 
     if (
       !nombreCompleto ||
-      !email ||
       !direccion ||
       !ciudad ||
       !pais ||
@@ -125,17 +129,6 @@ function FormAdopciones() {
             value={formData.nombreCompleto}
             onChange={handleChange}
             placeholder="Nombre Completo"
-            required
-          />
-        </Form.Group>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
             required
           />
         </Form.Group>

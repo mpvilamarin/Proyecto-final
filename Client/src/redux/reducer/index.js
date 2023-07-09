@@ -21,6 +21,7 @@ import {
   SORT_MASCOTAS_ZA,
   SORT_FUNDACIONES_AZ,
   SORT_FUNDACIONES_ZA,
+  SORT_FUNDACIONES_REVIEWS,
   RESET_DETAIL,
   FILTER_MASCOTA_BY_GENERO,
   FILTER_FUNDACIONES_CIUDAD,
@@ -33,17 +34,24 @@ import {
   POST_REVIEWS,
   LOG_OUT,
   ADDFAV,
+  REMOVEFAV,
   GET_REVIEWS,
+
   GET_ADMIN,
   POST_LOGIN_FUNDACION
+
+  FILTER_FUNDACIONES_BY_RATING
+
 } from "../Actions-type/index.js";
 
 const initialState = {
   mascotas: [],
   filtroMascotas: [],
   mascotaDetail: [],
+  favoritos: [],
 
   fundaciones: [],
+  fundacionesFiltradas: [],
   fundacionDetail: [],
 
   usuarioAdmin: [],
@@ -54,6 +62,7 @@ const initialState = {
   usuarioDetalle: [],
 
   mascotasFav: [],
+
 
   adopciones: [],
   detalleAdopcion: [],
@@ -66,7 +75,7 @@ const initialState = {
   admin:[],
 };
 
-function rootReducer(state = initialState, action) {
+function rootReducer(state = initialState, action, payload) {
   switch (action.type) {
     case GET_ADMIN:
       return{
@@ -139,6 +148,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         fundaciones: action.payload,
+        fundacionesFiltradas: action.payload
       };
     case GET_DETAIL_FUNDACION:
       return {
@@ -181,6 +191,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         fundaciones: fundacionesByCiudad,
       };
+
     case GET_NAME_FUNDACIONES:
       return {
         ...state,
@@ -193,6 +204,21 @@ function rootReducer(state = initialState, action) {
         ...state,
         reviews: action.payload,
       };
+    
+case FILTER_FUNDACIONES_BY_RATING:
+      const rating = action.payload;
+      let filteredFundaciones = []
+      if (rating === "") {
+        filteredFundaciones = state.fundacionesFiltradas
+      } else {
+        filteredFundaciones = state.fundacionesFiltradas.filter((fundacion) => {
+          return fundacion.Reviews?.some((reviews) => reviews.calificacion === rating);
+        });
+      }
+  return {
+    ...state,
+    fundaciones: filteredFundaciones,
+};
 
     case FILTER_MASCOTA_BY_ESPECIE:
       const especie = action.payload;
@@ -224,6 +250,17 @@ function rootReducer(state = initialState, action) {
         fundaciones: state.fundaciones
           .slice()
           .sort((a, b) => b.nombre.localeCompare(a.nombre)),
+      };
+    case SORT_FUNDACIONES_REVIEWS:
+      return {
+        ...state,
+        fundaciones: state.fundaciones.slice().sort((a, b) => {
+          const ratingA = (a.Reviews && a.Reviews[0]?.calificacion) || 0;
+          const ratingB = (b.Reviews && b.Reviews[0]?.calificacion) || 0;
+          return action.payload === "asc"
+            ? ratingA - ratingB
+            : ratingB - ratingA;
+        }),
       };
     case POST_ADOPCIONES:
       return {
@@ -273,21 +310,13 @@ function rootReducer(state = initialState, action) {
   }
  
 
-        case POST_LOGIN_FUNDACION:
-          return {
-            ...state,
-            usuarioFundacion: {
-              email: action.payload.email,
-              tipo: action.payload.usuario,
-            },
-          };
-      
 
     case POST_REVIEWS:
       return {
         ...state,
         reviews: state.reviews.concat(action.payload),
       };
+
 
     case DELETE_MASCOTA:
       return {
@@ -370,12 +399,16 @@ function rootReducer(state = initialState, action) {
       usuarioFundacion: null,
     };
 
+
     case ADDFAV:
-      return { ...state, mascotasFav: action.payload };
+      return { ...state, mascotasFav: action.payload }
+
+    case REMOVEFAV:
+      return { ...state, favoritos: state.favoritos.filter(fav => fav.indexMascotas !== payload) }
 
     default:
-      return state;
-  }
+      return { ...state }
+  };
 }
 
 export default rootReducer;

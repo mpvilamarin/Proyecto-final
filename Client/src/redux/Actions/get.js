@@ -9,7 +9,6 @@ import {
   GET_DETALLE_USUARIO,
   GET_NAME_FUNDACIONES,
   GET_REVIEWS,
-  GET_ADMIN,
 
 } from "../Actions-type/index.js";
 
@@ -18,8 +17,7 @@ import {
 export const getAllMascotas = () => {
   return async (dispatch) => {
     try {
-
-      const response = await axios.get("/mascotas");
+      const response = await axios.get(`/mascotas`);
 
       let mascotas = response.data?.map((e) => e);
       dispatch({ type: GET_ALL_MASCOTAS, payload: mascotas });
@@ -33,7 +31,7 @@ export const getAllMascotas = () => {
 export const getNameFundaciones = (nombre) => {
   return async (dispatch) => {
     await axios
-      .get('/fundaciones?nombre='+nombre)
+      .get(`/fundaciones?nombre=` + nombre)
       .then((res) => res.data)
       .then((data) => {
         dispatch({ type: GET_NAME_FUNDACIONES, payload: data });
@@ -57,7 +55,7 @@ export const getDetailMascota = (id) => {
 export const getAllFundaciones = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/fundaciones");
+      const response = await axios.get(`/fundaciones`);
       let fundaciones = response.data?.map((e) => e);
       dispatch({ type: GET_ALL_FUNDACIONES, payload: fundaciones });
     } catch (error) {
@@ -70,7 +68,8 @@ export const getAllFundaciones = () => {
 export const getDetailFundacion = (id) => {
   return async (dispatch) => {
     dispatch({ type: GET_DETAIL_FUNDACION, payload: [] });
-    await axios.get(`http://localhost:3001/fundaciones/${id}`)
+    await axios
+      .get(`/fundaciones/${id}`)
       .then((res) => res.data)
       .then((data) => dispatch({ type: GET_DETAIL_FUNDACION, payload: data }))
       .catch((err) => console.log(err));
@@ -80,7 +79,7 @@ export const getDetailFundacion = (id) => {
 export const getAllUsuarios = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("/usuarios");
+      const response = await axios.get(`/usuarios`);
       let usuarios = response.data?.map((e) => e);
       dispatch({ type: GET_ALL_USUARIOS, payload: usuarios });
     } catch (error) {
@@ -101,12 +100,12 @@ export const getDetalleUsuario = (id) => {
   };
 };
 
-export const getReviews = () =>{
+export const getReviews = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get('http://localhost:3001/usuarios/reviews');
+      const response = await axios.get(`/usuarios/reviews`);
       let reviews = response.data?.map((e) => e);
-      dispatch({type: GET_REVIEWS, payload: reviews})
+      dispatch({ type: GET_REVIEWS, payload: reviews });
     } catch (error) {
       console.log(`error ${error}`);
       console.log(`no hay reviews aun`);
@@ -124,6 +123,7 @@ export const resetDetail = () => {
   };
 };
 
+
 export const getAdmin = () => {
   return async (dispatch) => {
     try {
@@ -137,3 +137,4 @@ export const getAdmin = () => {
     }
   }
 }
+p
