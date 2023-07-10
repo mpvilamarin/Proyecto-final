@@ -9,6 +9,7 @@ const Home = () => {
       <div className={style.cardContainer}>
         <CardMascotas />
         <CardFundaciones />
+
       </div>
     </div>
   );
