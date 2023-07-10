@@ -13,6 +13,7 @@ async function getRegistroAdmin(req,res){
         res.status(STATUS_ERROR).json({message:'no hay datos en la Bd'})
         else
         res.status(STATUS_OK).json(admin)
+        console.log(admin)
     } catch (error) {
         res.status(STATUS_ERROR).json({message:'error al obtener los datos'})
     }
