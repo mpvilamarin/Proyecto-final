@@ -6,6 +6,7 @@ import {
 } from "../../redux/Actions/filtroAndOrdenamiento";
 import { sortFundacionesReviews } from "../../redux/Actions/filtroAndOrdenamiento";
 import SearchBar from "../SearchBar/searchBar";
+import styles from "./Fundacion.module.css";
 
 const SortFundaciones = () => {
   const dispatch = useDispatch();
@@ -24,15 +25,15 @@ const SortFundaciones = () => {
 
   return (
     <div>
-      <h2>Ordenar Fundaciones</h2>
-      <button onClick={handleSortAZ}>A-Z</button>
-      <button onClick={handleSortZA}>Z-A</button>
-      <button onClick={() => handleSortReviews("asc")}>
-        Reviews Ascendente
-      </button>
-      <button onClick={() => handleSortReviews("desc")}>
-        Reviews Descendente
-      </button>
+      <h2 className={styles.ordenar}>Ordenar Fundaciones</h2>
+      <button onClick={handleSortAZ} className={styles.aZ}>A-Z</button>
+      <button onClick={handleSortZA} className={styles.aZ}>Z-A</button>
+
+      <select onChange={(e) => handleSortReviews(e.target.value)} className={styles.dropDown}>
+        <option value="">Puntuaciones ★</option>
+        <option value="asc">Mayor Puntuación★</option>
+        <option value="desc">Menor Puntuación★</option>
+      </select>
     </div>
   );
 };

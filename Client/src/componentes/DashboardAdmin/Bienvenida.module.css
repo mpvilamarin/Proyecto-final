@@ -1,0 +1,12 @@
+.bienvenida{
+    width: 70vh;
+    height: 50vh;
+    background-color: #f3dfc1;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ContenedorPadre{
+    display: flex;
+  justify-content: center;
+}

@@ -1,14 +1,17 @@
 import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
 import CardAdop from "../../Cartas/cardAdopcion";
 import styles from "./perfil.module.css";
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+
   console.log(user, isAuthenticated, isLoading)
   const mascotasFav = useSelector((state) => state.mascotasFav)
   console.log(mascotasFav)
+
+  console.log("aqui esta:" , user.sub);
 
   if (isLoading) {
     return (
@@ -31,9 +34,7 @@ const Profile = () => {
         </div>
         <h2 className={styles.sub}>Mis peluditos favoritos</h2>
         <div>
-          {mascotasFav.map((mascota) => {
-            <CardAdop mascota={mascota} indexMascota={mascota.id} />
-          })}
+
         </div>
       </div>
     )

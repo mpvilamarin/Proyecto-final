@@ -46,3 +46,10 @@ export const REMOVEFAV = 'REMOVEFAV';
 export const LOG_OUT = "LOG_OUT";
 
 
+
+export const POST_ADMIN = "POST_ADMIN";
+export const GET_ADMIN = "GET_ADMIN";
+export const POST_LOGIN_FUNDACION = "POST_LOGIN_FUNDACION";
+
+
+

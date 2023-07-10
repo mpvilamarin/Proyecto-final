@@ -39,9 +39,8 @@
   }
 
   .contenedorReviews{
-    background-color: #f7f7f2;
-    width: 200vh;
-    
+    position: relative;
+    width: 70vh;
   }
   .Comentarios{
     border: solid 2px #1b1b1e;
@@ -82,7 +81,14 @@
   }
   
   .containerAnimales{
+    width: 130vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-right: 20%
+  }
+  .body{
+    display: flex;
+    justify-content: flex-end;
+    background-color: #f7f7f2;
   }
