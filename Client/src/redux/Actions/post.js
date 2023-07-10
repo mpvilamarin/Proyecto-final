@@ -118,12 +118,12 @@ export const postReview = (crearReview) => {
   export const postLoginAdmin = (newLogin) => {
     return async (dispatch) => {
       try {
-        const response = await axios.post('http://localhost:3001/usuarios/login', newLogin);
-        const { usuario, email, id } = response.data;
+        const response = await axios.post('/usuarios/login/', newLogin);
+        const { usuario, email, id} = response.data;
         dispatch({
           type: POST_LOGIN,
           payload: {
-           usuario,email, id
+           usuario, email, id
           },
         });
        // alert(`inicio de sesion exitoso para ${usuario}`);

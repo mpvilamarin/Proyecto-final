@@ -10,6 +10,7 @@ import huellaoscura from '../../assets/huellitaOscurabg.png'
 const CardAdop = ({ mascota, indexMascota, addFav, removeFav, favoritos }) => {
   const [isFav, setIsFav] = useState(false);
   
+  console.log(mascota);
 
   const handleFavorite = () => {
     if (isFav) {

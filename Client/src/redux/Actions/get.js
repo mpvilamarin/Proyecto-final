@@ -128,8 +128,10 @@ export const resetDetail = () => {
 export const getAdmin = () => {
   return async (dispatch) => {
     try {
+      console.log('por aca pase')
       const response = await axios.get('http://localhost:3001/admin')
-      let  admin = response.data?.map((e) => e);
+      console.log(response)
+      let  admin = response?.data?.map((e) => e);
 
       dispatch({type: GET_ADMIN, payload: admin})
     } catch (error) {
