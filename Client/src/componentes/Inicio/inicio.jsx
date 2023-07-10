@@ -7,12 +7,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
 import { postLoginAdmin,logOut, postLoginFundacion } from '../../redux/Actions/post';
+import { getAdmin, resetDetail } from '../../redux/Actions/get';
 
 
 const Inicio = () =>{
 
  const dispatch = useDispatch();
   const navigate = useNavigate();
+
 
 
 
@@ -46,13 +48,12 @@ const Inicio = () =>{
     contraseña: e.contraseña
   }));
 
-
-  
-
  console.log(fundacionMap)
   console.log(adminMap);
 
-
+  useEffect(() =>{
+    dispatch(getAdmin());
+  }, [])
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -70,9 +71,11 @@ const Inicio = () =>{
     const isFundacion = fundacionMap.find((admin) => admin.email === input.email && admin.contraseña === input.contraseña);
     
     if(isAdmin ){
+
         dispatch(postLoginAdmin(input))
         navigate('/InicioAdmin')
         }else if(isFundacion ){
+
             dispatch(postLoginAdmin(input))
             navigate('/perfilfund')
             }else{
