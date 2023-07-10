@@ -17,6 +17,14 @@ export default function SearchBar() {
         dispatch(getNameFundaciones(name));  //name va a ser mi estado local.
         setName("");
     }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+          handleSubmit(event);
+        }
+      }
+
+
     return (
         
          <div className={styles.search}>
@@ -24,6 +32,7 @@ export default function SearchBar() {
                 type="text"
                 placeholder="Busque su fundacion"
                 onChange={(event) => handleInputChange(event)}
+                onKeyDown={handleKeyPress}
                 value={name}
                 className={styles.input}
             />
@@ -32,7 +41,7 @@ export default function SearchBar() {
                 onClick={(event) => handleSubmit(event)}
                 className={styles.searchButton}
             >
-                <img src="https://i.ibb.co/18gKfTf/search.png"alt="buscar" className={styles.buscar}></img>
+                <img src={require("../../assets/Huella.png")} alt="buscar" className={styles.buscar}></img>
             </button>            
         </div> 
     )
