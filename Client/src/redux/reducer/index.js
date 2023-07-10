@@ -296,6 +296,7 @@ case FILTER_FUNDACIONES_BY_RATING:
         email: action.payload.email,
         tipo: action.payload.usuario,
       },
+      sesion: action.payload,
       usuarioAdmin: null,
     };
   } else if (action.payload.usuario === 'admin') {

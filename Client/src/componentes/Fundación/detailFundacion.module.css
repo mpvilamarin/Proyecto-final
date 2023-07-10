@@ -40,10 +40,10 @@
   }
 
   .contenedorReviews{
-    background-color: #f7f7f2;
-    width: 200vh;
-    padding-left:75%
+    position: relative;
+    width: 50vh;
   }
+
   .Comentarios{
     border: solid 2px #1b1b1e;
     background-color: #f7f7f2;
@@ -83,7 +83,6 @@
   
   
   .reviews {
-    margin-left: 5rem;
     margin-top: 3rem;
     margin-bottom: 3rem;
   }
@@ -96,8 +95,15 @@
     align-items: center;
   }
   .containerAnimales{
+    width: 150vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-right: 20%
+  }
+  .body{
+    display: flex;
+    justify-content: flex-end;
+    background-color: #f7f7f2;
   }
   

@@ -20,6 +20,8 @@ const Login2 = () => {
   });
   const [errors, setErrors] = useState({});
   const [loginError, setLoginError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
   
   
 
@@ -67,7 +69,9 @@ const Login2 = () => {
     const isFundacion = fundacionMap.find((admin) => admin.email === input.email && admin.contraseña === input.contraseña);
     
     if(isAdmin || isFundacion){
-        dispatch(postLoginAdmin(input))
+        setIsLoading(true);
+        await dispatch(postLoginAdmin(input))
+        setIsLoading(false);
         navigate('/')
         }else{
           alert("No tienes permisos para ingresar")
@@ -85,6 +89,11 @@ const Login2 = () => {
 
   return (
     <div className={styles.container}>
+      {isLoading && (
+      <div className={styles.overlay}>
+        <p>Cargando...</p>
+      </div>
+      )}
       <div className={styles.loginbox}>
         <form className={styles.form} onSubmit={handleSubmit}>
           <h1 className={styles.title}>Inicia sesión</h1>
