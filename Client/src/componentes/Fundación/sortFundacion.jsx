@@ -46,7 +46,7 @@ const SortFundaciones = () => {
       <button onClick={() => handleSortReviews("desc")} className={styles.asDs}>
         Reviews Descendente
       </button>
-
+      {/* 
       <div>
         <label>Por puntuación</label>
         <select
@@ -62,13 +62,7 @@ const SortFundaciones = () => {
           <option value="5">5 Estrellas</option>
         </select>
 
-        {showMessage && (
-          <div>
-            <p>No hay fundaciones con ese rating.</p>
-            <button onClick={handleCloseMessage}>Cerrar</button>
-          </div>
-        )}
-      </div>
+      </div> */}
     </div>
   );
 };

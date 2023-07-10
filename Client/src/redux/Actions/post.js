@@ -37,7 +37,7 @@ export const postAdopciones = (nuevaAdopcion) => {
         type: POST_ADOPCIONES,
         payload: response.data,
       });
-      alert("La adopción fue exitosa");
+      alert("La adopcion fue exitosa");
     } catch (error) {
       alert(`Error al crear la adopcion ${error}`);
     }
@@ -52,7 +52,7 @@ export const postDonaciones = (nuevaDonacion) => {
         type: POST_DONACIONES,
         payload: response.data,
       });
-      alert("Donación exitosa");
+      alert("Donacion exitosa");
     } catch (error) {
       alert(`Error en la donacion ${error}`);
     }
@@ -87,9 +87,9 @@ export const postUsuario = (newUsuario) => {
         type: POST_USUARIO,
         payload: response.data,
       });
-      alert("Usuario creado con éxito");
+      alert("Usuario creada con exito");
     } catch (error) {
-      alert(`Error al crear el usuario: ${error}`);
+      alert(`error al crear la Usuario ${error}`);
     }
   };
 };

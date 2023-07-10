@@ -46,6 +46,7 @@ function App() {
 
   return (
     <div>
+    <div>
       <NavBar />
       <Routes>
         {/* <Route
@@ -101,11 +102,15 @@ function App() {
         <Route path="*" element={<Navigate to="/error" />} />
         <Route path="/error" element={<Redirect />} />
       </Routes>
-      <Footer />
+      </div>
+        
       {/* <footer>
         <Contacto />
       </footer> */}
-    </div>
+      <div> 
+      <Footer />
+      </div>
+   </div>
   );
 }
 

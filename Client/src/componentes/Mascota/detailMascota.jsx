@@ -17,10 +17,12 @@ export default function Detalle() {
   }, [dispatch, id]);
 
   const handleClickAdoptar = () => {
+    // Obtener el ID de la mascota y el ID de la fundación
     const mascotaId = selector.id;
     const fundacionId =
-      selector.Fundaciones[0];
+      selector.Fundaciones[0].MascotasFundaciones.FundacioneId;
 
+    // Pasar los IDs al componente mediante useNavigate
     navigate(`/formAdopcion?mascotaId=${mascotaId}&fundacionId=${fundacionId}`);
   };
 
