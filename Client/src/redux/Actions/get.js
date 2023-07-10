@@ -9,6 +9,8 @@ import {
   GET_DETALLE_USUARIO,
   GET_NAME_FUNDACIONES,
   GET_REVIEWS,
+  GET_ADMIN,
+
 } from "../Actions-type/index.js";
 
 //====================================>> GET'S <<=================================================================
@@ -73,8 +75,8 @@ export const getDetailFundacion = (id) => {
       .then((data) => dispatch({ type: GET_DETAIL_FUNDACION, payload: data }))
       .catch((err) => console.log(err));
   };
+  
 };
-
 export const getAllUsuarios = () => {
   return async (dispatch) => {
     try {
@@ -121,3 +123,18 @@ export const resetDetail = () => {
     }
   };
 };
+
+
+export const getAdmin = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get('http://localhost:3001/admin')
+      let  admin = response.data?.map((e) => e);
+
+      dispatch({type: GET_ADMIN, payload: admin})
+    } catch (error) {
+      console.log(`error ${error}`);
+      console.log(`no hay admins creados`);
+    }
+  }
+}

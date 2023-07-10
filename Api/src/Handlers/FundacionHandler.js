@@ -1,10 +1,13 @@
-const { Fundaciones, Reviews } = require("../db");
+const { Fundaciones, Reviews, Mascotas } = require("../db");
 const enviarCorreoBienvenida = require("./CorreosHandler");
 const STATUS_CREATED = 201;
 const STATUS_ERROR = 404;
 const STATUS_OK = 200;
 
 async function postFundacion(req, res) {
+
+  
+
   const {
     nombre,
     ciudad,
@@ -17,6 +20,7 @@ async function postFundacion(req, res) {
     borrado,
     tipo,
   } = req.body;
+
   try {
     if (!req.body) {
       return res
@@ -44,7 +48,9 @@ async function postFundacion(req, res) {
       fundadaEn,
       mision,
       borrado,
-      tipo: "fundacion",
+
+      tipo:'fundacion',
+
     });
 
     await enviarCorreoBienvenida(email, nombre);
@@ -125,41 +131,51 @@ async function updateFundacion(req, res) {
 async function getFundacionById(req, res) {
   const { id } = req.params;
   try {
-    const response = await Fundaciones.findByPk(id);
+    const response = await Fundaciones.findByPk(id, {
+      include: [
+        {
+          model: Reviews,
+          attributes: ['calificacion', 'comentarios'],
+        },
+        {
+          model: Mascotas,
+          attributes: ['nombre', 'genero', 'temperamento', 'id']
+        }
+      ]
+    });
     res.status(STATUS_OK).json(response);
   } catch (error) {
     res.status(STATUS_ERROR).json({ message: `no se encontró el id ${error}` });
   }
 }
 
-async function postAutenticarFundacion(req, res) {
+
+async function postAutenticarFundacion(req,res){
   const { email, contraseña } = req.body;
 
   try {
-    const fundacionLogin = await Fundaciones.findOne({
-      where: { email, contraseña },
-    });
+    const fundacionLogin = await Fundaciones.findOne({ where: { email, contraseña } });
     if (fundacionLogin) {
       return res.status(STATUS_CREATED).json({
-        message: "Logueado con éxito como fundación",
+        message: 'Logueado con éxito como fundación',
         email,
-        usuario: "fundacion",
-        isLogued: true,
+        usuario:'fundacion',
+        isLogued:true,
+
       });
     }
 
-    return res.status(STATUS_ERROR).json({ message: "Usuario no encontrado" });
+    return res.status(STATUS_ERROR).json({ message: 'Usuario no encontrado' });
   } catch (error) {
-    return res
-      .status(STATUS_ERROR)
-      .json({ message: "Error al autenticar al usuario" });
+    return res.status(STATUS_ERROR).json({ message: 'Error al autenticar al usuario' });
   }
 }
 
-module.exports = {
-  postFundacion,
-  getAllFundaciones,
-  updateFundacion,
-  getFundacionById,
-  postAutenticarFundacion,
-};
+module.exports = { 
+    postFundacion,
+    getAllFundaciones,
+    updateFundacion,
+    getFundacionById,
+    postAutenticarFundacion,
+
+}

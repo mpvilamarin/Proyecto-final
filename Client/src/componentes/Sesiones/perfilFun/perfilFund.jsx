@@ -10,16 +10,18 @@ export default function PerfilFund () {
 
     const data = useSelector((state) => state.sesion);
     const info = useSelector((state) => state.fundacionDetail)
-    const mascotas = info[0]?.Mascotas
-    const reviews = info[0]?.Reviews
+    console.log(data)
+    const mascotas = info.Mascotas
+    const reviews = info.Reviews
     const dispatch = useDispatch();
     console.log(info)
-    const {image, nombre, ciudad, direccion, telefono, fundadaEn, email, mision, id } = data[0];
+    const { id } = data;
+    const {image, nombre, ciudad, direccion, telefono, fundadaEn, email, mision} = info;
 
     useEffect(() => {
       dispatch(resetDetail());
       dispatch(getDetailFundacion(id));
-    }, [dispatch, id]);
+    }, []);
 
     return (
         <div className={style.contenedorPadre}>
@@ -52,7 +54,19 @@ export default function PerfilFund () {
                 <h5>Misión: {mision}</h5>
             </div>
           </div>
-          
+          <div className={style.body}>
+          <div >
+          <h1>Mis mascotas</h1>
+          <div className={style.containerAnimales}>
+            {mascotas && mascotas.map((mascota, indexMascota) => (
+              <CardAdop
+               mascota={mascota}
+              indexMascota={mascota.id}
+              key={indexMascota}
+              />
+            ))}
+          </div>
+          </div>
           <div className={style.contenedorReviews}>
             <div className={style.reviews}>
               <h1>Mis reviews</h1>
@@ -64,17 +78,6 @@ export default function PerfilFund () {
               />
             ))}
           </div>
-          <div display="center">
-          <h1>Mis mascotas</h1>
-          </div>
-          <div className={style.containerAnimales}>
-            {mascotas && mascotas.map((mascota, indexMascota) => (
-              <CardAdop
-               mascota={mascota}
-              indexMascota={mascota.id}
-              key={indexMascota}
-              />
-            ))}
           </div>
         </div>
       )}

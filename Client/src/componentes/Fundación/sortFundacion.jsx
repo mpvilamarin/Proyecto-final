@@ -40,29 +40,12 @@ const SortFundaciones = () => {
       <h2 className={styles.ordenar}>Ordenar Fundaciones</h2>
       <button onClick={handleSortAZ} className={styles.aZ}>A-Z</button>
       <button onClick={handleSortZA} className={styles.aZ}>Z-A</button>
-      <button onClick={() => handleSortReviews("asc")} className={styles.asDs}>
-        Reviews Ascendente
-      </button>
-      <button onClick={() => handleSortReviews("desc")} className={styles.asDs}>
-        Reviews Descendente
-      </button>
-      {/* 
-      <div>
-        <label>Por puntuación</label>
-        <select
-          name=""
-          id=""
-          onChange={(e) => handleFilterByRating(e.target.value)}
-        >
-          <option value="">Todos</option>
-          <option value="1">1 Estrella</option>
-          <option value="2">2 Estrellas</option>
-          <option value="3">3 Estrellas</option>
-          <option value="4">4 Estrellas</option>
-          <option value="5">5 Estrellas</option>
-        </select>
 
-      </div> */}
+      <select onChange={(e) => handleSortReviews(e.target.value)} className={styles.dropDown}>
+        <option value="">Puntuaciones ★</option>
+        <option value="asc">Mayor Puntuación★</option>
+        <option value="desc">Menor Puntuación★</option>
+      </select>
     </div>
   );
 };

@@ -13,76 +13,110 @@ import { logOut } from "../../redux/Actions/post";
 export default function NavBar() {
   const { isAuthenticated, user } = useAuth0();
 
-  const numUsuario = useSelector((state) => state.usuario);
+  const usuarioAdmin = useSelector((state) => state.usuarioAdmin);
+
+
+  const usuarioFundacion = useSelector((state) => state.usuarioFundacion);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const logout = () => {
     dispatch(logOut());
-    navigate("/");
+    navigate("/login");
   };
 
   useEffect(() => {
 
-  }, [numUsuario])
+  }, [usuarioAdmin,usuarioFundacion])
 
 
   return (
     <Navbar className="custom-navbar" variant="light" expand="lg">
+
       <Container className="container">
+
         <Navbar.Brand className="logo-container d-flex align-items-center">
           <Link to="/">
             <img src={logo} alt="Logo" className="logo img-fluid" />
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
         <Navbar.Collapse id="basic-navbar-nav">
+
           <Nav className="mr-auto">
+
+            {usuarioAdmin &&(<Link to="/DashboardAdmin" className="nav-link">
+              Tu Dashboard
+            </Link>)}
+
             {isAuthenticated && (
               <Link to="/donaciones" className="nav-link">
                 Donaciones
               </Link>
             )}
-            <Link to="/adopciones" className="nav-link">
+
+           {!usuarioAdmin&&( <Link to="/adopciones" className="nav-link">
               Mascotas
-            </Link>
-            {numUsuario === 1 && (<Link to="/formMascota" className="nav-link">Crear Mascota</Link>)}
+            </Link>)}
+
+            {isAuthenticated && !isAuthenticated && usuarioAdmin &&  (<Link to="/formMascota" className="nav-link">Crear Mascota</Link>)}
+            { usuarioFundacion &&  (<Link to="/formMascota" className="nav-link">Crear Mascota</Link>)}
 
             {user && user.role === "Fundación" && (
               <Link to="/formFundaciones" className="nav-link">
                 Crear Fundacion
               </Link>
             )}
-            <Link to="/fundaciones" className="nav-link">
+
+            {!usuarioAdmin && !usuarioFundacion &&(<Link to="/fundaciones" className="nav-link">
               Fundaciones
-            </Link>
-            <Link to="/about" className="nav-link">
+            </Link>)}
+
+           {!usuarioAdmin && (<Link to="/about" className="nav-link">
               Nosotros
-            </Link>
-            {numUsuario === 1 || isAuthenticated ? null : (
+            </Link>)}
+
+            { isAuthenticated && usuarioAdmin && usuarioFundacion &&(
               <Link to="/login" className="nav-link">
                 Iniciar Sesión
               </Link>
             )}
-            {/*!isAuthenticated && <li><LogInButton /></li>*/}
+
+
+            { !isAuthenticated && !usuarioAdmin && !usuarioFundacion &&(
+              <Link to="/login" className="nav-link">
+                Iniciar Sesión
+              </Link>
+            )}
+
+            {/* {/!isAuthenticated && <li><LogInButton /></li>/} */}
+
             {isAuthenticated && (
               <Link to="/perfil" className="nav-link">
                 Mi Perfil
               </Link>
             )}
-            {numUsuario === 1 && (
-              <li>
-                <a href="/perfilfund">Mi perfil</a>
-              </li>
-            )}
+
+            {isAuthenticated && !isAuthenticated && usuarioAdmin&& 
+            (<Link to="/perfilfund">Mi perfil</Link>)}
+
+            { usuarioFundacion&& 
+            (<Link to="/perfilfund">Mi perfil</Link>)}
+
             {isAuthenticated && (
               <li className="nav-link">
+
                 <LogOutButton />
+
               </li>
             )}
 
-            {numUsuario === 1 && (<button onClick={logout}>LOGOUT</button>)}
+            {isAuthenticated && !isAuthenticated && (<button onClick={logout}>LOGOUT</button>)}
+            {usuarioFundacion && (<button onClick={logout}>LOGOUT</button>)}
+            {usuarioAdmin && (<button onClick={logout}>LOGOUT</button>)}
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -12,8 +12,7 @@ import CardAdop from "../Cartas/cardAdopcion";
 const DetailFundacion = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const detail = useSelector((state) => state.fundacionDetail);
-  const fundacion = detail
+  const fundacion = useSelector((state) => state.fundacionDetail);
   console.log(fundacion)
   const reviews = fundacion?.Reviews
   const mascotas = fundacion?.Mascotas
@@ -73,9 +72,9 @@ const DetailFundacion = () => {
             </div>
           </div>
 
-          <div display="center">
-            <h1>Mis mascotas</h1>
-          </div>
+          <div className={style.body}>
+          <div >
+          <h1>Mascotas</h1>
           <div className={style.containerAnimales}>
             {mascotas && mascotas.map((mascota, indexMascota) => (
               <CardAdop
@@ -85,25 +84,21 @@ const DetailFundacion = () => {
               />
             ))}
           </div>
-
-          <div className={style.contenedorComentarios}>
-            <div className={style.Comentarios}>
-              <h1>Comentarios aqui</h1>
-              <div>
-                {reviews && reviews.map((review, indexReview) => (
-                  <Review
-                    review={review}
-                    key={indexReview}
-                  />
-                ))}
-              </div>
-            </div>
           </div>
-
           <div className={style.contenedorReviews}>
             <div className={style.reviews}>
-              <FormReviews fundacionNombre={fundacion?.nombre} />
+              <h1>Reviews</h1>
+                <div className={style.reviews}>
+                  <FormReviews fundacionNombre={fundacion?.nombre}/>
+                </div>
             </div>
+            {reviews && reviews.map((review, indexReview) => (
+              <Review
+               review={review}
+               key={indexReview}
+              />
+            ))}
+          </div>
           </div>
 
           <div className={style.contenedorHome}>

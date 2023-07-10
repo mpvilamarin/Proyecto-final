@@ -36,7 +36,12 @@ import {
   ADDFAV,
   REMOVEFAV,
   GET_REVIEWS,
+
+  GET_ADMIN,
+  POST_LOGIN_FUNDACION,
+
   FILTER_FUNDACIONES_BY_RATING
+
 } from "../Actions-type/index.js";
 
 const initialState = {
@@ -49,11 +54,14 @@ const initialState = {
   fundacionesFiltradas: [],
   fundacionDetail: [],
 
-  usuario: "0",
+  usuarioAdmin: [],
+  usuarioFundacion: [],
   usuarios: [],
   sesion: [],
+
   usuarioDetalle: [],
-  
+
+  mascotasFav: [],
 
 
   adopciones: [],
@@ -63,10 +71,18 @@ const initialState = {
   detallesDonacion: [],
 
   reviews: [],
+
+  admin:[],
 };
 
 function rootReducer(state = initialState, action, payload) {
   switch (action.type) {
+    case GET_ADMIN:
+      return{
+        ...state,
+        admin: action.payload
+      }; 
+      
     case GET_ALL_MASCOTAS:
       return {
         ...state,
@@ -280,12 +296,30 @@ case FILTER_FUNDACIONES_BY_RATING:
         ...state,
         usuarios: state.usuarios.concat(action.payload),
       };
-    case POST_LOGIN:
-      return {
-        ...state,
-        sesion: state.sesion.concat(action.payload),
-        usuario: 1,
-      };
+
+      case POST_LOGIN:
+  if (action.payload.usuario === 'fundacion') {
+    return {
+      ...state,
+      usuarioFundacion: {
+        email: action.payload.email,
+        tipo: action.payload.usuario,
+      },
+      sesion: action.payload,
+      usuarioAdmin: null,
+    };
+  } else if (action.payload.usuario === 'admin') {
+    return {
+      ...state,
+      usuarioAdmin: {
+        email: action.payload.email,
+        tipo: action.payload.usuario,
+      },
+      usuarioFundacion: null,
+    };
+  }
+ 
+
 
     case POST_REVIEWS:
       return {
@@ -369,9 +403,11 @@ case FILTER_FUNDACIONES_BY_RATING:
       return { ...state, fundacionDetail: null };
 
     case LOG_OUT:
-      return { ...state, 
-        usuario: 0,
-        sesion: [],}
+    return {
+      ...state,
+      usuarioAdmin: null,
+      usuarioFundacion: null,
+    };
 
 
     case ADDFAV:
