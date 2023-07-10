@@ -10,6 +10,7 @@ import Registro from "./componentes/Sesiones/registro/registro";
 import Redirect from "./componentes/Redirect/Redirect";
 import Footer from "./componentes/Footer/Footer";
 import Dashboard from "./componentes/DashboardAdmin/Dashboard";
+import BienvenidaAdmin from "./componentes/DashboardAdmin/BienvenidaAdmin";
 
 //import { RequireAuth } from "react-auth-kit";
 
@@ -103,6 +104,8 @@ function App() {
         <Route path="/donaciones/feedback" element={<Feedback />} />
         <Route path="/donaciones/rejected" element={<Rejected />} />
         <Route path="/DashboardAdmin" element={<Dashboard />} />
+        <Route path="/InicioAdmin" element={<BienvenidaAdmin />} />
+
         <Route path="*" element={<Navigate to="/error" />} />
         <Route path="/error" element={<Redirect />} />
       </Routes>

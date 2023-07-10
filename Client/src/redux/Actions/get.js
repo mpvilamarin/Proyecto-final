@@ -9,6 +9,7 @@ import {
   GET_DETALLE_USUARIO,
   GET_NAME_FUNDACIONES,
   GET_REVIEWS,
+  GET_ADMIN,
 
 } from "../Actions-type/index.js";
 
@@ -137,4 +138,3 @@ export const getAdmin = () => {
     }
   }
 }
-p

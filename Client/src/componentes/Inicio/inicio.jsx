@@ -1,10 +1,91 @@
+import React, { useState, useEffect} from 'react';
 import Login from "../Autenticación/LogIn/login"
 import { Link } from "react-router-dom";
 import styles from './inicio.module.css';
 import Login2 from "../Sesiones/sesion/login2";
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useNavigate } from 'react-router-dom';
+import { postLoginAdmin,logOut, postLoginFundacion } from '../../redux/Actions/post';
 
 
-const inicio = () =>{
+const Inicio = () =>{
+
+ const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+
+
+  const [input, setInput] = useState({
+    email: '',
+    contraseña: '',
+  });
+  const [errors, setErrors] = useState({});
+  const [loginError, setLoginError] = useState('');
+  
+  
+
+  const usuario = useSelector((state) => state.usuarioAdmin);
+
+
+  const usuarioFundacion = useSelector((state) => state.usuarioFundacion);
+ console.log(usuarioFundacion)
+
+  const admin = useSelector((state) => state.admin);
+
+  const adminMap = admin.map((e) => ({
+    email: e.email,
+    contraseña: e.contraseña
+  }));
+
+  const fundacion = useSelector((state) => state.fundaciones)
+
+  const fundacionMap = fundacion.map((e) => ({
+    email: e.email,
+    contraseña: e.contraseña
+  }));
+
+
+  
+
+ console.log(fundacionMap)
+  console.log(adminMap);
+
+
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setInput((prevInput) => ({
+      ...prevInput,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    
+    const isAdmin = adminMap.find((admin) => admin.email === input.email && admin.contraseña === input.contraseña);
+    const isFundacion = fundacionMap.find((admin) => admin.email === input.email && admin.contraseña === input.contraseña);
+    
+    if(isAdmin ){
+        dispatch(postLoginAdmin(input))
+        navigate('/InicioAdmin')
+        }else if(isFundacion ){
+            dispatch(postLoginAdmin(input))
+            navigate('/perfilfund')
+            }else{
+          alert("No tienes permisos para ingresar")
+        } 
+    
+
+  };
+  
+
+  
+
+
     return(
         <div className={styles.container}>
                <div className={styles.loginbox}>
@@ -16,8 +97,9 @@ const inicio = () =>{
                     </div>
                 </form>
 
-                   <form className={styles.form}
-                   //onSubmit={formik.handleSubmit}
+                   {/* FORM FUNDACION Y ADMIN */}
+                   <form className={styles.form }
+                   onSubmit={handleSubmit}
                    >
                        <div>
                            <h1 className={styles.title}>Iniciar sesión</h1>
@@ -26,9 +108,9 @@ const inicio = () =>{
                                
                                <input
                                    type="email"
-                                 //  value={ formik.values.email }
+                                   value={input.email}
                                    name="email"
-                                 //  onChange={formik.handleChange}
+                                   onChange={handleChange}
                                    className={styles.input}
                                    placeholder="Email"
                                    />
@@ -37,9 +119,9 @@ const inicio = () =>{
                               
                                <input
                                    type="password"
-                                //   value={formik.values.contraseña}
+                                   value={input.contraseña}
                                    name="contraseña"
-                                 //  onChange={formik.handleChange}
+                                   onChange={handleChange}
                                    className={styles.input}
                                    placeholder="Password"
                                />
@@ -64,4 +146,4 @@ const inicio = () =>{
     )
 }
 
-export default inicio;
+export default Inicio;
