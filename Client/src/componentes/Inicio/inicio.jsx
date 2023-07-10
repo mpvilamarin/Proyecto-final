@@ -74,7 +74,7 @@ const Inicio = () =>{
         navigate('/InicioAdmin')
         }else if(isFundacion ){
             dispatch(postLoginAdmin(input))
-            navigate('/perfilfund')
+            navigate('/fundaciones')
             }else{
           alert("No tienes permisos para ingresar")
         } 
