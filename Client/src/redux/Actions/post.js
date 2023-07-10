@@ -110,20 +110,21 @@ export const postReview = (crearReview) => {
       console.log("Error en el post de reviews:", error);
     }
   }
+};
   
-  }
+  
   export const postLoginAdmin = (newLogin) => {
     return async (dispatch) => {
       try {
         const response = await axios.post('http://localhost:3001/usuarios/login', newLogin);
-        const { usuario, email } = response.data;
+        const { usuario, email, id } = response.data;
         dispatch({
           type: POST_LOGIN,
           payload: {
-           usuario,email,
+           usuario,email, id
           },
         });
-        alert(`inicio de sesion exitoso para ${usuario}`);
+       // alert(`inicio de sesion exitoso para ${usuario}`);
       } catch (error) {
        
         alert(`Error al iniciar sesión: ${error}`);
@@ -131,10 +132,6 @@ export const postReview = (crearReview) => {
       }
     };
   };
-
-  
-
-
 
 export const logOut = () => {
   return { type: LOG_OUT };
