@@ -1,25 +1,25 @@
 import React, {useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getDetailFundacion, resetDetail } from "../../../redux/Actions/get";
+import { getAllMascotas, getDetailFundacion, resetDetail } from "../../../redux/Actions/get";
 import style from './perfilFund.module.css';
 import fundaciones from "../../Cartas/fundacion.png";
 import CardAdop from "../../Cartas/cardAdopcion";
 import Review from "../../Reviews/reviews";
-
 export default function PerfilFund () {
 
     const data = useSelector((state) => state.sesion);
     const info = useSelector((state) => state.fundacionDetail)
-    console.log(data)
-    const mascotas = info.Mascotas
+    const mascotres = useSelector((state) => state.mascotas)
+    console.log(mascotres);
+    console.log(info);
     const reviews = info.Reviews
     const dispatch = useDispatch();
-    console.log(info)
     const { id } = data;
     const {image, nombre, ciudad, direccion, telefono, fundadaEn, email, mision} = info;
 
     useEffect(() => {
       dispatch(resetDetail());
+      dispatch(getAllMascotas());
       dispatch(getDetailFundacion(id));
     }, []);
 
@@ -58,12 +58,14 @@ export default function PerfilFund () {
           <div >
           <h1>Mis mascotas</h1>
           <div className={style.containerAnimales}>
-            {mascotas && mascotas.map((mascota, indexMascota) => (
-              <CardAdop
-               mascota={mascota}
-              indexMascota={mascota.id}
-              key={indexMascota}
-              />
+            {mascotres && mascotres.map((mascota, indexMascota) => (
+              mascota.Fundaciones[0].nombre === nombre && (
+                <CardAdop
+                  mascota={mascota}
+                  indexMascota={mascota.id}
+                  key={indexMascota}
+                />
+              )
             ))}
           </div>
           </div>

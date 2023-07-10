@@ -1,11 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom'
 import { validate } from "./validate";
 import { postFundaciones } from "../../../redux/Actions/post";
 import styles from "../registro/registro.module.css";
 const Form = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     nombre: "",
     ciudad: "",
@@ -58,6 +60,7 @@ const Form = () => {
         mision:"",
         borrado: false
       });
+      navigate("/login")
     }
   };
   useEffect(() => {

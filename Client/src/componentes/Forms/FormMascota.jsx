@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { postMascota } from '../../redux/Actions/post';
 import { getAllFundaciones } from '../../redux/Actions/get';
 import './stilosFormularioMascota.css';
@@ -9,6 +10,7 @@ import UploadWidget from "../../componentes/Upload/UploadWidget";
 function FormMascota() {
   const fundaciones = useSelector((state) => state.fundaciones);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllFundaciones());
@@ -79,6 +81,7 @@ function FormMascota() {
       });
       setShowAlert(false);
       setInvalidFields([]);
+      navigate('/adopciones')
     } else {
       setShowAlert(true);
     }

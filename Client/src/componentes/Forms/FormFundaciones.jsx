@@ -48,6 +48,7 @@ function FormFundaciones() {
       });
       setShowAlert(false);
       setInvalidFields([]);
+      navigate("/adopciones")
     } else {
       setShowAlert(true);
     }

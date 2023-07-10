@@ -1,3 +1,31 @@
+.divPagination {
+  display: flex;
+  width: 150px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagePagination {
+  border-radius: 15px;
+  color: black;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: #4898BF;
+  box-shadow: -2px 3px 4px rgba(0, 0, 0, 0.438);
+  transition: 0.3s;
+  margin-bottom: 20px;
+}
+
+.pagePagination:hover {
+transform: translateY(-5px);
+background-color: #3b7d9e;
+}
+
+
+
+
+
 /* .Pagination {
   display: flex;
   justify-content: center;
