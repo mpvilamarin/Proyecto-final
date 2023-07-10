@@ -65,7 +65,7 @@ export default function NavBar() {
                 Iniciar Sesión
               </Link>
             )}
-            {/*!isAuthenticated && <li><LogInButton /></li>*/}
+            {/* {/!isAuthenticated && <li><LogInButton /></li>/} */}
             {isAuthenticated && (
               <Link to="/perfil" className="nav-link">
                 Mi Perfil
@@ -78,7 +78,9 @@ export default function NavBar() {
             )}
             {isAuthenticated && (
               <li className="nav-link">
+
                 <LogOutButton />
+
               </li>
             )}
 
