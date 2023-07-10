@@ -26,14 +26,14 @@ const SortFundaciones = () => {
   return (
     <div>
       <h2 className={styles.ordenar}>Ordenar Fundaciones</h2>
-      <button onClick={handleSortAZ}className={styles.aZ}>A-Z</button>
-      <button onClick={handleSortZA}className={styles.aZ}>Z-A</button>
-      <button onClick={() => handleSortReviews("asc")}className={styles.asDs}>
-        Reviews Ascendente
-      </button>
-      <button onClick={() => handleSortReviews("desc")}className={styles.asDs}>
-        Reviews Descendente
-      </button>
+      <button onClick={handleSortAZ} className={styles.aZ}>A-Z</button>
+      <button onClick={handleSortZA} className={styles.aZ}>Z-A</button>
+
+      <select onChange={(e) => handleSortReviews(e.target.value)} className={styles.dropDown}>
+        <option value="">Puntuaciones ★</option>
+        <option value="asc">Mayor Puntuación★</option>
+        <option value="desc">Menor Puntuación★</option>
+      </select>
     </div>
   );
 };
