@@ -119,9 +119,9 @@ const Form = () => {
         onChange={handleChange}
         placeholder="Contraseña"
       />
-      {errors.contraseña && (
+      {/* {errors.contraseña && (
         <p className={styles.errors}>{errors.contraseña}</p>
-      )}
+      )} */}
       <input
         className={styles.input}
         type="date"

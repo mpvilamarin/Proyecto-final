@@ -2,7 +2,7 @@ import axios from "axios";
 import {
 
   POST_ADMIN,
-  POST_LOGIN_FUNDACION
+  POST_LOGIN_FUNDACION,
   POST_ADOPCIONES,
   POST_DONACIONES,
   POST_FUNDACIONES,
@@ -109,7 +109,8 @@ export const postReview = (crearReview) => {
     } catch (error) {
       console.log("Error en el post de reviews:", error);
     }
-
+  }
+  
   }
   export const postLoginAdmin = (newLogin) => {
     return async (dispatch) => {

@@ -167,11 +167,4 @@ module.exports = {
     getFundacionById,
     postAutenticarFundacion,
 
-
-module.exports = {
-  postFundacion,
-  getAllFundaciones,
-  updateFundacion,
-  getFundacionById,
-  postAutenticarFundacion,
-};
+}
