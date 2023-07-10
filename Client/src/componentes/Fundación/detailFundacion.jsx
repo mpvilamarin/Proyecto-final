@@ -14,8 +14,8 @@ const DetailFundacion = () => {
   const dispatch = useDispatch();
   const fundacion = useSelector((state) => state.fundacionDetail);
   console.log(fundacion)
-  const reviews = fundacion?.Reviews
-  const mascotas = fundacion?.Mascotas
+  const reviews = fundacion.Reviews
+  const mascotas = fundacion.Mascotas
   const navigate = useNavigate();
   // const [fundacionNombre, setFundacionNombre] = useState("");
 

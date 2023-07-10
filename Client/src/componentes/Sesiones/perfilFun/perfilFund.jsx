@@ -9,17 +9,16 @@ export default function PerfilFund () {
 
     const data = useSelector((state) => state.sesion);
     const info = useSelector((state) => state.fundacionDetail)
-    const mascotres = useSelector((state) => state.mascotas)
-    console.log(mascotres);
+    // const mascotas = useSelector((state) => state.mascotas)
     console.log(info);
-    const reviews = info.Reviews
+    const mascotas = info?.Mascotas
     const dispatch = useDispatch();
     const { id } = data;
-    const {image, nombre, ciudad, direccion, telefono, fundadaEn, email, mision} = info;
-
+    const {image, nombre, ciudad, direccion, telefono, fundadaEn, email, mision, reviews} = info;
+    console.log(mascotas)
     useEffect(() => {
       dispatch(resetDetail());
-      dispatch(getAllMascotas());
+    //  dispatch(getAllMascotas());
       dispatch(getDetailFundacion(id));
     }, []);
 
@@ -58,14 +57,14 @@ export default function PerfilFund () {
           <div >
           <h1>Mis mascotas</h1>
           <div className={style.containerAnimales}>
-            {mascotres && mascotres.map((mascota, indexMascota) => (
-              mascota.Fundaciones[0].nombre === nombre && (
+            {mascotas && mascotas.map((mascota, indexMascota) => (
+       //       mascota.Fundaciones[0]?.nombre === nombre && (
                 <CardAdop
                   mascota={mascota}
                   indexMascota={mascota.id}
                   key={indexMascota}
                 />
-              )
+           //   )
             ))}
           </div>
           </div>
