@@ -31,7 +31,8 @@ export const postMascota = (newMascota) => {
       alert(`Error al crear la mascota ${error}`);
     }
   };
-};
+}
+
 
 export const postAdopciones = (nuevaAdopcion) => {
   return async (dispatch) => {
@@ -81,7 +82,8 @@ export const postFundaciones = (nuevaFundacion, email, nombre) => {
       alert(`error al crear la fundacion ${error}`);
     }
   };
-};
+}
+
 
 export const postUsuario = (newUsuario) => {
   return async (dispatch) => {

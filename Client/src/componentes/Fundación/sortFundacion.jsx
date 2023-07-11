@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
+  filterFundacionesByRating,
   sortFundacionesAZ,
   sortFundacionesZA,
 } from "../../redux/Actions/filtroAndOrdenamiento";
@@ -21,6 +22,17 @@ const SortFundaciones = () => {
 
   const handleSortReviews = (order) => {
     dispatch(sortFundacionesReviews(order));
+  };
+
+  const [showMessage, setShowMessage] = useState(false);
+
+  const handleFilterByRating = (rating) => {
+    dispatch(filterFundacionesByRating(rating));
+    setShowMessage(true); // Mostrar mensaje después de filtrar
+  };
+
+  const handleCloseMessage = () => {
+    setShowMessage(false); // Cerrar mensaje
   };
 
   return (

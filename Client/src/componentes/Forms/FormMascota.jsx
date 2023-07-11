@@ -10,7 +10,7 @@ import UploadWidget from "../../componentes/Upload/UploadWidget";
 function FormMascota() {
   const fundaciones = useSelector((state) => state.fundaciones);
   const info = useSelector((state) => state.fundacionDetail)
-  const {nombre} = info
+  const { nombre } = info
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -63,7 +63,7 @@ function FormMascota() {
       ...prevMascota,
       image: url
     }));
-};
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -103,13 +103,13 @@ function FormMascota() {
       'image',
     ];
 
-    const invalidFields = requiredFields.filter((field) =>  {
-      if(field === 'image') {
+    const invalidFields = requiredFields.filter((field) => {
+      if (field === 'image') {
         return newMascota[field] === ''
       } else {
         return newMascota[field].trim() === ''
-        }
-      }  
+      }
+    }
     );
 
     setInvalidFields(invalidFields);
@@ -143,17 +143,19 @@ function FormMascota() {
 
         <Form.Group controlId="formBasicEspecie">
           <Form.Label>Especie</Form.Label>
-          <Form.Control
-            type="text"
+          <Form.Select
             name="especie"
             value={newMascota.especie}
             onChange={handleChange}
-            placeholder="Especie"
-            className={
-              invalidFields.includes('especie') ? 'is-invalid' : ''
-            }
-          />
+            className={invalidFields.includes('especie') ? 'is-invalid' : ''}
+          >
+            <option value="">Seleccionar especie</option>
+            <option value="Perro">Perro</option>
+            <option value="Gato">Gato</option>
+          </Form.Select>
         </Form.Group>
+
+
 
         <Form.Group controlId="formBasicTamaño">
           <Form.Label>Tamaño</Form.Label>
@@ -261,14 +263,14 @@ function FormMascota() {
               onChange={handleChange}
             />
 
- 
-            </div>
-            </Form.Group>
 
-          <div>
-            {newMascota.image && <img src={newMascota.image} alt="image"></img>}
-            <UploadWidget onImageUpload={handleImageUpload}/>
           </div>
+        </Form.Group>
+
+        <div>
+          {newMascota.image && <img src={newMascota.image} alt="image"></img>}
+          <UploadWidget onImageUpload={handleImageUpload} />
+        </div>
 
         {/* <div>
           <div>
@@ -292,8 +294,8 @@ function FormMascota() {
             )}
           </div>
         </div> */}
-        
-        
+
+
 
         <Button
           variant="primary"

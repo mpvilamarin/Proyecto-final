@@ -39,8 +39,8 @@ const DetailFundacion = () => {
 
   return (
     <div className={style.contenedorPadre}>
-      
-      
+
+
       {!fundacion ? (
         <h3>LOADING...</h3>
       ) : (
@@ -61,11 +61,11 @@ const DetailFundacion = () => {
                 <h5>Fecha de Fundación: {fundacion?.fundadaEn}</h5>
               </div>
             </div>
-            
+
           )}
           <div className={style.contenedorMision}>
             <div className={style.mision}>
-                <h5>Misión: {fundacion?.mision}</h5>
+              <h5>Misión: {fundacion?.mision}</h5>
             </div>
             <div className={style.buttonDonar}>
               <button onClick={handleClick}>Donar</button>
@@ -78,9 +78,9 @@ const DetailFundacion = () => {
           <div className={style.containerAnimales}>
             {mascotas && mascotas.map((mascota, indexMascota) => (
               <CardAdop
-               mascota={mascota}
-              indexMascota={mascota.id}
-              key={indexMascota}
+                mascota={mascota}
+                indexMascota={mascota.id}
+                key={indexMascota}
               />
             ))}
           </div>
@@ -100,15 +100,15 @@ const DetailFundacion = () => {
             ))}
           </div>
           </div>
-          
+
           <div className={style.contenedorHome}>
             <div className={style.buttonHome}>
               <Link to="/home">
                 <button>BACK TO HOME</button>
               </Link>
-            </div>  
+            </div>
           </div>
-          
+
         </div>
       )}
     </div>

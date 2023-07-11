@@ -11,7 +11,7 @@ const Profile = () => {
   const mascotasFav = useSelector((state) => state.mascotasFav)
   console.log(mascotasFav)
 
-  console.log("aqui esta:" , user.sub);
+  console.log("aqui esta:", user.sub);
 
   if (isLoading) {
     return (
@@ -34,6 +34,10 @@ const Profile = () => {
         </div>
         <h2 className={styles.sub}>Mis peluditos favoritos</h2>
         <div>
+
+          <div>
+            <h3>Mis Adopciones:</h3>
+          </div>
 
         </div>
       </div>

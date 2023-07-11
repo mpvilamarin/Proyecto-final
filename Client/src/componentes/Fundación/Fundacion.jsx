@@ -15,10 +15,10 @@ const Fundacion = () => {
           <SearchBar />
         </div>
         <div>
-          <img 
-          src={require("../../assets/MascotaFundacion2.png")} 
-          alt="mascotas" 
-          className={style.img}>
+          <img
+            src={require("../../assets/MascotaFundacion2.png")}
+            alt="mascotas"
+            className={style.img}>
           </img>
         </div>
       </div>
