@@ -8,13 +8,9 @@ const Home = () => {
   return (
     <div className='container'>
       <div className={style.cardContainer}>
-        <CardMascotas />
-        <CardFundaciones />
         <div>
           <Info />
         </div>
-
-
       </div>
     </div>
   );

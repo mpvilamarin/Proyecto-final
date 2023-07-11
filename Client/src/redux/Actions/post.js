@@ -14,7 +14,7 @@ import {
   REMOVEFAV,
 
 } from "../Actions-type/index.js";
-
+import { toast } from "react-toastify";
 //=======================================>> POST <<=======================================================================
 export const postAdmin = (newAdmin) => {
   return async (dispatch) => {
@@ -25,7 +25,6 @@ export const postAdmin = (newAdmin) => {
         payload: response.data,
       });
       console.log(response)
-      alert("Has creado un Nuevo administrador");
     } catch (error) {
       alert(`Error al crear un nuevo administrador ${error}`);
     }
@@ -39,7 +38,10 @@ export const postMascota = (newMascota) => {
         type: POST_MASCOTA,
         payload: response.data,
       });
-      alert("Mascota creada con éxito");
+      toast.success("Se creo su mascota exitosamente!", {
+        type: toast.TYPE.SUCCESS,
+        icon: "🐶🐱"
+      });
     } catch (error) {
       alert(`Error al crear la mascota ${error}`);
     }
@@ -90,7 +92,9 @@ export const postFundaciones = (nuevaFundacion, email, nombre) => {
         type: POST_FUNDACIONES,
         payload: response.data,
       });
-      alert("fundacion creada con exito");
+      toast.success("Se realizo el registro exitosamente.", {
+        theme: "dark"
+      });
     } catch (error) {
       alert(`error al crear la fundacion ${error}`);
     }
@@ -132,11 +136,11 @@ export const postReview = (crearReview) => {
     return async (dispatch) => {
       try {
         const response = await axios.post('/usuarios/login/', newLogin);
-        const { usuario, email, id} = response.data;
+        const { usuario, email, id, nombre} = response.data;
         dispatch({
           type: POST_LOGIN,
           payload: {
-           usuario, email, id
+           usuario, email, id , nombre
           },
         });
        // alert(`inicio de sesion exitoso para ${usuario}`);
