@@ -77,6 +77,7 @@ export const updateFundacion = (
         type: UPDATE_FUNDACION,
         payload: response.data,
       });
+      alert('se actualizo corectamente la fundacion')
     } catch (error) {
       alert(` error al actualizar datos de la fundacion ${error} `);
     }
