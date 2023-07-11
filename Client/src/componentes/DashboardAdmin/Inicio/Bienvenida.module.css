@@ -1,0 +1,15 @@
+.bienvenida {
+  width: 100hv;
+  height: 50vh;
+  background-color: #f3dfc1;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.ContenedorPadre {
+  display: flex;
+  justify-content: center;
+}

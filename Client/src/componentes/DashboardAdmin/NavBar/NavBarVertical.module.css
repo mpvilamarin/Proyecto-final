@@ -1,0 +1,24 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: white;
+  padding: 20px;
+  overflow-y: auto;
+  margin-right: 200px;
+  border-right: 3px solid rgb(218, 218, 218);
+  border-radius: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.li {
+  margin-bottom: 10px;
+}
