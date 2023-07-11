@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import CardMascotas from "../Cartas/cardMascotas";
 import CardFundaciones from "../Cartas/cardFundacion";
 import style from "./home.module.css";
+import Info from "../Información/Info";
 
 const Home = () => {
   return (
@@ -9,6 +10,10 @@ const Home = () => {
       <div className={style.cardContainer}>
         <CardMascotas />
         <CardFundaciones />
+        <div>
+          <Info />
+        </div>
+
 
       </div>
     </div>

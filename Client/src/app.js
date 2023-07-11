@@ -41,6 +41,7 @@ import PerfilFund from "./componentes/Sesiones/perfilFun/perfilFund";
 // import CardFundaciones from './componentes/Cartas/cardFundacion'
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import DueñoResponsable from "./componentes/Información/DueñoResponsable/DueñoResponsable";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:3001/";
@@ -73,6 +74,7 @@ function App() {
         <Route path="/logout" element={<LogOut />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/registro" element={<Registro />} />
+        <Route path="/dueñoResponsable" element={<DueñoResponsable />} />
 
         <Route path="/perfilfund" element={<PerfilFund />} />
 

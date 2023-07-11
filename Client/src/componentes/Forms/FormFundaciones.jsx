@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { postFundaciones } from "../../redux/Actions/post";
 import "./stilosFormularioMascota.css";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Navigate } from "react-router-dom";
 function FormFundaciones() {
   const { isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ function FormFundaciones() {
       });
       setShowAlert(false);
       setInvalidFields([]);
-      navigate("/adopciones")
+      Navigate("/adopciones")
     } else {
       setShowAlert(true);
     }
