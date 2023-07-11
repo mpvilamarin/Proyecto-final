@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
+import { Image,Transformation} from 'cloudinary-react';
 
 const UploadWidget = ({ onImageUpload }) => {
   useEffect(() => {
@@ -38,6 +38,11 @@ const UploadWidget = ({ onImageUpload }) => {
   return (
     <div>
       <button id='image'>Cargar imagen</button>
+      {(
+        <Image >
+          <Transformation width="286" height="205" crop="fill" />
+        </Image>
+      )}
     </div>
   );
 };

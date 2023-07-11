@@ -55,6 +55,10 @@ module.exports = (sequelize) => {
         allowNull: false,
         defaultValue: "fundacion",
       },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: true
+      }
     },
     {
       timestamps: false,

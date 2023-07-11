@@ -118,13 +118,13 @@ function App() {
       
       
       </Routes>
+      <Footer />
       </div>
         
       {/* <footer>
         <Contacto />
       </footer> */}
       <div> 
-      <Footer />
       </div>
    </div>
   );

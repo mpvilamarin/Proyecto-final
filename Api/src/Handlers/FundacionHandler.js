@@ -18,6 +18,7 @@ async function postFundacion(req, res) {
     fundadaEn,
     mision,
     borrado,
+    image,
     tipo,
   } = req.body;
 
@@ -48,7 +49,7 @@ async function postFundacion(req, res) {
       fundadaEn,
       mision,
       borrado,
-
+      image,
       tipo:'fundacion',
 
     });

@@ -37,7 +37,7 @@ export default function CardsFundacion() {
                 <Link to={`/fundacion/${fundacion.id}`}>
                   <Card.Title className="card-title">{fundacion?.nombre}</Card.Title>
                 </Link>
-                <Card.Img variant="top" className="imgFund" src={fundaciones} />
+                <Card.Img variant="top" className="imgFund" src={fundacion.image} />
                 <Card.Text>
                   <h2 className="card-info">Dirección: {fundacion?.direccion}</h2>
                   <h2 className="card-info">Ciudad: {fundacion?.ciudad}</h2>
