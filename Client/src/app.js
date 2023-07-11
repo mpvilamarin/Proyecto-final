@@ -9,8 +9,8 @@ import Fundacion from "./componentes/Fundación/Fundacion";
 import Registro from "./componentes/Sesiones/registro/registro";
 import Redirect from "./componentes/Redirect/Redirect";
 import Footer from "./componentes/Footer/Footer";
-import Dashboard from "./componentes/DashboardAdmin/Dashboard";
-import BienvenidaAdmin from "./componentes/DashboardAdmin/BienvenidaAdmin";
+import Dashboard from "./componentes/DashboardAdmin/Dashboard/Dashboard";
+import BienvenidaAdmin from "./componentes/DashboardAdmin/Inicio/BienvenidaAdmin";
 import  CrearAdmin  from "./componentes/DashboardAdmin/CrearAdmin/CrearAdmin";
 //import { RequireAuth } from "react-auth-kit";
 
