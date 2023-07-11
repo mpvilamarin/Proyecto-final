@@ -2,7 +2,6 @@ import axios from "axios";
 import {
 
   POST_ADMIN,
-  POST_LOGIN_FUNDACION,
   POST_ADOPCIONES,
   POST_DONACIONES,
   POST_FUNDACIONES,
@@ -17,7 +16,21 @@ import {
 } from "../Actions-type/index.js";
 
 //=======================================>> POST <<=======================================================================
-
+export const postAdmin = (newAdmin) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(`/admin/`, newAdmin);
+      dispatch({
+        type: POST_ADMIN,
+        payload: response.data,
+      });
+      console.log(response)
+      alert("Has creado un Nuevo administrador");
+    } catch (error) {
+      alert(`Error al crear un nuevo administrador ${error}`);
+    }
+  };
+};
 export const postMascota = (newMascota) => {
   return async (dispatch) => {
     try {

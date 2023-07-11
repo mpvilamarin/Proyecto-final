@@ -11,7 +11,7 @@ import Redirect from "./componentes/Redirect/Redirect";
 import Footer from "./componentes/Footer/Footer";
 import Dashboard from "./componentes/DashboardAdmin/Dashboard";
 import BienvenidaAdmin from "./componentes/DashboardAdmin/BienvenidaAdmin";
-
+import  CrearAdmin  from "./componentes/DashboardAdmin/CrearAdmin/CrearAdmin";
 //import { RequireAuth } from "react-auth-kit";
 
 import LogOut from "./componentes/Autenticación/LogOut/logout";
@@ -111,6 +111,12 @@ function App() {
 
         <Route path="*" element={<Navigate to="/error" />} />
         <Route path="/error" element={<Redirect />} />
+      
+        {/* A PARTIR DE ACA VAN LAS RUTAS PARA LA DASHBOARD */}
+        <Route path="/crearAdmin" element={<CrearAdmin />} />
+        
+      
+      
       </Routes>
       </div>
         
