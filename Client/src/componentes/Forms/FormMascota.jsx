@@ -9,6 +9,8 @@ import UploadWidget from "../../componentes/Upload/UploadWidget";
 
 function FormMascota() {
   const fundaciones = useSelector((state) => state.fundaciones);
+  const info = useSelector((state) => state.fundacionDetail)
+  const { nombre } = info
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -26,34 +28,35 @@ function FormMascota() {
     descripcion: '',
     castrado: '',
     image: '',
-    fundacionId: '',
+    fundacionId: nombre,
   });
   const [showAlert, setShowAlert] = useState(false);
   const [invalidFields, setInvalidFields] = useState([]);
 
   const handleChange = (e) => {
     console.log(e.target.value)
+    console.log(newMascota)
     setNewMascota({
       ...newMascota,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleChecked = (e) => {
-    if (e.target.checked) {
-      setNewMascota({
-        ...newMascota,
-        fundacionId: [...newMascota.fundacionId, e.target.value],
-      });
-    } else {
-      setNewMascota({
-        ...newMascota,
-        fundacionId: newMascota.fundacionId.filter(
-          (fundacion) => fundacion !== e.target.value
-        ),
-      });
-    }
-  };
+  // const handleChecked = (e) => {
+  //   if (e.target.checked) {
+  //     setNewMascota({
+  //       ...newMascota,
+  //       fundacionId: [...newMascota.fundacionId, e.target.value],
+  //     });
+  //   } else {
+  //     setNewMascota({
+  //       ...newMascota,
+  //       fundacionId: newMascota.fundacionId.filter(
+  //         (fundacion) => fundacion !== e.target.value
+  //       ),
+  //     });
+  //   }
+  // };
 
   const handleImageUpload = (url) => {
     setNewMascota((prevMascota) => ({
@@ -64,7 +67,7 @@ function FormMascota() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isFormValid()) {
+    if (isFormValid) {
       console.log(newMascota)
       dispatch(postMascota(newMascota));
       setNewMascota({
@@ -77,7 +80,7 @@ function FormMascota() {
         descripcion: '',
         castrado: '',
         image: '',
-        fundacionId: ''
+        fundacionId: nombre
       });
       setShowAlert(false);
       setInvalidFields([]);
@@ -110,8 +113,6 @@ function FormMascota() {
     );
 
     setInvalidFields(invalidFields);
-
-    return invalidFields.length === 0 && newMascota.fundacionId.length > 0;
   };
 
   const sortedFundacion = fundaciones
@@ -271,7 +272,7 @@ function FormMascota() {
           <UploadWidget onImageUpload={handleImageUpload} />
         </div>
 
-        <div>
+        {/* <div>
           <div>
             {sortedFundacion.length >= 1 ? (
               sortedFundacion?.map((elem, index) => (
@@ -292,7 +293,7 @@ function FormMascota() {
               undefined
             )}
           </div>
-        </div>
+        </div> */}
 
 
 
