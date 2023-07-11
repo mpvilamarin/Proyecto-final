@@ -22,22 +22,16 @@ const Dashboard = () => {
 
   return (
     <div className={styles.container}>
-
-      <div className={styles.navbarContainer}>
         <NavBarVertical mostrarComponente={mostrarComponente} />
-
-        <div className={styles.contentContainer}>
-          {componenteActual === 'Inicio' && <Inicio />}
-          {componenteActual === 'CrearAdmin' && <CrearAdmin />}
-          {componenteActual === 'ManejoFundaciones' && <ManejoFundaciones />}
-          {componenteActual === 'ManejoMascotas' && <ManejoMascotas />}
-          {componenteActual === 'ManejoUsuarios' && <ManejoUsuarios />}
-          {componenteActual === 'Donaciones' && <Donaciones />}
-          {componenteActual === 'Graficos' && <Graficos />}
-        </div>
-
+      <div className={styles.contentContainer}>
+        {componenteActual === 'Inicio' && <Inicio />}
+        {componenteActual === 'CrearAdmin' && <CrearAdmin />}
+        {componenteActual === 'ManejoFundaciones' && <ManejoFundaciones />}
+        {componenteActual === 'ManejoMascotas' && <ManejoMascotas />}
+        {componenteActual === 'ManejoUsuarios' && <ManejoUsuarios />}
+        {componenteActual === 'Donaciones' && <Donaciones />}
+        {componenteActual === 'Graficos' && <Graficos />}
       </div>
-
     </div>
   );
 };
