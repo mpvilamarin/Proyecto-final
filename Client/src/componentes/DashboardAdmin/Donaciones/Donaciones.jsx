@@ -28,7 +28,7 @@ const DonacionesHechas = () => {
                             <p className={styles.content}>ID: {donacion.id}</p>
                             <p className={styles.content}>Monto: {donacion.monto}</p>
                             <p className={styles.content}>Fecha: {donacion.fecha}</p>
-                            <p className={styles.content}>Descripción: {donacion.descripcion}</p>
+                            <p className={styles.contentFinal}>Descripción: {donacion.descripcion}</p>
                         </div>
                     ))}
                 </div>
