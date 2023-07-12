@@ -12,9 +12,9 @@ const ModificarFundacion = () => {
   const navigate = useNavigate();
 
   const allFundaciones = useSelector((state) => state.fundaciones);
-  const [selectedFundacionIndex, setSelectedFundacionIndex] = useState(null); 
+  const [selectedFundacionIndex, setSelectedFundacionIndex] = useState(null);
   const [showForm, setShowForm] = useState(true);
-  
+
   useEffect(() => {
     dispatch(getAllFundaciones());
   }, [dispatch]);
@@ -26,7 +26,7 @@ const ModificarFundacion = () => {
     telefono: "",
     email: "",
     fundadaEn: "",
-    mision:"",
+    mision: "",
     borrado: false
   });
   const [errors, setErrors] = useState({});
@@ -54,16 +54,16 @@ const ModificarFundacion = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     if (selectedFundacionIndex !== null) {
       setIsLoading(true);
 
       const selectedFundacion = allFundaciones[selectedFundacionIndex];
       const { id } = selectedFundacion;
-  
+
       await dispatch(updateFundacion(id, input.nombre, input.ciudad, input.direccion, input.telefono, input.email, input.fundadaEn, input.mision));
-    
-      
+
+
       setInput({
         nombre: "",
         ciudad: "",
@@ -75,10 +75,10 @@ const ModificarFundacion = () => {
         borrado: false,
       });
       window.location.href = "/ModificarFundacion";
-      
+
     }
   };
-  
+
   return (
     <div>
       {isLoading && (
@@ -87,25 +87,26 @@ const ModificarFundacion = () => {
         </div>
       )}
 
-      <div>
-        <h1>Fundaciones:</h1>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Fundaciones</h1>
         <div>
           {allFundaciones &&
             allFundaciones.map((fundacion, index) => (
               <div key={index} className={styles.contendorFundacion} >
                 <div className={styles.fundacion}>
                   <p>
-                    <span key={index}>nombre: {fundacion.nombre}</span>
+                    <span key={index} className={styles.sub}>Fundación: {fundacion.nombre}</span>
                   </p>
-                  <button key={index} onClick={() => handleEditClick(index)}>
+                  <button key={index} onClick={() => handleEditClick(index)} className={styles.button}>
                     editar
                   </button>
                 </div>
-                
+
                 <div className={styles.contendorForm}>
                   {selectedFundacionIndex === index && showForm && (
                     <form className={styles.form} onSubmit={handleSubmit}>
                       <input
+                        className={styles.input}
                         type="text"
                         name="nombre"
                         value={input.nombre}
@@ -113,6 +114,7 @@ const ModificarFundacion = () => {
                         onChange={handleChange}
                       />
                       <input
+                        className={styles.input}
                         type="text"
                         name="ciudad"
                         value={input.ciudad}
@@ -120,6 +122,7 @@ const ModificarFundacion = () => {
                         onChange={handleChange}
                       />
                       <input
+                        className={styles.input}
                         type="text"
                         name="direccion"
                         value={input.direccion}
@@ -127,6 +130,7 @@ const ModificarFundacion = () => {
                         onChange={handleChange}
                       />
                       <input
+                        className={styles.input}
                         type="text"
                         name="telefono"
                         value={input.telefono}
@@ -134,6 +138,7 @@ const ModificarFundacion = () => {
                         onChange={handleChange}
                       />
                       <input
+                        className={styles.input}
                         type="text"
                         name="email"
                         value={input.email}
@@ -141,6 +146,7 @@ const ModificarFundacion = () => {
                         onChange={handleChange}
                       />
                       <input
+                        className={styles.input}
                         name="fundadaEn"
                         type="date"
                         value={input.fundadaEn}
@@ -148,19 +154,20 @@ const ModificarFundacion = () => {
                         onChange={handleChange}
                       />
                       <textarea
+                      className={styles.text}
                         type="text"
                         name="mision"
                         value={input.mision}
                         placeholder={fundacion.mision}
                         onChange={handleChange}
                       />
-                      <div>
-                        <button>Aceptar Cambios</button>
+                      <div className={styles.buttonSend}>
+                        <button className={styles.button2}>Aceptar Cambios</button>
                       </div>
                     </form>
-                  )}  
+                  )}
                 </div>
-                
+
               </div>
             ))}
         </div>
