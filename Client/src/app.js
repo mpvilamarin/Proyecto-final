@@ -9,9 +9,10 @@ import Fundacion from "./componentes/Fundación/Fundacion";
 import Registro from "./componentes/Sesiones/registro/registro";
 import Redirect from "./componentes/Redirect/Redirect";
 import Footer from "./componentes/Footer/Footer";
-import Dashboard from "./componentes/DashboardAdmin/Dashboard";
-import BienvenidaAdmin from "./componentes/DashboardAdmin/BienvenidaAdmin";
+import Dashboard from "./componentes/DashboardAdmin/Dashboard/Dashboard";
+import BienvenidaAdmin from "./componentes/DashboardAdmin/Inicio/BienvenidaAdmin";
 import  CrearAdmin  from "./componentes/DashboardAdmin/CrearAdmin/CrearAdmin";
+import ModificarFundacion from "./componentes/DashboardAdmin/ManejoFundaciones/ManejoFundaciones";
 //import { RequireAuth } from "react-auth-kit";
 
 import LogOut from "./componentes/Autenticación/LogOut/logout";
@@ -114,6 +115,7 @@ function App() {
       
         {/* A PARTIR DE ACA VAN LAS RUTAS PARA LA DASHBOARD */}
         <Route path="/crearAdmin" element={<CrearAdmin />} />
+        <Route path="/ModificarFundacion" element={<ModificarFundacion />} />
         
       
       

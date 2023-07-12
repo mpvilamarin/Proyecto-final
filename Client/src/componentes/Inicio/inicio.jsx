@@ -75,9 +75,11 @@ const Inicio = () =>{
         setIsLoading(true);
         await dispatch(postLoginAdmin(input))
         setIsLoading(false);
+      
         setTimeout(() => {
-          navigate('/InicioAdmin')
+          navigate('/DashboardAdmin')
          }, 2500)       
+
         }else if(isFundacion ){
             setIsLoading(true);
             await dispatch(postLoginAdmin(input))

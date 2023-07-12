@@ -1,0 +1,60 @@
+.contendorForm{
+  
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
+  
+  .form {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+    padding: 2em;
+    border-radius: 25px;
+    transition: 0.4s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.4) 1px 2px 2px;
+    width: 60%;
+    margin-left: 8rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    font-family: 'Merryweather';
+    font-size: large;
+  }
+  
+  .form:hover {
+    transform: translateX(-0.5em) translateY(-0.5em);
+    border: 1px solid #171717;
+    box-shadow: 10px 10px 0px #689fb3;
+  }
+  
+  
+  .fundacion{
+    display: flex;
+    border: solid 2px black;
+    width: 25%;
+    margin-left: 4rem;
+  }
+  .contendorFundacion{
+    border: solid 2px black;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Asegura que la pantalla de carga esté sobre el formulario */
+  }
