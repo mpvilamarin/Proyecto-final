@@ -6,7 +6,7 @@ import { addFav, removeFav } from "../../redux/Actions/post.js";
 import { connect } from 'react-redux'
 import huella from '../../assets/huellitabg.png'
 import huellaoscura from '../../assets/huellitaOscurabg.png'
-
+import style from './cards.module.css'
 const CardAdop = ({ mascota, indexMascota, addFav, removeFav, favoritos }) => {
   const [isFav, setIsFav] = useState(false);
   
@@ -34,14 +34,14 @@ const CardAdop = ({ mascota, indexMascota, addFav, removeFav, favoritos }) => {
   return (
     <div>
       <Card key={indexMascota} style={{ width: '18rem' }}>
-        <Button onClick={() => handleFavorite(mascota)} className="btn.btn-primary">
+        <Button onClick={() => handleFavorite(mascota)} className={style.button1} >
           {isFav ? (
-            <img src={huellaoscura} alt="Favorito" className="favorite-icon" />
+            <img src={huellaoscura} alt="Favorito" className={style.favoriteIcon} />
           ) : (
-            <img src={huella} alt="No favorito" className="favorite-icon" />
+            <img src={huella} alt="No favorito" className={style.favoriteIcon} />
           )}
         </Button>
-        <Card.Img variant="top" src={mascota?.image} alt="Mascota" className="card-image" />
+        <Card.Img variant="top" src={mascota?.image} alt="Mascota" className={style.image} />
         <Card.Body>
           <Card.Title className="card-title">{mascota?.nombre}</Card.Title>
           <Card.Text className="card-text">
@@ -50,7 +50,7 @@ const CardAdop = ({ mascota, indexMascota, addFav, removeFav, favoritos }) => {
             Temperamento: {mascota?.temperamento}
           </Card.Text>
           <Link to={`/mascota/${mascota?.id}`}>
-            <Button variant="primary">Ver más</Button>
+            <Button className={style.button1}>Ver más</Button>
           </Link>
         </Card.Body>
       </Card>
