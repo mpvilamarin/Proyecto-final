@@ -12,8 +12,8 @@ const postDonacion = async (req, res) => {
           quantity: donacion.quantity,
           fundacionId: donacion.fundacionId,
           // usuarioId: donacion.usuarioId
-
         },
+
       ],
       back_urls: {
         success: "http://localhost:3000/donaciones/feedback",
@@ -30,12 +30,15 @@ const postDonacion = async (req, res) => {
       fecha: new Date(),
       descripcion: donacion.title,
       fundacionId: donacion.fundacionId,
-      usuarioId: donacion.usuarioId,
+      email: donacion.email,
     });
 
+    console.log("Nueva donación creada:", nuevaDonacion);
+    
     res.status(201).send({ response, donacion: nuevaDonacion });
   } catch (error) {
     res.status(400).send({ error: error.message });
+    console.log(error)
   }
 };
 

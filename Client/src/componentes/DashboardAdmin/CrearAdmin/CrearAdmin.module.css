@@ -1,0 +1,121 @@
+.contenedorForm{
+  width: 100%;
+}
+
+.datos{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.mostrarAdmins{
+  display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 50%;
+}
+
+.contenedorPadre{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background-color: white;
+  padding: 2em;
+  border-radius: 25px;
+  transition: 0.4s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.4) 1px 2px 2px;
+  margin-left: 8rem;
+  margin-right: 300px;
+  margin-top: 50px;
+  font-family: 'Merryweather';
+  font-size: large;
+  
+}
+
+.form:hover {
+  transform: translateX(-0.5em) translateY(-0.5em);
+  border: 1px solid #171717;
+  box-shadow: 10px 10px 0px #689fb3;
+}
+
+.heading {
+  color: black;
+  padding-bottom: 0.5em;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Playfair display';
+  font-size: large;
+}
+
+.input {
+  border-radius: 5px;
+  border: 1px solid whitesmoke;
+  background-color: whitesmoke;
+  outline: none;
+  padding: 0.3em;
+  transition: 0.4s ease-in-out;
+}
+
+.input:hover {
+  box-shadow: 4px 4px 0px #969696, -2px -2px 8px #ffffff;
+}
+
+.input:focus {
+  background: #ffffff;
+  box-shadow: inset 1px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.form .btn {
+  height: 50px;
+  width: 170px;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  border: 2px solid #252525;
+  font-family: 'Merryweather';
+  font-size: large;
+  font-weight: 400;
+  overflow: hidden;
+  border-radius: 30px;
+  color: #333;
+  transition: all 0.5s ease-in-out;
+  margin-top: 15px;
+  margin-left: 90px;
+}
+
+.form .btn:hover {
+  box-shadow: 1px 1px 200px #252525;
+  border: none;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.form .btn:active {
+  transition: 0.2s;
+  transform: translateX(0em) translateY(0em);
+  box-shadow: none;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Asegura que la pantalla de carga esté sobre el formulario */
+}

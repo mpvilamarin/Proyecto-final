@@ -1,34 +1,35 @@
-import React, { useEffect } from 'react';
-import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
+import React, { useEffect } from "react";
+import { Image, Transformation } from "cloudinary-react";
+import styles from "./UploadWidget.module.css";
 
 const UploadWidget = ({ onImageUpload }) => {
   useEffect(() => {
     const widget = window.cloudinary.createUploadWidget(
       {
-        cloudName: 'dy4jmodgl',
-        uploadPreset: 'gbkoii7w',
+        cloudName: "dy4jmodgl",
+        uploadPreset: "gbkoii7w",
       },
       (error, result) => {
-        if (!error && result && result.event === 'success') {
-          console.log('Imagen cargada correctamente:', result.info.secure_url);
-          onImageUpload(result.info.secure_url)
+        if (!error && result && result.event === "success") {
+          console.log("Imagen cargada correctamente:", result.info.secure_url);
+          onImageUpload(result.info.secure_url);
         }
       }
     );
-    
-    const imageElement = document.getElementById('image');
-    if( imageElement ) {
-      imageElement.addEventListener('click', handleClick);
-    } 
 
-    function handleClick(event){
+    const imageElement = document.getElementById("image");
+    if (imageElement) {
+      imageElement.addEventListener("click", handleClick);
+    }
+
+    function handleClick(event) {
       event.preventDefault();
       widget.open();
-    };
+    }
 
     return () => {
-      if(imageElement){
-        imageElement.removeEventListener('click', () => { 
+      if (imageElement) {
+        imageElement.removeEventListener("click", () => {
           widget.open();
         });
       }
@@ -36,8 +37,10 @@ const UploadWidget = ({ onImageUpload }) => {
   }, []);
 
   return (
-    <div>
-      <button id='image'>Cargar imagen</button>
+    <div className={styles.containerbtn}>
+      <button id="image" className={styles.btnImg}>
+        Cargar imagen
+      </button>
     </div>
   );
 };

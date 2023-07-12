@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CardFundacion from "../Cartas/cardFundacion";
 import SortFundaciones from "../Fundación/sortFundacion";
 import SearchBar from "../SearchBar/searchBar";
 import style from "./Fundacion.module.css";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
 
 const Fundacion = () => {
+  const fundacion = useSelector((state) => state.fundaciones)
+  const dispatch = useDispatch();
+  console.log(fundacion)
+
+
   return (
     <div className={style.containerFundaciones}>
 
@@ -15,10 +23,10 @@ const Fundacion = () => {
           <SearchBar />
         </div>
         <div>
-          <img 
-          src={require("../../assets/MascotaFundacion2.png")} 
-          alt="mascotas" 
-          className={style.img}>
+          <img
+            src={require("../../assets/MascotaFundacion2.png")}
+            alt="mascotas"
+            className={style.img}>
           </img>
         </div>
       </div>

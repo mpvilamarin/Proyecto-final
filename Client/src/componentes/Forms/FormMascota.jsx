@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postMascota } from '../../redux/Actions/post';
 import { getAllFundaciones } from '../../redux/Actions/get';
+import { ToastContainer, toast} from 'react-toastify';
 import './stilosFormularioMascota.css';
 import UploadWidget from "../../componentes/Upload/UploadWidget";
 
 function FormMascota() {
   const fundaciones = useSelector((state) => state.fundaciones);
-  const info = useSelector((state) => state.fundacionDetail)
-  const {nombre} = info
+  const info = useSelector((state) => state.sesion)
+  const { nombre } = info
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -63,12 +64,11 @@ function FormMascota() {
       ...prevMascota,
       image: url
     }));
-};
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid) {
-      console.log(newMascota)
       dispatch(postMascota(newMascota));
       setNewMascota({
         nombre: '',
@@ -84,7 +84,9 @@ function FormMascota() {
       });
       setShowAlert(false);
       setInvalidFields([]);
-      navigate('/adopciones')
+      setTimeout(() => {
+        navigate('/adopciones') 
+       }, 2500)
     } else {
       setShowAlert(true);
     }
@@ -103,13 +105,13 @@ function FormMascota() {
       'image',
     ];
 
-    const invalidFields = requiredFields.filter((field) =>  {
-      if(field === 'image') {
+    const invalidFields = requiredFields.filter((field) => {
+      if (field === 'image') {
         return newMascota[field] === ''
       } else {
         return newMascota[field].trim() === ''
-        }
-      }  
+      }
+    }
     );
 
     setInvalidFields(invalidFields);
@@ -124,6 +126,7 @@ function FormMascota() {
     <div className="form-container">
       <h1 className="title-form">FORMULARIO PARA MASCOTAS</h1>
       <Form className="custom-form">
+        <ToastContainer autoClose={2500}></ToastContainer>
         {showAlert && (
           <Alert variant="danger">Por favor, completa todos los campos.</Alert>
         )}
@@ -134,7 +137,7 @@ function FormMascota() {
             name="nombre"
             value={newMascota.nombre}
             onChange={handleChange}
-            placeholder="Nombre de la mascota"
+            placeholder="Ej: Bruno"
             className={
               invalidFields.includes('nombre') ? 'is-invalid' : ''
             }
@@ -143,17 +146,19 @@ function FormMascota() {
 
         <Form.Group controlId="formBasicEspecie">
           <Form.Label>Especie</Form.Label>
-          <Form.Control
-            type="text"
+          <Form.Select
             name="especie"
             value={newMascota.especie}
             onChange={handleChange}
-            placeholder="Especie"
-            className={
-              invalidFields.includes('especie') ? 'is-invalid' : ''
-            }
-          />
+            className={invalidFields.includes('especie') ? 'is-invalid' : ''}
+          >
+            <option value="">Seleccionar especie</option>
+            <option value="Perro">Perro</option>
+            <option value="Gato">Gato</option>
+          </Form.Select>
         </Form.Group>
+
+
 
         <Form.Group controlId="formBasicTamaño">
           <Form.Label>Tamaño</Form.Label>
@@ -177,7 +182,7 @@ function FormMascota() {
             name="edad"
             value={newMascota.edad}
             onChange={handleChange}
-            placeholder="Edad"
+            placeholder="Ej: 5 años"
             className={
               invalidFields.includes('edad') ? 'is-invalid' : ''
             }
@@ -216,7 +221,7 @@ function FormMascota() {
             type="text"
             name="temperamento"
             value={newMascota.temperamento}
-            placeholder="Temperamento"
+            placeholder="Ej: jugueton, dosil"
             onChange={handleChange}
             className={
               invalidFields.includes('temperamento') ? 'is-invalid' : ''
@@ -230,7 +235,7 @@ function FormMascota() {
             type="text"
             name="descripcion"
             value={newMascota.descripcion}
-            placeholder="Descripcion"
+            placeholder="Ej: es muy amoroso, le gusta jugar"
             onChange={handleChange}
             className={
               invalidFields.includes('descripcion') ? 'is-invalid' : ''
@@ -261,14 +266,14 @@ function FormMascota() {
               onChange={handleChange}
             />
 
- 
-            </div>
-            </Form.Group>
 
-          <div>
-            {newMascota.image && <img src={newMascota.image} alt="image"></img>}
-            <UploadWidget onImageUpload={handleImageUpload}/>
           </div>
+        </Form.Group>
+
+        <div>
+          {newMascota.image && <img style={{width: "280px", height:"205px"}} src={newMascota.image} alt="image"></img>}
+          <UploadWidget onImageUpload={handleImageUpload} />
+        </div>
 
         {/* <div>
           <div>
@@ -292,8 +297,8 @@ function FormMascota() {
             )}
           </div>
         </div> */}
-        
-        
+
+
 
         <Button
           variant="primary"

@@ -34,12 +34,27 @@ async function getIdUsuario(req, res) {
     res.status(STATUS_ERROR).json(`error ${error}`);
   }
 }
-
-async function postRegistroUsuario(req, res) {
-  const { nombre, fechaNacimiento, email, contraseña } = req.body;
+async function getUsuarioEmail(req, res) {
+  const { email } = req.body;
 
   try {
-    if (!nombre || !fechaNacimiento || !email || !contraseña) {
+    const getUsuario = await Usuarios.findOne({
+      where: {
+        email: email,
+      },
+    });
+    if (getUsuario) return res.status(STATUS_OK).json(getUsuario);
+    else return res.status(STATUS_ERROR).json("no existe ese email para usuario");
+  } catch (error) {
+    res.status(STATUS_ERROR).json(`error ${error}`);
+  }
+}
+
+async function postRegistroUsuario(req, res) {
+  const info = req.body;
+  console.log(info)
+  try {
+    if (!info.name || !info.email ) {
       return res
         .status(STATUS_ERROR)
         .json({ message: "se requiere mas informacion" });
@@ -47,7 +62,7 @@ async function postRegistroUsuario(req, res) {
 
     const validarCorreo = await Usuarios.findOne({
       where: {
-        email: email,
+        email: info.email,
       },
     });
 
@@ -58,13 +73,11 @@ async function postRegistroUsuario(req, res) {
     }
 
     const newUsuario = await Usuarios.create({
-      nombre,
-      fechaNacimiento,
-      email,
-      contraseña,
+      nombre: info.name,
+      email: info.email,
     });
 
-    await enviarCorreoBienvenida(email, nombre);
+    await enviarCorreoBienvenida(info.email, info.nombre);
 
     res.status(STATUS_CREATED).json(newUsuario);
   } catch (error) {
@@ -144,4 +157,5 @@ module.exports = {
   updateUsuario,
   deleteUsuario,
   getIdUsuario,
+  getUsuarioEmail
 };

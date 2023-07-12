@@ -41,6 +41,7 @@
   .contenedorReviews{
     position: relative;
     width: 70vh;
+    height: 50vh;
   }
   .Comentarios{
     border: solid 2px #1b1b1e;
@@ -92,3 +93,21 @@
     justify-content: flex-end;
     background-color: #f7f7f2;
   }
+  .botonInfo {
+    position: absolute;
+
+    right: 5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-image: url(https://e7.pngegg.com/pngimages/470/616/png-clipart-computer-icons-setting-icon-white-computer.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  .contenedorAdopciones{
+    position:relative;
+  }
+  

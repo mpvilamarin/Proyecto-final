@@ -22,6 +22,15 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
+      //  email: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      //   unique: true,
+      //   validate: {
+      //     isEmail: true,
+      //   },
+      // },
+
       // estado: {
       //   type: DataTypes.STRING,
       //   allowNull: false,

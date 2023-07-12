@@ -16,7 +16,6 @@ module.exports = (sequelize) => {
       },
       fechaNacimiento: {
         type: DataTypes.DATEONLY,
-        allowNull: false,
       },
       email: {
         type: DataTypes.STRING,
@@ -26,10 +25,10 @@ module.exports = (sequelize) => {
           isEmail: true,
         },
       },
-      contraseña: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      // contraseña: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      // },
       tipo: {
         type: DataTypes.STRING,
         allowNull: false,

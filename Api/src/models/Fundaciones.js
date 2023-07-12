@@ -49,12 +49,17 @@ module.exports = (sequelize) => {
       borrado: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        defaultValue: false, // Cambiado a false
       },
       tipo: {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: "fundacion",
       },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: true
+      }
     },
     {
       timestamps: false,

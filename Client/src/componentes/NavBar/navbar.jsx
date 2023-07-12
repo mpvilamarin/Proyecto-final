@@ -27,12 +27,11 @@ export default function NavBar() {
   };
 
   useEffect(() => {
-
   }, [usuarioAdmin,usuarioFundacion])
 
 
   return (
-    <Navbar className="custom-navbar" variant="light" expand="lg">
+    <Navbar className="custom-navbar"  expand="lg">
 
       <Container className="container">
 
@@ -50,6 +49,7 @@ export default function NavBar() {
             {usuarioAdmin &&(<Link to="/DashboardAdmin" className="nav-link">
               Tu Dashboard
             </Link>)}
+
 
             {isAuthenticated && (
               <Link to="/donaciones" className="nav-link">

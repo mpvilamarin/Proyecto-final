@@ -7,10 +7,12 @@ import {
   GET_DETAIL_FUNDACION,
   GET_ALL_USUARIOS,
   GET_DETALLE_USUARIO,
+  GET_USUARIO,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
   GET_ALL_ADOPCIONES,
   GET_DETAIL_ADOPCION,
   GET_NAME_FUNDACIONES,
+  GET_DONACIONES,
   POST_ADOPCIONES,
   POST_DONACIONES,
   POST_FUNDACIONES,
@@ -30,16 +32,14 @@ import {
   UPDATE_FUNDACION,
   UPDATE_USUARIOS,
   DELETE_MASCOTA,
-  DELETE_USUARIO,
+  DELETE_FUNDACION,
   POST_REVIEWS,
   LOG_OUT,
   ADDFAV,
   REMOVEFAV,
   GET_REVIEWS,
-
   GET_ADMIN,
-  POST_LOGIN_FUNDACION,
-
+  POST_ADMIN,
   FILTER_FUNDACIONES_BY_RATING
 
 } from "../Actions-type/index.js";
@@ -57,6 +57,7 @@ const initialState = {
   usuarioAdmin: [],
   usuarioFundacion: [],
   usuarios: [],
+  usuario: null,
   sesion: [],
 
   usuarioDetalle: [],
@@ -69,20 +70,22 @@ const initialState = {
 
   donaciones: [],
   detallesDonacion: [],
+  donacionHecha: [],
 
   reviews: [],
 
-  admin:[],
+  admin: [],
 };
 
 function rootReducer(state = initialState, action, payload) {
   switch (action.type) {
+
     case GET_ADMIN:
-      return{
+      return {
         ...state,
         admin: action.payload
-      }; 
-      
+      };
+
     case GET_ALL_MASCOTAS:
       return {
         ...state,
@@ -204,21 +207,30 @@ function rootReducer(state = initialState, action, payload) {
         ...state,
         reviews: action.payload,
       };
-    
-case FILTER_FUNDACIONES_BY_RATING:
+
+    case FILTER_FUNDACIONES_BY_RATING:
       const rating = action.payload;
-      let filteredFundaciones = []
+      let filteredFundaciones = [];
       if (rating === "") {
-        filteredFundaciones = state.fundacionesFiltradas
+        filteredFundaciones = state.fundacionesFiltradas;
       } else {
         filteredFundaciones = state.fundacionesFiltradas.filter((fundacion) => {
-          return fundacion.Reviews?.some((reviews) => reviews.calificacion === rating);
+          // Calcula el promedio de las puntuaciones de la fundación
+          const totalReviews = fundacion.Reviews.length;
+          const sumPuntuaciones = fundacion.Reviews.reduce(
+            (total, review) => total + review.calificacion,
+            0
+          );
+          const promedioPuntuaciones = sumPuntuaciones / totalReviews;
+
+          // Filtra las fundaciones cuyo promedio de puntuaciones coincida con la puntuación seleccionada
+          return Math.round(promedioPuntuaciones) === parseInt(rating);
         });
       }
-  return {
-    ...state,
-    fundaciones: filteredFundaciones,
-};
+      return {
+        ...state,
+        fundaciones: filteredFundaciones,
+      };
 
     case FILTER_MASCOTA_BY_ESPECIE:
       const especie = action.payload;
@@ -288,29 +300,33 @@ case FILTER_FUNDACIONES_BY_RATING:
         usuarios: state.usuarios.concat(action.payload),
       };
 
-      case POST_LOGIN:
-  if (action.payload.usuario === 'fundacion') {
-    return {
-      ...state,
-      usuarioFundacion: {
-        email: action.payload.email,
-        tipo: action.payload.usuario,
-      },
-      sesion: action.payload,
-      usuarioAdmin: null,
-    };
-  } else if (action.payload.usuario === 'admin') {
-    return {
-      ...state,
-      usuarioAdmin: {
-        email: action.payload.email,
-        tipo: action.payload.usuario,
-      },
-      usuarioFundacion: null,
-    };
-  }
- 
+    case POST_LOGIN:
+      if (action.payload.usuario === 'fundacion') {
+        return {
+          ...state,
+          usuarioFundacion: {
+            email: action.payload.email,
+            tipo: action.payload.usuario,
+          },
+          sesion: action.payload,
+          usuarioAdmin: null,
+        };
+      } else if (action.payload.usuario === 'admin') {
+        return {
+          ...state,
+          usuarioAdmin: {
+            email: action.payload.email,
+            tipo: action.payload.usuario,
+          },
+          usuarioFundacion: null,
+        };
+      }
 
+    case POST_ADMIN:
+      return {
+        ...state,
+        admin: state.admin.concat(action.payload)
+      }
 
     case POST_REVIEWS:
       return {
@@ -326,13 +342,14 @@ case FILTER_FUNDACIONES_BY_RATING:
           (mascota) => mascota.nombre !== action.payload
         ),
       };
-    case DELETE_USUARIO:
-      return {
-        ...state,
-        usuarios: state.usuarios.filter(
-          (usuario) => usuario.email !== action.payload
-        ),
-      };
+    case DELETE_FUNDACION:
+    return {
+      ...state,
+      fundaciones: state.fundaciones.filter(
+        (fundacion) => fundacion.id !== action.payload
+      ),
+    };
+
     case UPDATE_FUNDACION:
       const updateFundaciones = state.fundaciones.map((fundacion) => {
         if (fundacion.id === action.payload.id) {
@@ -363,6 +380,7 @@ case FILTER_FUNDACIONES_BY_RATING:
             genero: action.payload.genero,
             temperamento: action.payload.temperamento,
             descripcion: action.payload.descripcion,
+            activo: action.payload.adop
           };
         }
         return mascota;
@@ -394,11 +412,11 @@ case FILTER_FUNDACIONES_BY_RATING:
       return { ...state, fundacionDetail: null };
 
     case LOG_OUT:
-    return {
-      ...state,
-      usuarioAdmin: null,
-      usuarioFundacion: null,
-    };
+      return {
+        ...state,
+        usuarioAdmin: null,
+        usuarioFundacion: null,
+      };
 
 
     case ADDFAV:
@@ -407,9 +425,18 @@ case FILTER_FUNDACIONES_BY_RATING:
     case REMOVEFAV:
       return { ...state, favoritos: state.favoritos.filter(fav => fav.indexMascotas !== payload) }
 
+
+    case GET_DONACIONES:
+      return {
+        ...state,
+        donacionHecha: action.payload,
+      };
+
     default:
       return { ...state }
+
   };
 }
+
 
 export default rootReducer;

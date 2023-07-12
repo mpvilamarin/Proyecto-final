@@ -30,89 +30,66 @@ const DetailFundacion = () => {
     dispatch(getDetailFundacion(id));
   }, [dispatch, id]);
 
-  // useEffect(() => {
-  //   if (fundacion) {
-  //     setFundacionNombre(fundacion.nombre);
-  //   }
-  // }, [fundacion]);
 
 
   return (
     <div className={style.contenedorPadre}>
-      
-      
       {!fundacion ? (
         <h3>LOADING...</h3>
       ) : (
         <div className={style.contenedorHijo}>
-          {fundacion?.image ? (
-            <img src={fundacion?.image} alt="Fundación" />
-          ) : (
-            <div className={style.contenedorInfo}>
-              <div className={style.imagenFundacion}>
-                <img src={fundaciones} alt="fundacion"></img>
-              </div>
-              <div className={style.infoFundacion}>
-                <h2>Nombre: {fundacion.nombre}</h2>
-                <h5>Ciudad: {fundacion?.ciudad}</h5>
-                <h5>Dirección: {fundacion?.direccion}</h5>
-                <h5>Teléfono: {fundacion?.telefono}</h5>
-                <h5>Email: {fundacion?.email}</h5>
-                <h5>Fecha de Fundación: {fundacion?.fundadaEn}</h5>
-              </div>
+          <div className={style.contenedorInfo}>
+            <div className={style.divDonar}>
+              <h1 className={style.h1Donar}>¿Deseas ayudar?</h1>
+               <button class={style.buttonDonar} onClick={handleClick}>
+                    Donar
+                <svg class={style.svgIcon} viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path></svg>
+                </button>
             </div>
-            
-          )}
-          <div className={style.contenedorMision}>
-            <div className={style.mision}>
-                <h5>Misión: {fundacion?.mision}</h5>
+            <div className={style.imagenFundacion}>
+              {fundacion?.image ? (
+                <img src={fundacion?.image} alt="Fundación" />
+              ) : (
+                <img src={fundaciones} alt="image" />
+              )}
             </div>
-            <div className={style.buttonDonar}>
-              <button onClick={handleClick}>Donar</button>
+            <div className={style.infoFundacion}>
+              <h2>Nombre: {fundacion.nombre}</h2>
+              <h5>Ciudad: {fundacion?.ciudad}</h5>
+              <h5>Dirección: {fundacion?.direccion}</h5>
+              <h5>Teléfono: {fundacion?.telefono}</h5>
+              <h5>Email: {fundacion?.email}</h5>
+              {/* <h5>Fecha de Fundación: {fundacion?.fundadaEn}</h5> */}
+              <h5>Misión: {fundacion?.mision}</h5>
             </div>
           </div>
 
           <div className={style.body}>
-          <div >
-          <h1>Mascotas</h1>
+            <h1 className={style.h1}>Mis Mascotas</h1>
           <div className={style.containerAnimales}>
-            {mascotas && mascotas.map((mascota, indexMascota) => (
-              <CardAdop
-               mascota={mascota}
-              indexMascota={mascota.id}
-              key={indexMascota}
-              />
-            ))}
-          </div>
+            {mascotas &&
+              mascotas.map((mascota, indexMascota) => (
+                <CardAdop
+                  mascota={mascota}
+                  indexMascota={mascota.id}
+                  key={indexMascota}
+                />
+              ))}
           </div>
           <div className={style.contenedorReviews}>
+            <h1>Reviews</h1>
             <div className={style.reviews}>
-              <h1>Reviews</h1>
-                <div className={style.reviews}>
-                  <FormReviews fundacionNombre={fundacion?.nombre}/>
-                </div>
+              <FormReviews fundacionNombre={fundacion?.nombre} />
             </div>
-            {reviews && reviews.map((review, indexReview) => (
-              <Review
-               review={review}
-               key={indexReview}
-              />
-            ))}
+            {reviews &&
+              reviews.map((review, indexReview) => (
+                <Review review={review} key={indexReview} />
+              ))}
           </div>
-          </div>
-          
-          <div className={style.contenedorHome}>
-            <div className={style.buttonHome}>
-              <Link to="/home">
-                <button>BACK TO HOME</button>
-              </Link>
-            </div>  
-          </div>
-          
+        </div>
         </div>
       )}
     </div>
   );
-};
-
+}
 export default DetailFundacion;

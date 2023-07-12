@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_MASCOTA, DELETE_USUARIO } from "../Actions-type/index.js";
+import { DELETE_MASCOTA, DELETE_FUNDACION } from "../Actions-type/index.js";
 
 //====================================>> DELETE <<=================================================================
 
@@ -18,17 +18,17 @@ export const deleteMascota = (nombre) => {
   };
 };
 
-export const deleteUsuario = (email) => {
+export const deleteFundacion = (id, nombre) => {
   return async (dispatch) => {
     try {
-      const response = await axios.delete(`/Usuarios/${email}`);
+      const response = await axios.delete(`/fundaciones/${id}`);
       dispatch({
-        type: DELETE_USUARIO,
+        type: DELETE_FUNDACION,
         payload: response.data,
       });
-      alert(`el usuario con email: ${email} fue eliminada con exito`);
+      
     } catch (error) {
-      alert(`Error al elminar Usuario ${error}`);
+      
     }
   };
 };

@@ -9,9 +9,11 @@ import Fundacion from "./componentes/Fundación/Fundacion";
 import Registro from "./componentes/Sesiones/registro/registro";
 import Redirect from "./componentes/Redirect/Redirect";
 import Footer from "./componentes/Footer/Footer";
-import Dashboard from "./componentes/DashboardAdmin/Dashboard";
-import BienvenidaAdmin from "./componentes/DashboardAdmin/BienvenidaAdmin";
-
+import Dashboard from "./componentes/DashboardAdmin/Dashboard/Dashboard";
+import BienvenidaAdmin from "./componentes/DashboardAdmin/Inicio/BienvenidaAdmin";
+import  CrearAdmin  from "./componentes/DashboardAdmin/CrearAdmin/CrearAdmin";
+import ModificarFundacion from "./componentes/DashboardAdmin/ManejoFundaciones/ManejoFundaciones";
+import ModificarMascota from "./componentes/DashboardAdmin/ManejoMascotas/ManejoMascotas";
 //import { RequireAuth } from "react-auth-kit";
 
 import LogOut from "./componentes/Autenticación/LogOut/logout";
@@ -41,6 +43,7 @@ import PerfilFund from "./componentes/Sesiones/perfilFun/perfilFund";
 // import CardFundaciones from './componentes/Cartas/cardFundacion'
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import DueñoResponsable from "./componentes/Información/DueñoResponsable/DueñoResponsable";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:3001/";
@@ -49,6 +52,7 @@ function App() {
   const { isAuthenticated, user } = useAuth0();
 
   return (
+    <div>
     <div>
       <NavBar />
       <Routes>
@@ -72,6 +76,7 @@ function App() {
         <Route path="/logout" element={<LogOut />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/registro" element={<Registro />} />
+        <Route path="/dueñoResponsable" element={<DueñoResponsable />} />
 
         <Route path="/perfilfund" element={<PerfilFund />} />
 
@@ -108,12 +113,25 @@ function App() {
 
         <Route path="*" element={<Navigate to="/error" />} />
         <Route path="/error" element={<Redirect />} />
+      
+        {/* A PARTIR DE ACA VAN LAS RUTAS PARA LA DASHBOARD */}
+        <Route path="/crearAdmin" element={<CrearAdmin />} />
+        <Route path="/ModificarFundacion" element={<ModificarFundacion />} />
+        <Route path="/ModificarMascota" element={<ModificarMascota/>} />
+
+        
+      
+      
       </Routes>
       <Footer />
+      </div>
+        
       {/* <footer>
         <Contacto />
       </footer> */}
-    </div>
+      <div> 
+      </div>
+   </div>
   );
 }
 
