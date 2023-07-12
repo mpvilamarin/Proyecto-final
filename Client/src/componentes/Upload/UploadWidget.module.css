@@ -5,13 +5,13 @@
 
 .btnImg {
   align-items: center;
-  font-family: 'Playfair Display';
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-size: 14px;
-  border-radius: 25px;
+  border-radius: 10px;
   height: 35px;
-  width: 50%;
+  width: 100%;
   color: white;
-  background-color: #4898BF;
+  background-color: #969696;
   font-weight: 400;
   font-size: 15px;
   margin-top: 10px;
