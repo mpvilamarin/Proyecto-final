@@ -38,12 +38,14 @@ export const postMascota = (newMascota) => {
         type: POST_MASCOTA,
         payload: response.data,
       });
-      toast.success("Se creo su mascota exitosamente!", {
-        type: toast.TYPE.SUCCESS,
-        icon: "🐶🐱"
+      toast.success("Se creo su mascota exitosamente!🐶🐱", {
+        theme: "colored",
       });
     } catch (error) {
-      alert(`Error al crear la mascota ${error}`);
+      toast.error("❌ Error al crear mascota ", {
+        theme: "colored",
+        icon: false
+      });
     }
   };
 }
@@ -62,6 +64,7 @@ export const postAdopciones = (nuevaAdopcion) => {
       alert(`Error al crear la adopcion ${error}`);
     }
   };
+
 };
 
 export const postDonaciones = (nuevaDonacion) => {
@@ -92,11 +95,20 @@ export const postFundaciones = (nuevaFundacion, email, nombre) => {
         type: POST_FUNDACIONES,
         payload: response.data,
       });
-      toast.success("Se realizo el registro exitosamente.", {
-        theme: "dark"
-      });
+      const resolveAfter3Sec = new Promise(resolve => setTimeout(resolve, 2500));
+        toast.promise(
+        resolveAfter3Sec,
+        {
+          pending: 'Estamos guardando tus datos⏳',
+          success: 'Registro exitoso 👌😉',
+          error: 'Promise rejected 🤯'
+        }
+      )
     } catch (error) {
-      alert(`error al crear la fundacion ${error}`);
+      toast.error("❌ Error al registrar la fundacion" ,{
+        theme: "colored",
+        icon: false
+      })
     }
   };
 }
@@ -125,8 +137,13 @@ export const postReview = (crearReview) => {
         type: POST_REVIEWS,
         payload: response.data,
       });
+      toast.success("Se realizo el comentario correctamente!👍", {
+        theme: "colored"
+      })
     } catch (error) {
-      console.log("Error en el post de reviews:", error);
+      toast.error("Ocurrió un error inesperado", {
+        theme: "colored"
+      })
     }
   }
 };
@@ -143,7 +160,9 @@ export const postReview = (crearReview) => {
            usuario, email, id , nombre
           },
         });
-       // alert(`inicio de sesion exitoso para ${usuario}`);
+        toast.success("Logueo realizado con exito!👌😉", {
+          theme: "colored"
+        })        
       } catch (error) {
        
         alert(`Error al iniciar sesión: ${error}`);

@@ -59,6 +59,7 @@ const Form = () => {
         validationErrors[key] = error;
       }
     }
+    dispatch(postFundaciones());
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
       setIsLoading(true);
@@ -89,7 +90,7 @@ const Form = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
     {/* {isLoading && (
       <div className={styles.overlay}>
         <p>Cargando...</p>
@@ -99,7 +100,7 @@ const Form = () => {
         <p className={styles.heading}>Regístro Nueva fundacion</p>
         <div>
         {/* <button onClick={notify}>Notify!</button>*/}
-        <ToastContainer autoClose={5000}/> 
+        <ToastContainer autoClose={3000}/> 
         </div>
         <input
           className={styles.input}

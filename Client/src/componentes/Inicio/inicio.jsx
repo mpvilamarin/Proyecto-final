@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styles from './inicio.module.css';
 import Login2 from "../Sesiones/sesion/login2";
 import { useDispatch, useSelector } from 'react-redux';
-
+import { ToastContainer , toast} from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { postLoginAdmin,logOut, postLoginFundacion } from '../../redux/Actions/post';
 import { getAdmin, resetDetail } from '../../redux/Actions/get';
@@ -75,14 +75,22 @@ const Inicio = () =>{
         setIsLoading(true);
         await dispatch(postLoginAdmin(input))
         setIsLoading(false);
-        navigate('/DashboardAdmin')
+      
+        setTimeout(() => {
+          navigate('/DashboardAdmin')
+         }, 2500)       
+
         }else if(isFundacion ){
             setIsLoading(true);
             await dispatch(postLoginAdmin(input))
             setIsLoading(true);
-            navigate('/fundaciones')
+            setTimeout(() => {
+              navigate('/fundaciones') 
+             }, 2500)     
             }else{
-          alert("No tienes permisos para ingresar")
+          toast.error("Hay datos incorrectos", {
+            theme: "colored"
+          });
         } 
     
 
@@ -112,6 +120,7 @@ const Inicio = () =>{
                    <form className={styles.form }
                    onSubmit={handleSubmit}
                    >
+                    <ToastContainer autoClose={5000}/> 
                        <div>
                            <h1 className={styles.title}>Iniciar sesión</h1>
                            <h1 className={styles.title}>Fundación</h1>
