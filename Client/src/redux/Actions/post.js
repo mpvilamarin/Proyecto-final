@@ -115,10 +115,11 @@ export const postFundaciones = (nuevaFundacion, email, nombre) => {
 }
 
 
-export const postUsuario = (newUsuario) => {
+export const postUsuario = (user) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(`/usuarios/`, newUsuario);
+      console.log(user)
+      const response = await axios.post(`/usuarios/`, user);
       dispatch({
         type: POST_USUARIO,
         payload: response.data,
