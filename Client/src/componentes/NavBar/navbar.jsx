@@ -27,7 +27,6 @@ export default function NavBar() {
   };
 
   useEffect(() => {
-
   }, [usuarioAdmin,usuarioFundacion])
 
 

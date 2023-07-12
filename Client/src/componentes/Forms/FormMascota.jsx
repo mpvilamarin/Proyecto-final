@@ -86,7 +86,7 @@ function FormMascota() {
       setInvalidFields([]);
       setTimeout(() => {
         navigate('/adopciones') 
-       }, 3000)
+       }, 2500)
     } else {
       setShowAlert(true);
     }
@@ -126,7 +126,7 @@ function FormMascota() {
     <div className="form-container">
       <h1 className="title-form">FORMULARIO PARA MASCOTAS</h1>
       <Form className="custom-form">
-        <ToastContainer autoClose={3000}></ToastContainer>
+        <ToastContainer autoClose={2500}></ToastContainer>
         {showAlert && (
           <Alert variant="danger">Por favor, completa todos los campos.</Alert>
         )}
