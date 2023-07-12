@@ -1,85 +1,72 @@
 .container {
-  background-image: url('../../../assets/Registro.png');
+  background-image: url("../../../assets/Background1.1.png");
   background-position: center;
   background-size: cover;
-  /* display: flex; */
-  /* flex-direction: column-reverse; */
-  height: 80vh;
-  /* justify-content: center; */
-  align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   justify-content: center;
+  align-items: center;
 }
 
 .form {
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   gap: 10px;
-  background-color: white;
+  background-color: rgb(235, 235, 222);
   padding: 2em;
-  border-radius: 25px;
+  border-radius: 10px;
   transition: 0.4s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.4) 1px 2px 2px;
-  width: 25%;
-  /* margin-left: auto; */
-  /* margin-right: 300px; */
-  margin-top: 50px;
-  font-family: 'Merryweather';
-  font-size: large;
+  width: 22.5%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
-
-/* .form:hover {
-  transform: translateX(-0.5em) translateY(-0.5em);
-  border: 1px solid #171717;
-  box-shadow: 10px 10px 0px #689fb3;
-} */
 
 .heading {
   color: black;
   padding-bottom: 0.5em;
   text-align: center;
   font-weight: bold;
-  font-family: 'Playfair display';
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-size: large;
+  margin-bottom: 0;
 }
 
 .input {
   border-radius: 5px;
-  border: 1px solid whitesmoke;
-  background-color: whitesmoke;
+  border: 1px solid rgb(250, 250, 250);
+  background-color: rgb(250, 250, 250);
+  width: 245px;
   outline: none;
   padding: 0.3em;
   transition: 0.4s ease-in-out;
 }
 
-/* .input:hover {
+.input:hover {
   box-shadow: 4px 4px 0px #969696, -2px -2px 8px #ffffff;
-} */
+}
 
-/* .input:focus {
+.input:focus {
   background: #ffffff;
   box-shadow: inset 1px 3px 6px rgba(0, 0, 0, 0.3);
-} */
+}
 
-/* .form .btn {
-  height: 50px;
-  width: 170px;
-  position: relative;
-  background-color: transparent;
-  cursor: pointer;
-  border: 2px solid #252525;
-  font-family: 'Merryweather';
-  font-size: large;
-  font-weight: 400;
-  overflow: hidden;
-  border-radius: 30px;
-  color: #333;
-  transition: all 0.5s ease-in-out;
+.form .btn {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  height: 35px;
+  width: 245px;
+  color: #ffffff;
+  background-color: #333;
+  font-weight: bolder;
   margin-top: 15px;
-  margin-left: 90px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .form .btn:hover {
@@ -87,7 +74,7 @@
   border: none;
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-} */
+}
 
 .form .btn:active {
   transition: 0.2s;
@@ -100,10 +87,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Asegura que la pantalla de carga esté sobre el formulario */
+  z-index: 999;
+}
+
+.errors {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 0;
 }
