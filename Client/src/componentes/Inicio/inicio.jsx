@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
 import { postLoginAdmin,logOut, postLoginFundacion } from '../../redux/Actions/post';
-import { getAdmin, resetDetail } from '../../redux/Actions/get';
+import { getAdmin, resetDetail,getAllFundaciones } from '../../redux/Actions/get';
 
 
 const Inicio = () =>{
@@ -54,6 +54,8 @@ const Inicio = () =>{
 
   useEffect(() =>{
     dispatch(getAdmin());
+    dispatch(getAllFundaciones());
+    
   }, [])
 
   const handleChange = (event) => {

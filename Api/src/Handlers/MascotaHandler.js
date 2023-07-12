@@ -128,13 +128,13 @@ async function deleteMascota(req, res) {
 }
 
 async function updateMascota(req, res) {
-  const { nombre } = req.params;
+  const { id } = req.params;
 
-  const { especie, edad, genero, temperamento, descripcion } = req.body;
+  const {nombre, especie,tamaño, edad, genero, temperamento, descripcion,image } = req.body;
 
   try {
     const mascota = await Mascotas.findOne({
-      where: { nombre },
+      where: { id },
     });
 
     if (!mascota) {
@@ -144,11 +144,14 @@ async function updateMascota(req, res) {
     }
 
     const updateMascota = await mascota.update({
+      nombre,
       especie,
+      tamaño,
       edad,
       genero,
       temperamento,
       descripcion,
+      image,
     });
 
     return res.status(STATUS_OK).json(updateMascota);

@@ -11,9 +11,7 @@ import styles from "../registro/registro.module.css";
 import UploadWidget from "../../Upload/UploadWidget";
 
 const Form = () => {
-  // const notify = () => toast.success("You can provide any string", {
-  //   icon: "🚀"
-  // });
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [input, setInput] = useState({

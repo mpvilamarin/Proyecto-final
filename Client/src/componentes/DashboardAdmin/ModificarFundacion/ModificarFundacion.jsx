@@ -61,7 +61,15 @@ const ModificarFundacion = () => {
       const selectedFundacion = allFundaciones[selectedFundacionIndex];
       const { id } = selectedFundacion;
   
-      await dispatch(updateFundacion(id, input.nombre, input.ciudad, input.direccion, input.telefono, input.email, input.fundadaEn, input.mision));
+      await dispatch(updateFundacion(
+        id, 
+        input.nombre, 
+        input.ciudad, 
+        input.direccion, 
+        input.telefono, 
+        input.email, 
+        input.fundadaEn, 
+        input.mision));
     
       
       setInput({

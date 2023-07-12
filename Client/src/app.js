@@ -13,6 +13,7 @@ import Dashboard from "./componentes/DashboardAdmin/Dashboard/Dashboard";
 import BienvenidaAdmin from "./componentes/DashboardAdmin/Inicio/BienvenidaAdmin";
 import  CrearAdmin  from "./componentes/DashboardAdmin/CrearAdmin/CrearAdmin";
 import ModificarFundacion from "./componentes/DashboardAdmin/ModificarFundacion/ModificarFundacion";
+import ModificarMascota from "./componentes/DashboardAdmin/ModificarMascota/ModificarMascota";
 //import { RequireAuth } from "react-auth-kit";
 
 import LogOut from "./componentes/Autenticación/LogOut/logout";
@@ -116,6 +117,7 @@ function App() {
         {/* A PARTIR DE ACA VAN LAS RUTAS PARA LA DASHBOARD */}
         <Route path="/crearAdmin" element={<CrearAdmin />} />
         <Route path="/ModificarFundacion" element={<ModificarFundacion />} />
+        <Route path="/ModificarMascota" element={<ModificarMascota/>} />
         
       
       

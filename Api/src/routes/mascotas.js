@@ -6,7 +6,7 @@ mascotaRouter.post('/',postMascota);
 mascotaRouter.get('/', getMascota);
 mascotaRouter.get('/:id', getByIdMascota)
 mascotaRouter.delete('/:nombre',deleteMascota);
-mascotaRouter.put('/:nombre', updateMascota);
+mascotaRouter.put('/:id', updateMascota);
 
 
 

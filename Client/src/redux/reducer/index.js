@@ -365,25 +365,29 @@ case FILTER_FUNDACIONES_BY_RATING:
         ...state,
         fundaciones: updateFundaciones,
       };
-    case UPDATE_MASCOTA:
-      const updateMascotas = state.mascotas.map((mascota) => {
-        if (mascota.nombre === action.payload.nombre) {
-          return {
-            ...mascota,
-            especie: action.payload.especie,
-            edad: action.payload.edad,
-            genero: action.payload.genero,
-            temperamento: action.payload.temperamento,
-            descripcion: action.payload.descripcion,
-          };
-        }
-        return mascota;
-      });
 
-      return {
-        ...state,
-        mascotas: updateMascotas,
-      };
+      case UPDATE_MASCOTA:
+        const updateMascotas = state.mascotas.map((mascota) => {
+          if (mascota.id === action.payload.id) {
+            return {
+              ...mascota,
+              nombre: action.payload.nombre,
+              especie: action.payload.especie,
+              tamaño: action.payload.tamaño,
+              edad: action.payload.edad,
+              genero: action.payload.genero,
+              temperamento: action.payload.temperamento,
+              descripcion: action.payload.descripcion,
+              image: action.payload.image,
+            };
+          }
+          return mascota;
+        });
+      
+        return {
+          ...state,
+          mascotas: updateMascotas,
+        };
 
     case UPDATE_USUARIOS:
       const updatedUsuarios = state.usuarios.map((usuario) => {

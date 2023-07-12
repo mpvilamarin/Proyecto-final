@@ -26,21 +26,29 @@ export const updateUsuario = (email, nombre, fechaNacimiento, contraseña) => {
 };
 
 export const updateMascota = (
+  id,
   nombre,
   especie,
+  tamaño,
   edad,
   genero,
   temperamento,
-  descripcion
+  descripcion,
+  castrado,
+  image,
 ) => {
   return async (dispatch) => {
     try {
-      const response = await axios.put(`/mascotas/${nombre}`, {
+      const response = await axios.put(`/mascotas/${id}`, {
+        nombre,
         especie,
+        tamaño,
         edad,
         genero,
         temperamento,
         descripcion,
+        castrado,
+        image,
       });
       dispatch({
         type: UPDATE_MASCOTA,
