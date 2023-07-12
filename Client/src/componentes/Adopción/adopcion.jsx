@@ -175,15 +175,16 @@ const Adopcion = () => {
         </div>
       </div>
       <div className={styles.containerAnimales}>
-        {currentElements.map((mascota, indexMascota) => (
-          <CardAdop
-            mascota={mascota}
-            indexMascota={mascota.id}
-            key={indexMascota}
-          />
+        {currentElements
+          .filter((mascota) => mascota.activo) // Filtrar las mascotas activas
+          .map((mascota, indexMascota) => (
+            <CardAdop
+              mascota={mascota}
+              indexMascota={mascota.id}
+              key={indexMascota}
+            />
         ))}
       </div>
-
       <div className={styles.paginationContainer}>
         <div className={styles.pagination}>
           <div>

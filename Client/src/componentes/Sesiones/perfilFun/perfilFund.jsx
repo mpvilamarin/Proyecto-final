@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllMascotas, getDetailFundacion, resetDetail } from "../../../redux/Actions/get";
 import style from './perfilFund.module.css';
 import fundaciones from "../../Cartas/fundacion.png";
-import CardAdop from "../../Cartas/cardAdopcion";
+import CardMascota from "../../Cartas/cardMascotas";
 import Review from "../../Reviews/reviews";
 export default function PerfilFund () {
 
@@ -22,9 +22,12 @@ export default function PerfilFund () {
       dispatch(getDetailFundacion(id));
     }, []);
 
+    const configuracion = () => {
+      
+    }
+
     return (
         <div className={style.contenedorPadre}>
-      
       
       {!data ? (
         <h3>LOADING...</h3>
@@ -45,6 +48,7 @@ export default function PerfilFund () {
                 <h5>Email: {email}</h5>
                 <h5>Fecha de Fundación: {fundadaEn}</h5>
               </div>
+              <button onClick={configuracion()} className={style.botonInfo}> </button>
             </div>
             
           )}
@@ -59,7 +63,7 @@ export default function PerfilFund () {
           <div className={style.containerAnimales}>
             {mascotas && mascotas.map((mascota, indexMascota) => (
        //       mascota.Fundaciones[0]?.nombre === nombre && (
-                <CardAdop
+                <CardMascota
                   mascota={mascota}
                   indexMascota={mascota.id}
                   key={indexMascota}
