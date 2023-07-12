@@ -104,6 +104,7 @@
 
   .button:hover {
     transform: scale(1.1);
+    background-color: #3c7fa0;
   }
 
   .button2 {
@@ -121,12 +122,19 @@
   }
 
   .button2:hover {
-    transform: scale(1.1);
+    transform: translateY(-3px);
+    background-color: #3c7fa0;
   }
 
   .buttonSend {
     display: flex;
     justify-content: center;
+    transition: 0.3s;
+  }
+
+  .buttonSend:hover {
+    transform: translateY(-3px);
+    background-color: #3c7fa0;
   }
 
   .text {

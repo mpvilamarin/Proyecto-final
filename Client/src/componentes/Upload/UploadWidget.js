@@ -37,7 +37,7 @@ const UploadWidget = ({ onImageUpload }) => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.containerbtn}>
       <button id="image" className={styles.btnImg}>
         Cargar imagen
       </button>

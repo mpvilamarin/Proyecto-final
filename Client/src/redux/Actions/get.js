@@ -10,6 +10,7 @@ import {
   GET_NAME_FUNDACIONES,
   GET_REVIEWS,
   GET_ADMIN,
+  GET_DONACIONES,
 
 } from "../Actions-type/index.js";
 
@@ -140,3 +141,17 @@ export const getAdmin = () => {
     }
   }
 }
+
+export const getDonaciones = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get("http://localhost:3001/donaciones");
+      dispatch({
+        type: GET_DONACIONES,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
