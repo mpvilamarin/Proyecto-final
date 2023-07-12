@@ -1,7 +1,7 @@
 
 const express = require('express');
 const fundacionRouter = express.Router()
-const { postFundacion, getAllFundaciones , updateFundacion, getFundacionById, postAutenticarFundacion} = require('../Handlers/FundacionHandler')
+const { postFundacion, getAllFundaciones , updateFundacion, getFundacionById, postAutenticarFundacion, borradoFundacion} = require('../Handlers/FundacionHandler')
 const enviarCorreoBienvenida = require('../Handlers/CorreosHandler')
 fundacionRouter.post("/", postFundacion, async (req, res) =>{
     const { email, nombre } = req.body;
@@ -21,5 +21,7 @@ fundacionRouter.get("/", getAllFundaciones);
 fundacionRouter.get("/nombre", getAllFundaciones);
 fundacionRouter.put("/:id", updateFundacion);
 fundacionRouter.get("/:id", getFundacionById);
+fundacionRouter.delete("/:id", borradoFundacion);
+
 
 module.exports = fundacionRouter;

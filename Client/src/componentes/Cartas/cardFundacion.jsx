@@ -32,7 +32,8 @@ export default function CardsFundacion() {
       ) : (
         <div className="cards-wrapper">
           {allFundaciones && allFundaciones.map((fundacion, indexFundacion) => (
-            <Card key={indexFundacion} className="card">
+            fundacion.borrado === false && (
+              <Card key={indexFundacion} className="card">
               <Card.Body>
                 <Link to={`/fundacion/${fundacion.id}`}>
                   <Card.Title className="card-title">{fundacion?.nombre}</Card.Title>
@@ -46,7 +47,9 @@ export default function CardsFundacion() {
                   <StarRating rating={Number(fundacion.Reviews && fundacion.Reviews[0]?.calificacion)} />
                 </Card.Text>
               </Card.Body>
-            </Card>
+              </Card>
+            )
+            
           ))}
         </div>
       )}
