@@ -2,7 +2,6 @@ import axios from "axios";
 import {
 
   POST_ADMIN,
-  POST_LOGIN_FUNDACION,
   POST_ADOPCIONES,
   POST_DONACIONES,
   POST_FUNDACIONES,
@@ -15,9 +14,22 @@ import {
   REMOVEFAV,
 
 } from "../Actions-type/index.js";
-
+import { toast } from "react-toastify";
 //=======================================>> POST <<=======================================================================
-
+export const postAdmin = (newAdmin) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(`/admin/`, newAdmin);
+      dispatch({
+        type: POST_ADMIN,
+        payload: response.data,
+      });
+      console.log(response)
+    } catch (error) {
+      alert(`Error al crear un nuevo administrador ${error}`);
+    }
+  };
+};
 export const postMascota = (newMascota) => {
   return async (dispatch) => {
     try {
@@ -26,9 +38,14 @@ export const postMascota = (newMascota) => {
         type: POST_MASCOTA,
         payload: response.data,
       });
-      alert("Mascota creada con éxito");
+      toast.success("Se creo su mascota exitosamente!🐶🐱", {
+        theme: "colored",
+      });
     } catch (error) {
-      alert(`Error al crear la mascota ${error}`);
+      toast.error("❌ Error al crear mascota ", {
+        theme: "colored",
+        icon: false
+      });
     }
   };
 }
@@ -47,6 +64,7 @@ export const postAdopciones = (nuevaAdopcion) => {
       alert(`Error al crear la adopcion ${error}`);
     }
   };
+
 };
 
 export const postDonaciones = (nuevaDonacion) => {
@@ -77,9 +95,20 @@ export const postFundaciones = (nuevaFundacion, email, nombre) => {
         type: POST_FUNDACIONES,
         payload: response.data,
       });
-      alert("fundacion creada con exito");
+      const resolveAfter3Sec = new Promise(resolve => setTimeout(resolve, 2500));
+        toast.promise(
+        resolveAfter3Sec,
+        {
+          pending: 'Estamos guardando tus datos⏳',
+          success: 'Registro exitoso 👌😉',
+          error: 'Promise rejected 🤯'
+        }
+      )
     } catch (error) {
-      alert(`error al crear la fundacion ${error}`);
+      toast.error("❌ Error al registrar la fundacion" ,{
+        theme: "colored",
+        icon: false
+      })
     }
   };
 }
@@ -108,8 +137,13 @@ export const postReview = (crearReview) => {
         type: POST_REVIEWS,
         payload: response.data,
       });
+      toast.success("Se realizo el comentario correctamente!👍", {
+        theme: "colored"
+      })
     } catch (error) {
-      console.log("Error en el post de reviews:", error);
+      toast.error("Ocurrió un error inesperado", {
+        theme: "colored"
+      })
     }
   }
 };
@@ -119,14 +153,16 @@ export const postReview = (crearReview) => {
     return async (dispatch) => {
       try {
         const response = await axios.post('/usuarios/login/', newLogin);
-        const { usuario, email, id} = response.data;
+        const { usuario, email, id, nombre} = response.data;
         dispatch({
           type: POST_LOGIN,
           payload: {
-           usuario, email, id
+           usuario, email, id, nombre
           },
         });
-       // alert(`inicio de sesion exitoso para ${usuario}`);
+        toast.success("Logueo realizado con exito!👌😉", {
+          theme: "colored"
+        })        
       } catch (error) {
        
         alert(`Error al iniciar sesión: ${error}`);

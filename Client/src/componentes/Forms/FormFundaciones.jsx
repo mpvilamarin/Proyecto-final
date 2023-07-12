@@ -19,6 +19,7 @@ function FormFundaciones() {
     fundadaEn: "",
     mision: "",
     borrado: false,
+    image: ""
   });
 
   const [showAlert, setShowAlert] = useState(false);
@@ -29,6 +30,13 @@ function FormFundaciones() {
       ...newFundacion,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleImageUpload = (url) => {
+    setNewFundacion((prevMascota) => ({
+      ...prevMascota,
+      image: url
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -46,6 +54,7 @@ function FormFundaciones() {
         fundadaEn: "",
         mision: "",
         borrado: false,
+        image: ""
       });
       setShowAlert(false);
       setInvalidFields([]);
@@ -178,6 +187,10 @@ function FormFundaciones() {
               className={invalidFields.includes("mision") ? "is-invalid" : ""}
             />
           </Form.Group>
+          {/* <div>
+          {newFundacion.image && <img src={newFundacion.image} alt="image"></img>}
+          <UploadWidget onImageUpload={handleImageUpload} />
+          </div> */}
           <Button variant="primary" type="submit" onClick={handleSubmit}>
             Enviar
           </Button>

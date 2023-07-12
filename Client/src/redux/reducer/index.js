@@ -36,10 +36,8 @@ import {
   ADDFAV,
   REMOVEFAV,
   GET_REVIEWS,
-
   GET_ADMIN,
-  POST_LOGIN_FUNDACION,
-
+  POST_ADMIN,
   FILTER_FUNDACIONES_BY_RATING
 
 } from "../Actions-type/index.js";
@@ -77,6 +75,7 @@ const initialState = {
 
 function rootReducer(state = initialState, action, payload) {
   switch (action.type) {
+
     case GET_ADMIN:
       return{
         ...state,
@@ -319,7 +318,11 @@ case FILTER_FUNDACIONES_BY_RATING:
     };
   }
  
-
+  case POST_ADMIN:
+    return{
+      ...state,
+      admin: state.admin.concat(action.payload)
+    }
 
     case POST_REVIEWS:
       return {
@@ -372,6 +375,7 @@ case FILTER_FUNDACIONES_BY_RATING:
             genero: action.payload.genero,
             temperamento: action.payload.temperamento,
             descripcion: action.payload.descripcion,
+            activo: action.payload.adop
           };
         }
         return mascota;

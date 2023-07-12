@@ -5,23 +5,27 @@
 
 .form {
   justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 2.5em;
+  border-radius: 5px;
+  transition: 0.4s ease-in-out;
 }
 
 .btn {
-  height: 50px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  border-radius: 8px;
+  height: 35px;
   width: 200px;
-  position: relative;
-  background-color: transparent;
-  cursor: pointer;
-  border: 2px solid #252525;
-  font-family: 'Merryweather';
-  font-size: large;
-  font-weight: 400;
-  overflow: hidden;
-  border-radius: 30px;
-  color: #333;
-  transition: all 0.5s ease-in-out;
+  color: #ffffff;
+  background-color: #333;
+  font-weight: bolder;
   margin-top: 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-txt {
@@ -29,6 +33,40 @@
   font-weight: 800;
   letter-spacing: 4px;
 }
+
+.btn:hover {
+  color: #333;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btn::after {
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+/* .btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+} */
 
 .type1::after {
   content: "";
