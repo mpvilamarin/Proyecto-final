@@ -5,12 +5,14 @@ import style from './perfilFund.module.css';
 import fundaciones from "../../Cartas/fundacion.png";
 import CardMascota from "../../Cartas/cardMascotas";
 import Review from "../../Reviews/reviews";
+import Solicitudes from "../../Adopción/Solicitudes/solicitudes"
 export default function PerfilFund () {
 
     const data = useSelector((state) => state.sesion);
     const info = useSelector((state) => state.fundacionDetail)
-    // const mascotas = useSelector((state) => state.mascotas)
-    console.log(info);
+    const adopciones = useSelector((state) => state.adopciones)
+    console.log(adopciones);
+    console.log(info)
     const mascotas = info?.Mascotas
     const dispatch = useDispatch();
     const { id } = data;
@@ -73,6 +75,21 @@ export default function PerfilFund () {
           </div>
           </div>
           <div className={style.contenedorReviews}>
+            <div className={style.reviews}>
+              <h1>Solicitudes Adopcion</h1>
+            </div>
+          <div className={style.contenedorAdopciones}>
+            {adopciones
+              .filter((adopcion) => adopcion.fundacionId === id) // Filtrar las mascotas activas
+              .map((adopcion, indexAdopcion) => (
+                <Solicitudes
+                  nombreCompleto={adopcion.nombreCompleto}
+                  motivoAdopcion={adopcion.motivoAdopcion}
+                  indexAdopcion={adopcion.id}
+                  key={indexAdopcion}
+                />
+            ))}
+          </div>
             <div className={style.reviews}>
               <h1>Mis reviews</h1>
             </div>

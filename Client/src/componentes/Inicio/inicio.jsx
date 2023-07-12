@@ -70,7 +70,7 @@ const Inicio = () => {
       setIsLoading(true);
       await dispatch(postLoginAdmin(input));
       setIsLoading(false);
-      navigate("/InicioAdmin");
+      navigate("/DashboardAdmin");
     } else if (isFundacion) {
       setIsLoading(true);
       await dispatch(postLoginAdmin(input));

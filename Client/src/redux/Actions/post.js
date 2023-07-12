@@ -104,8 +104,9 @@ export const postFundaciones = (nuevaFundacion, email, nombre) => {
           error: 'Promise rejected 🤯'
         }
       )
+      // "❌ Error al registrar la fundacion" 
     } catch (error) {
-      toast.error("❌ Error al registrar la fundacion" ,{
+      toast.error(error.response.data.message, {
         theme: "colored",
         icon: false
       })
@@ -114,10 +115,11 @@ export const postFundaciones = (nuevaFundacion, email, nombre) => {
 }
 
 
-export const postUsuario = (newUsuario) => {
+export const postUsuario = (user) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(`/usuarios/`, newUsuario);
+      console.log(user)
+      const response = await axios.post(`/usuarios/`, user);
       dispatch({
         type: POST_USUARIO,
         payload: response.data,

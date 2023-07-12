@@ -10,6 +10,8 @@ export const GET_DETAIL_ADOPCION = "GET_DETAIL_ADOPCION";
 export const GET_FILTER_FUNDACTION_BY_CIUDAD = "GET_FILTER_FUNDACTION_BY_CIUDAD";
 export const GET_NAME_FUNDACIONES = "GET_NAME_FUNDACIONES";
 export const GET_REVIEWS = "GET_REVIEWS";
+export const GET_DONACIONES = "GET_DONACIONES";
+export const GET_USUARIO = "GET_USUARIO"
 
 export const POST_MASCOTA = "POST_MASCOTA";
 export const POST_ADOPCIONES = "POST_ADOPCIONES";
@@ -45,7 +47,7 @@ export const ADDFAV = "ADDFAV";
 export const REMOVEFAV = 'REMOVEFAV';
 
 export const LOG_OUT = "LOG_OUT";
-
+export const ADOP_MASCOTA = "ADOP_MASCOTA";
 
 
 export const POST_ADMIN = "POST_ADMIN";

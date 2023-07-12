@@ -1,3 +1,46 @@
 .container {
-    height: 100hv;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    margin-top: 30px;
 }
+
+.aprobada {
+    display: flex;
+    flex-direction: column;
+}
+
+.rechazada {
+    display:flex;
+    flex-direction: column;
+}
+
+.content {
+    font-family: 'Merriweather';
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.contentFinal {
+  font-family: 'Merriweather';
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+  .title {
+    font-family: 'Playfair Display';
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .sub {
+    font-family: 'Merriweather';
+    font-size: 25px;
+    font-weight: 400;
+    text-align: start;
+  }
+  

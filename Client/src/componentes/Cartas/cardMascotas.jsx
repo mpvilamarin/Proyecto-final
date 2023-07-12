@@ -5,7 +5,7 @@ import { getAllMascotas } from "../../redux/Actions/get";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
-import { updateMascota } from "../../redux/Actions/update";
+import { updateMascota, adopcionMascota } from "../../redux/Actions/update";
 
 const CardMascota = ({ mascota, indexMascota}) => {
 
@@ -15,11 +15,11 @@ const CardMascota = ({ mascota, indexMascota}) => {
 
   const clickAdoptado = () =>{
     if(adop){
-     dispatch(updateMascota(mascota.nombre, false))
+     dispatch(adopcionMascota(mascota.id ,mascota.name, false))
      setIsAdop(false)
     }
     else{
-      dispatch(updateMascota(mascota.nombre, true))
+      dispatch(adopcionMascota(mascota.id ,mascota.name, true))
       setIsAdop(true)
     }
   }
@@ -27,14 +27,14 @@ const CardMascota = ({ mascota, indexMascota}) => {
   return (
     <div>
       <Card key={indexMascota} style={{ width: '18rem' }}>
-      <Button onClick={() => clickAdoptado()} className="btn.btn-primary">
+      <Button onClick={() => clickAdoptado()}>
           {adop ? (
             <h2>Adoptado</h2>
           ) : (
             <h2>Sin adoptar</h2>
           )}
         </Button>
-        <Card.Img variant="top" src={mascota?.image} alt="Mascota" className="card-image" />
+        <Card.Img src={mascota?.image} alt="Mascota"  />
         <Card.Body>
           <Card.Title className="card-title">{mascota?.nombre}</Card.Title>
           <Card.Text className="card-text">
@@ -43,7 +43,7 @@ const CardMascota = ({ mascota, indexMascota}) => {
             Temperamento: {mascota?.temperamento}
           </Card.Text>
           <Link to={`/mascota/${mascota?.id}`}>
-            <Button variant="primary">Ver más</Button>
+            <Button >Ver más</Button>
           </Link>
         </Card.Body>
       </Card>
