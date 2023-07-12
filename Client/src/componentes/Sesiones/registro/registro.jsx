@@ -11,7 +11,6 @@ import styles from "../registro/registro.module.css";
 import UploadWidget from "../../Upload/UploadWidget";
 
 const Form = () => {
-  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [input, setInput] = useState({
