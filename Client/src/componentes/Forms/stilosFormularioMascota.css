@@ -1,7 +1,7 @@
 .form-container {
     width: 400px;
     margin: 0 auto;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
   }
   
   .form-group {
@@ -18,22 +18,23 @@
   }
 
   .custom-form {
-    font-family: 'Merriweather', serif;
+    font-family: 'Playfair Display';
+    font-size: 18px;
   }
   
   .custom-form .btn-primary {
     color: #ffffff;
-    background-color: #900C3E;
-    border-color: #900C3E;
+    background-color: #4898BF;
+    border-color: #4898BF;
     border-radius: 25px;
     transition: transform 0.3s;
     margin-top: 15px;
   }
   
   .custom-form .btn-primary:hover {
-    transform: scale(1.05);
-    background-color:#900C3E;
-    border-color: #900C3E;
+    transform:translateY(-3px);
+    background-color:#3c7fa0;
+    border-color: #3c7fa0;
   }
   
   .custom-form input[type="radio"],
@@ -59,4 +60,7 @@
   max-width: 100%;
   color: #000000;
   text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 40px;
 }

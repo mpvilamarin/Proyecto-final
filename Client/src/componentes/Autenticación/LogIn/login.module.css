@@ -22,10 +22,10 @@
   height: 35px;
   width: 200px;
   color: #ffffff;
-  background-color: #333;
-  font-weight: bolder;
+  background-color: #4898BF;
+  font-weight: 500;
   margin-top: 15px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: 0.3s;
 }
 
 .btn-txt {
@@ -35,10 +35,11 @@
 }
 
 .btn:hover {
-  color: #333;
+  color: white;
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   border: none;
+  background-color: #3e7fa0;
 }
 
 .btn:active {
@@ -58,10 +59,10 @@
   transition: all 0.4s;
 }
 
-.btn::after {
+/*.btn::after {
   border-radius: 8px;
   background-color: #fff;
-}
+}*/
 
 /* .btn:hover::after {
   transform: scaleX(1.4) scaleY(1.6);

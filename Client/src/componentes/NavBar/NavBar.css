@@ -13,8 +13,8 @@
   border-top-width: 0;
   margin-left: 50px;
   margin-right: 50px;
-  font-family: 'Platyfair Display';
-  font-weight: 500
+  font-family: 'Merriweather';
+  font-weight: 500;
 }
 
 .navBarItem {
@@ -33,6 +33,11 @@
 .logo {
   width: 150px;
   height: auto;
+  transition: 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
@@ -71,8 +76,13 @@
 }
 
 .custom-navbar .nav-link {
-  font-size: 23px;
+  font-size: 20px;
+  transition: 0.3s;
   /* Ajusta el tamaño de fuente según tus necesidades */
+}
+
+.custom-navbar .nav-link:hover {
+  transform: translateY(4px);
 }
 
 .container {
@@ -82,4 +92,19 @@
 
 .navbar-expand-lg {
   justify-content: space-evenly;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+}
+
+.img {
+  height: 35px;
+  width: 35px;
+  transition: 0.3s;
+}
+
+.img:hover {
+  transform: translateX(5px);
 }

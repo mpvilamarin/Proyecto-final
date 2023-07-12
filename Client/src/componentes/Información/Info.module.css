@@ -12,16 +12,18 @@
 }
 
 .h3{
-  font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
-  font-weight: bold;
+  font-family: "Playfair Display";
+  font-weight: 550;
+  font-size: 27px;
 }
 
 .p{
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-family: "Merriweather";
+  padding: 15px;
 }
 
 .button{
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-family: "Merriweather";
   font-size: 17px;
   border-radius: 8px;
   height: 35px;
