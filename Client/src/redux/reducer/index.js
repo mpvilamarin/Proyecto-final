@@ -375,6 +375,7 @@ case FILTER_FUNDACIONES_BY_RATING:
             genero: action.payload.genero,
             temperamento: action.payload.temperamento,
             descripcion: action.payload.descripcion,
+            activo: action.payload.adop
           };
         }
         return mascota;

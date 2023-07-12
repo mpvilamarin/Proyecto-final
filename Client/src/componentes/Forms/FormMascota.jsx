@@ -137,7 +137,7 @@ function FormMascota() {
             name="nombre"
             value={newMascota.nombre}
             onChange={handleChange}
-            placeholder="Nombre de la mascota"
+            placeholder="Ej: Bruno"
             className={
               invalidFields.includes('nombre') ? 'is-invalid' : ''
             }
@@ -182,7 +182,7 @@ function FormMascota() {
             name="edad"
             value={newMascota.edad}
             onChange={handleChange}
-            placeholder="Edad"
+            placeholder="Ej: 5 años"
             className={
               invalidFields.includes('edad') ? 'is-invalid' : ''
             }
@@ -221,7 +221,7 @@ function FormMascota() {
             type="text"
             name="temperamento"
             value={newMascota.temperamento}
-            placeholder="Temperamento"
+            placeholder="Ej: jugueton, dosil"
             onChange={handleChange}
             className={
               invalidFields.includes('temperamento') ? 'is-invalid' : ''
@@ -235,7 +235,7 @@ function FormMascota() {
             type="text"
             name="descripcion"
             value={newMascota.descripcion}
-            placeholder="Descripcion"
+            placeholder="Ej: es muy amoroso, le gusta jugar"
             onChange={handleChange}
             className={
               invalidFields.includes('descripcion') ? 'is-invalid' : ''

@@ -157,7 +157,7 @@ export const postReview = (crearReview) => {
         dispatch({
           type: POST_LOGIN,
           payload: {
-           usuario, email, id , nombre
+           usuario, email, id, nombre
           },
         });
         toast.success("Logueo realizado con exito!👌😉", {
