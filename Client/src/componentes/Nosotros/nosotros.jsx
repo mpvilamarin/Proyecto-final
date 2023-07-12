@@ -75,7 +75,7 @@ export default function Nosotros() {
           <div className={styles.alinear2}>
             <div className={styles.card}>
               <figure className={styles.figure}>
-                <h5 className={styles.title}>"El trabajo en equipo es el secreto para que la gente común logre resultados extraordinarios"</h5>
+                <h5 className={styles.title}>"El único límite para nuestros logros del mañana son las dudas que tenemos hoy"</h5>
                 <div>
                   <img src={require("../../assets/Mari.png")} alt="Mari" className={styles.imgM} />
                   <div>Maria Victoria Salazar</div>
