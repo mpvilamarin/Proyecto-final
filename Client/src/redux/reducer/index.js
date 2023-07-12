@@ -32,7 +32,7 @@ import {
   UPDATE_FUNDACION,
   UPDATE_USUARIOS,
   DELETE_MASCOTA,
-  DELETE_USUARIO,
+  DELETE_FUNDACION,
   POST_REVIEWS,
   LOG_OUT,
   ADDFAV,
@@ -342,13 +342,14 @@ function rootReducer(state = initialState, action, payload) {
           (mascota) => mascota.nombre !== action.payload
         ),
       };
-    case DELETE_USUARIO:
-      return {
-        ...state,
-        usuarios: state.usuarios.filter(
-          (usuario) => usuario.email !== action.payload
-        ),
-      };
+    case DELETE_FUNDACION:
+    return {
+      ...state,
+      fundaciones: state.fundaciones.filter(
+        (fundacion) => fundacion.id !== action.payload
+      ),
+    };
+
     case UPDATE_FUNDACION:
       const updateFundaciones = state.fundaciones.map((fundacion) => {
         if (fundacion.id === action.payload.id) {
