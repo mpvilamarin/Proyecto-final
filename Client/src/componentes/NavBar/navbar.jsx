@@ -32,7 +32,7 @@ export default function NavBar() {
 
 
   return (
-    <Navbar className="custom-navbar" variant="light" expand="lg">
+    <Navbar className="custom-navbar"  expand="lg">
 
       <Container className="container">
 
