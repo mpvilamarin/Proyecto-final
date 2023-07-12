@@ -18,11 +18,11 @@
   /* Cambia el estilo de fuente a negrita */
   justify-content: center;
 }
-.fundaciones-container{
+.fundacionesContainer{
   justify-content: space-around;
 }
 
-.card-info {
+.cardInfo{
   font-size: 16px;
 margin-bottom: 10px;
 }
@@ -48,7 +48,7 @@ margin-bottom: 10px;
   object-fit: contain;
 }
 
-.cards-wrapper {
+.cardsWrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -58,17 +58,7 @@ margin-bottom: 10px;
   max-height: 200px;
 }
 
-.carousel .control-arrow {
-  background-color: #000;
-  /* Cambia el color de fondo de las flechas */
-  opacity: 1;
-  /* Ajusta la opacidad de las flechas */
-}
 
-.carousel .control-arrow:hover {
-  background-color: #ff0000;
-  /* Cambia el color de fondo al pasar el mouse sobre las flechas */
-}
 
 .title-container {
   text-align:start;
@@ -77,16 +67,8 @@ margin-bottom: 10px;
 .card-title-highlight{
   font-size: 30px;
 }
-.carousel{
-  margin-top: 15px;
-  margin-bottom: 30px;
-}
-.carousel .slider-wrapper .slider .control-dots .dot::before {
-  background-color: #000;
-  /* Cambia el color de fondo a tu preferencia */
-  opacity: 1;
-  /* Ajusta la opacidad según tus necesidades */
-}
+
+
 
 .image-container {
   margin: 10px;
@@ -111,7 +93,7 @@ margin-bottom: 10px;
   
  
 }
-.card-title{
+.cardTitle{
   font-family: Oswald, sans-serif;
 }
 .button1{
