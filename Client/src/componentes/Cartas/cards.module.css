@@ -10,7 +10,7 @@
   /* Puedes ajustar el valor según tus necesidades */
 }
 .card-title-highlight {
-  color: rgb(235, 162, 140);
+  /* color: rgb(235, 162, 140); */
   /* Cambia el color del título a rojo */
   font-size: 40px;
   /* Cambia el tamaño de fuente del título */
@@ -93,12 +93,16 @@ margin-bottom: 10px;
   /* Agrega el margen deseado */
 }
 
-.btn.btn-primary{
-  background-color: rgb(157, 127, 92);
+.button1{
+  background-color: rgb(106, 33, 128);
   
 }
+.image{
+  width: 280px;
+  height: 172px;
+}
 
-.favorite-icon {
+.favoriteIcon {
   width: 1.5em;
   /* Ajusta el tamaño según tus necesidades */
   height: 1.5em;
@@ -110,4 +114,6 @@ margin-bottom: 10px;
 .card-title{
   font-family: Oswald, sans-serif;
 }
-
+.button1{
+  background-color: rgb(106, 33, 128);
+}

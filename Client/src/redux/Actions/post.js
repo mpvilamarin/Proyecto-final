@@ -104,8 +104,9 @@ export const postFundaciones = (nuevaFundacion, email, nombre) => {
           error: 'Promise rejected 🤯'
         }
       )
+      // "❌ Error al registrar la fundacion" 
     } catch (error) {
-      toast.error("❌ Error al registrar la fundacion" ,{
+      toast.error(error.response.data.message, {
         theme: "colored",
         icon: false
       })

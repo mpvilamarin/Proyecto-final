@@ -59,7 +59,6 @@ const Form = () => {
         validationErrors[key] = error;
       }
     }
-    dispatch(postFundaciones());
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
       setIsLoading(true);
