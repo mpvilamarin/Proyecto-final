@@ -3,14 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllMascotas, getDetailFundacion, resetDetail } from "../../../redux/Actions/get";
 import style from './perfilFund.module.css';
 import fundaciones from "../../Cartas/fundacion.png";
-import CardAdop from "../../Cartas/cardAdopcion";
+import CardMascota from "../../Cartas/cardMascotas";
 import Review from "../../Reviews/reviews";
+import Solicitudes from "../../Adopción/Solicitudes/solicitudes"
 export default function PerfilFund () {
 
     const data = useSelector((state) => state.sesion);
     const info = useSelector((state) => state.fundacionDetail)
-    // const mascotas = useSelector((state) => state.mascotas)
-    console.log(info);
+    const adopciones = useSelector((state) => state.adopciones)
+    console.log(adopciones);
+    console.log(info)
     const mascotas = info?.Mascotas
     const dispatch = useDispatch();
     const { id } = data;
@@ -22,9 +24,12 @@ export default function PerfilFund () {
       dispatch(getDetailFundacion(id));
     }, []);
 
+    const configuracion = () => {
+      
+    }
+
     return (
         <div className={style.contenedorPadre}>
-      
       
       {!data ? (
         <h3>LOADING...</h3>
@@ -45,6 +50,7 @@ export default function PerfilFund () {
                 <h5>Email: {email}</h5>
                 <h5>Fecha de Fundación: {fundadaEn}</h5>
               </div>
+              <button onClick={configuracion()} className={style.botonInfo}> </button>
             </div>
             
           )}
@@ -59,7 +65,7 @@ export default function PerfilFund () {
           <div className={style.containerAnimales}>
             {mascotas && mascotas.map((mascota, indexMascota) => (
        //       mascota.Fundaciones[0]?.nombre === nombre && (
-                <CardAdop
+                <CardMascota
                   mascota={mascota}
                   indexMascota={mascota.id}
                   key={indexMascota}
@@ -69,6 +75,21 @@ export default function PerfilFund () {
           </div>
           </div>
           <div className={style.contenedorReviews}>
+            <div className={style.reviews}>
+              <h1>Solicitudes Adopcion</h1>
+            </div>
+          <div className={style.contenedorAdopciones}>
+            {adopciones
+              .filter((adopcion) => adopcion.fundacionId === id) // Filtrar las mascotas activas
+              .map((adopcion, indexAdopcion) => (
+                <Solicitudes
+                  nombreCompleto={adopcion.nombreCompleto}
+                  motivoAdopcion={adopcion.motivoAdopcion}
+                  indexAdopcion={adopcion.id}
+                  key={indexAdopcion}
+                />
+            ))}
+          </div>
             <div className={style.reviews}>
               <h1>Mis reviews</h1>
             </div>

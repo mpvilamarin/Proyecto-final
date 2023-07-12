@@ -30,23 +30,37 @@ export default function Detalle() {
     <div>
       {selector.hasOwnProperty("nombre") ? (
         <div className={style.container}>
-          <h2>Nombre: {selector.nombre}</h2>
-          <h2>Temperamento: {selector.temperamento}</h2>
-          <h2>Especie: {selector.especie}</h2>
-          <h2>Género: {selector.genero}</h2>
-          <h2>Edad: {selector.edad}</h2>
-          <h2>Tamaño: {selector.tamaño}</h2>
-          <h2>Descripción: {selector.descripcion}</h2>
-          <h2>Castrado: {selector.castrado}</h2>
-
-          <div>
-            {selector.Fundaciones.map((fundacion, index) => (
-              <div key={index}>
-                <h2>Fundacion: {fundacion.nombre}</h2>
-              </div>
-            ))}
+          <div className={style.imageContainer}>
+            <img className={style.image} src={selector.image} alt="Mascota" />
           </div>
-          <button onClick={handleClickAdoptar}>Adoptar</button>
+          <div className={style.details}>
+            <h2 className={style.property}>Nombre:</h2>
+            <p className={style.value}>{selector.nombre}</p>
+
+            <h2 className={style.property}>Temperamento:</h2>
+            <p className={style.value}>{selector.temperamento}</p>
+
+            <h2 className={style.property}>Especie:</h2>
+            <p className={style.value}>{selector.especie}</p>
+
+            <h2 className={style.property}>Género:</h2>
+            <p className={style.value}>{selector.genero}</p>
+
+            <h2 className={style.property}>Edad:</h2>
+            <p className={style.value}>{selector.edad}</p>
+
+            <h2 className={style.property}>Tamaño:</h2>
+            <p className={style.value}>{selector.tamaño}</p>
+
+            <h2 className={style.property}>Descripción:</h2>
+            <p className={style.value}>{selector.descripcion}</p>
+
+            <h2 className={style.property}>Castrado:</h2>
+            <p className={style.value}>{selector.castrado}</p>
+          </div>
+          <button className={style.button} onClick={handleClickAdoptar}>
+            Adoptar
+          </button>
         </div>
       ) : undefined}
     </div>

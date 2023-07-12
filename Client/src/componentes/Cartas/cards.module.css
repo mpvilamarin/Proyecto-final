@@ -20,7 +20,7 @@
       
 }
 .card-title-highlight {
-  color: rgb(98, 67, 58);
+  /* color: rgb(235, 162, 140); */
   /* Cambia el color del título a rojo */
   font-size: 40px;
   /* Cambia el tamaño de fuente del título */
@@ -102,14 +102,16 @@ margin-bottom: 10px;
   /* Agrega el margen deseado */
 }
 
-.btn.btn-primary{
-  background-color: rgb(197, 166, 125);
-  margin: 0 5px;
-  /* border-radius: 50px; */
+.button1{
+  background-color: rgb(106, 33, 128);
   
 }
+.image{
+  width: 280px;
+  height: 172px;
+}
 
-.favorite-icon {
+.favoriteIcon {
   width: 1.5em;
   /* Ajusta el tamaño según tus necesidades */
   height: 1.5em;

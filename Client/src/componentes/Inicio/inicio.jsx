@@ -9,7 +9,8 @@ import {
   logOut,
   postLoginFundacion,
 } from "../../redux/Actions/post";
-import { getAdmin, resetDetail } from "../../redux/Actions/get";
+import { getAdmin, getAllFundaciones, resetDetail } from "../../redux/Actions/get";
+import Usuario from "../../assets/User.png";
 
 const Inicio = () => {
   const dispatch = useDispatch();
@@ -39,8 +40,10 @@ const Inicio = () => {
     contraseña: e.contraseña,
   }));
 
+  console.log(fundacionMap)
   useEffect(() => {
     dispatch(getAdmin());
+    dispatch(getAllFundaciones())
   }, []);
 
   const handleChange = (event) => {
@@ -67,7 +70,7 @@ const Inicio = () => {
       setIsLoading(true);
       await dispatch(postLoginAdmin(input));
       setIsLoading(false);
-      navigate("/InicioAdmin");
+      navigate("/DashboardAdmin");
     } else if (isFundacion) {
       setIsLoading(true);
       await dispatch(postLoginAdmin(input));
@@ -109,6 +112,7 @@ const Inicio = () => {
                 {/* <h1 className={styles.title}>INICIAR SESIÓN</h1>
                 <h1 className={styles.subtitle}>Usuario</h1> */}
                 <span className={styles.span}>
+                  <img src={Usuario} className={styles.imgUser} />
                   <Login />
                 </span>
               </div>
@@ -146,7 +150,6 @@ const Inicio = () => {
                 <Link to="/registro" className={styles.link}>
                   ¿No estás registrado?
                 </Link>
-
               </div>
             </form>
           )}

@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../../assets/Background1.1.png");
+  background-image: url("../../assets/BackgroundLogin.png");
   background-size: cover;
 }
 
@@ -21,7 +21,7 @@
   flex-direction: column;
   align-items: center;
   width: 300px;
-  height: 400px;
+  height: 350px;
   gap: 1em;
   background-color: rgb(235, 235, 222);
   border-radius: 10px;
@@ -55,6 +55,8 @@
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
   /* padding: 2.5em; */
   border-radius: 25px;
@@ -83,6 +85,7 @@
 .input {
   border-radius: 5px;
   margin-left: 25px;
+  color: rgb(50, 50, 50);
   border: 1px solid whitesmoke;
   background-color: whitesmoke;
   outline: none;
@@ -175,3 +178,14 @@
   z-index: 999;
 }
 
+.imgUser {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 150px;
+  margin: 0;
+  margin-left: 25%;
+  padding: 0;
+}

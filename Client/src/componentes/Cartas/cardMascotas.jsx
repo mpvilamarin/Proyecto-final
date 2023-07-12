@@ -1,41 +1,56 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteMascota } from "../../redux/Actions/delete";
 import { getAllMascotas } from "../../redux/Actions/get";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom";
+import { updateMascota, adopcionMascota } from "../../redux/Actions/update";
 
+const CardMascota = ({ mascota, indexMascota }) => {
 
+  const [adop, setIsAdop] = useState(mascota.activo);
 
-export default function CardMascota() {
   const dispatch = useDispatch();
-  const allMascotas = useSelector((state) => state.mascotas.slice(0, 4));
 
-
-  useEffect(() => {
-    dispatch(getAllMascotas());
-  }, [dispatch]);
+  const clickAdoptado = () => {
+    if (adop) {
+      dispatch(adopcionMascota(mascota.id, mascota.name, false))
+      setIsAdop(false)
+    }
+    else {
+      dispatch(adopcionMascota(mascota.id, mascota.name, true))
+      setIsAdop(true)
+    }
+  }
 
   return (
-    <div className="wrapperMascota">
-      <div className="titlemascotitas">
-        <h1 className="card-title-highlight">Algunas de nuestras</h1>
-        <h1 className="card-title-highlight">mascotas</h1>
-      </div>
-
-
-      <div className="card-container-mascota">
-        {/* <div className="title-container">
-        <h1 className="card-title-highlight">MASCOTAS</h1>
-      </div> */}
-        {allMascotas.map((mascota, index) => (
-          <div key={index} className="card">
-            <img src={mascota.image} alt={mascota.nombre} className="card-image" />
-            <h2>{mascota.nombre}</h2>
-            <p>{mascota.descripcion}</p>
-          </div>
-        ))}
-      </div>
+    <div>
+      <Card key={indexMascota} style={{ width: '18rem' }}>
+        <Button onClick={() => clickAdoptado()}>
+          {adop ? (
+            <h2>Adoptado</h2>
+          ) : (
+            <h2>Sin adoptar</h2>
+          )}
+        </Button>
+        <Card.Img src={mascota?.image} alt="Mascota" />
+        <Card.Body>
+          <Card.Title className="card-title">{mascota?.nombre}</Card.Title>
+          <Card.Text className="card-text">
+            Género: {mascota?.genero}
+            <br />
+            Temperamento: {mascota?.temperamento}
+          </Card.Text>
+          <Link to={`/mascota/${mascota?.id}`}>
+            <Button >Ver más</Button>
+          </Link>
+        </Card.Body>
+      </Card>
     </div>
   );
-}
+};
+
+
+
+export default CardMascota

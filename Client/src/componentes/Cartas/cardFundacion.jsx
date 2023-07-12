@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllMascotas, getAllFundaciones, getNameFundaciones, getReviews } from '../../redux/Actions/get';
-import './cards.css'; // Ruta del archivo CSS
+import style from './cards.module.css'; // Ruta del archivo CSS
 import fundaciones from './fundacion.png';
 import Card from 'react-bootstrap/Card';
 import FundacionesFilter from "../Fundación/filterFundacion";
@@ -33,21 +33,25 @@ export default function CardsFundacion() {
       ) : (
         <div className="cards-wrapper">
           {allFundaciones && allFundaciones.map((fundacion, indexFundacion) => (
-            <Card key={indexFundacion} className="card">
-              <Card.Body>
-                <Link to={`/fundacion/${fundacion.id}`}>
-                  <Card.Title className="card-title">{fundacion?.nombre}</Card.Title>
-                </Link>
-                <Card.Img variant="top" className="imgFund" src={fundaciones} />
-                <Card.Text>
-                  <h2 className="card-info">Dirección: {fundacion?.direccion}</h2>
-                  <h2 className="card-info">Ciudad: {fundacion?.ciudad}</h2>
-                  <h2 className="card-info">Email: {fundacion?.email}</h2>
-                  <h2 className="card-info">Misión: {fundacion?.mision}</h2>
-                  <StarRating rating={Number(fundacion.Reviews && fundacion.Reviews[0]?.calificacion)} />
-                </Card.Text>
-              </Card.Body>
-            </Card>
+
+            fundacion.borrado === false && (
+              <Card key={indexFundacion} className={style.card}>
+                <Card.Body>
+                  <Link to={`/fundacion/${fundacion.id}`}>
+                    <Card.Title className="card-title">{fundacion?.nombre}</Card.Title>
+                  </Link>
+                  <Card.Img variant="top" className="imgFund" src={fundacion.image || fundaciones} />
+                  <Card.Text>
+                    <h2 className="card-info">Dirección: {fundacion?.direccion}</h2>
+                    <h2 className="card-info">Ciudad: {fundacion?.ciudad}</h2>
+                    <h2 className="card-info">Email: {fundacion?.email}</h2>
+                    <h2 className="card-info">Misión: {fundacion?.mision}</h2>
+                    <StarRating rating={Number(fundacion.Reviews && fundacion.Reviews[0]?.calificacion)} />
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            )
+
           ))}
         </div>
       )}

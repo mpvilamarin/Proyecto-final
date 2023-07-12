@@ -27,6 +27,7 @@ async function loginUsuarios(req, res) {
         usuario:'fundacion',
         isLogued:true,
         id: fundacionLogin.id,
+        nombre: fundacionLogin.nombre,
       });
     }
     

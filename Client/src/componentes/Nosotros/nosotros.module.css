@@ -1,28 +1,27 @@
 .containerPrincipal {
-  /* display: flex;
-  flex-direction: column;
-  min-height: auto; */
-
   display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding-bottom: 50px;
-
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-bottom: 50px;
+  padding: 5px;
+  height: 2140px; 
 }
 
 .headercontainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 1400px;
-  height: 1400px;
+  /* height: 1400px; */
+
   margin: 4rem auto;
   margin-top: 5px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
-  max-height: 100vh;
-  margin-bottom: -50px;
+  /* max-height: 100vh; */
+  /* margin-bottom: -50px; */
+
 }
 
 .sideleft {
