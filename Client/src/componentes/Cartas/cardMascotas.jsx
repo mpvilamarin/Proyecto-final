@@ -5,7 +5,7 @@ import { getAllMascotas } from "../../redux/Actions/get";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
-import { updateMascota } from "../../redux/Actions/update";
+import { updateMascota, adopcionMascota } from "../../redux/Actions/update";
 
 const CardMascota = ({ mascota, indexMascota}) => {
 
@@ -15,11 +15,11 @@ const CardMascota = ({ mascota, indexMascota}) => {
 
   const clickAdoptado = () =>{
     if(adop){
-     dispatch(updateMascota(mascota.nombre, false))
+     dispatch(adopcionMascota(mascota.id ,mascota.name, false))
      setIsAdop(false)
     }
     else{
-      dispatch(updateMascota(mascota.nombre, true))
+      dispatch(adopcionMascota(mascota.id ,mascota.name, true))
       setIsAdop(true)
     }
   }

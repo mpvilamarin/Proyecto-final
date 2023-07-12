@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 import { validate } from "./validate";
 import { getAllFundaciones, getDetailFundacion } from "../../../redux/Actions/get";
+import { deleteFundacion } from "../../../redux/Actions/delete";
 import { updateFundacion } from "../../../redux/Actions/update";
 
 import styles from "./ManejoFundaciones.module.css";
@@ -31,6 +32,32 @@ const ModificarFundacion = () => {
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const storedActivo = localStorage.getItem('activo');
+  const initialActivo = storedActivo ? JSON.parse(storedActivo) : true;
+  const [activo, setActivo] = useState(initialActivo);
+  
+  const handleDeleteClick = async (id, nombre) => {
+    const confirmacion = window.confirm(`¿Estás seguro de ${activo[id] ? 'desactivar' : 'activar'} la fundación ${nombre}?`);
+    if (confirmacion) {
+      try {
+        await dispatch(deleteFundacion(id, nombre));
+        setActivo((prevActivo) => ({
+          ...prevActivo,
+          [id]: !prevActivo[id], // Alternar el estado de la fundación específica
+        }));
+        alert(`La fundación ${nombre} fue ${activo[id] ? 'desactivada' : 'activada'} con éxito`);
+      } catch (error) {
+        alert(`Error al ${activo[id] ? 'desactivar' : 'activar'} la fundación ${nombre}: ${error}`);
+      }
+    }
+  };
+  
+  useEffect(() => {
+    return () => {
+      localStorage.setItem('activo', JSON.stringify(activo));
+    };
+  }, [activo]);
+  
 
   const handleEditClick = (index) => {
     setSelectedFundacionIndex(index);
@@ -100,6 +127,17 @@ const ModificarFundacion = () => {
                   <button key={index} onClick={() => handleEditClick(index)} className={styles.button}>
                     editar
                   </button>
+
+                  <div className={styles.buttonSend} key={index}>
+                  <button
+                    key={index}
+                    onClick={() => handleDeleteClick(fundacion.id, fundacion.nombre)}
+                    className={styles.button}
+>
+                    {activo[fundacion.id] ? 'Activar' : 'Desactivar'}
+                  </button>
+
+                  </div>
                 </div>
 
                 <div className={styles.contendorForm}>
@@ -164,6 +202,10 @@ const ModificarFundacion = () => {
                       <div className={styles.buttonSend}>
                         <button className={styles.button2}>Aceptar Cambios</button>
                       </div>
+
+                     
+
+
                     </form>
                   )}
                 </div>

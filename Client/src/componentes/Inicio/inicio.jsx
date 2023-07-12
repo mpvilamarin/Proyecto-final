@@ -9,7 +9,7 @@ import {
   logOut,
   postLoginFundacion,
 } from "../../redux/Actions/post";
-import { getAdmin, resetDetail } from "../../redux/Actions/get";
+import { getAdmin, getAllFundaciones, resetDetail } from "../../redux/Actions/get";
 import Usuario from "../../assets/User.png";
 
 const Inicio = () => {
@@ -40,8 +40,10 @@ const Inicio = () => {
     contraseña: e.contraseña,
   }));
 
+  console.log(fundacionMap)
   useEffect(() => {
     dispatch(getAdmin());
+    dispatch(getAllFundaciones())
   }, []);
 
   const handleChange = (event) => {
