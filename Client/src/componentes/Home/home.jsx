@@ -3,17 +3,26 @@ import CardMascotas from "../Cartas/cardMascotas";
 import CardFundaciones from "../Cartas/cardFundacion";
 import style from "./home.module.css";
 import Info from "../Información/Info";
+import InfoHome from "../InfoHome/InfoHome";
 
 const Home = () => {
   return (
-    <div className='container'>
+    <div className={style.container}>
       <div className={style.cardContainer}>
-        <CardMascotas />
-        <CardFundaciones />
+        <div>
+          <InfoHome />
+        </div>
         <div>
           <Info />
         </div>
 
+        <div className="page-container">
+          <CardMascotas />
+
+        </div>
+        {/* <div className="page-container">
+          <CardFundaciones />
+        </div> */}
 
       </div>
     </div>

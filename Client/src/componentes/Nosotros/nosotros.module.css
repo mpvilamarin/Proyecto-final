@@ -48,8 +48,8 @@
 }
 
 .sideright img {
-  height: 429px;
-  width: 670px;
+  height: auto;
+  width: auto;
 }
 
 .up {
@@ -124,6 +124,7 @@
 
 .img {
   width: 60%;
+  
 }
 .imgM{
   width: 80%;

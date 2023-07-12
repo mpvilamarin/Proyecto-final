@@ -1,25 +1,32 @@
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+
+
 .card-container {
   display:inline-flex;
   flex-wrap: wrap;
-  justify-content: space-evenly ;
+  justify-content: space-around;
+  margin-top: 40px;
 }
 
 .card {
   margin: 10px;
   width: 300px;
-  /* Puedes ajustar el valor según tus necesidades */
+    height: 200px;
+      /* Ajusta esta altura según tus preferencias */
+      overflow: auto;
+      background-color: rgb(247, 239, 230) !important;
+      
 }
 .card-title-highlight {
-  color: rgb(235, 162, 140);
+  color: rgb(98, 67, 58);
   /* Cambia el color del título a rojo */
   font-size: 40px;
   /* Cambia el tamaño de fuente del título */
   font-weight: bold;
   /* Cambia el estilo de fuente a negrita */
   justify-content: center;
-}
-.fundaciones-container{
-  justify-content: space-around;
 }
 
 .card-info {
@@ -28,7 +35,7 @@ margin-bottom: 10px;
 }
 
 .card-fundacion {
-    display: flex;
+  display: flex;
       flex-direction: column;
       flex-grow: 1;
   flex: 0 0 300px;
@@ -51,7 +58,7 @@ margin-bottom: 10px;
 .cards-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   margin-top: 20px;
 }
 .imgFund{
@@ -76,7 +83,9 @@ margin-bottom: 10px;
 }
 .card-title-highlight{
   font-size: 30px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
+
 .carousel{
   margin-top: 15px;
   margin-bottom: 30px;
@@ -94,7 +103,9 @@ margin-bottom: 10px;
 }
 
 .btn.btn-primary{
-  background-color: rgb(157, 127, 92);
+  background-color: rgb(197, 166, 125);
+  margin: 0 5px;
+  /* border-radius: 50px; */
   
 }
 
@@ -105,9 +116,59 @@ margin-bottom: 10px;
   /* Ajusta el tamaño según tus necesidades */
   vertical-align: middle;
   
- 
+  
 }
 .card-title{
   font-family: Oswald, sans-serif;
+  text-align: center;
+  color: #000 !important;
 }
 
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit:fill;
+  border-radius: 15px;
+}
+.card-text{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.card-container-mascota{
+display: inline-flex;
+/* flex-direction: column; */
+margin-top: 40px;
+margin: 0
+}
+.wrapperMascota {
+justify-content: space-around;
+    align-items: center;
+    display: flex;
+    margin: 0;
+    /* background-color: rgb(247, 226, 193); */
+    height: 400px;
+    border-radius: 20px;
+    flex-direction: row-reverse;
+}
+
+.fundaciones-container{
+    justify-content: space-around;
+    margin-top: 40px;
+      align-items: center;
+      display: flex;
+      margin: 0;
+      /* background-color: rgb(122, 180, 206); */
+      height: 400px;
+      border-radius: 20px;
+  }
+
+  .titlemascotitas{
+    display: block;
+    
+  }

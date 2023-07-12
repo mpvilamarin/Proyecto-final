@@ -10,7 +10,7 @@ const Fundacion = () => {
 
       <div className={style.caja}>
         <div className={style.filters}>
-          <h1 className={style.title}>Nuestras fundaciones</h1>
+          <h1 className={style.title}>NUESTRAS FUNDACIONES</h1>
           <SortFundaciones />
           <SearchBar />
         </div>

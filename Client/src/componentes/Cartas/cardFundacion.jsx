@@ -1,7 +1,7 @@
-import React, { useEffect , useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllMascotas , getAllFundaciones , getNameFundaciones,getReviews  } from '../../redux/Actions/get';
+import { getAllMascotas, getAllFundaciones, getNameFundaciones, getReviews } from '../../redux/Actions/get';
 import './cards.css'; // Ruta del archivo CSS
 import fundaciones from './fundacion.png';
 import Card from 'react-bootstrap/Card';
@@ -23,7 +23,8 @@ export default function CardsFundacion() {
   return (
     <div className="fundaciones-container">
       <div className="title-container">
-        <h1 className="card-title-highlight">FUNDACIONES</h1>
+        {/* <h1 className="card-title-highlight">Algunas de nuestras</h1> */}
+        <h1 className="card-title-highlight">fundaciones</h1>
       </div>
 
       {!allFundaciones ? (

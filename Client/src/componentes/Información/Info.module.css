@@ -12,12 +12,16 @@
 }
 
 .h3{
-  font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+/* font-family: Oswald, sans-serif; */
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-weight: bold;
+  font-size: 25px;
+  color: rgb(45, 47, 49);
 }
 
 .p{
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
 
 .button{
@@ -63,6 +67,7 @@
   list-style-type: none;
   background-color: rgba(207, 196, 166, 0.694);
   transition: transform 0.3s ease;
+  margin-right: 70px
 }
 .li:hover {
   transform: scale(1.1);
@@ -101,4 +106,10 @@ button {
   .div{
     max-width: 400px;
   }
+}
+
+.wrapper{
+  margin-top: 50px;
+  margin-bottom: 40px;
+  justify-content: space-evenly;
 }

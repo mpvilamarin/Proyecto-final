@@ -9,7 +9,7 @@ import huellaoscura from '../../assets/huellitaOscurabg.png'
 
 const CardAdop = ({ mascota, indexMascota, addFav, removeFav, favoritos }) => {
   const [isFav, setIsFav] = useState(false);
-  
+
   console.log(mascota);
 
   const handleFavorite = () => {
@@ -34,24 +34,26 @@ const CardAdop = ({ mascota, indexMascota, addFav, removeFav, favoritos }) => {
   return (
     <div>
       <Card key={indexMascota} style={{ width: '18rem' }}>
-        <Button onClick={() => handleFavorite(mascota)} className="btn.btn-primary">
-          {isFav ? (
-            <img src={huellaoscura} alt="Favorito" className="favorite-icon" />
-          ) : (
-            <img src={huella} alt="No favorito" className="favorite-icon" />
-          )}
-        </Button>
         <Card.Img variant="top" src={mascota?.image} alt="Mascota" className="card-image" />
-        <Card.Body>
-          <Card.Title className="card-title">{mascota?.nombre}</Card.Title>
+        <Card.Title className="card-title">{mascota?.nombre}</Card.Title>
+        <Card.Body className="card-principal">
           <Card.Text className="card-text">
             Género: {mascota?.genero}
             <br />
             Temperamento: {mascota?.temperamento}
           </Card.Text>
-          <Link to={`/mascota/${mascota?.id}`}>
-            <Button variant="primary">Ver más</Button>
-          </Link>
+          <div className="button-container">
+            <Link to={`/mascota/${mascota?.id}`}>
+              <Button variant="primary">Ver más</Button>
+            </Link>
+            <Button onClick={() => handleFavorite(mascota)} className="btn.btn-primary">
+              {isFav ? (
+                <img src={huellaoscura} alt="Favorito" className="favorite-icon" />
+              ) : (
+                <img src={huella} alt="No favorito" className="favorite-icon" />
+              )}
+            </Button>
+          </div>
         </Card.Body>
       </Card>
     </div>
