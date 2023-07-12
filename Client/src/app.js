@@ -13,7 +13,7 @@ import Dashboard from "./componentes/DashboardAdmin/Dashboard/Dashboard";
 import BienvenidaAdmin from "./componentes/DashboardAdmin/Inicio/BienvenidaAdmin";
 import  CrearAdmin  from "./componentes/DashboardAdmin/CrearAdmin/CrearAdmin";
 import ModificarFundacion from "./componentes/DashboardAdmin/ManejoFundaciones/ManejoFundaciones";
-import ModificarMascota from "./componentes/DashboardAdmin/ModificarMascota/ModificarMascota";
+import ModificarMascota from "./componentes/DashboardAdmin/ManejoMascotas/ManejoMascotas";
 //import { RequireAuth } from "react-auth-kit";
 
 import LogOut from "./componentes/Autenticación/LogOut/logout";
