@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  position: relative;
+  background-color: white;
+  height: 800px;
+  margin-top: 20px;
+  border-top: 3px solid rgb(218, 218, 218);
+}
+
+.navbarContainer {
+  width: 200px;
+}
+
+.contentContainer {
+  flex-grow: 1;
+}

@@ -1,11 +1,19 @@
 import React from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
+import Alert from '@mui/material/Alert';
 import { validate } from "./validate";
 import { postFundaciones } from "../../../redux/Actions/post";
 import styles from "../registro/registro.module.css";
+import UploadWidget from "../../Upload/UploadWidget";
+
 const Form = () => {
+  // const notify = () => toast.success("You can provide any string", {
+  //   icon: "🚀"
+  // });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [input, setInput] = useState({
@@ -17,7 +25,8 @@ const Form = () => {
     contraseña: "",
     fundadaEn: "",
     mision:"",
-    borrado: false
+    borrado: false,
+    image: ""
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -34,6 +43,12 @@ const Form = () => {
       [name]: error,
     }));
   };
+  const handleImageUpload = (url) => {
+    setInput((prevMascota) => ({
+      ...prevMascota,
+      image: url
+    }));
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     let validationErrors = {};
@@ -44,6 +59,7 @@ const Form = () => {
         validationErrors[key] = error;
       }
     }
+    dispatch(postFundaciones());
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
       setIsLoading(true);
@@ -58,9 +74,12 @@ const Form = () => {
         contraseña: "",
         fundadaEn: "",
         mision:"",
-        borrado: false
+        borrado: false,
+        image: ""
       });
-      navigate("/login")
+      setTimeout(() => {
+       navigate("/login") 
+      }, 5000)
     }
   };
   useEffect(() => {
@@ -71,14 +90,18 @@ const Form = () => {
   }, []);
 
   return (
-    <div>
-    {isLoading && (
+    <div className={styles.container}>
+    {/* {isLoading && (
       <div className={styles.overlay}>
         <p>Cargando...</p>
       </div>
-      )}
+      )} */}
       <form className={styles.form} onSubmit={handleSubmit}>
         <p className={styles.heading}>Regístro Nueva fundacion</p>
+        <div>
+        {/* <button onClick={notify}>Notify!</button>*/}
+        <ToastContainer autoClose={3000}/> 
+        </div>
         <input
           className={styles.input}
           type="text"
@@ -150,6 +173,10 @@ const Form = () => {
           onChange={handleChange}
           placeholder="Mision"
           />
+        <div>
+          {input.image && <img style={{width: "280px", height:"205px"}}src={input.image} alt="image"></img>}
+          <UploadWidget onImageUpload={handleImageUpload} />
+          </div>
         <button type="submit" className={styles.btn}>
           Registrarse
         </button>

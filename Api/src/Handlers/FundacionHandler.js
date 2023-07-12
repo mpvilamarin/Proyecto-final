@@ -18,6 +18,7 @@ async function postFundacion(req, res) {
     fundadaEn,
     mision,
     borrado,
+    image,
     tipo,
   } = req.body;
 
@@ -48,7 +49,7 @@ async function postFundacion(req, res) {
       fundadaEn,
       mision,
       borrado,
-
+      image,
       tipo:'fundacion',
 
     });
@@ -98,19 +99,19 @@ async function updateFundacion(req, res) {
     req.body;
 
   try {
-    const fundaciones = await Fundaciones.findOne({
+    const fundacion = await Fundaciones.findOne({
       where: {
         id,
       },
     });
 
-    if (!fundaciones) {
+    if (!fundacion) {
       return res
         .status(STATUS_ERROR)
         .json({ message: "Fundacion no encontrada" });
     }
 
-    const updateFundacion = await fundaciones.update({
+    const updateFundacion = await fundacion.update({
       nombre,
       ciudad,
       direccion,

@@ -29,11 +29,11 @@
   margin-top: 15px;
 }
 
-.form:hover {
+/* .form:hover {
   transform: translateX(-0.5em) translateY(-0.5em);
   border: 1px solid #171717;
   box-shadow: 10px 10px 0px #6080B8;
-}
+} */
 
 .heading {
   color: black;
@@ -128,7 +128,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
+  /* background-color: rgba(0, 0, 0, 0.5);  */
   display: flex;
   flex-direction: column;
   justify-content: center;

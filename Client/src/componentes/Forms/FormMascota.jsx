@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postMascota } from '../../redux/Actions/post';
 import { getAllFundaciones } from '../../redux/Actions/get';
+import { ToastContainer, toast} from 'react-toastify';
 import './stilosFormularioMascota.css';
 import UploadWidget from "../../componentes/Upload/UploadWidget";
 
 function FormMascota() {
   const fundaciones = useSelector((state) => state.fundaciones);
-  const info = useSelector((state) => state.fundacionDetail)
+  const info = useSelector((state) => state.sesion)
   const { nombre } = info
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -68,7 +69,6 @@ function FormMascota() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid) {
-      console.log(newMascota)
       dispatch(postMascota(newMascota));
       setNewMascota({
         nombre: '',
@@ -84,7 +84,9 @@ function FormMascota() {
       });
       setShowAlert(false);
       setInvalidFields([]);
-      navigate('/adopciones')
+      setTimeout(() => {
+        navigate('/adopciones') 
+       }, 2500)
     } else {
       setShowAlert(true);
     }
@@ -124,6 +126,7 @@ function FormMascota() {
     <div className="form-container">
       <h1 className="title-form">FORMULARIO PARA MASCOTAS</h1>
       <Form className="custom-form">
+        <ToastContainer autoClose={2500}></ToastContainer>
         {showAlert && (
           <Alert variant="danger">Por favor, completa todos los campos.</Alert>
         )}
@@ -268,7 +271,7 @@ function FormMascota() {
         </Form.Group>
 
         <div>
-          {newMascota.image && <img src={newMascota.image} alt="image"></img>}
+          {newMascota.image && <img style={{width: "280px", height:"205px"}} src={newMascota.image} alt="image"></img>}
           <UploadWidget onImageUpload={handleImageUpload} />
         </div>
 

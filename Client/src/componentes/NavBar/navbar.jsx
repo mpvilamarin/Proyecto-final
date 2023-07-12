@@ -27,7 +27,6 @@ export default function NavBar() {
   };
 
   useEffect(() => {
-
   }, [usuarioAdmin,usuarioFundacion])
 
 
@@ -51,10 +50,6 @@ export default function NavBar() {
               Tu Dashboard
             </Link>)}
 
-
-            {usuarioAdmin &&(<Link to="/crearAdmin" className="nav-link">
-              Crea tus admin
-            </Link>)}
 
             {isAuthenticated && (
               <Link to="/donaciones" className="nav-link">
