@@ -32,4 +32,4 @@ export const validate = (name, value, input) => {
     }
 
     return error;
-};  
+}; 
