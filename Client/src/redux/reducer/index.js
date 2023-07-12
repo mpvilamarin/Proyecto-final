@@ -7,6 +7,7 @@ import {
   GET_DETAIL_FUNDACION,
   GET_ALL_USUARIOS,
   GET_DETALLE_USUARIO,
+  GET_USUARIO,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
   GET_ALL_ADOPCIONES,
   GET_DETAIL_ADOPCION,
@@ -56,6 +57,7 @@ const initialState = {
   usuarioAdmin: [],
   usuarioFundacion: [],
   usuarios: [],
+  usuario: null,
   sesion: [],
 
   usuarioDetalle: [],

@@ -91,3 +91,20 @@ export const updateFundacion = (
     }
   };
 };
+
+export const adopcionMascota = (id, nombre, adop) =>{
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(`/mascotas/${id}`, {
+        nombre,
+        adop,
+      });
+      dispatch({
+        type: UPDATE_MASCOTA,
+        payload: response.data,
+      });
+    } catch (error) {
+      alert(` error al actualizar datos de la Mascota ${error} `);
+    }
+  };
+}

@@ -130,7 +130,7 @@ async function deleteMascota(req, res) {
 async function updateMascota(req, res) {
   const { id } = req.params;
 
-  const {nombre, especie,tamaño, edad, genero, temperamento, descripcion,image } = req.body;
+  const {nombre, especie,tamaño, edad, genero, temperamento, descripcion,image, adop } = req.body;
 
   try {
     const mascota = await Mascotas.findOne({
@@ -152,6 +152,7 @@ async function updateMascota(req, res) {
       temperamento,
       descripcion,
       image,
+      activo: adop
     });
 
     return res.status(STATUS_OK).json(updateMascota);

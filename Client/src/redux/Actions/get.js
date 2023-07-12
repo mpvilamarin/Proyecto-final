@@ -10,6 +10,7 @@ import {
   GET_NAME_FUNDACIONES,
   GET_REVIEWS,
   GET_ADMIN,
+  GET_ALL_ADOPCIONES,
   GET_DONACIONES,
 
 } from "../Actions-type/index.js";
@@ -129,7 +130,6 @@ export const resetDetail = () => {
 export const getAdmin = () => {
   return async (dispatch) => {
     try {
-      console.log('por aca pase')
       const response = await axios.get('http://localhost:3001/admin')
       console.log(response)
       let  admin = response?.data?.map((e) => e);
@@ -141,6 +141,21 @@ export const getAdmin = () => {
     }
   }
 }
+
+export const getAdopciones = () =>{
+  return async (dispatch) =>{
+    try{
+      const response = await axios.get('/adopciones/')
+      console.log(response)
+      dispatch({type: GET_ALL_ADOPCIONES})
+    } catch (error){
+      console.log(`error ${error}`);
+      console.log(`no hay adopciones creadas`);
+    }
+  }
+}
+
+
 
 export const getDonaciones = () => {
   return async (dispatch) => {
