@@ -128,37 +128,39 @@ async function deleteMascota(req, res) {
 }
 
 async function updateMascota(req, res) {
-  const { nombre } = req.params;
-  const { especie, edad, genero, temperamento, descripcion, adop } = req.body;
+  const { id } = req.params;
+
+  const {nombre, especie,tamaño, edad, genero, temperamento, descripcion,image } = req.body;
 
   try {
-    console.log('por aca pase')
     const mascota = await Mascotas.findOne({
-      where: { nombre },
+      where: { id },
     });
 
     if (!mascota) {
-      return res.status(STATUS_ERROR).json({ message: "Mascota no encontrada" });
+      return res
+        .status(STATUS_ERROR)
+        .json({ message: "Mascotas no encontrada" });
     }
 
-    const updateValues = {
+    const updateMascota = await mascota.update({
+      nombre,
       especie,
+      tamaño,
       edad,
       genero,
       temperamento,
       descripcion,
-      activo: adop
-    };
-
-
-    const updateMascota = await mascota.update(updateValues);
+      image,
+    });
 
     return res.status(STATUS_OK).json(updateMascota);
   } catch (error) {
-    res.status(STATUS_ERROR).json({ message: `Error al actualizar la mascota: ${error}` });
+    res
+      .status(STATUS_ERROR)
+      .json({ message: `Error al actualizar la mascota: ${error}` });
   }
 }
-
 
 module.exports = {
   postMascota,
