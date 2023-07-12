@@ -1,24 +1,42 @@
 .container {
-  position: absolute;
   top: 0;
-  left: 0;
-  width: 200px;
-  height: 100vh;
+  width: 230px;
   background-color: white;
   padding: 20px;
   overflow-y: auto;
-  margin-right: 200px;
   border-right: 3px solid rgb(218, 218, 218);
   border-radius: 15px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  position: sticky;
 }
 
-.navbar {
+.navBar {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
 .li {
-  margin-bottom: 10px;
+  padding-bottom: 25px;
+  margin-top: 40px;
+  margin-left: 15px;
+  transition: 0.3s;
+  border-bottom: 1px solid #ccc;
 }
+
+.li:hover {
+  transform:translateX(8px)
+}
+
+.menu {
+  color: black;
+  font-size: 20px;
+  font-family: 'Playfair Display';
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.menu:active {
+  color: rgb(138, 138, 138);
+}
+

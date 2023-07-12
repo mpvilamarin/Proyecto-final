@@ -52,10 +52,6 @@ export default function NavBar() {
             </Link>)}
 
 
-            {usuarioAdmin &&(<Link to="/crearAdmin" className="nav-link">
-              Crea tus admin
-            </Link>)}
-
             {isAuthenticated && (
               <Link to="/donaciones" className="nav-link">
                 Donaciones

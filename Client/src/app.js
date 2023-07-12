@@ -12,7 +12,7 @@ import Footer from "./componentes/Footer/Footer";
 import Dashboard from "./componentes/DashboardAdmin/Dashboard/Dashboard";
 import BienvenidaAdmin from "./componentes/DashboardAdmin/Inicio/BienvenidaAdmin";
 import  CrearAdmin  from "./componentes/DashboardAdmin/CrearAdmin/CrearAdmin";
-import ModificarFundacion from "./componentes/DashboardAdmin/ModificarFundacion/ModificarFundacion";
+import ModificarFundacion from "./componentes/DashboardAdmin/ManejoFundaciones/ManejoFundaciones";
 //import { RequireAuth } from "react-auth-kit";
 
 import LogOut from "./componentes/Autenticación/LogOut/logout";
