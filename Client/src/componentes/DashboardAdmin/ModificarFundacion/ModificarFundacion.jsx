@@ -62,14 +62,7 @@ const ModificarFundacion = () => {
       const { id } = selectedFundacion;
   
       await dispatch(updateFundacion(
-        id, 
-        input.nombre, 
-        input.ciudad, 
-        input.direccion, 
-        input.telefono, 
-        input.email, 
-        input.fundadaEn, 
-        input.mision));
+        id, input.nombre, input.ciudad, input.direccion, input.telefono, input.email, input.fundadaEn, input.mision));
     
       
       setInput({
