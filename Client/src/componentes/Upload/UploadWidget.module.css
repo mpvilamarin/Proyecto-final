@@ -1,0 +1,28 @@
+.btnImg {
+  align-items: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  height: 35px;
+  width: 100%;
+  color: #666666;
+  background-color: rgba(245, 245, 245, 0.837);
+  font-weight: bolder;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+}
+
+.btnImg:hover {
+  box-shadow: 1px 1px 200px #252525;
+  border: none;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btnImg:active {
+  transition: 0.2s;
+  transform: translateX(0em) translateY(0em);
+  box-shadow: none;
+}

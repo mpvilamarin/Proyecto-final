@@ -1,7 +1,10 @@
 .bienvenida {
+  display: flex;
+  flex-direction: column;
   width: 100hv;
-  height: 50vh;
-  background-color: #f3dfc1;
+  height: 600px;
+  background-image: url('../../../assets/Background1.1.png');
+  background-size: cover;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -12,4 +15,18 @@
 .ContenedorPadre {
   display: flex;
   justify-content: center;
+}
+
+.title {
+  font-family: 'Playfair Display';
+  font-size: 50px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sub {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
 }

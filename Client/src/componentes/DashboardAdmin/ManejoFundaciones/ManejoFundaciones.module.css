@@ -1,5 +1,10 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .contendorForm{
-  
     align-items: center;
     justify-content: center;
     width: 50%;
@@ -20,6 +25,7 @@
     margin-left: 8rem;
     margin-right: 2rem;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     font-family: 'Merryweather';
     font-size: large;
   }
@@ -29,16 +35,27 @@
     border: 1px solid #171717;
     box-shadow: 10px 10px 0px #689fb3;
   }
+
+  .input {
+    border-radius: 15px;
+    color: rgb(20, 20, 20);
+    height: 40px;
+    border: 1px solid #b3b3b3;
+    padding-left: 10px;
+  }
   
-  
-  .fundacion{
+  .fundacion {
     display: flex;
-    border: solid 2px black;
+    flex-direction: column;
     width: 25%;
     margin-left: 4rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-items: center;
   }
+
   .contendorFundacion{
-    border: solid 2px black;
+    border-bottom: 1px solid #ccc;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -57,4 +74,66 @@
     justify-content: center;
     align-items: center;
     z-index: 999; /* Asegura que la pantalla de carga esté sobre el formulario */
+  }
+
+  .title {
+    font-family: 'Playfair Display';
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .sub {
+    font-family: 'Merriweather';
+    font-size: 25px;
+    font-weight: 400;
+    text-align: start;
+  }
+
+  .button {
+    border-radius: 25px;
+    height: 42px;
+    width: 80px;
+    background-color: #4898BF;
+    color: white;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    transition: 0.3s;
+    border: none;
+  }
+
+  .button:hover {
+    transform: scale(1.1);
+  }
+
+  .button2 {
+    border-radius: 25px;
+    height: 50px;
+    width: 100px;
+    background-color: #4898BF;
+    color: white;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    transition: 0.3s;
+    border: none;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button2:hover {
+    transform: scale(1.1);
+  }
+
+  .buttonSend {
+    display: flex;
+    justify-content: center;
+  }
+
+  .text {
+    border-radius: 10px;
+    color: rgb(20, 20, 20);
+    height: 60px;
+    border: 1px solid #b3b3b3;
+    padding-left: 10px;
+    font-family: 'Merryweather';
   }
