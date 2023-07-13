@@ -3,17 +3,17 @@ import { DELETE_MASCOTA, DELETE_FUNDACION } from "../Actions-type/index.js";
 
 //====================================>> DELETE <<=================================================================
 
-export const deleteMascota = (nombre) => {
+export const deleteMascota = (id,nombre) => {
   return async (dispatch) => {
     try {
-      await axios.delete(`/mascotas/${nombre}`);
+      const response = await axios.delete(`/mascotas/${id}`);
       dispatch({
         type: DELETE_MASCOTA,
-        payload: nombre,
+        payload: response.data,
       });
-      alert(`La mascota ${nombre} fue eliminada con éxito`);
+      
     } catch (error) {
-      alert(`Error al eliminar la mascota ${error}`);
+      
     }
   };
 };
