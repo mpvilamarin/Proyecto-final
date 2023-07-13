@@ -122,7 +122,7 @@ export const postUsuario = (user) => {
       const response = await axios.post(`/usuarios/`, user);
       dispatch({
         type: POST_USUARIO,
-        payload: response.data,
+        payload: user,
       });
       alert("Usuario creada con exito");
     } catch (error) {
