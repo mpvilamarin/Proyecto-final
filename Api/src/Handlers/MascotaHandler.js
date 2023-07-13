@@ -138,7 +138,7 @@ async function borradoMascota(req, res) {
 
 async function updateMascota(req, res) {
   const { id } = req.params;
-  console.log(id);
+  
 
   const {nombre, especie,tamaño, edad, genero, temperamento, descripcion,image, adop } = req.body;
 
@@ -165,7 +165,6 @@ async function updateMascota(req, res) {
       image,
       activo: adop
     });
-    console.log(updateMascota.activo)
     return res.status(STATUS_OK).json(updateMascota);
   } catch (error) {
     res

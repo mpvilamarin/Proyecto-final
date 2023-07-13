@@ -7,7 +7,11 @@ import { connect, useDispatch, useSelector } from 'react-redux'
 import huella from '../../assets/huellitabg.png'
 import huellaoscura from '../../assets/huellitaOscurabg.png'
 import style from './cards.module.css'
+import { useAuth0 } from "@auth0/auth0-react";
 const CardAdop = ({ mascota, indexMascota }) => {
+  const { isAuthenticated, user } = useAuth0();
+
+
   const [isFav, setIsFav] = useState(false);
 
   const dispatch = useDispatch();
@@ -28,13 +32,14 @@ const CardAdop = ({ mascota, indexMascota }) => {
     return (
       <div>
         <Card key={indexMascota} style={{ width: '18rem' }}>
-          <Button onClick={() => handleFavorite(mascota)} className={style.button1} >
+          {isAuthenticated &&(<Button onClick={() => handleFavorite(mascota)} className={style.button1} >
             {isFav ? (
               <img src={huellaoscura} alt="Favorito" className={style.favoriteIcon} />
             ) : (
               <img src={huella} alt="No favorito" className={style.favoriteIcon} />
             )}
-          </Button>
+          </Button>)}
+          
           <Card.Img variant="top" src={mascota?.image} alt="Mascota" className={style.image} />
           <Card.Body>
             <Card.Title className="card-title">{mascota?.nombre}</Card.Title>

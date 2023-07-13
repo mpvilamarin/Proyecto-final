@@ -3,8 +3,12 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import style from "./detailMascota.module.css";
 import { getDetailMascota } from "../../redux/Actions/get";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 export default function Detalle() {
+  const { isAuthenticated, user } = useAuth0();
+  const usuarioFundacion = useSelector((state) => state.usuarioFundacion);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -17,13 +21,20 @@ export default function Detalle() {
   }, [dispatch, id]);
 
   const handleClickAdoptar = () => {
-    // Obtener el ID de la mascota y el ID de la fundación
-    const mascotaId = selector.id;
-    const fundacionId =
+    if(isAuthenticated){
+      // Obtener el ID de la mascota y el ID de la fundación
+      const mascotaId = selector.id;
+      const fundacionId =
       selector.Fundaciones[0].MascotasFundaciones.FundacioneId;
 
-    // Pasar los IDs al componente mediante useNavigate
-    navigate(`/formAdopcion?mascotaId=${mascotaId}&fundacionId=${fundacionId}`);
+      // Pasar los IDs al componente mediante useNavigate
+      navigate(`/formAdopcion?mascotaId=${mascotaId}&fundacionId=${fundacionId}`);
+    }else{
+      alert('si quieres adoptar, debes iniciar sesion')
+      navigate('/login');
+    }
+    
+   
   };
 
   return (
@@ -58,9 +69,10 @@ export default function Detalle() {
             <h2 className={style.property}>Castrado:</h2>
             <p className={style.value}>{selector.castrado}</p>
           </div>
-          <button className={style.button} onClick={handleClickAdoptar}>
+          {!usuarioFundacion && (<button className={style.button} onClick={handleClickAdoptar}>
             Adoptar
-          </button>
+          </button>)}
+          
         </div>
       ) : undefined}
     </div>

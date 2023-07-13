@@ -8,8 +8,11 @@ import fundaciones from '../Cartas/fundacion.png';
 import style from './detailFundacion.module.css'
 import Review from "../Reviews/reviews";
 import CardAdop from "../Cartas/cardAdopcion";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const DetailFundacion = () => {
+  const { isAuthenticated, user } = useAuth0();
+
   const { id } = useParams();
   const dispatch = useDispatch();
   const fundacion = useSelector((state) => state.fundacionDetail);
@@ -22,7 +25,12 @@ const DetailFundacion = () => {
   const fundacionId = id;
 
   const handleClick = () => {
-    navigate("/donaciones", { state: { fundacionId, fundacionNombre: fundacion.nombre } });
+    if(isAuthenticated){
+      navigate("/donaciones", { state: { fundacionId, fundacionNombre: fundacion.nombre } });
+    }else{
+      alert("Por favor inicia sesión para realizar una donación")
+      navigate('/login')
+    }
   };
 
   useEffect(() => {
@@ -76,16 +84,21 @@ const DetailFundacion = () => {
                 />
               ))}
           </div>
+          
           <div className={style.contenedorReviews}>
             <h1>Reviews</h1>
-            <div className={style.reviews}>
-              <FormReviews fundacionNombre={fundacion?.nombre} />
-            </div>
+            {isAuthenticated &&(
+              <div className={style.reviews}>
+                <FormReviews fundacionNombre={fundacion?.nombre} />
+              </div>
+            )}
+            
             {reviews &&
               reviews.map((review, indexReview) => (
                 <Review review={review} key={indexReview} />
               ))}
           </div>
+            
         </div>
         </div>
       )}
