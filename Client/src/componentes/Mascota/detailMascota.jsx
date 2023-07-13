@@ -65,10 +65,11 @@ export default function Detalle({ mascotaId }) {
             <h2 className={style.property}>Castrado:</h2>
             <p className={style.value}>{selector.castrado}</p>
           </div>
-          {!usuarioFundacion && (<button className={style.button} onClick={handleClickAdoptar}>
-            Adoptar
-          </button>)}
-
+          <div className={style.contButton}>
+            {!usuarioFundacion && (<button className={style.button} onClick={handleClickAdoptar}>
+              Adoptar
+            </button>)}
+          </div>
         </div>
       ) : undefined}
     </div>
