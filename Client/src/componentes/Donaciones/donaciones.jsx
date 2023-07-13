@@ -57,7 +57,7 @@ const Donaciones = () => {
     };
 
     axios
-      .post("http://localhost:3001/donaciones", donacion)
+      .post("/donaciones", donacion)
       .then((res) => {
         const initPoint = res.data.response.body.init_point;
         window.open(initPoint);
