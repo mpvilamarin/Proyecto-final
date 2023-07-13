@@ -51,9 +51,10 @@ module.exports = (sequelize) => {
         defaultValue: true,
         allowNull: false,
       },
-      fechaBorrado: {
-        type: DataTypes.DATE,
-        allowNull: true,
+      borrado: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false, // Cambiado a false
       },
     },
     {

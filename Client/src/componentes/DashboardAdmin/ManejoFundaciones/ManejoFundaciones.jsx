@@ -101,7 +101,7 @@ const ModificarFundacion = () => {
         mision: "",
         borrado: false,
       });
-      window.location.href = "/ModificarFundacion";
+      window.location.href = "/DashboardAdmin";
 
     }
   };
@@ -124,11 +124,12 @@ const ModificarFundacion = () => {
                   <p>
                     <span key={index} className={styles.sub}>Fundación: {fundacion.nombre}</span>
                   </p>
+                  
+
+                  <div className={styles.buttonSend} key={index}>
                   <button key={index} onClick={() => handleEditClick(index)} className={styles.button}>
                     editar
                   </button>
-
-                  <div className={styles.buttonSend} key={index}>
                   <button
                     key={index}
                     onClick={() => handleDeleteClick(fundacion.id, fundacion.nombre)}
