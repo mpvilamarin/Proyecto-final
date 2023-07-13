@@ -1,5 +1,6 @@
 import "./App.css";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import Home from "./componentes/Home/home";
 import Nosotros from "./componentes/Nosotros/nosotros";
@@ -47,8 +48,10 @@ import DueñoResponsable from "./componentes/Información/DueñoResponsable/Due�
 
 function App() {
   axios.defaults.baseURL = "http://localhost:3001/";
+  const usuarioAdmin = useSelector((state) => state.usuarioAdmin);
+  
 
-  const location = useLocation();
+  const usuarioFundacion = useSelector((state) => state.usuarioFundacion);
   const { isAuthenticated, user } = useAuth0();
 
   return (
@@ -56,70 +59,91 @@ function App() {
       <div>
         <NavBar />
         <Routes>
-          {/* <Route
-          path="/"
+          
+          <Route path="/" 
           element={
-          //  <RequireAuth loginPath="/login">
-              <Home />
-          //  </RequireAuth>
-          }
-        ></Route> */}
-          {/* <Route exact path="/" element={<Landing/>}></Route> */}
-          <Route path="/" element={<Home />} />
+            !usuarioAdmin && !usuarioFundacion?
+            (<Home />)
+          :(<Navigate to='/error'/>)} />
+
           <Route path="/about" element={<Nosotros />} />
           <Route path="/fundaciones" element={<Fundacion />} />
           <Route path="/mascota/:id" element={<DetalleMascota />} />
           <Route path="/fundacion/:id" element={<DetalleFundacion />} />
-          <Route path="/adopciones" element={<Adopcion />} />
-          <Route path="/login" element={<Inicio />} />
-          <Route path="/login2" element={<Login2 />} />
-          <Route path="/logout" element={<LogOut />} />
-          <Route path="/perfil" element={<Perfil />} />
+          <Route path="/adopciones" element={<Adopcion />}/>
+          
+          <Route path="/login"
+          element={
+            !isAuthenticated && !usuarioAdmin && !usuarioFundacion ?
+            (<Inicio />)
+            :(<Navigate to='/error'/>)} />
+
+
+          <Route path="/logout"
+          element={
+            isAuthenticated  ?
+            (<LogOut />)
+            :(<Navigate to='/error'/>)} />
+
+          <Route path="/perfil"
+          element={isAuthenticated && !usuarioAdmin && !usuarioFundacion ?
+          (<Perfil />)
+          :(<Navigate to='/error'/>)}/>
+
           <Route path="/registro" element={<Registro />} />
           <Route path="/dueñoResponsable" element={<DueñoResponsable />} />
 
-          <Route path="/perfilfund" element={<PerfilFund />} />
-
-          {/* <Route
-          path="/formFundaciones"
+          <Route path="/perfilfund" 
           element={
-            isAuthenticated && user && user.role === "Fundacion" ? (
-              <FormFundaciones user={user} />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/formMascota"
-          element={
-            isAuthenticated && user && user.role === "Fundacion" ? (
-              <FormMascota user={user} />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        /> */}
+          !isAuthenticated && isAuthenticated && !usuarioAdmin || usuarioFundacion?
+          (<PerfilFund />)
+          :(<Navigate to='/error'/>)} />
 
-        <Route path="/formMascota" element={<FormMascota />} />
-        <Route path="/formFundaciones" element={<FormFundaciones />} />
-        <Route path="/formAdopcion" element={<FormAdopcion />} />
+        
 
-        <Route path="/donaciones" element={<Donacion />} />
-        <Route path="/formAdopcion" element={<FormAdopcion />} />
-        <Route path="/donaciones/feedback" element={<Feedback />} />
-        <Route path="/donaciones/rejected" element={<Rejected />} />
-        <Route path="/DashboardAdmin" element={<Dashboard />} />
-        <Route path="/InicioAdmin" element={<BienvenidaAdmin />} />
+        <Route path="/formMascota" 
+        element={
+        !isAuthenticated && isAuthenticated && !usuarioAdmin || usuarioFundacion?
+        (<FormMascota />)
+        :(<Navigate to='/error'/>)} />
+
+        
+        <Route path="/formAdopcion"
+        element={
+          isAuthenticated && !usuarioAdmin && !usuarioFundacion ?
+        (<FormAdopcion />)
+        :(<Navigate to='/error'/>)} />
+
+        <Route path="/donaciones" 
+        element={
+        isAuthenticated && !usuarioAdmin && !usuarioFundacion ?
+          (<Donacion />)
+        :(<Navigate to='/error'/>)} />
+
+        <Route path="/donaciones/feedback" 
+        element={
+          isAuthenticated && !usuarioAdmin && !usuarioFundacion ?
+          (<Feedback />)
+        :(<Navigate to='/error'/>)} />
+
+        <Route path="/donaciones/rejected" 
+        element={
+          isAuthenticated && !usuarioAdmin && !usuarioFundacion ?
+          (<Rejected />)
+        :(<Navigate to='/error'/>)} />
+
+        <Route path="/DashboardAdmin" 
+        element={
+        isAuthenticated && !isAuthenticated && !usuarioFundacion || usuarioAdmin ?  
+        (<Dashboard />)
+        :(<Navigate to='/error'/>)} />
+
+        
 
         <Route path="*" element={<Navigate to="/error" />} />
         <Route path="/error" element={<Redirect />} />
       
-        {/* A PARTIR DE ACA VAN LAS RUTAS PARA LA DASHBOARD */}
-        <Route path="/crearAdmin" element={<CrearAdmin />} />
-        <Route path="/ModificarFundacion" element={<ModificarFundacion />} />
-        <Route path="/ModificarMascota" element={<ModificarMascota/>} />
-
+      
         
       
       

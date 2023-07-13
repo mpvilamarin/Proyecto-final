@@ -36,22 +36,21 @@ export default function CardsFundacion() {
             {allFundaciones && allFundaciones.map((fundacion, indexFundacion) => (
 
               fundacion.borrado === false && (
-
                 <Card key={indexFundacion} className={style.card}>
                   <Card.Body>
-                    <Link to={`/fundacion/${fundacion.id}`}>
-                      <Card.Title className={style.cardTitle}>{fundacion?.nombre}</Card.Title>
-                    </Link>
+                    <Card.Title className={style.cardTitle}>{fundacion?.nombre}</Card.Title>
                     <Card.Img variant="top" className={style.imgFund} src={fundacion.image || fundaciones} />
                     <Card.Text>
                       <h2 className={style.cardInfo}>Dirección: {fundacion?.direccion}</h2>
                       <h2 className={style.cardInfo}>Ciudad: {fundacion?.ciudad}</h2>
                       <h2 className={style.cardInfo}>Email: {fundacion?.email}</h2>
                       <h2 className={style.cardInfo}>Misión: {fundacion?.mision}</h2>
+                      <Link to={`/fundacion/${fundacion.id}`}>
+                        Conocenos
+                      </Link>
                       <StarRating rating={Number(fundacion.Reviews && fundacion.Reviews[0]?.calificacion)} />
                     </Card.Text>
                   </Card.Body>
-
                 </Card>
               )
 

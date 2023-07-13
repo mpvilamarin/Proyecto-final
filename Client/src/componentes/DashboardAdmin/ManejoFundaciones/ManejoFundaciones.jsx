@@ -18,7 +18,7 @@ const ModificarFundacion = () => {
 
   useEffect(() => {
     dispatch(getAllFundaciones());
-  }, [dispatch]);
+  }, [dispatch, selectedFundacionIndex]);
 
   const [input, setInput] = useState({
     nombre: "",
@@ -37,7 +37,7 @@ const ModificarFundacion = () => {
   const [activo, setActivo] = useState(initialActivo);
   
   const handleDeleteClick = async (id, nombre) => {
-    const confirmacion = window.confirm(`¿Estás seguro de ${activo[id] ? 'desactivar' : 'activar'} la fundación ${nombre}?`);
+    const confirmacion = window.confirm(`¿Estás seguro de ${activo[id] ? 'activar' : 'desactivar'} la fundación ${nombre}?`);
     if (confirmacion) {
       try {
         await dispatch(deleteFundacion(id, nombre));
@@ -83,37 +83,35 @@ const ModificarFundacion = () => {
     event.preventDefault();
 
     if (selectedFundacionIndex !== null) {
+      
       setIsLoading(true);
 
       const selectedFundacion = allFundaciones[selectedFundacionIndex];
       const { id } = selectedFundacion;
 
-      await dispatch(updateFundacion(id, input.nombre, input.ciudad, input.direccion, input.telefono, input.email, input.fundadaEn, input.mision));
+       
 
-
-      setInput({
-        nombre: "",
-        ciudad: "",
-        direccion: "",
-        telefono: "",
-        email: "",
-        fundadaEn: "",
-        mision: "",
-        borrado: false,
-      });
-      window.location.href = "/DashboardAdmin";
-
+setTimeout(() =>{
+        dispatch(updateFundacion(
+        id, 
+        input.nombre, 
+        input.ciudad, 
+        input.direccion, 
+        input.telefono, 
+        input.email, 
+        input.fundadaEn, 
+        input.mision));
+        setSelectedFundacionIndex(null)
+      },1800)
     }
+    setTimeout(() => {
+      alert('Cambios exitosos');
+    }, 1000);
   };
-
+  
   return (
     <div>
-      {isLoading && (
-        <div className={styles.overlay}>
-          <p>Cargando...</p>
-        </div>
-      )}
-
+      
       <div className={styles.container}>
         <h1 className={styles.title}>Fundaciones</h1>
         <div>

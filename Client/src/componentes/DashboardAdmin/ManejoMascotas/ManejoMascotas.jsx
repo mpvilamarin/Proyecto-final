@@ -19,7 +19,7 @@ const ModificarMascota = () => {
 
     useEffect(() => {
         dispatch(getAllMascotas());
-    }, [dispatch]);
+    }, [dispatch , selectedMascotaIndex]);
 
     const [input, setInput] = useState({
         nombre: '',
@@ -31,6 +31,8 @@ const ModificarMascota = () => {
         descripcion: '',
         castrado: '',
         image: '',
+       
+        
     });
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
@@ -38,12 +40,7 @@ const ModificarMascota = () => {
     const initialActivo = storedActivo ? JSON.parse(storedActivo) : true;
     const [activo, setActivo] = useState(initialActivo);
 
-    const handleEditClick = (index) => {
-        setSelectedMascotaIndex(index);
-        setShowForm((prevShowForm) => !prevShowForm);
-        const selectedMascota = allMascotas[index];
-        setInput(selectedMascota);
-    };
+    
 
     const handleDeleteClick = async (id, nombre) => {
         const confirmacion = window.confirm(`¿Estás seguro de ${activo[id] ? 'activar' : 'desactivar'} la Mascota ${nombre}?`);
@@ -67,6 +64,12 @@ const ModificarMascota = () => {
         };
       }, [activo]);
 
+      const handleEditClick = (index) => {
+        setSelectedMascotaIndex(index);
+        setShowForm((prevShowForm) => !prevShowForm);
+        const selectedMascota = allMascotas[index];
+        setInput(selectedMascota);
+    };
      
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -96,8 +99,8 @@ const ModificarMascota = () => {
 
             const selectedMascota = allMascotas[selectedMascotaIndex];
             const { id } = selectedMascota;
-
-            await dispatch(updateMascota(
+            setTimeout(() => {
+                 dispatch(updateMascota(
                 id,
                 input.nombre,
                 input.especie,
@@ -109,31 +112,18 @@ const ModificarMascota = () => {
                 input.castrado,
                 input.image
             ));
-
-
-            setInput({
-                nombre: "",
-                especie: "",
-                tamaño: "",
-                edad: "",
-                genero: "",
-                temperamento: "",
-                descripcion: "",
-                castrado: "",
-                image: ""
-            });
-            window.location.href = "/DashboardAdmin";
-
+            setSelectedMascotaIndex(null);
+            }, 1800);
         }
+        setTimeout(() => {
+            alert('Cambios exitosos');
+          }, 1000);
+        
     };
 
     return (
         <div>
-            {isLoading && (
-                <div className={styles.overlay}>
-                    <p>Cargando...</p>
-                </div>
-            )}
+            
 
             <div className={styles.container}>
                 <h1 className={styles.title}>Mascotas</h1>
@@ -145,6 +135,7 @@ const ModificarMascota = () => {
                                     <p>
                                         <span key={index} className={styles.sub}>Nombre: {mascota.nombre}</span>
                                     </p>
+                                    
                                     <div className={styles.buttonSend} key={index}>
                                         <button key={index} onClick={() => handleEditClick(index)} className={styles.button}>
                                             editar
