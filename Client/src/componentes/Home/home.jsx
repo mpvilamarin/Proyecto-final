@@ -4,7 +4,7 @@ import Info from "../Información/Info";
 import InfoHome from "../InfoHome/InfoHome";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector, useDispatch } from "react-redux";
-import { postUsuario } from "../../redux/Actions/post";
+import { postUsuario, limpiarInfo } from "../../redux/Actions/post";
 import styles from "./home.module.css";
 import { Link } from "react-router-dom";
 
@@ -12,9 +12,10 @@ const Home = () => {
   const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
 
-  const usuarios = useSelector((state) => state.usuarios)
+  const usuarios = useSelector((state) => state.usuario)
 
   console.log(usuarios)
+
 
   useEffect(() => {
     // if (isAuthenticated) {
