@@ -9,31 +9,31 @@ import { updateMascota, adopcionMascota } from "../../redux/Actions/update";
 
 const CardMascota = ({ mascota, indexMascota }) => {
 
-  const [adop, setIsAdop] = useState(mascota.activo);
+  // const [adop, setIsAdop] = useState(mascota.activo);
 
   const dispatch = useDispatch();
 
-  const clickAdoptado = () => {
-    if (adop) {
-      dispatch(adopcionMascota(mascota.id, mascota.name, false))
-      setIsAdop(false)
-    }
-    else {
-      dispatch(adopcionMascota(mascota.id, mascota.name, true))
-      setIsAdop(true)
-    }
-  }
+  // const clickAdoptado = () => {
+  //   if (adop) {
+  //     dispatch(adopcionMascota(mascota.id, mascota.name, false))
+  //     setIsAdop(false)
+  //   }
+  //   else {
+  //     dispatch(adopcionMascota(mascota.id, mascota.name, true))
+  //     setIsAdop(true)
+  //   }
+  // }
 
   return (
     <div>
       <Card key={indexMascota} style={{ width: '18rem' }}>
-        <Button onClick={() => clickAdoptado()}>
+        {/* <Button onClick={() => clickAdoptado()}>
           {adop ? (
             <h2>Adoptado</h2>
           ) : (
             <h2>Sin adoptar</h2>
           )}
-        </Button>
+        </Button> */}
         <Card.Img src={mascota?.image} alt="Mascota" />
         <Card.Body>
           <Card.Title className="card-title">{mascota?.nombre}</Card.Title>
