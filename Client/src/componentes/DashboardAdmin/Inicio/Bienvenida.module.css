@@ -18,14 +18,14 @@
 }
 
 .title {
-  font-family: 'Playfair Display';
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 50px;
   font-weight: 600;
   text-align: center;
 }
 
 .sub {
-  font-family: 'Playfair Display';
+  font-family: 'Merriweather';
   font-size: 30px;
   font-weight: 400;
   text-align: center;

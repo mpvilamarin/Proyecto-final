@@ -143,7 +143,7 @@ const ModificarMascota = () => {
                                         <button
                                             key={index}
                                             onClick={() => handleDeleteClick(mascota.id, mascota.nombre)}
-                                            className={styles.button}
+                                            className={`${styles.button2} ${activo[mascota.id] ? styles['button2-activar'] : styles['button2-desactivar']}`}
                                         >
                                             {activo[mascota.id] ? 'Activar' : 'Desactivar'}
                                         </button>                  
@@ -274,7 +274,7 @@ const ModificarMascota = () => {
                                             </div>
 
                                             <div className={styles.cont}>
-                                                <button className={styles.button2}>Aceptar Cambios</button>
+                                                <button className={styles.button3}>Aceptar Cambios</button>
                                             </div>
                                         </form>
                                     )}

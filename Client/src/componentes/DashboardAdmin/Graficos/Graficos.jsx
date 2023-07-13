@@ -100,6 +100,43 @@ const Graficos = () => {
 
     // Usuarios Registrados
 
+    // Donaciones:
+    const getChartDataDon = () => {
+        const montosPorMes = {};
+        const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+        donaciones.forEach((donacion) => {
+            const fecha = new Date(donacion.fecha);
+            const mes = fecha.getMonth() + 1;
+            const monto = donacion.monto;
+
+            const monthLabel = months[mes - 1];
+
+            if (!montosPorMes[monthLabel]) {
+                montosPorMes[monthLabel] = monto;
+            } else {
+                montosPorMes[monthLabel] += monto;
+            }
+        });
+
+        const labels = Object.keys(montosPorMes);
+        const data = Object.values(montosPorMes);
+
+        const chartData = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Donaciones por mes',
+                    data: data,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderWidth: 1,
+                },
+            ],
+        };
+
+        return chartData;
+    };
+
     //Estilos gráfios:
     const options = {
         responsive: true,
@@ -111,7 +148,7 @@ const Graficos = () => {
         },
         scales: {
             y: { ticks: { color: 'black' } },
-            x: { ticks: { color: 'black'} },
+            x: { ticks: { color: 'black' } },
         },
     };
 
@@ -143,6 +180,7 @@ const Graficos = () => {
                 </div>
                 <div className={styles.donaciones}>
                     <h2 className={styles.sub}>Gráfico de Donaciones Recibidas</h2>
+                    <Bar data={getChartDataDon()} />
                 </div>
             </div>
         </div>
