@@ -17,15 +17,15 @@ const Home = () => {
   console.log(usuarios)
 
   useEffect(() => {
-    // if (isAuthenticated) {
-    //   const usuarioExistente = usuarios.find(
-    //     (usuario) => usuario.email === user.email
-    //   );
+    if (isAuthenticated) {
+      const usuarioExistente = Object.values(usuarios).find(
+        (usuario) => usuario?.email === user.email
+      );
 
-    //   if (!usuarioExistente) {
+      if (!usuarioExistente) {
         dispatch(postUsuario(user));
-    //   }
-    // }
+      }
+    }
   }, [user, dispatch]);
 
 
