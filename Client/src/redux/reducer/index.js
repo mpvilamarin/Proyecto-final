@@ -19,6 +19,7 @@ import {
   POST_MASCOTA,
   POST_USUARIO,
   POST_LOGIN,
+  LIMPIAR_ESTADOS,
   SORT_MASCOTAS_AZ,
   SORT_MASCOTAS_ZA,
   SORT_FUNDACIONES_AZ,
@@ -75,6 +76,8 @@ const initialState = {
   reviews: [],
 
   admin: [],
+
+  limpiarEstados: false,
 };
 
 function rootReducer(state = initialState, action, payload) {
@@ -304,7 +307,7 @@ function rootReducer(state = initialState, action, payload) {
     case POST_USUARIO:
       return {
         ...state,
-        usuario: action.payload,
+        usuario: state.usuarios.concat(action.payload),
       };
 
     case POST_LOGIN:
@@ -438,6 +441,13 @@ function rootReducer(state = initialState, action, payload) {
         ...state,
         donacionHecha: action.payload,
       };
+
+    case LIMPIAR_ESTADOS:
+      return{
+        ...state,
+        usuario: [],
+        limpiarEstados: true,
+      }
 
     default:
       return { ...state }

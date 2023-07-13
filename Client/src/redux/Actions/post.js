@@ -12,6 +12,7 @@ import {
   LOG_OUT,
   ADDFAV,
   REMOVEFAV,
+  LIMPIAR_ESTADOS,
 
 } from "../Actions-type/index.js";
 import { toast } from "react-toastify";
@@ -122,11 +123,11 @@ export const postUsuario = (user) => {
       const response = await axios.post(`/usuarios/`, user);
       dispatch({
         type: POST_USUARIO,
-        payload: response.data,
+        payload: user,
       });
-      alert("Usuario creada con exito");
+    //  alert("Usuario creada con exito");
     } catch (error) {
-      alert(`error al crear la Usuario ${error}`);
+     // alert(`error al crear la Usuario ${error}`);
     }
   };
 };
@@ -192,3 +193,7 @@ export const addFav = (id, email) => {
     }
   }
 };
+
+export const limpiarInfo = () =>{
+  return{type: LIMPIAR_ESTADOS}
+}
