@@ -3,13 +3,21 @@ import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { useSelector, useDispatch} from "react-redux";
 import CardAdop from "../../Cartas/cardAdopcion";
 import styles from "./perfil.module.css";
+import { getUsuarioEmail } from "../../../redux/Actions/get";
 
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const dispatch = useDispatch();
 
+  const usuario = useSelector((state) => state.usuario);
+  const mascotas = usuario.Mascotas
+  console.log(mascotas)
 
-  console.log("aqui esta:", user.sub);
+  useEffect(() =>{
+    dispatch(getUsuarioEmail(user.email))
+  },[])
+
 
   if (isLoading) {
     return (
@@ -32,11 +40,15 @@ const Profile = () => {
         </div>
         <h2 className={styles.sub}>Mis peluditos favoritos</h2>
         <div>
-
           <div>
-            <h3>Mis Adopciones:</h3>
+          {mascotas.map((mascota, indexMascota) => (
+            <CardAdop
+              mascota={mascota}
+              indexMascota={mascota.id}
+              key={indexMascota}
+            />
+        ))}
           </div>
-
         </div>
       </div>
     )

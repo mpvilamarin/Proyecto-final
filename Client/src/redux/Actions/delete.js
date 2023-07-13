@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_MASCOTA, DELETE_FUNDACION } from "../Actions-type/index.js";
+import { DELETE_MASCOTA, DELETE_FUNDACION, REMOVEFAV } from "../Actions-type/index.js";
 
 //====================================>> DELETE <<=================================================================
 
@@ -32,3 +32,19 @@ export const deleteFundacion = (id, nombre) => {
     }
   };
 };
+
+export const removeFav = (id, email) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(`/mascotas/removeFav/${id}/${email}`);
+      console.log(response)
+      dispatch({ 
+        type: REMOVEFAV, 
+        payload: response.data
+      });
+    } catch (error) {
+      alert(`Error al remover de favoritos ${error}`);
+    }
+  }
+};
+

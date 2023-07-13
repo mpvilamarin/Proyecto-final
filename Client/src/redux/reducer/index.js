@@ -57,7 +57,7 @@ const initialState = {
   usuarioAdmin: [],
   usuarioFundacion: [],
   usuarios: [],
-  usuario: null,
+  usuario:[],
   sesion: [],
 
   usuarioDetalle: [],
@@ -101,6 +101,7 @@ function rootReducer(state = initialState, action, payload) {
           ...action.payload,
           fundaciones: action.payload.fundaciones || [],
         },
+   //     usuarios:[]
       };
     case SORT_MASCOTAS_AZ:
       return {
@@ -232,6 +233,12 @@ function rootReducer(state = initialState, action, payload) {
         fundaciones: filteredFundaciones,
       };
 
+    case GET_USUARIO:
+      return{
+        ...state,
+        usuario: action.payload
+      }
+
     case FILTER_MASCOTA_BY_ESPECIE:
       const especie = action.payload;
       let mascotasFiltradas2 = [];
@@ -297,7 +304,7 @@ function rootReducer(state = initialState, action, payload) {
     case POST_USUARIO:
       return {
         ...state,
-        usuarios: state.usuarios.concat(action.payload),
+        usuario: state.usuario.concat(action.payload),
       };
 
     case POST_LOGIN:
@@ -420,10 +427,10 @@ function rootReducer(state = initialState, action, payload) {
 
 
     case ADDFAV:
-      return { ...state, mascotasFav: action.payload }
+      return { ...state }
 
     case REMOVEFAV:
-      return { ...state, favoritos: state.favoritos.filter(fav => fav.indexMascotas !== payload) }
+      return { ...state}
 
 
     case GET_DONACIONES:

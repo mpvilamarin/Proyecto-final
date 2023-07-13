@@ -12,7 +12,9 @@ const Home = () => {
   const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
 
-  const usuarios = useSelector((state) => state.usuarios);
+  const usuarios = useSelector((state) => state.usuarios)
+
+  console.log(usuarios)
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -24,7 +26,7 @@ const Home = () => {
         dispatch(postUsuario(user));
       }
     }
-  }, [user, usuarios, dispatch]);
+  }, [user, dispatch]);
 
   return (
     <div className={styles.container}>

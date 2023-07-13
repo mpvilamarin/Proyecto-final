@@ -6,8 +6,6 @@ const STATUS_OK = 200;
 
 async function postFundacion(req, res) {
 
-  
-
   const {
     nombre,
     ciudad,

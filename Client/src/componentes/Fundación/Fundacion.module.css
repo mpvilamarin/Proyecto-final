@@ -1,5 +1,5 @@
 .containerFundaciones {
-  display: flex;
+  display: block;
   flex-direction: column;
   flex-wrap: wrap;
   top: 100px;
@@ -9,7 +9,7 @@
   background-size: cover;
   background-position: bottom center;
   background-repeat: no-repeat;
-  height: 90vh;
+  min-height: 100vh;
 }
 
 .caja {
@@ -25,6 +25,7 @@
   border-style: solid;
   border-right-width: 0;
   border-left-width: 0;
+  width: 100%;
 }
 
 .img {
@@ -77,4 +78,30 @@ margin-left: 5px;
   margin-top: 10px;
   text-align: start;
   margin-left: -1px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin-top: 40px;
+  margin-left: 6px;
+  /* Ajusta el espacio en el lado izquierdo */
+  margin-right: -5px;
+  /* Ajusta el espacio en el lado derecho */
+}
+
+.cardContainer>* {
+  flex: 1 0 5%;
+  margin: 10px;
+  box-sizing: border-box;
+  /* Asegura que el margen esté dentro del ancho de la tarjeta */
+}
+
+@media (max-width: 768px) {
+  .cardContainer>* {
+    flex: 0 0 calc(50% - 10px);
+    margin: 5px;
+  }
 }
