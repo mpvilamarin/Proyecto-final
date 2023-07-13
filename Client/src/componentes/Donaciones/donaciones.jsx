@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import logoMercadoPago from "./mercadopago.png";
+import logoMercadoPago from "../../assets/mercadopago3.png";
 import styles from "./Donaciones.module.css";
 
 const Donaciones = () => {

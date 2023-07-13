@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addFav, removeFav } from "../../redux/Actions/post.js";
+import { addFav } from "../../redux/Actions/post.js";
+import { removeFav } from "../../redux/Actions/delete.js";
 import Modal from "react-modal";
 import huella from "../../assets/huellitabg.png";
 import huellaoscura from "../../assets/huellitaOscurabg.png";
