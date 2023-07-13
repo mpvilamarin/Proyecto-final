@@ -1,27 +1,36 @@
-import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+import { useSelector, useDispatch} from "react-redux";
 import CardAdop from "../../Cartas/cardAdopcion";
 import styles from "./perfil.module.css";
+import { getUsuarioEmail } from "../../../redux/Actions/get";
+
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
-  console.log(user, isAuthenticated, isLoading)
-  const mascotasFav = useSelector((state) => state.mascotasFav)
-  console.log(mascotasFav)
+  const dispatch = useDispatch();
+
+  const usuario = useSelector((state) => state.usuario);
+  const mascotas = usuario.Mascotas
+  console.log(mascotas)
+
+  useEffect(() =>{
+    dispatch(getUsuarioEmail(user.email))
+  },[])
+
 
   if (isLoading) {
     return (
       <div className={styles.containerLoading}>
         <div className={styles.loading}>
-          <img className={styles.img}src={require("../../../assets/LoadingCat.gif")} alt="cargando" />
+          <img className={styles.img} src={require("../../../assets/LoadingCat.gif")} alt="cargando" />
         </div>
       </div>
     )
   }
 
   return (
-    isAuthenticated && (    
+    isAuthenticated && (
       <div className={styles.container}>
         <h1 className={styles.title}>Mi perfil</h1>
         <div className={styles.infoPrincipal}>
@@ -30,12 +39,18 @@ const Profile = () => {
           <p className={styles.text}>Correo: {user.email}</p>
         </div>
         <h2 className={styles.sub}>Mis peluditos favoritos</h2>
+        <div>
           <div>
-            {mascotasFav.map((mascota)=>{
-              <CardAdop mascota={mascota} indexMascota={mascota.id}/>
-            })} 
+          {mascotas && (mascotas.map((mascota, indexMascota) => (
+            <CardAdop
+              mascota={mascota}
+              indexMascota={mascota.id}
+              key={indexMascota}
+            />
+        )))}
           </div>
         </div>
+      </div>
     )
   );
 };

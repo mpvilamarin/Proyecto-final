@@ -1,0 +1,150 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  text-align: center;
+}
+
+.div1 {
+  margin-top: 30px;
+}
+.divTiempo{
+background-color: rgb(247, 232, 213);
+  position: relative;
+  left: 0;
+  right: 0;
+  padding: 40px;
+ 
+}
+.divEconomia{
+  background-color: rgb(46, 151, 216);
+  position: relative;
+    left: 0;
+    right: 0;
+    padding: 40px;
+}
+.divHogar{
+  background-color: rgb(173, 231, 195);
+  position: relative;
+    left: 0;
+    right: 0;
+    padding: 40px;
+}
+.divResponsable{
+  background-color: rgb(170, 158, 244);
+  position: relative;
+    left: 0;
+    right: 0;
+    padding: 40px;
+}
+.divEncuntra{
+  background-color: rgb(149, 208, 254);
+  position: relative;
+    left: 0;
+    right: 0;
+    padding: 40px;
+}
+.content {
+ justify-content: flex-end;
+}
+.content2 {
+ justify-content: flex-end;
+ margin-bottom: 2px;
+}
+
+.h1 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: rgb(107, 103, 103);
+}
+.h2{
+  color: rgb(199, 74, 74);
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.h22{
+  color: rgb(223, 235, 246);
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.h222{
+  color: rgb(255, 255, 255);
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.h2Mascota{
+  color: rgb(56, 113, 245);
+  font-size: 45px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.h11 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  color: rgb(31, 113, 207);
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.p {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: rgb(120, 111, 111);
+  max-width: 1300px;
+  /* Ajusta el valor según tus necesidades */
+  margin: 0 auto;
+  /* Centra horizontalmente el texto */
+  margin-bottom: 20px;
+  margin-top: 20px;
+  
+}
+.pEconomia{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: rgb(236, 218, 218);
+    max-width: 900px;
+    /* Ajusta el valor según tus necesidades */
+    margin: 0 auto;
+    /* Centra horizontalmente el texto */
+    margin-bottom: 20px;
+  margin-top: 20px;
+  max-width: 1300px;
+}
+.pResponsable{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    max-width: 900px;
+    /* Ajusta el valor según tus necesidades */
+    margin: 0 auto;
+    /* Centra horizontalmente el texto */
+    margin-bottom: 20px;
+  margin-top: 20px;
+  max-width: 1300px;
+}
+
+.p1 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  color: rgb(74, 70, 70);
+  margin-top: 20px;
+}
+
+.button {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  border-radius: 15px;
+  height: 60px;
+  width: 300px;
+  color: white;
+  background-color: #4898BF;
+  font-weight: 550;
+  margin-top: 15px;
+  transition: 0.3s;
+  margin-bottom: 20px;
+  border: none;
+}
+
+.button:hover {
+  background-color: #3c7fa0;
+  /* Cambia el color de fondo cuando se coloca el puntero sobre el botón */
+  color: white;
+  transform: translateY(-4px);
+  /* Cambia el color del texto cuando se coloca el puntero sobre el botón */
+}

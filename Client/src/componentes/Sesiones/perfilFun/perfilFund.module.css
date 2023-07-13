@@ -1,0 +1,142 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.containerFundacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagenFundacion {
+  max-height: 350px;
+  max-width: 400px;
+}
+
+.infoFundacion {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 30px;
+  width: 500px;
+  margin-left: 30px;
+  text-align: center;
+}
+
+.name {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 45px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.sub {
+  font-family: 'Merriweather';
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.buttonInfo {
+  border-radius: 25px;
+  height: 40px;
+  width: 100px;
+}
+
+.containerMascotas {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 50px;
+  font-weight: 550;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  border-top: 1px solid black;
+  padding-top: 20px;
+}
+
+.title1 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 50px;
+  font-weight: 550;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.sub1 {
+  font-family: 'Merriweather';
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.sub2 {
+  font-family: 'Merriweather';
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.contButton {
+  display: flex;
+  justify-content: center;
+
+}
+
+.button {
+  font-family: 'Merriweather';
+  font-size: 15px;
+  height: 40px;
+  width: 100%;
+  border-radius: 20px;
+  background-color: #4898BF;
+  color: white;
+  transition: 0.3s;
+  border: none;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  background-color: #3c7fa0;
+}
+
+.containerAnimales {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px;
+  margin: 40px;
+}
+
+.containerSolicitudes {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid black;
+  padding-top: 20px;
+}
+
+.containerAdopciones {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 20px;
+}
+
+.containerReviews {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 20px;
+  flex: 1;
+  margin-right: 20px;
+}

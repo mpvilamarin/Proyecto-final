@@ -1,0 +1,325 @@
+/* .contenedorPadre {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  .contenedorHijo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px; 
+  }
+  .contenedorInfo{
+   
+    width: 200vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    background-color: #f2e9e4;
+  }
+
+  .contenedorMision{
+    
+    width: 200vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f7f7f2;
+ 
+  }
+
+  .contenedorComentarios{
+    height: 150px;
+    width: 200vh;
+    background-color: #f7f7f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 75%;
+  }
+
+  .contenedorReviews{
+    position: relative;
+    width: 50vh;
+  }
+
+  .Comentarios{
+    border: solid 2px #1b1b1e;
+    background-color: #f7f7f2;
+    margin-top: 3rem;
+    width: 100vh;
+  }
+  .imagenFundacion {
+    width: 500px;
+    height: 250px;
+    margin-top: 1rem;
+    margin-left: 3rem;
+    background-color: #f8f9fa ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .infoFundacion {
+    
+    width: 500px;
+    height: 250px;
+    margin-left: 5rem;
+    margin-top: 2rem;
+  }
+  
+  .mision {
+    
+    margin-top: 20px;
+    width: 150vh;
+  }
+  
+  
+  
+  .reviews {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  
+  .contenedorHome {
+    background-color: #f7f7f2;
+    width: 200vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .containerAnimales{
+    width: 150vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: 20%
+  }
+  .body{
+    display: flex;
+    justify-content: flex-end;
+    background-color: #f7f7f2;
+  }
+
+  .divDonar{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    margin-right: 3rem;
+  }
+  .h1Donar {
+    margin-top: -7.5rem; 
+  }
+
+  .buttonDonar {
+    width: 130px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(15, 15, 15);
+    border: none;
+    color: white;
+    font-weight: 600;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 1rem;
+  }
+  
+  .svgIcon {
+    width: 16px;
+  }
+  
+  .svgIcon path {
+    fill: white;
+  }
+  
+  .buttonDonar::before {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    content: "";
+    background-color: white;
+    border-radius: 50%;
+    left: -100%;
+    top: 0;
+    transition-duration: .3s;
+    mix-blend-mode: difference;
+  }
+  
+  .buttonDonar:hover::before {
+    transition-duration: .3s;
+    transform: translate(100%,-50%);
+    border-radius: 0;
+  }
+  
+  .buttonDonar:active {
+    transform: translate(5px,5px);
+    transition-duration: .3s;
+  } */
+
+  .contenedorPadre {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .contenedorHijo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    width: 100%;
+  }
+  
+  .contenedorInfo {
+    width: 100%;
+    background-color: #7d62c8;
+    /* margin: 20px; */
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    flex-direction: row;
+  }
+  
+  .imagenFundacion {
+    width: 33.33%;
+    height: 290px;
+    background-color: #e3dcdc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .infoFundacion {
+    width: 33.33%;
+    height: 250px;
+    margin-left: 5rem;
+    margin-top: 2rem;
+    color:white;
+  }
+  
+  .h1Donar{
+    color:white;
+  }
+  .divDonar {
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    margin-right: 0;
+    justify-content: space-evenly;
+    background-color: black;
+  }
+  .buttonDonar {
+    width: 130px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(15, 15, 15);
+    border: white 1px solid;
+    color: white;
+    font-weight: 600;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .svgIcon {
+    width: 16px;
+  }
+  
+  .svgIcon path {
+    fill: white;
+  }
+  
+  .buttonDonar::before {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    content: "";
+    background-color: white;
+    border-radius: 50%;
+    left: -100%;
+    top: 0;
+    transition-duration: .3s;
+    mix-blend-mode: difference;
+  }
+  
+  .buttonDonar:hover::before {
+    transition-duration: .3s;
+    transform: translate(100%,-50%);
+    border-radius: 0;
+  }
+  
+  .buttonDonar:active {
+    transform: translate(5px,5px);
+    transition-duration: .3s;
+  } 
+  
+  @media screen and (max-width: 800px) {
+    .contenedorHijo {
+      margin: 10px;
+    }
+  
+    .contenedorInfo {
+      flex-direction: column;
+    }
+  
+    .imagenFundacion,
+    .infoFundacion,
+    .divDonar {
+      width: 100%;
+    }
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(5, 82, 134);
+  }
+  
+  .h1 {
+    color: white;
+  }
+  
+  .containerAnimales {
+    width: 66.6%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .containerAnimales > * {
+    width: calc(33.33% - 10px);
+    margin-bottom: 20px;
+  }
+  
+  .contenedorReviews {
+    width: 100%; /* Ajusta el ancho según tus necesidades */
+    background-color: rgb(232, 177, 162);
+  }

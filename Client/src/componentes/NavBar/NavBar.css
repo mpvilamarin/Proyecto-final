@@ -1,11 +1,23 @@
 .custom-navbar {
-  background-color: rgb(237, 230, 230);
-    /* Ajusta la altura automáticamente según el contenido */
-    padding-top: 5px;
-    /* Añade un espacio superior */
-    padding-bottom: 5px;
-    margin-bottom: 20px;
-    max-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  max-height: 100px;
+  border: #d3d3d3;
+  border-radius: 0 0 20px 20px;
+  border-width: 3px;
+  border-style: solid;
+  border-top-width: 0;
+  margin-left: 50px;
+  margin-right: 50px;
+
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+
+
+  font-weight: 500;
 }
 
 .navBarItem {
@@ -15,38 +27,45 @@
 .logo-container {
   flex: 0 0 auto;
   display: flex;
-    align-items: center;
-    margin-right: 150px;
-    max-width: 200px;
-    /* Ajusta el tamaño máximo del logo según tus necesidades */
-    margin: 0 auto;
+  align-items: center;
+  max-width: 200px;
+  /* Ajusta el tamaño máximo del logo según tus necesidades */
+  margin: 0 auto;
 }
 
 .logo {
   width: 150px;
   height: auto;
+  transition: 0.3s;
 }
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
   .logo {
     max-width: 80%;
   }
-    .navbar-collapse {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: rgb(237, 230, 230);
-      padding: 10px;
-      z-index: 999;
-    }
-            .navbar-nav {
-              display: flex;
-              flex-direction: column;
-            }
-      
-            .nav-link {
-              margin: 5px 0;
-            }
+
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgb(237, 230, 230);
+    padding: 10px;
+    z-index: 999;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-link {
+    margin: 5px 0;
+  }
 }
 
 .custom-navbar .navbar-nav {
@@ -56,20 +75,39 @@
 
 .custom-navbar .navbar-collapse {
   justify-content: flex-end;
-    /* justify-content: flex-end; */
+  /* justify-content: flex-end; */
 }
 
 .custom-navbar .nav-link {
-  font-size: 23px;
+  font-size: 20px;
+  transition: 0.3s;
   /* Ajusta el tamaño de fuente según tus necesidades */
 }
 
-.container{
+.custom-navbar .nav-link:hover {
+  transform: translateY(4px);
+}
+
+.container {
   margin-left: 0;
   margin-right: 0;
 }
 
-.navbar-expand-lg{
+.navbar-expand-lg {
   justify-content: space-evenly;
 }
 
+.button {
+  background-color: transparent;
+  border: none;
+}
+
+.img {
+  height: 35px;
+  width: 35px;
+  transition: 0.3s;
+}
+
+.img:hover {
+  transform: translateX(5px);
+}

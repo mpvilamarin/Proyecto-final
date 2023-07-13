@@ -1,74 +1,129 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSignOut } from "react-auth-kit";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import "./NavBar.css";
 import logo from "./logo2.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import LogOutButton from "../Autenticación/LogOut/logout";
 import LogInButton from "../Autenticación/LogIn/login";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../../redux/Actions/post";
+import styles from './NavBar.css';
+
 
 export default function NavBar() {
   const { isAuthenticated, user } = useAuth0();
 
-  //   const singOut = useSignOut();
-  //   const navigate = useNavigate();
+  const usuarioAdmin = useSelector((state) => state.usuarioAdmin);
 
-  //   const logout = () => {
-  //     singOut();
-  //     navigate("/login");
-  //   };
+
+  const usuarioFundacion = useSelector((state) => state.usuarioFundacion);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(logOut());
+    navigate("/login");
+  };
+
+  useEffect(() => {
+  }, [usuarioAdmin,usuarioFundacion])
+
 
   return (
-    <Navbar className="custom-navbar" variant="light" expand="lg">
+    <Navbar className="custom-navbar"  expand="lg">
+
       <Container className="container">
+
         <Navbar.Brand className="logo-container d-flex align-items-center">
-          <img src={logo} alt="Logo" className="logo img-fluid" />
+          <Link to="/">
+            <img src={logo} alt="Logo" className="logo img-fluid" />
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
         <Navbar.Collapse id="basic-navbar-nav">
+
           <Nav className="mr-auto">
-            {isAuthenticated && (
+
+            {usuarioAdmin &&(<Link to="/DashboardAdmin" className="nav-link">
+              Tu Dashboard
+            </Link>)}
+
+
+            {/* {isAuthenticated && (
               <Link to="/donaciones" className="nav-link">
                 Donaciones
               </Link>
-            )}
-            <Link to="/adopciones" className="nav-link">
+            )} */}
+
+           {!usuarioAdmin&&( <Link to="/adopciones" className="nav-link">
               Mascotas
-            </Link>
-            <Link to="/formFundaciones" className="nav-link">
-              Crear Fundacion
-            </Link>
-            {/*<Link to="/formMascota" className="nav-link">Crear Mascota</Link>*/}
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-            <Link to="/fundaciones" className="nav-link">
-              Fundaciones
-            </Link>
-            {/* <Link to="/contact" className="nav-link">Contáctanos</Link> */}
-            <Link to="/about" className="nav-link">
-              Sobre nosotros
-            </Link>
-            {!isAuthenticated && (
-              <Link to="/login" className="nav-link">
-                Log in
+            </Link>)}
+
+            {isAuthenticated && !isAuthenticated && usuarioAdmin &&  (<Link to="/formMascota" className="nav-link">Crear Mascota</Link>)}
+            { usuarioFundacion &&  (<Link to="/formMascota" className="nav-link">Crear Mascota</Link>)}
+
+            {user && user.role === "Fundación" && (
+              <Link to="/formFundaciones" className="nav-link">
+                Crear Fundacion
               </Link>
             )}
 
-            {/*!isAuthenticated && <li><LogInButton /></li>*/}
-            {isAuthenticated && (
-              <li>
-                <a href="/perfil">Mi perfil</a>
-              </li>
+            {!usuarioAdmin && !usuarioFundacion &&(<Link to="/fundaciones" className="nav-link">
+              Fundaciones
+            </Link>)}
+
+           {!usuarioAdmin && (<Link to="/about" className="nav-link">
+              Nosotros
+            </Link>)}
+
+            { isAuthenticated && usuarioAdmin && usuarioFundacion &&(
+              <Link to="/login" className="nav-link">
+                Iniciar Sesión
+              </Link>
             )}
+
+
+            { !isAuthenticated && !usuarioAdmin && !usuarioFundacion &&(
+              <Link to="/login" className="nav-link">
+                Iniciar Sesión
+              </Link>
+            )}
+
+            {/* {/!isAuthenticated && <li><LogInButton /></li>/} */}
+
             {isAuthenticated && (
-              <li>
+              <Link to="/perfil" className="nav-link">
+                Mi Perfil
+              </Link>
+            )}
+
+            {isAuthenticated && !isAuthenticated && usuarioAdmin&& 
+            (<Link to="/perfilfund" className="nav-link">Mi perfil</Link>)}
+
+            { usuarioFundacion&& 
+            (<Link to="/perfilfund" className="nav-link">Mi perfil</Link>)}
+
+            {isAuthenticated && (
+              <li className="nav-link">
+
                 <LogOutButton />
+
               </li>
             )}
 
-            {/* <button onClick={logout}>LOGOUT</button> */}
+            {isAuthenticated && !isAuthenticated && (<button onClick={logout} className="button">
+              <img src={require("../../assets/LogOut.png")} alt="logOut" className="img" />
+              </button>)}
+            {usuarioFundacion && (<button onClick={logout} className="button">
+              <img src={require("../../assets/LogOut.png")} alt="logOut" className="img" />
+              </button>)}
+            {usuarioAdmin && (<button onClick={logout} className="button">
+              <img src={require("../../assets/LogOut.png")} alt="logOut" className="img" />
+              </button>)}
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -1,20 +1,107 @@
 .containerFundaciones {
-  display: flex;
+  display: block;
   flex-direction: column;
   flex-wrap: wrap;
-  position: fixed;
   top: 100px;
   left: 0;
   right: 0;
-  background-image: url(https://www.vidanimal.org.ar/wp-content/uploads/2023/03/chico-cargando-cachorro-golden-retriever.jpg);
+  background-image: url('../../assets/Background1.1.png');
   background-size: cover;
   background-position: bottom center;
   background-repeat: no-repeat;
-  height: 90vh;
+  min-height: 100vh;
+}
+
+.caja {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffffb0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: #000000;
+  border-width: 3px;
+  border-style: solid;
+  border-right-width: 0;
+  border-left-width: 0;
+  width: 100%;
+}
+
+.img {
+  height: 250px;
+  width: 250px;
 }
 
 .filters {
   display: flex;
-  justify-content: center; /* Centrar horizontalmente los elementos */
-  align-items: center; /* Centrar verticalmente los elementos */
+  flex-direction: column;
+  align-items: start; 
+}
+
+.ordenar {
+  font-size: 20px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+.aZ {
+ border-radius: 15px;
+ color: black;
+ background-color: white;
+ transition: background-color 0.3s;
+ transition: transform 0.3s;
+ justify-content: left;
+ margin-bottom: 10px;
+ margin-right: 10px;
+}
+
+.aZ:hover {
+  background-color: #F3814A;
+  border: none;
+  transform: translateY(2px);
+}
+
+.dropDown {
+border-radius: 15px;
+color: black;
+background-color: white;
+margin-left: 5px;
+}
+
+.title {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  color: #302f2f;
+  width: 100%;
+  margin-top: 10px;
+  text-align: start;
+  margin-left: -1px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin-top: 40px;
+  margin-left: 6px;
+  /* Ajusta el espacio en el lado izquierdo */
+  margin-right: -5px;
+  /* Ajusta el espacio en el lado derecho */
+}
+
+.cardContainer>* {
+  flex: 1 0 5%;
+  margin: 10px;
+  box-sizing: border-box;
+  /* Asegura que el margen esté dentro del ancho de la tarjeta */
+}
+
+@media (max-width: 768px) {
+  .cardContainer>* {
+    flex: 0 0 calc(50% - 10px);
+    margin: 5px;
+  }
 }

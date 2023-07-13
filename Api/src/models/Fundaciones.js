@@ -36,24 +36,29 @@ module.exports = (sequelize) => {
       },
       contraseña: {
         type: DataTypes.STRING,
-        allowNull: false
-    },
+        allowNull: false,
+      },
       fundadaEn: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
         allowNull: false,
       },
       mision: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       borrado: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        defaultValue: false, // Cambiado a false
       },
       tipo: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: 'fundacion'
+        defaultValue: "fundacion",
+      },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: true
       }
     },
     {

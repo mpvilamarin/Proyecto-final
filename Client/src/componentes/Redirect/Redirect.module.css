@@ -6,6 +6,7 @@
   font-family: 'Catamaran', sans-serif;
   font-weight: 800;
   margin: 70px 15px;
+  height: 100vh;
 }
 .errorContainer > span {
   display: inline-block;
@@ -114,10 +115,10 @@ body {
   background-color: #FDFAF5;
   margin-bottom: 50px;
 }
-html, button, input, select, textarea {
+/* html, button, input, select, textarea {
     font-family: 'Montserrat', Helvetica, sans-serif;
     color: #bbb;
-}
+} */
 h1 {
   text-align: center;
   margin: 30px 15px;

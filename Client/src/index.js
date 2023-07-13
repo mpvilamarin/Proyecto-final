@@ -8,10 +8,9 @@ import { Provider } from "react-redux";
 import { Auth0Provider } from "@auth0/auth0-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import execute from "./redux/store/index";
-import { PersistGate } from "redux-persist/integration/react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const { store, persistor } = execute();
+const { store } = execute();
 root.render(
   <Auth0Provider
     domain="petrescueconnect.us.auth0.com"
@@ -25,11 +24,9 @@ root.render(
     cookieSecure={false}
   >
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </PersistGate>
     </Provider>
   </Auth0Provider>
 );

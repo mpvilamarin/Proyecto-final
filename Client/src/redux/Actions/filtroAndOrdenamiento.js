@@ -8,8 +8,10 @@ import {
   FILTER_FUNDACIONES_NOMBRE,
   SORT_FUNDACIONES_AZ,
   SORT_FUNDACIONES_ZA,
+  SORT_FUNDACIONES_REVIEWS,
   GET_FILTER_FUNDACTION_BY_CIUDAD,
-  FILTER_MASCOTA_BY_ESPECIE
+  FILTER_MASCOTA_BY_ESPECIE,
+  FILTER_FUNDACIONES_BY_RATING
 
 } from "../Actions-type/index.js";
 
@@ -32,10 +34,9 @@ export const filterMascotaByGenero = (genero) => {
 export const filterMascotaByEspecie = (especie) => {
   return {
     type: FILTER_MASCOTA_BY_ESPECIE,
-    payload: especie
-  }
-}
-
+    payload: especie,
+  };
+};
 
 export const filterFundacionesByCiudad = (ciudad) => {
   return {
@@ -45,8 +46,6 @@ export const filterFundacionesByCiudad = (ciudad) => {
     },
   };
 };
-
-
 
 export const filterFundacionByCiudad = (ciudad) => {
   return {
@@ -66,6 +65,22 @@ export const sortFundacionesZA = () => {
     type: SORT_FUNDACIONES_ZA,
   };
 };
+
+
+export const filterFundacionesByRating = (rating) => {
+  return {
+    type: FILTER_FUNDACIONES_BY_RATING,
+    payload: rating
+  }
+}
+
+export const sortFundacionesReviews = (order) => {
+  return {
+    type: SORT_FUNDACIONES_REVIEWS,
+    payload: order,
+  };
+};
+
 
 export const sortMascotasAZ = () => {
   return {

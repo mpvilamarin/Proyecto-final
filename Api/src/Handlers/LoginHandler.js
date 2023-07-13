@@ -1,42 +1,52 @@
-const { Usuarios, Fundaciones } = require('../db');
-const jwt = require('jsonwebtoken');
-const STATUS_OK =200;
+
+const { Admin, Fundaciones } = require('../db');
+const STATUS_OK = 200;
 const STATUS_CREATED = 201;
-const STATUS_ERROR=404;
+const STATUS_ERROR = 404;
 
 async function loginUsuarios(req, res) {
   const { email, contraseña } = req.body;
 
 
-  const usuarioLogin = await Usuarios.findOne({ where: { email, contraseña } });
-  if (usuarioLogin) {
-    const tipoUsuario = 'usuario';
-    const jwtToken = jwt.sign(usuarioLogin.dataValues, 'secret');
-    return res.status(STATUS_CREATED).json({
-      message: 'Logueado con éxito como usuario',
-      token: jwtToken,
-      email, 
-      tipo: tipoUsuario
-    });
+  try {
+    const adminLogin = await Admin.findOne({ where: { email, contraseña } });
+    if (adminLogin) {
+      return res.status(STATUS_CREATED).json({
+        message: 'Logueado con éxito como admin',
+        email,
+        usuario:'admin',
+        isLogued:true,
+      });
+    }
+
+    const fundacionLogin = await Fundaciones.findOne({ where: { email, contraseña } });
+    if (fundacionLogin) {
+      return res.status(STATUS_CREATED).json({
+        message: 'Logueado con éxito como fundación',
+        email,
+        usuario:'fundacion',
+        isLogued:true,
+        id: fundacionLogin.id,
+        nombre: fundacionLogin.nombre,
+      });
+    }
+    
+
+    return res.status(STATUS_ERROR).json({ message: 'Usuario no encontrado' });
+  } catch (error) {
+    return res.status(STATUS_ERROR).json({ message: 'Error al autenticar al usuario' });
+
   }
-
-
-  const fundacionLogin = await Fundaciones.findOne({ where: { email, contraseña } });
-  if (fundacionLogin) {
-    const tipoUsuario = 'fundacion';
-    const jwtToken = jwt.sign(fundacionLogin.dataValues, 'secret');
-    return res.status(STATUS_CREATED).json({
-      message: 'Logueado con éxito como fundación',
-      token: jwtToken,
-      email,
-      tipo: tipoUsuario
-    });
-  }
-
-
-  return res.status(STATUS_ERROR).json({ message: 'Usuario no encontrados' });
 }
 
+
 module.exports = {
-  loginUsuarios
+  loginUsuarios,
 };
+
+
+
+
+
+
+

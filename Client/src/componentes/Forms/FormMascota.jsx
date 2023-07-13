@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { postMascota } from '../../redux/Actions/post';
 import { getAllFundaciones } from '../../redux/Actions/get';
+import { ToastContainer, toast } from 'react-toastify';
 import './stilosFormularioMascota.css';
 import UploadWidget from "../../componentes/Upload/UploadWidget";
 
 function FormMascota() {
   const fundaciones = useSelector((state) => state.fundaciones);
+  const info = useSelector((state) => state.sesion)
+  const { nombre } = info
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllFundaciones());
@@ -23,39 +28,48 @@ function FormMascota() {
     temperamento: '',
     descripcion: '',
     castrado: '',
-    fundacionId: [],
-    // imagen_url: '',
+    image: '',
+    borrado: false,
+    fundacionId: nombre,
   });
   const [showAlert, setShowAlert] = useState(false);
   const [invalidFields, setInvalidFields] = useState([]);
 
   const handleChange = (e) => {
+    console.log(e.target.value)
+    console.log(newMascota)
     setNewMascota({
       ...newMascota,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleChecked = (e) => {
-    if (e.target.checked) {
-      setNewMascota({
-        ...newMascota,
-        fundacionId: [...newMascota.fundacionId, e.target.value],
-      });
-    } else {
-      setNewMascota({
-        ...newMascota,
-        fundacionId: newMascota.fundacionId.filter(
-          (fundacion) => fundacion !== e.target.value
-        ),
-      });
-    }
+  // const handleChecked = (e) => {
+  //   if (e.target.checked) {
+  //     setNewMascota({
+  //       ...newMascota,
+  //       fundacionId: [...newMascota.fundacionId, e.target.value],
+  //     });
+  //   } else {
+  //     setNewMascota({
+  //       ...newMascota,
+  //       fundacionId: newMascota.fundacionId.filter(
+  //         (fundacion) => fundacion !== e.target.value
+  //       ),
+  //     });
+  //   }
+  // };
+
+  const handleImageUpload = (url) => {
+    setNewMascota((prevMascota) => ({
+      ...prevMascota,
+      image: url
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isFormValid()) {
-      console.log(newMascota)
+    if (isFormValid) {
       dispatch(postMascota(newMascota));
       setNewMascota({
         nombre: '',
@@ -66,10 +80,15 @@ function FormMascota() {
         temperamento: '',
         descripcion: '',
         castrado: '',
-        // imagen_url: '',
+        image: '',
+        borrado: false,
+        fundacionId: nombre
       });
       setShowAlert(false);
       setInvalidFields([]);
+      setTimeout(() => {
+        navigate('/adopciones')
+      }, 2500)
     } else {
       setShowAlert(true);
     }
@@ -85,16 +104,19 @@ function FormMascota() {
       'temperamento',
       'descripcion',
       'castrado',
-      
+      'image',
     ];
 
-    const invalidFields = requiredFields.filter(
-      (field) => newMascota[field].trim() === ''
+    const invalidFields = requiredFields.filter((field) => {
+      if (field === 'image') {
+        return newMascota[field] === ''
+      } else {
+        return newMascota[field].trim() === ''
+      }
+    }
     );
 
     setInvalidFields(invalidFields);
-
-    return invalidFields.length === 0 && newMascota.fundacionId.length > 0;
   };
 
   const sortedFundacion = fundaciones
@@ -104,8 +126,9 @@ function FormMascota() {
 
   return (
     <div className="form-container">
-      <h1 className="title-form">FORMULARIO PARA MASCOTAS</h1>
+      <h1 className="title-form  text-center">Agregar Mascota Nueva</h1>
       <Form className="custom-form">
+        <ToastContainer autoClose={2500}></ToastContainer>
         {showAlert && (
           <Alert variant="danger">Por favor, completa todos los campos.</Alert>
         )}
@@ -116,7 +139,7 @@ function FormMascota() {
             name="nombre"
             value={newMascota.nombre}
             onChange={handleChange}
-            placeholder="Nombre de la mascota"
+            placeholder="Ej: Bruno"
             className={
               invalidFields.includes('nombre') ? 'is-invalid' : ''
             }
@@ -125,17 +148,19 @@ function FormMascota() {
 
         <Form.Group controlId="formBasicEspecie">
           <Form.Label>Especie</Form.Label>
-          <Form.Control
-            type="text"
+          <Form.Select
             name="especie"
             value={newMascota.especie}
             onChange={handleChange}
-            placeholder="Especie"
-            className={
-              invalidFields.includes('especie') ? 'is-invalid' : ''
-            }
-          />
+            className={invalidFields.includes('especie') ? 'is-invalid' : ''}
+          >
+            <option value="">Seleccionar especie</option>
+            <option value="Perro">Perro</option>
+            <option value="Gato">Gato</option>
+          </Form.Select>
         </Form.Group>
+
+
 
         <Form.Group controlId="formBasicTamaño">
           <Form.Label>Tamaño</Form.Label>
@@ -145,10 +170,10 @@ function FormMascota() {
             onChange={handleChange}
             className={invalidFields.includes('tamaño') ? 'is-invalid' : ''}
           >
-            <option value="">Seleccionar tamaño</option>
-            <option value="grande">Grande</option>
-            <option value="mediano">Mediano</option>
-            <option value="pequeño">Pequeño</option>
+            <option value="">Seleccionar </option>
+            <option value="Grande">Grande</option>
+            <option value="Mediano">Mediano</option>
+            <option value="Pequeño">Pequeño</option>
           </Form.Select>
         </Form.Group>
 
@@ -159,7 +184,7 @@ function FormMascota() {
             name="edad"
             value={newMascota.edad}
             onChange={handleChange}
-            placeholder="Edad"
+            placeholder="Ej: 5 años"
             className={
               invalidFields.includes('edad') ? 'is-invalid' : ''
             }
@@ -198,7 +223,7 @@ function FormMascota() {
             type="text"
             name="temperamento"
             value={newMascota.temperamento}
-            placeholder="Temperamento"
+            placeholder="Ej: jugueton, dosil"
             onChange={handleChange}
             className={
               invalidFields.includes('temperamento') ? 'is-invalid' : ''
@@ -212,16 +237,15 @@ function FormMascota() {
             type="text"
             name="descripcion"
             value={newMascota.descripcion}
-            placeholder="Descripcion"
+            placeholder="Ej: es muy amoroso, le gusta jugar"
             onChange={handleChange}
             className={
               invalidFields.includes('descripcion') ? 'is-invalid' : ''
             }
           />
-
         </Form.Group>
         <Form.Group controlId="formBasicCastrado">
-          <Form.Label>Opción de castración</Form.Label>
+          <Form.Label>Castrado</Form.Label>
           <div>
             <Form.Check
               inline
@@ -243,11 +267,17 @@ function FormMascota() {
               checked={newMascota.castrado === 'noCastrado'}
               onChange={handleChange}
             />
+
+
           </div>
         </Form.Group>
-        {/* <UploadWidget /> */}
-        {/*onImageUpload={(imageUrl) => setNewMascota({ ...newMascota, imagen_url: imageUrl })}*/}  
+
         <div>
+          {newMascota.image && <img style={{ width: "280px", height: "205px" }} src={newMascota.image} alt="image"></img>}
+          <UploadWidget onImageUpload={handleImageUpload} />
+        </div>
+
+        {/* <div>
           <div>
             {sortedFundacion.length >= 1 ? (
               sortedFundacion?.map((elem, index) => (
@@ -268,11 +298,12 @@ function FormMascota() {
               undefined
             )}
           </div>
-        </div>
-        
-        
+        </div> */}
+
+
 
         <Button
+          className="mx-auto d-block"
           variant="primary"
           type="submit"
           onClick={(e) => handleSubmit(e)}

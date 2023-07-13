@@ -1,57 +1,115 @@
-const { Fundaciones } = require("../db");
+const { Fundaciones, Reviews, Mascotas } = require("../db");
+const enviarCorreoBienvenida = require("./CorreosHandler");
 const STATUS_CREATED = 201;
 const STATUS_ERROR = 404;
 const STATUS_OK = 200;
 
 async function postFundacion(req, res) {
+
+  const {
+    nombre,
+    ciudad,
+    direccion,
+    telefono,
+    email,
+    contraseña,
+    fundadaEn,
+    mision,
+    borrado,
+    image,
+    tipo,
+  } = req.body;
+
   try {
-    res.status(STATUS_CREATED).json(await Fundaciones.create(req.body));
+    if (!req.body) {
+      return res
+        .status(STATUS_ERROR)
+        .json({ message: `error de informacion ` });
+    }
+
+    const validarCorreo = await Fundaciones.findOne({
+      where: { email: email },
+    });
+
+    if (validarCorreo) {
+      return res
+        .status(STATUS_ERROR)
+        .json({ message: `el usuario ${email} ya esta registrado` });
+    }
+
+    const newFundacion = await Fundaciones.create({
+      nombre,
+      ciudad,
+      direccion,
+      telefono,
+      email,
+      contraseña,
+      fundadaEn,
+      mision,
+      borrado,
+      image,
+      tipo:'fundacion',
+
+    });
+
+    await enviarCorreoBienvenida(email, nombre);
+
+    res.status(STATUS_CREATED).json(newFundacion);
   } catch (error) {
-    res.status(STATUS_ERROR).json({ message: `no se puede crear ${error}` });
+    res
+      .status(STATUS_ERROR)
+      .json({ message: `error al crear fundacion ${error}` });
   }
 }
 
-
-
-
-async function getAllFundaciones(req, res){
-    const {nombre} = req.query;
-    try {
-        if( nombre ) {
-            const response = await Fundaciones.findAll({ where : {nombre: nombre} });
-            if(response)
-            {
-               return res.status(STATUS_OK).json(response);
-            }    
-        }
-        else {
-          let allFundaciones = await Fundaciones.findAll();
-          return res.status(STATUS_OK).json(allFundaciones);
-        }
-    } catch (error) {
-            return res.status(STATUS_ERROR).json({message:error});
+async function getAllFundaciones(req, res) {
+  const { nombre } = req.query;
+  try {
+    if (nombre) {
+      const response = await Fundaciones.findAll({
+        where: { nombre: nombre },
+        include: {
+          model: Reviews,
+          attributes: ["calificacion", "comentarios"],
+        },
+      });
+      if (response) {
+        return res.status(STATUS_OK).json(response);
+      }
+    } else {
+      let allFundaciones = await Fundaciones.findAll({
+        include: {
+          model: Reviews,
+          attributes: ["calificacion", "comentarios"],
+        },
+      });
+      return res.status(STATUS_OK).json(allFundaciones);
     }
+  } catch (error) {
+    return res.status(STATUS_ERROR).json({ message: `Error: ${error}` });
+  }
 }
-async function updateFundacion(req, res){
-    const { id } = req.params
+
+async function updateFundacion(req, res) {
+  const { id } = req.params;
 
   const { nombre, ciudad, direccion, telefono, email, fundadaEn, mision } =
     req.body;
 
   try {
-    const fundaciones = await Fundaciones.findOne({
+    const fundacion = await Fundaciones.findOne({
       where: {
         id,
       },
     });
 
-    if (!fundaciones) {
+    if (!fundacion) {
       return res
         .status(STATUS_ERROR)
         .json({ message: "Fundacion no encontrada" });
     }
 
-    const updateFundacion = await fundaciones.update({
+    const updateFundacion = await fundacion.update({
       nombre,
       ciudad,
       direccion,
@@ -72,7 +130,18 @@ async function updateFundacion(req, res){
 async function getFundacionById(req, res) {
   const { id } = req.params;
   try {
-    const response = await Fundaciones.findByPk(id);
+    const response = await Fundaciones.findByPk(id, {
+      include: [
+        {
+          model: Reviews,
+          attributes: ['calificacion', 'comentarios'],
+        },
+        {
+          model: Mascotas,
+          attributes: ['nombre', 'genero', 'temperamento', 'id', 'image', 'activo', 'borrado']
+        }
+      ]
+    });
     res.status(STATUS_OK).json(response);
   } catch (error) {
     res.status(STATUS_ERROR).json({ message: `no se encontró el id ${error}` });
@@ -80,11 +149,59 @@ async function getFundacionById(req, res) {
 }
 
 
+async function postAutenticarFundacion(req,res){
+  const { email, contraseña } = req.body;
+
+  try {
+    const fundacionLogin = await Fundaciones.findOne({ where: { email, contraseña } });
+    if (fundacionLogin) {
+      return res.status(STATUS_CREATED).json({
+        message: 'Logueado con éxito como fundación',
+        email,
+        usuario:'fundacion',
+        isLogued:true,
+
+      });
+    }
+
+    return res.status(STATUS_ERROR).json({ message: 'Usuario no encontrado' });
+  } catch (error) {
+    return res.status(STATUS_ERROR).json({ message: 'Error al autenticar al usuario' });
+  }
+}
+
+
+async function borradoFundacion(req, res) {
+  const { id } = req.params;
+  const { nombre, ciudad, direccion, telefono, email, fundadaEn, mision, image } = req.body;
+
+  try {
+    const fundacion = await Fundaciones.findOne({
+      where: {
+        id,
+      },
+    });
+
+    if (!fundacion) {
+      return res.status(STATUS_ERROR).json({ message: "Fundacion no encontrada" });
+    }
+
+    const updateFundacion = await fundacion.update({
+      borrado: !fundacion.borrado, // Cambiar al estado opuesto
+    });
+
+    return res.status(STATUS_OK).json(updateFundacion);
+  } catch (error) {
+    res.status(STATUS_ERROR).json({ message: `Error al actualizar la fundacion: ${error}` });
+  }
+}
 
 module.exports = { 
     postFundacion,
     getAllFundaciones,
     updateFundacion,
-    getFundacionById
-}
+    getFundacionById,
+    postAutenticarFundacion,
+    borradoFundacion,
 
+}

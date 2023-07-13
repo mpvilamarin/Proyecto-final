@@ -2,11 +2,9 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-
-  
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon -L",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
   "author": "Henry",
@@ -16,7 +14,11 @@
     "npm": ">=6.14.6"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.1.1",
+    "@mui/material": "^5.14.0",
+    "auth0": "^3.5.0",
     "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",

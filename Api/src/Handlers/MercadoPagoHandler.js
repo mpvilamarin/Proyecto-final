@@ -1,9 +1,20 @@
-const { Donaciones } = require("../db");
+const { Donaciones, Usuarios } = require("../db");
 const mercadopago = require("mercadopago");
 
 const postDonacion = async (req, res) => {
   try {
     const donacion = req.body;
+
+    const usuario = await Usuarios.findOne({
+      where: {
+        email: donacion.email,
+      },
+    });
+
+    if (!usuario) {
+      throw new Error("El usuario no existe");
+    }
+
     const preference = {
       items: [
         {
@@ -11,13 +22,13 @@ const postDonacion = async (req, res) => {
           unit_price: donacion.unit_price,
           quantity: donacion.quantity,
           fundacionId: donacion.fundacionId,
-
+          usuarioId: usuario.id,
         },
       ],
+      binary_mode: true,
       back_urls: {
         success: "http://localhost:3000/donaciones/feedback",
-        failure: "http://localhost:3000/donaciones/feedback",
-        pending: "http://localhost:3000/donaciones/feedback",
+        failure: "http://localhost:3000/donaciones/rejected",
       },
       auto_return: "approved",
     };
@@ -29,16 +40,25 @@ const postDonacion = async (req, res) => {
       fecha: new Date(),
       descripcion: donacion.title,
       fundacionId: donacion.fundacionId,
-      usuarioId: donacion.usuarioId,
+      usuarioId: usuario.id,
     });
+
+    console.log("Nueva donación creada:", nuevaDonacion);
+
+    if (response.body.auto_return === "approved") {
+      nuevaDonacion.estado = "success";
+    } else {
+      nuevaDonacion.estado = "failure";
+    }
+
+    await nuevaDonacion.save();
 
     res.status(201).send({ response, donacion: nuevaDonacion });
   } catch (error) {
     res.status(400).send({ error: error.message });
+    console.log(error);
   }
 };
-
-
 
 const getDonacion = async (req, res) => {
   try {
@@ -51,4 +71,3 @@ const getDonacion = async (req, res) => {
 };
 
 module.exports = { postDonacion, getDonacion };
-
