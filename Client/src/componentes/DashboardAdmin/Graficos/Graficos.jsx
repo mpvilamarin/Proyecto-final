@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Chart, { CategoryScale } from 'chart.js/auto';
-import { Bar, Line } from 'react-chartjs-2';
+import { Bar, Line, Doughnut } from 'react-chartjs-2';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllMascotas, getAllFundaciones, getAllUsuarios, getDonaciones } from '../../../redux/Actions/get';
 import styles from './Graficos.module.css';
@@ -78,10 +78,10 @@ const Graficos = () => {
         const perro = mascotas.filter((mascota) => mascota.especie === 'perro');
         const gato = mascotas.filter((mascota) => mascota.especie === 'gato');
 
-        const perroCas = castrado.length && perro.length;
-        const gatoCas = castrado.length && gato.length;
-        const perroNo = noCastrado.length && perro.length;
-        const gatoNo = noCastrado.length && gato.length;
+        const perroCas = castrado.filter((mascota) => mascota.especie === 'perro').length;
+        const gatoCas = castrado.filter((mascota) => mascota.especie === 'gato').length;
+        const perroNo = noCastrado.filter((mascota) => mascota.especie === 'perro').length;
+        const gatoNo = noCastrado.filter((mascota) => mascota.especie === 'gato').length;
 
         const data = {
             labels: ['Perritos Castrados', 'Gatitos Castrados', 'Perritos No Castrados', 'Gatitos No Castrados'],
@@ -97,8 +97,27 @@ const Graficos = () => {
 
         return data;
     };
-
-    // Usuarios Registrados
+    // Mascotas Adoptadas:
+    const getChartDataAdop = () => {
+        const adoptado = mascotas.filter((mascota) => mascota.activo === 'false')
+        const noAdoptado = mascotas.filter((mascota) => mascota.activo === 'true')
+        console.log(adoptado);
+        const data = {
+            labels: ['Adoptado', 'No Adoptado'],
+            datasets: [
+                {
+                    label: 'Mascotas Adoptadas',
+                    data: [adoptado, noAdoptado],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)'
+                    ],
+                    hoverOffset: 4
+                }
+            ]
+        }
+        return data;
+    }
 
     // Donaciones:
     const getChartDataDon = () => {
@@ -168,15 +187,12 @@ const Graficos = () => {
 
                 <div className={styles.adopciones}>
                     <h2 className={styles.sub}>Gráfico de Mascotas adoptadas</h2>
+                    <Doughnut options={options} data={getChartDataAdop()} />
                 </div>
 
                 <div className={styles.fundaciones}>
                     <h2 className={styles.sub}>Gráfico de Fundaciones Registradas</h2>
                     <Bar options={options} data={getChartDataFun()} />
-                </div>
-
-                <div className={styles.usuarios}>
-                    <h2 className={styles.sub}>Gráfico de Usuarios Registrados</h2>
                 </div>
                 <div className={styles.donaciones}>
                     <h2 className={styles.sub}>Gráfico de Donaciones Recibidas</h2>

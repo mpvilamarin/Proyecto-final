@@ -28,11 +28,6 @@ const NavBarVertical = ({ mostrarComponente }) => {
           </Link>
         </li>
         <li className={styles.li}>
-          <Link to="#" className={styles.menu} onClick={() => mostrarComponente('ManejoUsuarios')}>
-            Editar Usuarios
-          </Link>
-        </li>
-        <li className={styles.li}>
           <Link to="#" className={styles.menu} onClick={() => mostrarComponente('Donaciones')}>
             Ver Donaciones
           </Link>
