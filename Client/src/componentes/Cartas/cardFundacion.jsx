@@ -28,37 +28,39 @@ export default function CardsFundacion() {
         <h1 className="card-title-highlight">fundaciones</h1>
 
 
-      {!allFundaciones ? (
+        {!allFundaciones ? (
 
-        <h3>LOADING...</h3>
-      ) : (
-        <div className={style.cardsWrapper}>
-          {allFundaciones && allFundaciones.map((fundacion, indexFundacion) => (
+          <h3>LOADING...</h3>
+        ) : (
+          <div className={style.cardsWrapper}>
+            {allFundaciones && allFundaciones.map((fundacion, indexFundacion) => (
 
-            fundacion.borrado === false && (
+              fundacion.borrado === false && (
 
-            <Card key={indexFundacion} className={style.card}>
-              <Card.Body>
-                <Link to={`/fundacion/${fundacion.id}`}>
-                  <Card.Title className={style.cardTitle}>{fundacion?.nombre}</Card.Title>
-                </Link>
-                <Card.Img variant="top" className={style.imgFund} src={fundacion.image || fundaciones} />
-                <Card.Text>
-                  <h2 className={style.cardInfo}>Dirección: {fundacion?.direccion}</h2>
-                  <h2 className={style.cardInfo}>Ciudad: {fundacion?.ciudad}</h2>
-                  <h2 className={style.cardInfo}>Email: {fundacion?.email}</h2>
-                  <h2 className={style.cardInfo}>Misión: {fundacion?.mision}</h2>
-                  <StarRating rating={Number(fundacion.Reviews && fundacion.Reviews[0]?.calificacion)} />
-                </Card.Text>
-              </Card.Body>
+                <Card key={indexFundacion} className={style.card}>
+                  <Card.Body>
+                    <Link to={`/fundacion/${fundacion.id}`}>
+                      <Card.Title className={style.cardTitle}>{fundacion?.nombre}</Card.Title>
+                    </Link>
+                    <Card.Img variant="top" className={style.imgFund} src={fundacion.image || fundaciones} />
+                    <Card.Text>
+                      <h2 className={style.cardInfo}>Dirección: {fundacion?.direccion}</h2>
+                      <h2 className={style.cardInfo}>Ciudad: {fundacion?.ciudad}</h2>
+                      <h2 className={style.cardInfo}>Email: {fundacion?.email}</h2>
+                      <h2 className={style.cardInfo}>Misión: {fundacion?.mision}</h2>
+                      <StarRating rating={Number(fundacion.Reviews && fundacion.Reviews[0]?.calificacion)} />
+                    </Card.Text>
+                  </Card.Body>
 
-              </Card>
-            )
+                </Card>
+              )
 
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </div>
     </div>
   );
 }
+

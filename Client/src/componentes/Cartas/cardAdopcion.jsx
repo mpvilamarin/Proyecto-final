@@ -7,6 +7,8 @@ import { connect, useDispatch, useSelector } from 'react-redux'
 import huella from '../../assets/huellitabg.png'
 import huellaoscura from '../../assets/huellitaOscurabg.png'
 import style from './cards.module.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const CardAdop = ({ mascota, indexMascota }) => {
   const [isFav, setIsFav] = useState(false);
 
@@ -28,7 +30,7 @@ const CardAdop = ({ mascota, indexMascota }) => {
     return (
       <div>
         <Card key={indexMascota} style={{ width: '18rem' }}>
-          <Button onClick={() => handleFavorite(mascota)} className={style.button1} >
+          <Button onClick={() => handleFavorite(mascota)} className={`btn btn-custom ${style.button1}`} >
             {isFav ? (
               <img src={huellaoscura} alt="Favorito" className={style.favoriteIcon} />
             ) : (

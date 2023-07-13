@@ -34,7 +34,7 @@ const Adopcion = () => {
   useEffect(() => {
     dispatch(getAllMascotas());
     dispatch(getAllFundaciones());
-    
+
   }, [dispatch]);
 
   //PAGINADO TEMPORAL ======>>
@@ -176,15 +176,17 @@ const Adopcion = () => {
         </div>
       </div>
       <div className={styles.containerAnimales}>
-        {currentElements
-          .filter((mascota) => mascota.activo) // Filtrar las mascotas activas
-          .map((mascota, indexMascota) => (
-            <CardAdop
-              mascota={mascota}
-              indexMascota={mascota.id}
-              key={indexMascota}
-            />
-        ))}
+        <div className={styles.cardContainer}>
+          {currentElements
+            .filter((mascota) => mascota.activo) // Filtrar las mascotas activas
+            .map((mascota, indexMascota) => (
+              <CardAdop
+                mascota={mascota}
+                indexMascota={mascota.id}
+                key={indexMascota}
+              />
+            ))}
+        </div>
       </div>
       <div className={styles.paginationContainer}>
         <div className={styles.pagination}>
