@@ -29,6 +29,7 @@ function FormMascota() {
     descripcion: '',
     castrado: '',
     image: '',
+    borrado: false,
     fundacionId: nombre,
   });
   const [showAlert, setShowAlert] = useState(false);
@@ -80,6 +81,7 @@ function FormMascota() {
         descripcion: '',
         castrado: '',
         image: '',
+        borrado: false,
         fundacionId: nombre
       });
       setShowAlert(false);
