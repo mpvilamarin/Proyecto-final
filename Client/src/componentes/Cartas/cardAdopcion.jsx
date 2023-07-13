@@ -2,27 +2,33 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import React, { useState, useEffect } from "react";
-import { addFav, removeFav } from "../../redux/Actions/post.js";
+import { addFav } from "../../redux/Actions/post.js";
+import { removeFav } from "../../redux/Actions/delete.js";
 import { connect, useDispatch, useSelector } from 'react-redux'
 import huella from '../../assets/huellitabg.png'
 import huellaoscura from '../../assets/huellitaOscurabg.png'
 import style from './cards.module.css'
 import { useAuth0 } from "@auth0/auth0-react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const CardAdop = ({ mascota, indexMascota }) => {
   const { isAuthenticated, user } = useAuth0();
 
-
   const [isFav, setIsFav] = useState(false);
 
+  const { user } = useAuth0();
+
   const dispatch = useDispatch();
-  console.log(mascota)
+
+ 
   const handleFavorite = () => {
+    const email = user.email
     if (isFav) {
       setIsFav(false);
-      dispatch(removeFav(indexMascota));
+      dispatch(removeFav(indexMascota, email));
     } else {
       setIsFav(true);
-      dispatch(addFav(mascota, indexMascota));
+      dispatch(addFav(indexMascota, email));
       //console.log(mascota);
     }
   };
@@ -32,7 +38,8 @@ const CardAdop = ({ mascota, indexMascota }) => {
     return (
       <div>
         <Card key={indexMascota} style={{ width: '18rem' }}>
-          {isAuthenticated &&(<Button onClick={() => handleFavorite(mascota)} className={style.button1} >
+
+          {isAuthenticated &&(<Button onClick={() => handleFavorite(mascota)} className={`btn btn-custom ${style.button1}`} >
             {isFav ? (
               <img src={huellaoscura} alt="Favorito" className={style.favoriteIcon} />
             ) : (

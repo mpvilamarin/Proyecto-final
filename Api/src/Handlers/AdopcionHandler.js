@@ -1,4 +1,4 @@
-const { Adopciones } = require("../db");
+const { Adopciones, Usuarios } = require("../db");
 const STATUS_OK = 200;
 const STATUS_CREATED = 201;
 const STATUS_ERROR = 404;
@@ -29,12 +29,16 @@ const getAdopcionesByEmail = async (req, res) => {
     });
 
     if (!adopciones.length) {
-      res.status(STATUS_ERROR).json({ message: "No hay adopciones realizadas por este usuario" });
+      res
+        .status(STATUS_ERROR)
+        .json({ message: "No hay adopciones realizadas por este usuario" });
     } else {
       res.status(STATUS_OK).json(adopciones);
     }
   } catch (error) {
-    res.status(STATUS_ERROR).json({ message: "Error al obtener las adopciones" });
+    res
+      .status(STATUS_ERROR)
+      .json({ message: "Error al obtener las adopciones" });
   }
 };
 
@@ -64,17 +68,10 @@ const postAdopciones = async (req, res) => {
   try {
     const { mascotaId, fundacionId, ...restData } = req.body;
 
-    console.log("mascotaId:", mascotaId);
-    console.log("fundacionId:", fundacionId);
-    console.log("Resto de datos:", restData);
-
-    const email = req.user && req.user.email;
-
     const nuevaAdopcion = await Adopciones.create({
       mascotaId,
       fundacionId,
       fechaAdopcion: new Date().toISOString().slice(0, 10),
-      email,
       ...restData,
     });
 
@@ -88,4 +85,9 @@ const postAdopciones = async (req, res) => {
   }
 };
 
-module.exports = { getAdopciones, getAdopcionById, postAdopciones, getAdopcionesByEmail };
+module.exports = {
+  getAdopciones,
+  getAdopcionById,
+  postAdopciones,
+  getAdopcionesByEmail,
+};
