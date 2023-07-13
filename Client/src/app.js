@@ -47,7 +47,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import DueñoResponsable from "./componentes/Información/DueñoResponsable/DueñoResponsable";
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:3001/";
+  axios.defaults.baseURL = "https://fundacion-mascotas-uz9u.onrender.com/";
   const usuarioAdmin = useSelector((state) => state.usuarioAdmin);
 
 
