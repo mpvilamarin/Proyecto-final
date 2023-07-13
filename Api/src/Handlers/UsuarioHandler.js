@@ -1,5 +1,5 @@
 const { config } = require("dotenv");
-const { Usuarios } = require("../db");
+const { Usuarios, Mascotas } = require("../db");
 const enviarCorreoBienvenida = require("./CorreosHandler");
 // const jwt = require("jsonwebtoken");
 
@@ -35,13 +35,18 @@ async function getIdUsuario(req, res) {
   }
 }
 async function getUsuarioEmail(req, res) {
-  const { email } = req.body;
+  const { email } = req.params;
+  console.log(email)
 
   try {
     const getUsuario = await Usuarios.findOne({
       where: {
         email: email,
       },
+      include: {
+        model: Mascotas,
+        attributes: ['nombre', 'genero', 'temperamento', 'id', 'image', 'activo', 'borrado']
+      }
     });
     if (getUsuario) return res.status(STATUS_OK).json(getUsuario);
     else return res.status(STATUS_ERROR).json("no existe ese email para usuario");

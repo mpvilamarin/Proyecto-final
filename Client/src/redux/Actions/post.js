@@ -177,11 +177,17 @@ export const logOut = () => {
   return { type: LOG_OUT };
 };
 
-export const removeFav = (indexMascota) => {
-  return { type: REMOVEFAV, payload: indexMascota };
-};
 
-
-export const addFav = (mascota) => {
-  return { type: ADDFAV, payload: mascota };
+export const addFav = (id, email) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post('/mascotas/fav/', {id, email});
+      dispatch({ 
+        type: ADDFAV, 
+        payload: response 
+      });
+    }catch(error){
+      alert ('error al añadir a fav')
+    }
+  }
 };

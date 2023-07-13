@@ -15,6 +15,8 @@ const Home = () => {
 
   const usuarios = useSelector((state) => state.usuarios)
 
+  console.log(usuarios)
+
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -24,7 +26,7 @@ const Home = () => {
         dispatch(postUsuario(user));
       }
     }
-  }, [user, usuarios, dispatch]);
+  }, [user, dispatch]);
 
 
   return (

@@ -46,6 +46,7 @@ const Adopcion = () => {
     indexOfLastElement
   );
 
+  console.log(currentElements)
   const paginationButtonNext = (e) => {
     e.preventDefault();
     setCurrentPage(currentPage + 1);
