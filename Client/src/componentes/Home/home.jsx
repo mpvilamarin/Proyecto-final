@@ -37,7 +37,7 @@ const Home = () => {
         </div>
 
         <div className="page-container">
-          <CardMascota />
+          {/* <CardMascota /> */}
 
         </div>
         {/* <div className="page-container">
@@ -45,7 +45,7 @@ const Home = () => {
         </div> */}
 
         <div>
-          <Info />
+          {/* <Info /> */}
         </div>
       </div>
     </div>
