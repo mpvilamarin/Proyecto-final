@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Chart, { CategoryScale } from 'chart.js/auto';
 import { Bar, Line, Doughnut } from 'react-chartjs-2';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllMascotas, getAllFundaciones, getAllUsuarios, getDonaciones } from '../../../redux/Actions/get';
+import { getAllMascotas, getAllFundaciones, getDonaciones } from '../../../redux/Actions/get';
 import styles from './Graficos.module.css';
 Chart.register(CategoryScale)
 

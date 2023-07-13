@@ -57,7 +57,8 @@ const Donaciones = () => {
     };
 
     axios
-      .post("/donaciones", donacion)
+      .post("https://fundacion-mascotas-uz9u.onrender.com/donaciones", donacion)
+
       .then((res) => {
         const initPoint = res.data.response.body.init_point;
         window.open(initPoint);
