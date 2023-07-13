@@ -34,6 +34,7 @@ async function postMascota(req, res) {
     tamaño,
     castrado,
     image,
+    borrado
   } = req.body;
   try {
     if (
@@ -60,7 +61,8 @@ async function postMascota(req, res) {
       descripcion,
       tamaño,
       castrado,
-      image
+      image,
+      borrado
     });
       console.log(fundacionId)
     if (fundacionId) {
@@ -97,38 +99,46 @@ async function getByIdMascota(req, res) {
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 
-async function deleteMascota(req, res) {
-  const { nombre } = req.params;
+async function borradoMascota(req, res) {
+  const { id } = req.params;
+  const { 
+    nombre,
+    especie,
+    edad,
+    genero,
+    temperamento,
+    descripcion,
+    fundacionId,
+    tamaño,
+    castrado,
+    image,
+    } = req.body;
 
   try {
-    const deleteMascota = await Mascotas.findOne({
+    const mascota = await Mascotas.findOne({
       where: {
-        nombre,
-        activo: true,
+        id,
       },
     });
 
-    if (!deleteMascota) {
-      return res
-        .status(STATUS_ERROR)
-        .json({ message: "La mascota no fue encontrada" });
+    if (!mascota) {
+      return res.status(STATUS_ERROR).json({ message: "Mascota no encontrada" });
     }
 
-    await deleteMascota.update({
-      activo: false,
-      fechaBorrado: new Date(),
+    const updateMascota = await mascota.update({
+      borrado: !mascota.borrado, // Cambiar al estado opuesto
     });
 
-    res.status(STATUS_OK).json({ message: `Mascota borrada con éxito` });
+    return res.status(STATUS_OK).json(updateMascota);
   } catch (error) {
-    res
-      .status(STATUS_ERROR)
-      .json({ message: `Error al eliminar la mascota ${error}` });
+    res.status(STATUS_ERROR).json({ message: `Error al actualizar la fundacion: ${error}` });
   }
 }
 
+
 async function updateMascota(req, res) {
   const { id } = req.params;
+  console.log(id);
 
   const {nombre, especie,tamaño, edad, genero, temperamento, descripcion,image, adop } = req.body;
 
@@ -144,6 +154,7 @@ async function updateMascota(req, res) {
     }
 
     const updateMascota = await mascota.update({
+
       nombre,
       especie,
       tamaño,
@@ -154,7 +165,7 @@ async function updateMascota(req, res) {
       image,
       activo: adop
     });
-
+    console.log(updateMascota.activo)
     return res.status(STATUS_OK).json(updateMascota);
   } catch (error) {
     res
@@ -167,6 +178,6 @@ module.exports = {
   postMascota,
   getMascota,
   getByIdMascota,
-  deleteMascota,
+  borradoMascota,
   updateMascota,
 };

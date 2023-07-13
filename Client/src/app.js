@@ -100,19 +100,25 @@ function App() {
             )
           }
         /> */}
-          <Route path="/formMascota" element={<FormMascota />} />
-          <Route path="/formFundaciones" element={<FormFundaciones />} />
-          <Route path="/formAdopcion" element={<FormAdopcion />} />
 
-          <Route path="/donaciones" element={<Donacion />} />
-          <Route path="/formAdopcion" element={<FormAdopcion />} />
-          <Route path="/donaciones/feedback" element={<Feedback />} />
-          <Route path="/donaciones/rejected" element={<Rejected />} />
-          <Route path="/DashboardAdmin" element={<Dashboard />} />
-          <Route path="/InicioAdmin" element={<BienvenidaAdmin />} />
+        <Route path="/formMascota" element={<FormMascota />} />
+        <Route path="/formFundaciones" element={<FormFundaciones />} />
+        <Route path="/formAdopcion" element={<FormAdopcion />} />
 
-          <Route path="*" element={<Navigate to="/error" />} />
-          <Route path="/error" element={<Redirect />} />
+        <Route path="/donaciones" element={<Donacion />} />
+        <Route path="/formAdopcion" element={<FormAdopcion />} />
+        <Route path="/donaciones/feedback" element={<Feedback />} />
+        <Route path="/donaciones/rejected" element={<Rejected />} />
+        <Route path="/DashboardAdmin" element={<Dashboard />} />
+        <Route path="/InicioAdmin" element={<BienvenidaAdmin />} />
+
+        <Route path="*" element={<Navigate to="/error" />} />
+        <Route path="/error" element={<Redirect />} />
+      
+        {/* A PARTIR DE ACA VAN LAS RUTAS PARA LA DASHBOARD */}
+        <Route path="/crearAdmin" element={<CrearAdmin />} />
+        <Route path="/ModificarFundacion" element={<ModificarFundacion />} />
+        <Route path="/ModificarMascota" element={<ModificarMascota/>} />
 
         
       

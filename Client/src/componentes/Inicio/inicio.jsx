@@ -92,17 +92,15 @@ const Inicio = () => {
         <div className={styles.formContainer}>
           <div className={styles.toggleButton}>
             <button
-              className={`${styles.toggleOption} ${
-                selectedOption === "Usuario" ? styles.selectedOption : ""
-              }`}
+              className={`${styles.toggleOption} ${selectedOption === "Usuario" ? styles.selectedOption : ""
+                }`}
               onClick={() => setSelectedOption("Usuario")}
             >
               Usuario
             </button>
             <button
-              className={`${styles.toggleOption} ${
-                selectedOption === "Fundación" ? styles.selectedOption : ""
-              }`}
+              className={`${styles.toggleOption} ${selectedOption === "Fundación" ? styles.selectedOption : ""
+                }`}
               onClick={() => setSelectedOption("Fundación")}
             >
               Fundación

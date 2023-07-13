@@ -1,0 +1,146 @@
+
+.container {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: 'Concert One', cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 20px;
+}
+
+.h1 {
+  font-size: 100px;
+  margin-bottom: 0.5px;
+  color: black;
+  margin-left: 25px;
+}
+
+.h2 {
+  font-size: 90px;
+  margin-left: 60px;
+  margin-top: 0;
+  color: black;
+}
+
+.h1_2 {
+  font-size: 100px;
+  color: rgb(90, 156, 203);
+  margin-top: 0;
+  margin-left: -5px;
+}
+
+.textContainer {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  font-weight: 200;
+  color: rgb(34, 49, 62);
+  text-align: center;
+  margin-top: 27px;
+  margin-right: 60px;
+}
+.p{
+  margin-left: 60px;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-left: 20px;
+  justify-content: center;
+  /* Agregado */
+}
+
+.wrapper{
+  display: flex;
+}
+.image{
+  max-width: 500px;
+  max-height: fit-content;
+  border-radius: 10px;
+}
+.FundRow{
+  background-image: url('../../assets/flecha-de-neon.png');
+/* background-color: antiquewhite; */
+background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+  height: 200px;
+  width: 200px;
+margin-left: 30px;
+
+
+display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+  filter: contrast(50%);
+}
+.FundRow:hover {
+  /* Agrega los estilos que desees para el efecto de hover */
+  /* Por ejemplo, puedes cambiar el color de fondo o agregar una sombra */
+  transform: scale(1.1);
+}
+.MascotaRow{
+  background-image: url('../../assets/flecha-de-neon.png');
+  background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+/* background-color: antiquewhite; */
+height: 200px;
+width: 200px;
+margin-left: 40px;
+filter: contrast(50%);
+
+display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+}
+.MascotaRow:hover {
+  /* Agrega los estilos que desees para el efecto de hover */
+  /* Por ejemplo, puedes cambiar el color de fondo o agregar una sombra */
+  transform: scale(1.1);
+}
+
+.imageDog {
+  display: flex;
+  align-items: center;
+  /* min-width: 100%; */
+  /* Eliminado */
+  height: 100%;
+  /* align-content: center; */
+  /* Eliminado */
+  /* justify-content: flex-start; */
+  /* Eliminado */
+  /* margin-left: 200px; */
+  /* Eliminado */
+}
+
+.imageFundacion{
+      display: flex;
+        justify-content: space-around;
+        align-items: center;
+}
+.span{
+  color: rgb(138, 53, 19);
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight:bold;
+  font-size: 20px;
+}
+.Link{
+  text-decoration: none;
+}

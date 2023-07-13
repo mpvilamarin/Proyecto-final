@@ -1,7 +1,15 @@
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
   margin-bottom: 50px;
+  justify-content: space-between;
+}
+.container{
+  margin-left: 80px;
+}
+.page-container {
+  margin-top: 30px;
+  /* Ajusta el valor según tus necesidades */
 }
 
 .containerPadre {

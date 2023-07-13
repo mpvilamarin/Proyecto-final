@@ -29,9 +29,8 @@ export default function PerfilFund () {
     }
 
     return (
-        <div className={style.contenedorPadre}>
-      
-      {!data ? (
+      <div className={style.contenedorPadre}>
+      {!info ? (
         <h3>LOADING...</h3>
       ) : (
         <div className={style.contenedorHijo}>
@@ -48,7 +47,7 @@ export default function PerfilFund () {
                 <h5>Dirección: {direccion}</h5>
                 <h5>Teléfono: {telefono}</h5>
                 <h5>Email: {email}</h5>
-                <h5>Fecha de Fundación: {fundadaEn}</h5>
+                <h5>Misión: {mision}</h5>
               </div>
               <button onClick={configuracion()} className={style.botonInfo}> </button>
             </div>
@@ -56,7 +55,6 @@ export default function PerfilFund () {
           )}
           <div className={style.contenedorMision}>
             <div className={style.mision}>
-                <h5>Misión: {mision}</h5>
             </div>
           </div>
           <div className={style.body}>

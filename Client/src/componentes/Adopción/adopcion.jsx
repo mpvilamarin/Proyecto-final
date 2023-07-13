@@ -19,7 +19,7 @@ const Adopcion = () => {
 
   const allPets = useSelector((state) => state.mascotas);
   const allFundations = useSelector((state) => state.fundaciones);
-  console.log(allFundations);
+  console.log(allPets);
   const [selectedFundacion, setSelectedFundacion] = useState("All");
   const uniqueFundaciones = [
     ...new Set(allFundations.map((fundacion) => fundacion.nombre)),
@@ -34,6 +34,7 @@ const Adopcion = () => {
   useEffect(() => {
     dispatch(getAllMascotas());
     dispatch(getAllFundaciones());
+    
   }, [dispatch]);
 
   //PAGINADO TEMPORAL ======>>
@@ -107,7 +108,7 @@ const Adopcion = () => {
           </img>
         </div>
         <div className={styles.containerFiltros}>
-          <h1>Mascotas en adopción</h1>
+          <h1>MASCOTAS EN ADOPCIÓN</h1>
           <h2 className={styles.sub}>Busca tu mascota ideal</h2>
 
           <div className={styles.cont1}>

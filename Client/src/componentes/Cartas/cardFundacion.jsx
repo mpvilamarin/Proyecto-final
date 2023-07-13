@@ -1,7 +1,7 @@
-import React, { useEffect , useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllMascotas , getAllFundaciones , getNameFundaciones,getReviews  } from '../../redux/Actions/get';
+import { getAllMascotas, getAllFundaciones, getNameFundaciones, getReviews } from '../../redux/Actions/get';
 import style from './cards.module.css'; // Ruta del archivo CSS
 import fundaciones from './fundacion.png';
 import Card from 'react-bootstrap/Card';
@@ -23,7 +23,10 @@ export default function CardsFundacion() {
   return (
     <div className={style.fundacionesContainer}>
       <div className="title-container">
-      </div>
+
+        {/* <h1 className="card-title-highlight">Algunas de nuestras</h1> */}
+        <h1 className="card-title-highlight">fundaciones</h1>
+
 
       {!allFundaciones ? (
 
@@ -33,6 +36,7 @@ export default function CardsFundacion() {
           {allFundaciones && allFundaciones.map((fundacion, indexFundacion) => (
 
             fundacion.borrado === false && (
+
             <Card key={indexFundacion} className={style.card}>
               <Card.Body>
                 <Link to={`/fundacion/${fundacion.id}`}>
@@ -47,12 +51,14 @@ export default function CardsFundacion() {
                   <StarRating rating={Number(fundacion.Reviews && fundacion.Reviews[0]?.calificacion)} />
                 </Card.Text>
               </Card.Body>
+
               </Card>
             )
-            
+
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

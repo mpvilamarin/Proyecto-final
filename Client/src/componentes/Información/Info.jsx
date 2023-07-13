@@ -7,7 +7,7 @@ import styles from './Info.module.css'
 
 export default function Info() {
   return (
-    <div>
+    <div className={styles.wrapper}>
       <section className={styles.section}>
         <article className={styles.article}>
           <ul className={styles.ul}>
