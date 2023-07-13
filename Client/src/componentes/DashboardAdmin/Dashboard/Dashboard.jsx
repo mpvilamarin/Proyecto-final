@@ -23,7 +23,7 @@ const Dashboard = () => {
   return (
     <div className={styles.container}>
         <NavBarVertical mostrarComponente={mostrarComponente} />
-      <div className={styles.contentContainer}>
+      <div className={`${styles.contentContainer} ${styles.scrollContainer}`}>
         {componenteActual === 'Inicio' && <Inicio />}
         {componenteActual === 'CrearAdmin' && <CrearAdmin />}
         {componenteActual === 'ManejoFundaciones' && <ManejoFundaciones />}

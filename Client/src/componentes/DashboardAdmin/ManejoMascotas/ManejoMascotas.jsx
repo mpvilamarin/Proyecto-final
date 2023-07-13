@@ -6,6 +6,7 @@ import { getAllMascotas } from "../../../redux/Actions/get";
 import { deleteMascota } from "../../../redux/Actions/delete";
 import { updateMascota } from "../../../redux/Actions/update";
 import UploadWidget from "../../Upload/UploadWidget";
+import { Link } from "react-router-dom";
 
 import styles from "./ManejoMascotas.module.css";
 
@@ -19,7 +20,7 @@ const ModificarMascota = () => {
 
     useEffect(() => {
         dispatch(getAllMascotas());
-    }, [dispatch , selectedMascotaIndex]);
+    }, [dispatch, selectedMascotaIndex]);
 
     const [input, setInput] = useState({
         nombre: '',
@@ -31,8 +32,8 @@ const ModificarMascota = () => {
         descripcion: '',
         castrado: '',
         image: '',
-       
-        
+
+
     });
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
@@ -40,37 +41,37 @@ const ModificarMascota = () => {
     const initialActivo = storedActivo ? JSON.parse(storedActivo) : true;
     const [activo, setActivo] = useState(initialActivo);
 
-    
+
 
     const handleDeleteClick = async (id, nombre) => {
         const confirmacion = window.confirm(`¿Estás seguro de ${activo[id] ? 'activar' : 'desactivar'} la Mascota ${nombre}?`);
         if (confirmacion) {
-          try {
-            await dispatch(deleteMascota(id, nombre));
-            setActivo((prevActivo) => ({
-              ...prevActivo,
-              [id]: !prevActivo[id], // Alternar el estado de la fundación específica
-            }));
-            alert(`La Mascota ${nombre} fue ${activo[id] ? 'activada' : 'desactivada'} con éxito`);
-          } catch (error) {
-            alert(`Error al ${activo[id] ? 'activar' : 'desactivar'} la Mascota ${nombre}: ${error}`);
-          }
+            try {
+                await dispatch(deleteMascota(id, nombre));
+                setActivo((prevActivo) => ({
+                    ...prevActivo,
+                    [id]: !prevActivo[id], // Alternar el estado de la fundación específica
+                }));
+                alert(`La Mascota ${nombre} fue ${activo[id] ? 'activada' : 'desactivada'} con éxito`);
+            } catch (error) {
+                alert(`Error al ${activo[id] ? 'activar' : 'desactivar'} la Mascota ${nombre}: ${error}`);
+            }
         }
-      };
+    };
 
-      useEffect(() => {
+    useEffect(() => {
         return () => {
-          localStorage.setItem('activo', JSON.stringify(activo));
+            localStorage.setItem('activo', JSON.stringify(activo));
         };
-      }, [activo]);
+    }, [activo]);
 
-      const handleEditClick = (index) => {
+    const handleEditClick = (index) => {
         setSelectedMascotaIndex(index);
         setShowForm((prevShowForm) => !prevShowForm);
         const selectedMascota = allMascotas[index];
         setInput(selectedMascota);
     };
-     
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         const error = validate(name, value);
@@ -100,33 +101,40 @@ const ModificarMascota = () => {
             const selectedMascota = allMascotas[selectedMascotaIndex];
             const { id } = selectedMascota;
             setTimeout(() => {
-                 dispatch(updateMascota(
-                id,
-                input.nombre,
-                input.especie,
-                input.tamaño,
-                input.edad,
-                input.genero,
-                input.temperamento,
-                input.descripcion,
-                input.castrado,
-                input.image
-            ));
-            setSelectedMascotaIndex(null);
+                dispatch(updateMascota(
+                    id,
+                    input.nombre,
+                    input.especie,
+                    input.tamaño,
+                    input.edad,
+                    input.genero,
+                    input.temperamento,
+                    input.descripcion,
+                    input.castrado,
+                    input.image
+                ));
+                setSelectedMascotaIndex(null);
             }, 1800);
         }
         setTimeout(() => {
             alert('Cambios exitosos');
-          }, 1000);
-        
+        }, 1000);
+
     };
 
     return (
         <div>
-            
+
 
             <div className={styles.container}>
                 <h1 className={styles.title}>Mascotas</h1>
+                <div className={styles.contButton}>
+                    <Link to="/adopciones" >
+                        <button className={styles.funButton}>
+                            Ver Mascotas
+                        </button>
+                    </Link>
+                </div>
                 <div>
                     {allMascotas &&
                         allMascotas.map((mascota, index) => (
@@ -135,7 +143,7 @@ const ModificarMascota = () => {
                                     <p>
                                         <span key={index} className={styles.sub}>Nombre: {mascota.nombre}</span>
                                     </p>
-                                    
+
                                     <div className={styles.buttonSend} key={index}>
                                         <button key={index} onClick={() => handleEditClick(index)} className={styles.button}>
                                             editar
@@ -146,11 +154,11 @@ const ModificarMascota = () => {
                                             className={`${styles.button2} ${activo[mascota.id] ? styles['button2-activar'] : styles['button2-desactivar']}`}
                                         >
                                             {activo[mascota.id] ? 'Activar' : 'Desactivar'}
-                                        </button>                  
+                                        </button>
                                     </div>
-                                    
+
                                 </div>
-                                
+
 
                                 <div className={styles.contendorForm}>
                                     {selectedMascotaIndex === index && showForm && (

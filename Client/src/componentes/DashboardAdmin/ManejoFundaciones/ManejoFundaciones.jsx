@@ -5,6 +5,7 @@ import { validate } from "./validate";
 import { getAllFundaciones, getDetailFundacion } from "../../../redux/Actions/get";
 import { deleteFundacion } from "../../../redux/Actions/delete";
 import { updateFundacion } from "../../../redux/Actions/update";
+import { Link } from "react-router-dom";
 
 import styles from "./ManejoFundaciones.module.css";
 
@@ -35,7 +36,7 @@ const ModificarFundacion = () => {
   const storedActivo = localStorage.getItem('activo');
   const initialActivo = storedActivo ? JSON.parse(storedActivo) : true;
   const [activo, setActivo] = useState(initialActivo);
-  
+
   const handleDeleteClick = async (id, nombre) => {
     const confirmacion = window.confirm(`¿Estás seguro de ${activo[id] ? 'activar' : 'desactivar'} la fundación ${nombre}?`);
     if (confirmacion) {
@@ -51,13 +52,13 @@ const ModificarFundacion = () => {
       }
     }
   };
-  
+
   useEffect(() => {
     return () => {
       localStorage.setItem('activo', JSON.stringify(activo));
     };
   }, [activo]);
-  
+
 
   const handleEditClick = (index) => {
     setSelectedFundacionIndex(index);
@@ -83,38 +84,45 @@ const ModificarFundacion = () => {
     event.preventDefault();
 
     if (selectedFundacionIndex !== null) {
-      
+
       setIsLoading(true);
 
       const selectedFundacion = allFundaciones[selectedFundacionIndex];
       const { id } = selectedFundacion;
 
-       
 
-setTimeout(() =>{
+
+      setTimeout(() => {
         dispatch(updateFundacion(
-        id, 
-        input.nombre, 
-        input.ciudad, 
-        input.direccion, 
-        input.telefono, 
-        input.email, 
-        input.fundadaEn, 
-        input.mision));
+          id,
+          input.nombre,
+          input.ciudad,
+          input.direccion,
+          input.telefono,
+          input.email,
+          input.fundadaEn,
+          input.mision));
         setSelectedFundacionIndex(null)
-      },1800)
+      }, 1800)
     }
     setTimeout(() => {
       alert('Cambios exitosos');
     }, 1000);
   };
-  
+
   return (
     <div>
-      
+
       <div className={styles.container}>
         <h1 className={styles.title}>Fundaciones</h1>
         <div>
+          <div className={styles.contButton}>
+            <Link to="/fundaciones" >
+              <button className={styles.funButton}>
+                Ver Fundaciones
+              </button>
+            </Link>
+          </div>
           {allFundaciones &&
             allFundaciones.map((fundacion, index) => (
               <div key={index} className={styles.contendorFundacion} >
@@ -122,19 +130,19 @@ setTimeout(() =>{
                   <p>
                     <span key={index} className={styles.sub}>Fundación: {fundacion.nombre}</span>
                   </p>
-                  
+
 
                   <div className={styles.buttonSend} key={index}>
-                  <button key={index} onClick={() => handleEditClick(index)} className={styles.button}>
-                    editar
-                  </button>
-                  <button
-                    key={index}
-                    onClick={() => handleDeleteClick(fundacion.id, fundacion.nombre)}
-                    className={`${styles.button2} ${activo[fundacion.id] ? styles['button2-activar'] : styles['button2-desactivar']}`}
->
-                    {activo[fundacion.id] ? 'Activar' : 'Desactivar'}
-                  </button>
+                    <button key={index} onClick={() => handleEditClick(index)} className={styles.button}>
+                      editar
+                    </button>
+                    <button
+                      key={index}
+                      onClick={() => handleDeleteClick(fundacion.id, fundacion.nombre)}
+                      className={`${styles.button2} ${activo[fundacion.id] ? styles['button2-activar'] : styles['button2-desactivar']}`}
+                    >
+                      {activo[fundacion.id] ? 'Activar' : 'Desactivar'}
+                    </button>
 
                   </div>
                 </div>
@@ -191,7 +199,7 @@ setTimeout(() =>{
                         onChange={handleChange}
                       />
                       <textarea
-                      className={styles.text}
+                        className={styles.text}
                         type="text"
                         name="mision"
                         value={input.mision}
@@ -202,7 +210,7 @@ setTimeout(() =>{
                         <button className={styles.button3}>Aceptar Cambios</button>
                       </div>
 
-                     
+
 
 
                     </form>

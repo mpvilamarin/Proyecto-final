@@ -43,7 +43,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       mision: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       borrado: {
