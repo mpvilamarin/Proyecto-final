@@ -31,7 +31,6 @@ export default function PerfilFund() {
   const configuracion = () => {
 
   }
-
   return (
     <div className={styles.container}>
       {!info ? (
