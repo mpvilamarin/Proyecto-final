@@ -114,16 +114,11 @@ function App() {
           <Route path="*" element={<Navigate to="/error" />} />
           <Route path="/error" element={<Redirect />} />
 
-          {/* A PARTIR DE ACA VAN LAS RUTAS PARA LA DASHBOARD */}
-          <Route path="/crearAdmin" element={<CrearAdmin />} />
-          <Route path="/ModificarFundacion" element={<ModificarFundacion />} />
-          <Route path="/ModificarMascota" element={<ModificarMascota />} />
-
-
-
-
-        </Routes>
-        <Footer />
+        
+      
+      
+      </Routes>
+      <Footer />
       </div>
 
       {/* <footer>

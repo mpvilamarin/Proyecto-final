@@ -129,21 +129,22 @@ background-color: rgb(247, 232, 213);
 .button {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-size: 20px;
-  border-radius: 8px;
+  border-radius: 15px;
   height: 60px;
   width: 300px;
-  color: rgb(18, 17, 17);
-  background-color: rgb(255, 247, 236);
-  font-weight: bolder;
+  color: white;
+  background-color: #4898BF;
+  font-weight: 550;
   margin-top: 15px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: 0.3s;
   margin-bottom: 20px;
-  
+  border: none;
 }
 
 .button:hover {
-  background-color: rgb(38, 89, 114);
+  background-color: #3c7fa0;
   /* Cambia el color de fondo cuando se coloca el puntero sobre el botón */
   color: white;
+  transform: translateY(-4px);
   /* Cambia el color del texto cuando se coloca el puntero sobre el botón */
 }

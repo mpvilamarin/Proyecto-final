@@ -8,9 +8,9 @@ const Footer = () => {
         <div className={style.footer}>
           <div className={style.links}>
             <p className={style.title}>Enlaces rápidos</p>
-            <Link style={{ color: 'black' }} to="/donaciones">Donaciones</Link>
+            <Link style={{ color: 'black' }} to="/about">Nosotros</Link>
             <Link style={{ color: 'black' }} to="/fundaciones">Fundaciones</Link>
-            <Link style={{ color: 'black' }} to="/mascotas">Mascotas</Link>
+            <Link style={{ color: 'black' }} to="/adopciones">Mascotas</Link>
           </div>
           <div>
             <a href="/" rel="noreferrer">

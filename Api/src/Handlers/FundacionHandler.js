@@ -172,11 +172,38 @@ async function postAutenticarFundacion(req,res){
   }
 }
 
+
+async function borradoFundacion(req, res) {
+  const { id } = req.params;
+  const { nombre, ciudad, direccion, telefono, email, fundadaEn, mision, image } = req.body;
+
+  try {
+    const fundacion = await Fundaciones.findOne({
+      where: {
+        id,
+      },
+    });
+
+    if (!fundacion) {
+      return res.status(STATUS_ERROR).json({ message: "Fundacion no encontrada" });
+    }
+
+    const updateFundacion = await fundacion.update({
+      borrado: !fundacion.borrado, // Cambiar al estado opuesto
+    });
+
+    return res.status(STATUS_OK).json(updateFundacion);
+  } catch (error) {
+    res.status(STATUS_ERROR).json({ message: `Error al actualizar la fundacion: ${error}` });
+  }
+}
+
 module.exports = { 
     postFundacion,
     getAllFundaciones,
     updateFundacion,
     getFundacionById,
     postAutenticarFundacion,
+    borradoFundacion,
 
 }

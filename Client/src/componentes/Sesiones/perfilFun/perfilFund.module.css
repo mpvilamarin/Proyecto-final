@@ -41,6 +41,7 @@
   .contenedorReviews{
     position: relative;
     width: 70vh;
+    height: 50vh;
   }
   .Comentarios{
     border: solid 2px #1b1b1e;
@@ -105,5 +106,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+  }
+  .contenedorAdopciones{
+    position:relative;
   }
   
