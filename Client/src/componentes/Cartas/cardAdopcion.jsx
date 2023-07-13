@@ -7,9 +7,9 @@ import { connect, useDispatch, useSelector } from 'react-redux'
 import huella from '../../assets/huellitabg.png'
 import huellaoscura from '../../assets/huellitaOscurabg.png'
 import style from './cards.module.css'
-const CardAdop = ({ mascota, indexMascota}) => {
+const CardAdop = ({ mascota, indexMascota }) => {
   const [isFav, setIsFav] = useState(false);
-  
+
   const dispatch = useDispatch();
   console.log(mascota)
   const handleFavorite = () => {

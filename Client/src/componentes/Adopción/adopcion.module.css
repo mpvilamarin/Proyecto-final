@@ -33,7 +33,7 @@
 
 .sub {
   font-size: 20px;
-  font-family: 'Playfair Display';
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-weight: 500;
 }
 
@@ -46,8 +46,8 @@
 }
 
 .marca {
-  font-size: 18px;
-  font-family: 'Playfair Display';
+  font-size: 16px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-weight: 400;
 }
 
@@ -72,8 +72,8 @@
 }
 
 .options {
-  font-family: "Merriweather";
-  font-size: 15px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 14px;
   border-radius: 15px;
   color: black;
   background-color: white;
@@ -104,10 +104,10 @@
 
 
 .container h1 {
-  font-family: 'PlayFair display';
-  font-weight: 700;
-  font-size: 50px;
-  color: #000000;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: 35px;
+  color: #2b2a2a;
   width: 100%;
   margin-top: 10px;
   margin-left: -30px;

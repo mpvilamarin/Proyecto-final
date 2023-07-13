@@ -107,7 +107,7 @@ const Adopcion = () => {
           </img>
         </div>
         <div className={styles.containerFiltros}>
-          <h1>Mascotas en adopción</h1>
+          <h1>MASCOTAS EN ADOPCIÓN</h1>
           <h2 className={styles.sub}>Busca tu mascota ideal</h2>
 
           <div className={styles.cont1}>

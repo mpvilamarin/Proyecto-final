@@ -40,7 +40,7 @@
 
 .ordenar {
   font-size: 20px;
-  font-family: 'Playfair Display';
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-weight: 500;
 }
 
@@ -69,10 +69,10 @@ margin-left: 5px;
 }
 
 .title {
-  font-family: 'PlayFair display';
-  font-weight: 700;
-  font-size: 50px;
-  color: #000000;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  color: #302f2f;
   width: 100%;
   margin-top: 10px;
   text-align: start;
