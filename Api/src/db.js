@@ -59,6 +59,7 @@ Usuarios.hasMany(Donaciones, { foreignKey: "usuarioId" });
 Usuarios.hasMany(Adopciones, { foreignKey: "usuarioId" });
 Adopciones.belongsTo(Usuarios, { foreignKey: "usuarioId" });
 
+
 // Fundaciones.hasMany(Mascotas, {foreignKey: "fundacionId"})
 
 Mascotas.belongsToMany(Fundaciones, {
@@ -69,6 +70,17 @@ Fundaciones.belongsToMany(Mascotas, {
   through: "MascotasFundaciones",
   timestamps: false,
 });
+
+ Mascotas.belongsToMany(Usuarios, {
+  through: "MascotasUsuarios",
+  timestamps: false,
+});
+Usuarios.belongsToMany(Mascotas, {
+  through: "MascotasUsuarios",
+  timestamps: false,
+});
+
+
 
 Adopciones.belongsTo(Mascotas, { foreignKey: "mascotaId" });
 Mascotas.hasMany(Adopciones, { foreignKey: "mascotaId" });

@@ -12,6 +12,7 @@ import {
   GET_ADMIN,
   GET_ALL_ADOPCIONES,
   GET_DONACIONES,
+  GET_USUARIO
 
 } from "../Actions-type/index.js";
 
@@ -170,3 +171,17 @@ export const getDonaciones = () => {
     }
   };
 };
+
+export const getUsuarioEmail = (email) =>{
+  return async (dispatch) =>{
+    try{
+      const response = await axios.get(`/usuarios/getBy/${email}`);
+      dispatch({
+        type: GET_USUARIO,
+        payload: response.data,
+      });
+    }catch(error){
+      console.error(error);
+    }
+  }
+}
