@@ -1,20 +1,17 @@
 import React, { useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import style from "./detailMascota.module.css";
 import { getDetailMascota } from "../../redux/Actions/get";
+import { useNavigate } from 'react-router-dom'
 
-export default function Detalle() {
-  const { id } = useParams();
+export default function Detalle({ mascotaId }) {
+  const selector = useSelector((state) => state.mascotaDetail);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const selector = useSelector((state) => state.mascotaDetail);
-
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(getDetailMascota(id));
-  }, [dispatch, id]);
+    dispatch(getDetailMascota(mascotaId));
+  }, [dispatch, mascotaId]);
 
   const handleClickAdoptar = () => {
     // Obtener el ID de la mascota y el ID de la fundación

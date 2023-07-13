@@ -75,8 +75,9 @@ const Donaciones = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Donar es darles una oportunidad de ser amados y cuidados</h1>
-      <form>
+      <h1>DONAR ES DARLES UNA OPORTUNIDAD</h1>
+      <h1>DE SER AMADOS Y CUIDADOS</h1>
+      <form className={styles.form}>
         <div>
           <label className={styles.label}>Monto:</label>
           <div className={styles.input}>
@@ -92,7 +93,7 @@ const Donaciones = () => {
           <label className={styles.label}>Descripción:</label>
           <div className={styles.input}>
             <input
-              className={styles.inputContainer}
+              className={styles.inputContainer2}
               type="textarea"
               name="descripcion"
               value={newDonacion.descripcion}
@@ -102,6 +103,7 @@ const Donaciones = () => {
           {newDonacion.monto && (
             <p className={styles.label}>
               Le donarás a la fundación {newDonacion.fundacionNombre}: ${newDonacion.monto}
+
             </p>
           )}
         </div>

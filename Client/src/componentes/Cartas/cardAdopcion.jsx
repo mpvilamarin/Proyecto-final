@@ -1,19 +1,46 @@
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addFav, removeFav } from "../../redux/Actions/post.js";
+import Modal from "react-modal";
+import huella from "../../assets/huellitabg.png";
+import huellaoscura from "../../assets/huellitaOscurabg.png";
+import style from "./cards.module.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Detalle from "../Mascota/detailMascota.jsx";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import React, { useState, useEffect } from "react";
-import { addFav, removeFav } from "../../redux/Actions/post.js";
-import { connect, useDispatch, useSelector } from 'react-redux'
-import huella from '../../assets/huellitabg.png'
-import huellaoscura from '../../assets/huellitaOscurabg.png'
-import style from './cards.module.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Configuración de estilos para el modal
+Modal.setAppElement("#root");
+
+const modalStyles = {
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  content: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    // width: "900px",
+    // maxHeight: "500px",
+    maxHeight: "fit-content",
+    maxWidth: "fit-content",
+    overflow: "auto",
+    padding: "20px",
+    border: "none",
+    borderRadius: "10px",
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+    backgroundColor: "#ddd6ce"
+  },
+};
 
 const CardAdop = ({ mascota, indexMascota }) => {
   const [isFav, setIsFav] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const dispatch = useDispatch();
-  console.log(mascota)
+
   const handleFavorite = () => {
     if (isFav) {
       setIsFav(false);
@@ -21,18 +48,31 @@ const CardAdop = ({ mascota, indexMascota }) => {
     } else {
       setIsFav(true);
       dispatch(addFav(mascota, indexMascota));
-      //console.log(mascota);
     }
   };
 
+  const handleOpenModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+  };
 
   if (mascota?.borrado === false) {
     return (
       <div>
-        <Card key={indexMascota} style={{ width: '18rem' }}>
-          <Button onClick={() => handleFavorite(mascota)} className={`btn btn-custom ${style.button1}`} >
+        <Card key={indexMascota} style={{ width: "18rem" }}>
+          <Button
+            onClick={() => handleFavorite(mascota)}
+            className={`btn btn-custom ${style.button1}`}
+          >
             {isFav ? (
-              <img src={huellaoscura} alt="Favorito" className={style.favoriteIcon} />
+              <img
+                src={huellaoscura}
+                alt="Favorito"
+                className={style.favoriteIcon}
+              />
             ) : (
               <img src={huella} alt="No favorito" className={style.favoriteIcon} />
             )}
@@ -45,11 +85,20 @@ const CardAdop = ({ mascota, indexMascota }) => {
               <br />
               Temperamento: {mascota?.temperamento}
             </Card.Text>
-            <Link to={`/mascota/${mascota?.id}`}>
-              <Button className={style.button1}>Ver más</Button>
-            </Link>
+            <Button className={style.button1} onClick={handleOpenModal}>
+              Ver más
+            </Button>
           </Card.Body>
         </Card>
+
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={handleCloseModal}
+          contentLabel="Detalles de Mascota"
+          style={modalStyles}
+        >
+          <Detalle mascotaId={mascota?.id} />
+        </Modal>
       </div>
     );
   } else {
@@ -57,4 +106,4 @@ const CardAdop = ({ mascota, indexMascota }) => {
   }
 };
 
-export default CardAdop
+export default CardAdop;
