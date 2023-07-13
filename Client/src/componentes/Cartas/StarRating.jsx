@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './cards.module.css'
 
 const StarRating = ({ rating }) => {
   // Function to create an array of filled stars based on the rating value
@@ -9,8 +10,8 @@ const StarRating = ({ rating }) => {
   };
 
   return (
-    <div>
-      <span>{createStars(rating)}</span>
+    <div className={styles.contStar}>
+      <span className={styles.stars}>{createStars(rating)}</span>
     </div>
   );
 };

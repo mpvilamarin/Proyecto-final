@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postAdopciones } from "../../redux/Actions/post";
 import { useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import styles from './stilosFormularioMascota.css';
 
 function FormAdopciones() {
   const dispatch = useDispatch();
@@ -219,9 +220,11 @@ function FormAdopciones() {
             required
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Enviar Solicitud de Adopción
-        </Button>
+        <div className={styles.contButton}>
+          <Button variant="primary" type="submit">
+            Enviar Solicitud de Adopción
+          </Button>
+        </div>
       </Form>
     </div>
   );

@@ -31,7 +31,7 @@ const modalStyles = {
     border: "none",
     borderRadius: "10px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-    backgroundColor: "#ddd6ce"
+    backgroundColor: "#3c7fa0af"
   },
 };
 
@@ -68,7 +68,7 @@ const CardAdop = ({ mascota, indexMascota }) => {
         <Card key={indexMascota} style={{ width: "18rem" }}>
           <Button
             onClick={() => handleFavorite(mascota)}
-            className={`btn btn-custom ${style.button1}`}
+            className={`btn btn-custom ${style.button2}`}
           >
             {isFav ? (
               <img
@@ -83,19 +83,24 @@ const CardAdop = ({ mascota, indexMascota }) => {
 
           <Card.Img variant="top" src={mascota?.image} alt="Mascota" className={style.image} />
           <Card.Body>
+            <div className={style.contCard}>
             <Card.Title className="card-title">{mascota?.nombre}</Card.Title>
             <Card.Text className="card-text">
               Género: {mascota?.genero}
               <br />
               Temperamento: {mascota?.temperamento}
             </Card.Text>
+            </div>
+            <div className={style.contButton}>
             <Button className={style.button1} onClick={handleOpenModal}>
               Ver más
             </Button>
+            </div>
           </Card.Body>
         </Card>
 
         <Modal
+        className={style.caja}
           isOpen={modalIsOpen}
           onRequestClose={handleCloseModal}
           contentLabel="Detalles de Mascota"
