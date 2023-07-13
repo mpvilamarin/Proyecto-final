@@ -16,7 +16,7 @@ const CardAdop = ({ mascota, indexMascota }) => {
 
   const [isFav, setIsFav] = useState(false);
 
-  const { user } = useAuth0();
+  //const { user } = useAuth0();
 
   const dispatch = useDispatch();
 

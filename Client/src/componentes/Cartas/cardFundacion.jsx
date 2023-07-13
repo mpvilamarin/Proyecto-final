@@ -25,7 +25,6 @@ export default function CardsFundacion() {
       <div className="title-container">
 
         {/* <h1 className="card-title-highlight">Algunas de nuestras</h1> */}
-        <h1 className="card-title-highlight">fundaciones</h1>
 
 
         {!allFundaciones ? (
