@@ -56,7 +56,7 @@ const Home = () => {
                 </p>
               </div>
               <div className={styles.contMedio}>
-                <Link to="/formAdopcion">
+                <Link to="/adopciones">
                   <button className={styles.button2}>¡Adopta Ahora!</button>
                 </Link>
               </div>
