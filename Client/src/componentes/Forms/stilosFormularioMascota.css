@@ -14,12 +14,11 @@
   
   .checkbox-label {
     display: block;
-    margin-bottom: 10px;
   }
 
   .custom-form {
-    font-family: 'Playfair Display';
-    font-size: 18px;
+    font-family: 'Merriweather';
+    font-size: 15px;
   }
   
   .custom-form .btn-primary {
@@ -40,6 +39,7 @@
   .custom-form input[type="radio"],
   .custom-form input[type="checkbox"] {
     border-radius: 10px;
+
   }
 
   .custom-form .form-group {
@@ -47,15 +47,21 @@
   }
   
   .custom-form .form-label {
-    margin-bottom: 5px;
+    margin-top: 10px;
+    
   }
   
   .custom-form .form-control {
-    margin-top: 5px;
+    font-size: 14px;
+  }
+
+  .custom-form .form-select {
+    font-size: 14px;
+    margin-top: -5px;
   }
 
 .title-form {
-  font-family: 'Playfair Display';
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   white-space: nowrap;
   max-width: 100%;
   color: #000000;

@@ -133,7 +133,7 @@ const ModificarFundacion = () => {
                   <button
                     key={index}
                     onClick={() => handleDeleteClick(fundacion.id, fundacion.nombre)}
-                    className={styles.button}
+                    className={`${styles.button2} ${activo[fundacion.id] ? styles['button2-activar'] : styles['button2-desactivar']}`}
 >
                     {activo[fundacion.id] ? 'Activar' : 'Desactivar'}
                   </button>
@@ -201,7 +201,7 @@ const ModificarFundacion = () => {
                         onChange={handleChange}
                       />
                       <div className={styles.buttonSend}>
-                        <button className={styles.button2}>Aceptar Cambios</button>
+                        <button className={styles.button3}>Aceptar Cambios</button>
                       </div>
 
                      
