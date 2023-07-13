@@ -1,40 +1,36 @@
 import React, { useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import style from "./detailMascota.module.css";
 import { getDetailMascota } from "../../redux/Actions/get";
+import { useNavigate } from 'react-router-dom'
 import { useAuth0 } from "@auth0/auth0-react";
 
-
-export default function Detalle() {
-  const { isAuthenticated, user } = useAuth0();
-  const usuarioFundacion = useSelector((state) => state.usuarioFundacion);
-  const { id } = useParams();
-  const navigate = useNavigate();
-
+export default function Detalle({ mascotaId }) {
   const selector = useSelector((state) => state.mascotaDetail);
-
   const dispatch = useDispatch();
 
+  const { isAuthenticated, user } = useAuth0();
+  const usuarioFundacion = useSelector((state) => state.usuarioFundacion);
+  const navigate = useNavigate();
+
   useEffect(() => {
-    dispatch(getDetailMascota(id));
-  }, [dispatch, id]);
+    dispatch(getDetailMascota(mascotaId));
+  }, [dispatch, mascotaId]);
 
   const handleClickAdoptar = () => {
-    if(isAuthenticated){
+    if (isAuthenticated) {
       // Obtener el ID de la mascota y el ID de la fundación
       const mascotaId = selector.id;
       const fundacionId =
-      selector.Fundaciones[0].MascotasFundaciones.FundacioneId;
+        selector.Fundaciones[0].MascotasFundaciones.FundacioneId;
 
-      // Pasar los IDs al componente mediante useNavigate
       navigate(`/formAdopcion?mascotaId=${mascotaId}&fundacionId=${fundacionId}`);
-    }else{
+    } else {
       alert('si quieres adoptar, debes iniciar sesion')
       navigate('/login');
     }
-    
-   
+
+
   };
 
   return (
@@ -72,7 +68,7 @@ export default function Detalle() {
           {!usuarioFundacion && (<button className={style.button} onClick={handleClickAdoptar}>
             Adoptar
           </button>)}
-          
+
         </div>
       ) : undefined}
     </div>
