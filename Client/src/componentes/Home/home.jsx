@@ -61,7 +61,6 @@ const Home = () => {
                 <img src={require("../../assets/HomePerro.webp")} alt="Ambos" className={styles.img} />
               </div>
             </div>
-
           </div>
           <div>
           </div>
@@ -123,7 +122,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
