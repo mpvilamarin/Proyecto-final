@@ -9,6 +9,8 @@ import { adopcionMascota } from "../../redux/Actions/update";
 
 const CardMascota = ({ mascota, indexMascota }) => {
 
+  const [adop, setIsAdop] = useState(mascota.activo);
+
   const dispatch = useDispatch();
 
   // const clickAdoptado = () => {
@@ -21,12 +23,33 @@ const CardMascota = ({ mascota, indexMascota }) => {
   //   }
   // };
 
-  const adop = useSelector((state) => state.adopcion);
+  const clickAdoptado = () => {
+    if (adop) {
+      dispatch(adopcionMascota(mascota.id, mascota.name, false))
+      setIsAdop(false)
+    }
+    else {
+      dispatch(adopcionMascota(mascota.id, mascota.name, true))
+
+      setIsAdop(true)
+    }
+  }
 
   return (
     <div>
       <Card key={indexMascota} style={{ width: '18rem' }}>
+
+        <Button onClick={() => clickAdoptado()} className="btn.btn-primary">
+
+          {adop ? (
+            <h2>Adoptado</h2>
+          ) : (
+            <h2>Sin adoptar</h2>
+          )}
+        </Button>
+
         <Card.Img variant="top" src={mascota?.image} alt="Mascota" className="card-image" />
+
         <Card.Body>
           <Card.Title className="card-title">{mascota?.nombre}</Card.Title>
           <Card.Text className="card-text">
@@ -43,4 +66,6 @@ const CardMascota = ({ mascota, indexMascota }) => {
   );
 };
 
-export default CardMascota;
+
+
+export default CardMascota

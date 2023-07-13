@@ -36,6 +36,7 @@ export const updateMascota = (
   descripcion,
   castrado,
   image,
+  
 ) => {
   return async (dispatch) => {
     try {
@@ -49,11 +50,13 @@ export const updateMascota = (
         descripcion,
         castrado,
         image,
+        
       });
       dispatch({
         type: UPDATE_MASCOTA,
         payload: response.data,
       });
+     
     } catch (error) {
       alert(` error al actualizar datos de la Mascota ${error} `);
     }
@@ -68,7 +71,8 @@ export const updateFundacion = (
   telefono,
   email,
   fundadaEn,
-  mision
+  mision,
+  adop
 ) => {
   return async (dispatch) => {
     try {
@@ -80,12 +84,13 @@ export const updateFundacion = (
         email,
         fundadaEn,
         mision,
+        adop
       });
       dispatch({
         type: UPDATE_FUNDACION,
         payload: response.data,
       });
-      alert('se actualizo corectamente la fundacion')
+      
     } catch (error) {
       alert(` error al actualizar datos de la fundacion ${error} `);
     }

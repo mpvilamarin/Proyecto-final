@@ -52,11 +52,11 @@ export default function NavBar() {
             </Link>)}
 
 
-            {isAuthenticated && (
+            {/* {isAuthenticated && (
               <Link to="/donaciones" className="nav-link">
                 Donaciones
               </Link>
-            )}
+            )} */}
 
            {!usuarioAdmin&&( <Link to="/adopciones" className="nav-link">
               Mascotas

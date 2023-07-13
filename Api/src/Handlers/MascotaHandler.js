@@ -1,4 +1,4 @@
-const { Mascotas, Fundaciones } = require("../db");
+const { Mascotas, Fundaciones, Usuarios } = require("../db");
 
 const STATUS_OK = 200;
 const STATUS_CREATED = 201;
@@ -70,6 +70,7 @@ async function postMascota(req, res) {
       let mascotas = await Fundaciones.findAll({
         where: { nombre: fundacionId },
       });
+      console.log(mascotas)
       await newMascota.addFundaciones(mascotas);
     }
     res.status(STATUS_CREATED).json(newMascota);
@@ -138,7 +139,7 @@ async function borradoMascota(req, res) {
 
 async function updateMascota(req, res) {
   const { id } = req.params;
-  console.log(id);
+  
 
   const {nombre, especie,tamaño, edad, genero, temperamento, descripcion,image, adop } = req.body;
 
@@ -165,7 +166,6 @@ async function updateMascota(req, res) {
       image,
       activo: adop
     });
-    console.log(updateMascota.activo)
     return res.status(STATUS_OK).json(updateMascota);
   } catch (error) {
     res
@@ -174,10 +174,59 @@ async function updateMascota(req, res) {
   }
 }
 
+async function addFav(req, res) {
+  const info = req.body;
+  try {
+    const usuario = await Usuarios.findOne({
+      where: { email: info.email },
+    });
+
+    const mascota = await Mascotas.findOne({
+      where: { id: info.id },
+    });
+
+
+    if (usuario && mascota) {
+      await usuario.addMascotas(mascota);
+      res.status(200).json({ message: 'Mascota añadida a favoritos correctamente' });
+    } else {
+      res.status(404).json({ message: 'Usuario o mascota no encontrada' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: `Error al añadir a favoritos a la mascota: ${error}` });
+  }
+}
+
+async function removeFav(req, res) {
+  const info = req.params;
+  try {
+    const usuario = await Usuarios.findOne({
+      where: { email: info.email },
+    });
+
+    const mascota = await Mascotas.findOne({
+      where: { id: info.id },
+    });
+
+    if (usuario && mascota) {
+      await usuario.removeMascotas(mascota);
+      res.status(200).json({ message: 'Mascota removida de favoritos correctamente' });
+    } else {
+      res.status(404).json({ message: 'Usuario o mascota no encontrada' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: `Error al remover la mascota de favoritos: ${error}` });
+  }
+}
+
+
+
 module.exports = {
   postMascota,
   getMascota,
   getByIdMascota,
   borradoMascota,
   updateMascota,
+  addFav,
+  removeFav
 };

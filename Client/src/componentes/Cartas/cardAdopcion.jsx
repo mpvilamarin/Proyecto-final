@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Detalle from "../Mascota/detailMascota.jsx";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useAuth0 } from "@auth0/auth0-react";
 
 // Configuración de estilos para el modal
 Modal.setAppElement("#root");
@@ -22,8 +23,6 @@ const modalStyles = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    // width: "900px",
-    // maxHeight: "500px",
     maxHeight: "fit-content",
     maxWidth: "fit-content",
     overflow: "auto",
@@ -36,15 +35,18 @@ const modalStyles = {
 };
 
 const CardAdop = ({ mascota, indexMascota }) => {
+  const { isAuthenticated, user } = useAuth0();
+
   const [isFav, setIsFav] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const dispatch = useDispatch();
 
   const handleFavorite = () => {
+    const email = user.email
     if (isFav) {
       setIsFav(false);
-      dispatch(removeFav(indexMascota));
+      dispatch(removeFav(indexMascota, email));
     } else {
       setIsFav(true);
       dispatch(addFav(mascota, indexMascota));
@@ -77,6 +79,7 @@ const CardAdop = ({ mascota, indexMascota }) => {
               <img src={huella} alt="No favorito" className={style.favoriteIcon} />
             )}
           </Button>
+
           <Card.Img variant="top" src={mascota?.image} alt="Mascota" className={style.image} />
           <Card.Body>
             <Card.Title className="card-title">{mascota?.nombre}</Card.Title>

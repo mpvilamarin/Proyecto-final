@@ -66,29 +66,21 @@ const getAdopcionById = async (req, res) => {
 
 const postAdopciones = async (req, res) => {
   try {
-    const adopcion = req.body;
-
-    const usuario = await Usuarios.findOne({
-      where: {
-        email: adopcion.email,
-      },
-    });
-
-    if (!usuario) {
-      throw new Error("El usuario no existe");
-    }
+    const { mascotaId, fundacionId, ...restData } = req.body;
 
     const nuevaAdopcion = await Adopciones.create({
-      mascotaId: adopcion.mascotaId,
-      fundacionId: adopcion.fundacionId,
-      usuarioId: usuario.id,
+      mascotaId,
+      fundacionId,
       fechaAdopcion: new Date().toISOString().slice(0, 10),
       ...restData,
     });
 
-    res.status(201).send({ response, donacion: nuevaAdopcion });
+    res.status(STATUS_CREATED).json(nuevaAdopcion);
   } catch (error) {
-    res.status(400).send({ error: error.message });
+    res
+      .status(STATUS_ERROR)
+      .json({ message: "Ocurrió un error al crear adopción: " + error });
+
     console.log(error);
   }
 };
