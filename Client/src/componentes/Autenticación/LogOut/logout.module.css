@@ -1,0 +1,14 @@
+.button {
+    background-color: transparent;
+    border: none;
+}
+
+.img {
+    height: 30px;
+    width: 30px;
+    transition: 0.3s;
+}
+
+.img:hover {
+    transform: translateX(5px);
+}

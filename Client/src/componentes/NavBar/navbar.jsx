@@ -8,6 +8,7 @@ import LogOutButton from "../Autenticación/LogOut/logout";
 import LogInButton from "../Autenticación/LogIn/login";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../../redux/Actions/post";
+import styles from './NavBar.css';
 
 
 export default function NavBar() {
@@ -100,10 +101,10 @@ export default function NavBar() {
             )}
 
             {isAuthenticated && !isAuthenticated && usuarioAdmin&& 
-            (<Link to="/perfilfund">Mi perfil</Link>)}
+            (<Link to="/perfilfund" className="nav-link">Mi perfil</Link>)}
 
             { usuarioFundacion&& 
-            (<Link to="/perfilfund">Mi perfil</Link>)}
+            (<Link to="/perfilfund" className="nav-link">Mi perfil</Link>)}
 
             {isAuthenticated && (
               <li className="nav-link">
@@ -113,9 +114,15 @@ export default function NavBar() {
               </li>
             )}
 
-            {isAuthenticated && !isAuthenticated && (<button onClick={logout}>LOGOUT</button>)}
-            {usuarioFundacion && (<button onClick={logout}>LOGOUT</button>)}
-            {usuarioAdmin && (<button onClick={logout}>LOGOUT</button>)}
+            {isAuthenticated && !isAuthenticated && (<button onClick={logout} className="button">
+              <img src={require("../../assets/LogOut.png")} alt="logOut" className="img" />
+              </button>)}
+            {usuarioFundacion && (<button onClick={logout} className="button">
+              <img src={require("../../assets/LogOut.png")} alt="logOut" className="img" />
+              </button>)}
+            {usuarioAdmin && (<button onClick={logout} className="button">
+              <img src={require("../../assets/LogOut.png")} alt="logOut" className="img" />
+              </button>)}
             
           </Nav>
         </Navbar.Collapse>
