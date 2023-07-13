@@ -176,6 +176,7 @@ async function updateMascota(req, res) {
 
 async function addFav(req, res) {
   const info = req.body;
+
   try {
     const usuario = await Usuarios.findOne({
       where: { email: info.email },

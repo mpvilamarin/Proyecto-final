@@ -6,10 +6,8 @@ const STATUS_ERROR=404;
 
 async function CalificarFundacines(req, res){
     const { calificacion, comentarios,  fundacion } =  req.body;
-
+  console.log(calificacion, comentarios, fundacion)
     try {
-
-
         const crearReview = await Reviews.create({
             calificacion, 
             comentarios

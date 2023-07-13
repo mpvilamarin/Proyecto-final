@@ -28,6 +28,7 @@ const Home = () => {
     }
   }, [user, dispatch]);
 
+
   return (
     <div className={styles.container}>
       <div className={styles.infoHome}>

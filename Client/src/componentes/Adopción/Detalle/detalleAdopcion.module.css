@@ -1,0 +1,53 @@
+.container {
+    max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ebdfce;
+      color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      /* max-height: fit-content; */
+      height: -moz-fit-content;
+      height: fit-content;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      flex-direction: column
+}
+
+
+.details {
+  flex: 1 1 300px;
+  margin-left: 40px;
+  /* Resto de estilos */
+}
+
+.property {
+    font-size: 19px;
+    font-weight:bold;
+    margin-bottom: 8px;
+    color: rgb(84, 33, 33);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-bottom: 2px solid #4d1d16;
+    /* Agrega una línea de 2px de grosor */
+    width: fit-content;
+    /* Ajusta el ancho de la línea al contenido */
+    padding-bottom: 4px;
+    /* Agrega espacio entre el texto y la línea */
+    margin-left: 80px;
+  }
+  
+  .value {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: rgb(50, 48, 48);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-bottom: 1px solid #ccc;
+    /* Agrega una línea de 1px de grosor */
+    width: fit-content;
+    /* Ajusta el ancho de la línea al contenido */
+    padding-bottom: 4px;
+    /* Agrega espacio entre el texto y la línea */
+    margin-left: 40px;
+  }

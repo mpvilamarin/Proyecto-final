@@ -18,19 +18,16 @@ export default function PerfilFund() {
   console.log(adopciones);
   console.log("AQUI", info)
   const mascotas = info?.Mascotas
+  const reviews = info?.Reviews;
   const dispatch = useDispatch();
   const { id } = data;
-  const { image, nombre, ciudad, direccion, telefono, fundadaEn, email, mision, reviews } = info;
-  console.log(mascotas)
+
   useEffect(() => {
     dispatch(resetDetail());
     //  dispatch(getAllMascotas());
     dispatch(getDetailFundacion(id));
   }, []);
 
-  const configuracion = () => {
-
-  }
   return (
     <div className={styles.container}>
       {!info ? (
@@ -82,8 +79,7 @@ export default function PerfilFund() {
                 .filter((adopcion) => adopcion.fundacionId === id) // Filtrar las mascotas activas
                 .map((adopcion, indexAdopcion) => (
                   <Solicitudes
-                    nombreCompleto={adopcion.nombreCompleto}
-                    motivoAdopcion={adopcion.motivoAdopcion}
+                    adopcion={adopcion}
                     indexAdopcion={adopcion.id}
                     key={indexAdopcion}
                   />

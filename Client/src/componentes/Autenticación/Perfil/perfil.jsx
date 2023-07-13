@@ -41,13 +41,13 @@ const Profile = () => {
         <h2 className={styles.sub}>Mis peluditos favoritos</h2>
         <div>
           <div>
-          {mascotas.map((mascota, indexMascota) => (
+          {mascotas && (mascotas.map((mascota, indexMascota) => (
             <CardAdop
               mascota={mascota}
               indexMascota={mascota.id}
               key={indexMascota}
             />
-        ))}
+        )))}
           </div>
         </div>
       </div>

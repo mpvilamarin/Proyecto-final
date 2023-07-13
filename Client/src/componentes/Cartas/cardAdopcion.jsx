@@ -36,7 +36,10 @@ const modalStyles = {
 };
 
 const CardAdop = ({ mascota, indexMascota }) => {
-  const { isAuthenticated, user } = useAuth0();
+
+console.log(mascota)
+
+  const { user, isAuthenticated } = useAuth0();
 
   const [isFav, setIsFav] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -50,7 +53,7 @@ const CardAdop = ({ mascota, indexMascota }) => {
       dispatch(removeFav(indexMascota, email));
     } else {
       setIsFav(true);
-      dispatch(addFav(mascota, indexMascota));
+      dispatch(addFav(indexMascota, email));
     }
   };
 
@@ -66,20 +69,14 @@ const CardAdop = ({ mascota, indexMascota }) => {
     return (
       <div>
         <Card key={indexMascota} style={{ width: "18rem" }}>
-          <Button
-            onClick={() => handleFavorite(mascota)}
-            className={`btn btn-custom ${style.button2}`}
-          >
+        {isAuthenticated &&(<Button onClick={() => handleFavorite(mascota)} 
+          className={`btn btn-custom ${style.button2}`} >
             {isFav ? (
-              <img
-                src={huellaoscura}
-                alt="Favorito"
-                className={style.favoriteIcon}
-              />
+              <img src={huellaoscura} alt="Favorito" className={style.favoriteIcon} />
             ) : (
               <img src={huella} alt="No favorito" className={style.favoriteIcon} />
             )}
-          </Button>
+          </Button>)}
 
           <Card.Img variant="top" src={mascota?.image} alt="Mascota" className={style.image} />
           <Card.Body>
