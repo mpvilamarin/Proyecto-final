@@ -29,8 +29,11 @@ const Fundacion = () => {
             className={style.img}>
           </img>
         </div>
+      </div >
+      <div className={style.cardContainer}>
+        <CardFundacion />
       </div>
-      <CardFundacion />
+
     </div>
   );
 };

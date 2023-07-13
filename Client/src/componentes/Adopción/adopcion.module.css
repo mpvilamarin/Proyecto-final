@@ -85,18 +85,13 @@
 
 .containerFiltros {
   display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: start;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    flex-direction: column;
 }
 
 
 
-.containerAnimales {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
 .containerAnimales>* {
   flex-basis: 25%;
@@ -226,3 +221,35 @@
 .cont1 {
   margin-top: -15px;
 }
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin-top: 20px;
+  margin-left: 6px;
+  /* Ajusta el espacio en el lado izquierdo */
+  margin-right: -5px;
+  /* Ajusta el espacio en el lado derecho */
+}
+
+.cardContainer>* {
+  flex: 1 0 5%;
+  margin: 10px;
+  box-sizing: border-box;
+  /* Asegura que el margen esté dentro del ancho de la tarjeta */
+}
+
+@media (max-width: 768px) {
+  .cardContainer>* {
+    flex: 0 0 calc(50% - 10px);
+    margin: 5px;
+  }
+}
+
+  /* .containerAnimales {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  } */

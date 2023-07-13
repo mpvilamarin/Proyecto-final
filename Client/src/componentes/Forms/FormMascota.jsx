@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postMascota } from '../../redux/Actions/post';
 import { getAllFundaciones } from '../../redux/Actions/get';
-import { ToastContainer, toast} from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import './stilosFormularioMascota.css';
 import UploadWidget from "../../componentes/Upload/UploadWidget";
 
@@ -29,6 +29,7 @@ function FormMascota() {
     descripcion: '',
     castrado: '',
     image: '',
+    borrado: false,
     fundacionId: nombre,
   });
   const [showAlert, setShowAlert] = useState(false);
@@ -80,13 +81,14 @@ function FormMascota() {
         descripcion: '',
         castrado: '',
         image: '',
+        borrado: false,
         fundacionId: nombre
       });
       setShowAlert(false);
       setInvalidFields([]);
       setTimeout(() => {
-        navigate('/adopciones') 
-       }, 2500)
+        navigate('/adopciones')
+      }, 2500)
     } else {
       setShowAlert(true);
     }
@@ -124,7 +126,7 @@ function FormMascota() {
 
   return (
     <div className="form-container">
-      <h1 className="title-form">FORMULARIO PARA MASCOTAS</h1>
+      <h1 className="title-form  text-center">Agregar Mascota Nueva</h1>
       <Form className="custom-form">
         <ToastContainer autoClose={2500}></ToastContainer>
         {showAlert && (
@@ -271,7 +273,7 @@ function FormMascota() {
         </Form.Group>
 
         <div>
-          {newMascota.image && <img style={{width: "280px", height:"205px"}} src={newMascota.image} alt="image"></img>}
+          {newMascota.image && <img style={{ width: "280px", height: "205px" }} src={newMascota.image} alt="image"></img>}
           <UploadWidget onImageUpload={handleImageUpload} />
         </div>
 
@@ -301,6 +303,7 @@ function FormMascota() {
 
 
         <Button
+          className="mx-auto d-block"
           variant="primary"
           type="submit"
           onClick={(e) => handleSubmit(e)}

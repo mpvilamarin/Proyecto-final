@@ -55,7 +55,7 @@ margin-bottom: 10px;
   object-fit: contain;
 }
 
-.cards-wrapper {
+.cardsWrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -65,17 +65,7 @@ margin-bottom: 10px;
   max-height: 200px;
 }
 
-.carousel .control-arrow {
-  background-color: #000;
-  /* Cambia el color de fondo de las flechas */
-  opacity: 1;
-  /* Ajusta la opacidad de las flechas */
-}
 
-.carousel .control-arrow:hover {
-  background-color: #ff0000;
-  /* Cambia el color de fondo al pasar el mouse sobre las flechas */
-}
 
 .title-container {
   text-align:start;
@@ -86,26 +76,24 @@ margin-bottom: 10px;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
-.carousel{
-  margin-top: 15px;
-  margin-bottom: 30px;
-}
-.carousel .slider-wrapper .slider .control-dots .dot::before {
-  background-color: #000;
-  /* Cambia el color de fondo a tu preferencia */
-  opacity: 1;
-  /* Ajusta la opacidad según tus necesidades */
-}
+
 
 .image-container {
   margin: 10px;
   /* Agrega el margen deseado */
 }
 
-.button1{
-  background-color: rgb(106, 33, 128);
-  
+.button1 {
+  background-color: rgb(220, 174, 153);
+
 }
+
+
+.button1:hover {
+  background-color: #86361c;
+}
+
+
 .image{
   width: 280px;
   height: 172px;
@@ -120,7 +108,7 @@ margin-bottom: 10px;
   
   
 }
-.card-title{
+.cardTitle{
   font-family: Oswald, sans-serif;
   text-align: center;
   color: #000 !important;
@@ -173,4 +161,7 @@ justify-content: space-around;
   .titlemascotitas{
     display: block;
     
+  }
+  .cardInfo{
+    font-size: 14px;
   }

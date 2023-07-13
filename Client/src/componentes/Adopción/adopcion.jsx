@@ -19,7 +19,7 @@ const Adopcion = () => {
 
   const allPets = useSelector((state) => state.mascotas);
   const allFundations = useSelector((state) => state.fundaciones);
-  console.log(allFundations);
+
   const [selectedFundacion, setSelectedFundacion] = useState("All");
   const uniqueFundaciones = [
     ...new Set(allFundations.map((fundacion) => fundacion.nombre)),
@@ -175,15 +175,17 @@ const Adopcion = () => {
         </div>
       </div>
       <div className={styles.containerAnimales}>
-        {currentElements
-          .filter((mascota) => mascota.activo) // Filtrar las mascotas activas
-          .map((mascota, indexMascota) => (
-            <CardAdop
-              mascota={mascota}
-              indexMascota={mascota.id}
-              key={indexMascota}
-            />
-        ))}
+        <div className={styles.cardContainer}>
+          {currentElements
+            .filter((mascota) => mascota.activo) // Filtrar las mascotas activas
+            .map((mascota, indexMascota) => (
+              <CardAdop
+                mascota={mascota}
+                indexMascota={mascota.id}
+                key={indexMascota}
+              />
+            ))}
+        </div>
       </div>
       <div className={styles.paginationContainer}>
         <div className={styles.pagination}>

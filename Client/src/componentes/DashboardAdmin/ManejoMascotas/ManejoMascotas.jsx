@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 import { validate } from "./validate";
 import { getAllMascotas } from "../../../redux/Actions/get";
+import { deleteMascota } from "../../../redux/Actions/delete";
 import { updateMascota } from "../../../redux/Actions/update";
 import UploadWidget from "../../Upload/UploadWidget";
 
@@ -33,6 +34,9 @@ const ModificarMascota = () => {
     });
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const storedActivo = localStorage.getItem('activo');
+    const initialActivo = storedActivo ? JSON.parse(storedActivo) : true;
+    const [activo, setActivo] = useState(initialActivo);
 
     const handleEditClick = (index) => {
         setSelectedMascotaIndex(index);
@@ -41,6 +45,29 @@ const ModificarMascota = () => {
         setInput(selectedMascota);
     };
 
+    const handleDeleteClick = async (id, nombre) => {
+        const confirmacion = window.confirm(`¿Estás seguro de ${activo[id] ? 'activar' : 'desactivar'} la Mascota ${nombre}?`);
+        if (confirmacion) {
+          try {
+            await dispatch(deleteMascota(id, nombre));
+            setActivo((prevActivo) => ({
+              ...prevActivo,
+              [id]: !prevActivo[id], // Alternar el estado de la fundación específica
+            }));
+            alert(`La Mascota ${nombre} fue ${activo[id] ? 'activada' : 'desactivada'} con éxito`);
+          } catch (error) {
+            alert(`Error al ${activo[id] ? 'activar' : 'desactivar'} la Mascota ${nombre}: ${error}`);
+          }
+        }
+      };
+
+      useEffect(() => {
+        return () => {
+          localStorage.setItem('activo', JSON.stringify(activo));
+        };
+      }, [activo]);
+
+     
     const handleChange = (event) => {
         const { name, value } = event.target;
         const error = validate(name, value);
@@ -95,7 +122,7 @@ const ModificarMascota = () => {
                 castrado: "",
                 image: ""
             });
-            window.location.href = "/ModificarMascota";
+            window.location.href = "/DashboardAdmin";
 
         }
     };
@@ -118,10 +145,21 @@ const ModificarMascota = () => {
                                     <p>
                                         <span key={index} className={styles.sub}>Nombre: {mascota.nombre}</span>
                                     </p>
-                                    <button key={index} onClick={() => handleEditClick(index)} className={styles.button}>
-                                        editar
-                                    </button>
+                                    <div className={styles.buttonSend} key={index}>
+                                        <button key={index} onClick={() => handleEditClick(index)} className={styles.button}>
+                                            editar
+                                        </button>
+                                        <button
+                                            key={index}
+                                            onClick={() => handleDeleteClick(mascota.id, mascota.nombre)}
+                                            className={styles.button}
+                                        >
+                                            {activo[mascota.id] ? 'Activar' : 'Desactivar'}
+                                        </button>                  
+                                    </div>
+                                    
                                 </div>
+                                
 
                                 <div className={styles.contendorForm}>
                                     {selectedMascotaIndex === index && showForm && (
