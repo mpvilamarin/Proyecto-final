@@ -1,4 +1,4 @@
-const { Adopciones } = require("../db");
+const { Adopciones, Usuarios } = require("../db");
 const STATUS_OK = 200;
 const STATUS_CREATED = 201;
 const STATUS_ERROR = 404;
@@ -29,12 +29,16 @@ const getAdopcionesByEmail = async (req, res) => {
     });
 
     if (!adopciones.length) {
-      res.status(STATUS_ERROR).json({ message: "No hay adopciones realizadas por este usuario" });
+      res
+        .status(STATUS_ERROR)
+        .json({ message: "No hay adopciones realizadas por este usuario" });
     } else {
       res.status(STATUS_OK).json(adopciones);
     }
   } catch (error) {
-    res.status(STATUS_ERROR).json({ message: "Error al obtener las adopciones" });
+    res
+      .status(STATUS_ERROR)
+      .json({ message: "Error al obtener las adopciones" });
   }
 };
 
@@ -62,30 +66,36 @@ const getAdopcionById = async (req, res) => {
 
 const postAdopciones = async (req, res) => {
   try {
-    const { mascotaId, fundacionId, ...restData } = req.body;
+    const adopcion = req.body;
 
-    console.log("mascotaId:", mascotaId);
-    console.log("fundacionId:", fundacionId);
-    console.log("Resto de datos:", restData);
+    const usuario = await Usuarios.findOne({
+      where: {
+        email: adopcion.email,
+      },
+    });
 
-    const email = req.user && req.user.email;
+    if (!usuario) {
+      throw new Error("El usuario no existe");
+    }
 
     const nuevaAdopcion = await Adopciones.create({
-      mascotaId,
-      fundacionId,
+      mascotaId: adopcion.mascotaId,
+      fundacionId: adopcion.fundacionId,
+      usuarioId: usuario.id,
       fechaAdopcion: new Date().toISOString().slice(0, 10),
-      email,
       ...restData,
     });
 
-    res.status(STATUS_CREATED).json(nuevaAdopcion);
+    res.status(201).send({ response, donacion: nuevaAdopcion });
   } catch (error) {
-    res
-      .status(STATUS_ERROR)
-      .json({ message: "Ocurrió un error al crear adopción: " + error });
-
+    res.status(400).send({ error: error.message });
     console.log(error);
   }
 };
 
-module.exports = { getAdopciones, getAdopcionById, postAdopciones, getAdopcionesByEmail };
+module.exports = {
+  getAdopciones,
+  getAdopcionById,
+  postAdopciones,
+  getAdopcionesByEmail,
+};

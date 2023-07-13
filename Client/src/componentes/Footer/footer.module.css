@@ -32,26 +32,31 @@
 .links {
     display: flex;
     flex-direction: column;
-    margin-left: 50px;
+    margin-left: 100px;
     font-family: 'Merriweather';
     text-align: left;
     color: black;
     font-size: small;
     line-height: 20px;
-
+    border-right: 1px solid black;
+    padding-right: 220px;
 }
 
 .contacto {
-    margin-right: 50px;
+    margin-right: 100px;
     font-family: 'Merriweather';
     text-align: right;
     font-size: small;
-    line-height: 8px;
+    line-height: 15px;
+    border-left: 1px solid black;
+    padding-left: 220px;
 }
 
 .developers {
     border-top: 1px solid black;
     text-align: center;
-    align-items: end;
+    align-items: center;
     font-size: small;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }

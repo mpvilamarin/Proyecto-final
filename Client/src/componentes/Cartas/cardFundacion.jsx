@@ -60,6 +60,7 @@ export default function CardsFundacion() {
         )}
       </div>
     </div>
+    </div>
   );
 }
 

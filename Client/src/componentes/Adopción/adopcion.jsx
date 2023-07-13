@@ -19,7 +19,7 @@ const Adopcion = () => {
 
   const allPets = useSelector((state) => state.mascotas);
   const allFundations = useSelector((state) => state.fundaciones);
-
+  console.log(allPets);
   const [selectedFundacion, setSelectedFundacion] = useState("All");
   const uniqueFundaciones = [
     ...new Set(allFundations.map((fundacion) => fundacion.nombre)),
@@ -34,6 +34,7 @@ const Adopcion = () => {
   useEffect(() => {
     dispatch(getAllMascotas());
     dispatch(getAllFundaciones());
+
   }, [dispatch]);
 
   //PAGINADO TEMPORAL ======>>
