@@ -22,20 +22,10 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      //  email: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false,
-      //   unique: true,
-      //   validate: {
-      //     isEmail: true,
-      //   },
-      // },
-
-      // estado: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false,
-      //   defaultValue: "pending",
-      // },
+      estado: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       timestamps: false,

@@ -29,12 +29,16 @@ const getAdopcionesByEmail = async (req, res) => {
     });
 
     if (!adopciones.length) {
-      res.status(STATUS_ERROR).json({ message: "No hay adopciones realizadas por este usuario" });
+      res
+        .status(STATUS_ERROR)
+        .json({ message: "No hay adopciones realizadas por este usuario" });
     } else {
       res.status(STATUS_OK).json(adopciones);
     }
   } catch (error) {
-    res.status(STATUS_ERROR).json({ message: "Error al obtener las adopciones" });
+    res
+      .status(STATUS_ERROR)
+      .json({ message: "Error al obtener las adopciones" });
   }
 };
 
@@ -88,4 +92,9 @@ const postAdopciones = async (req, res) => {
   }
 };
 
-module.exports = { getAdopciones, getAdopcionById, postAdopciones, getAdopcionesByEmail };
+module.exports = {
+  getAdopciones,
+  getAdopcionById,
+  postAdopciones,
+  getAdopcionesByEmail,
+};
