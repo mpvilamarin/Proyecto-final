@@ -304,7 +304,7 @@ function rootReducer(state = initialState, action, payload) {
     case POST_USUARIO:
       return {
         ...state,
-        usuario: state.usuario.concat(action.payload),
+        usuario: action.payload,
       };
 
     case POST_LOGIN:

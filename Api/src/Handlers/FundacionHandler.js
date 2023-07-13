@@ -138,7 +138,7 @@ async function getFundacionById(req, res) {
         },
         {
           model: Mascotas,
-          attributes: ['nombre', 'genero', 'temperamento', 'id', 'image', 'activo']
+          attributes: ['nombre', 'genero', 'temperamento', 'id', 'image', 'activo', 'borrado']
         }
       ]
     });

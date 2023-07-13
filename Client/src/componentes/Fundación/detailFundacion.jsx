@@ -19,6 +19,7 @@ const DetailFundacion = () => {
   console.log(fundacion)
   const reviews = fundacion.Reviews
   const mascotas = fundacion.Mascotas
+  console.log(mascotas)
   const navigate = useNavigate();
   // const [fundacionNombre, setFundacionNombre] = useState("");
 

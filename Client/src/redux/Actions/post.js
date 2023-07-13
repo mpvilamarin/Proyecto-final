@@ -132,6 +132,7 @@ export const postUsuario = (user) => {
 };
 
 export const postReview = (crearReview) => {
+  console.log(crearReview)
   return async (dispatch) => {
     try {
       const response = await axios.post(`/usuarios/reviews`, crearReview);

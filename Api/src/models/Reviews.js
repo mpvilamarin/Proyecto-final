@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
         },
         calificacion:{
             type: DataTypes.ENUM,
-            values: ['1','2','3','4','5'],
+            values: ['0','1','2','3','4','5'],
             allowNull: false,
         },
         comentarios:{
