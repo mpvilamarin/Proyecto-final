@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getAllMascotas, getAllFundaciones } from "../../redux/Actions/get.js";
+import { getAllMascotas, getAllFundaciones } from "../../../redux/Actions/get.js";
 import {
   filterMascotaByEspecie,
   filterMascotaByGenero,
   sortMascotasAZ,
   sortMascotasZA,
   filterMascotaByFundacion,
-} from "../../redux/Actions/filtroAndOrdenamiento.js";
-import Pagination from "./Paginacion/paginacion.jsx";
+} from "../../../redux/Actions/filtroAndOrdenamiento.js";
+import Pagination from "../Paginacion/paginacion.jsx";
 
 import styles from "./adopcion.module.css";
-import CardAdop from "../Cartas/cardAdopcion.jsx";
+import CardAdop from "../../Cartas/cardAdopcion.jsx";
 
 const Adopcion = () => {
   const dispatch = useDispatch();
