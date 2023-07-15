@@ -25,7 +25,7 @@ function FormFundaciones() {
         numeroIdentificacion:"",
         fechaNacimiento:"",
         email:"",
-        contraseña:"",
+        contrasenia:"",
         tipo:"admin"
     });
 console.log(newAdmin)
@@ -54,7 +54,7 @@ console.log(newAdmin)
         numeroIdentificacion:"",
         fechaNacimiento:"",
         email:"",
-        contraseña:"",
+        contrasenia:"",
         tipo:"admin"
       });
      
@@ -116,12 +116,12 @@ console.log(newAdmin)
                 <input
                 className={styles.input}
                 type="text"
-                value={newAdmin.contraseña}
-                name="contraseña"
+                value={newAdmin.contrasenia}
+                name="contrasenia"
                 onChange={handleChange}
                 placeholder="**********"
                 />
-                {/* {errors.contraseña && <p className={styles.errors}>{errors.contraseña}</p>} */}
+                {/* {errors.contrasenia && <p className={styles.errors}>{errors.contrasenia}</p>} */}
                 
                 
 
