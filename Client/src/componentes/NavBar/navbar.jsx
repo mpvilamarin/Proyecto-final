@@ -4,8 +4,8 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import "./NavBar.css";
 import logo from "./logo2.png";
 import { useAuth0 } from "@auth0/auth0-react";
-import LogOutButton from "../Autenticación/LogOut/logout";
-import LogInButton from "../Autenticación/LogIn/login";
+import LogOutButton from "../Autenticacion/LogOut/logout";
+import LogInButton from "../Autenticacion/LogIn/login";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../../redux/Actions/post";
 import styles from './NavBar.css';
@@ -65,7 +65,7 @@ export default function NavBar() {
             {isAuthenticated && !isAuthenticated && usuarioAdmin &&  (<Link to="/formMascota" className="nav-link">Crear Mascota</Link>)}
             { usuarioFundacion &&  (<Link to="/formMascota" className="nav-link">Crear Mascota</Link>)}
 
-            {user && user.role === "Fundación" && (
+            {user && user.role === "Fundacion" && (
               <Link to="/formFundaciones" className="nav-link">
                 Crear Fundacion
               </Link>

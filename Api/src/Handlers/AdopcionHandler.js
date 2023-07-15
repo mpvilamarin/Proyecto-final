@@ -79,7 +79,7 @@ const postAdopciones = async (req, res) => {
   } catch (error) {
     res
       .status(STATUS_ERROR)
-      .json({ message: "Ocurrió un error al crear adopción: " + error });
+      .json({ message: "Ocurrió un error al crear Adopcion: " + error });
 
     console.log(error);
   }

@@ -219,7 +219,7 @@ function rootReducer(state = initialState, action, payload) {
         filteredFundaciones = state.fundacionesFiltradas;
       } else {
         filteredFundaciones = state.fundacionesFiltradas.filter((fundacion) => {
-          // Calcula el promedio de las puntuaciones de la fundación
+          // Calcula el promedio de las puntuaciones de la Fundacion
           const totalReviews = fundacion.Reviews.length;
           const sumPuntuaciones = fundacion.Reviews.reduce(
             (total, review) => total + review.calificacion,

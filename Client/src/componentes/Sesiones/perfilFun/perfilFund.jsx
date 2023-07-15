@@ -5,7 +5,7 @@ import styles from './perfilFund.module.css';
 import fundaciones from "../../Cartas/fundacion.png";
 import CardMascota from "../../Cartas/cardMascotas";
 import Review from "../../Reviews/reviews";
-import Solicitudes from "../../Adopción/Solicitudes/solicitudes"
+import Solicitudes from "../../Adopcion/Solicitudes/solicitudes"
 import { Link } from "react-router-dom";
 
 
@@ -38,7 +38,7 @@ export default function PerfilFund() {
           <div className={styles.containerFundacion}>
             <img src={info.image} alt="fundacion" className={styles.imagenFundacion} />
             <div className={styles.infoFundacion}>
-              <h5 className={styles.sub}>Mi información</h5>
+              <h5 className={styles.sub}>Mi Informacion</h5>
               <h5>Ciudad: {info.ciudad}</h5>
               <h5>Dirección: {info.direccion}</h5>
               <h5>Teléfono: {info.telefono}</h5>
@@ -87,7 +87,7 @@ export default function PerfilFund() {
             </div>
             <div className={styles.containerReviews}>
               <h1 className={styles.title1}>Mis reviews</h1>
-              <h3 className={styles.sub2}>Lo que piensan de la fundación</h3>
+              <h3 className={styles.sub2}>Lo que piensan de la Fundacion</h3>
               {reviews &&
                 reviews.map((review, indexReview) => (
                   <Review review={review} key={indexReview} />

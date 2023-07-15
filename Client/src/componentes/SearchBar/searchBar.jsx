@@ -30,7 +30,7 @@ export default function SearchBar() {
     <div className={styles.search}>
       <input
         type="text"
-        placeholder="Busque su fundación"
+        placeholder="Busque su Fundacion"
         onChange={(event) => handleInputChange(event)}
         onKeyDown={handleKeyPress}
         value={name}

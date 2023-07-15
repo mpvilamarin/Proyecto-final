@@ -70,7 +70,7 @@ export default function DueñoResponsable() {
           <img src={search} alt="search" />
         </div>
         <Link to="/adopciones">
-          <button className={styles.button}>Ver mascotas en adopción</button>
+          <button className={styles.button}>Ver mascotas en Adopcion</button>
         </Link>
       </div>
     </div>

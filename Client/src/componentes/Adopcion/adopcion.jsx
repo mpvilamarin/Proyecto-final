@@ -9,7 +9,7 @@ import {
   sortMascotasZA,
   filterMascotaByFundacion,
 } from "../../redux/Actions/filtroAndOrdenamiento.js";
-import Pagination from "./Paginación/paginacion.jsx";
+import Pagination from "./Paginacion/paginacion.jsx";
 
 import styles from "./adopcion.module.css";
 import CardAdop from "../Cartas/cardAdopcion.jsx";
@@ -109,7 +109,7 @@ const Adopcion = () => {
           </img>
         </div>
         <div className={styles.containerFiltros}>
-          <h1>MASCOTAS EN ADOPCIÓN</h1>
+          <h1>MASCOTAS EN Adopcion</h1>
           <h2 className={styles.sub}>Busca tu mascota ideal</h2>
 
           <div className={styles.cont1}>
@@ -157,7 +157,7 @@ const Adopcion = () => {
                 <button onClick={handleSortDesc} className={styles.aZ}>Z-A</button>
               </div>
               <div>
-                <label className={styles.marca}>Fundación:</label>
+                <label className={styles.marca}>Fundacion:</label>
                 <select
                   className={styles.options}
                   onChange={handleFundacion}

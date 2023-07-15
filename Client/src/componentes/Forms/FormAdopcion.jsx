@@ -114,12 +114,12 @@ function FormAdopciones() {
 
   return (
     <div className="form-container">
-      <h1 className="title-form">FORMULARIO DE ADOPCIÓN</h1>
+      <h1 className="title-form">FORMULARIO DE Adopcion</h1>
       <Form className="custom-form" onSubmit={handleSubmit}>
         {showAlert && <Alert variant="danger">{errorMsg}</Alert>}
         {adopcionStatus === "success" && (
           <Alert variant="success">
-            ¡La solicitud de adopción se ha enviado con éxito!
+            ¡La solicitud de Adopcion se ha enviado con éxito!
           </Alert>
         )}
         <Form.Group controlId="formBasicNombreCompleto">
@@ -206,7 +206,7 @@ function FormAdopciones() {
             name="motivoAdopcion"
             value={formData.motivoAdopcion}
             onChange={handleChange}
-            placeholder="Motivo de adopción"
+            placeholder="Motivo de Adopcion"
             required
           />
         </Form.Group>
@@ -222,7 +222,7 @@ function FormAdopciones() {
         </Form.Group>
         <div className={styles.contButton}>
           <Button variant="primary" type="submit">
-            Enviar Solicitud de Adopción
+            Enviar Solicitud de Adopcion
           </Button>
         </div>
       </Form>

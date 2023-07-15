@@ -102,7 +102,7 @@ const Donaciones = () => {
           </div>
           {newDonacion.monto && (
             <p className={styles.label}>
-              Le donarás a la fundación {newDonacion.fundacionNombre}: ${newDonacion.monto}
+              Le donarás a la Fundacion {newDonacion.fundacionNombre}: ${newDonacion.monto}
 
             </p>
           )}
