@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import style from "./home.module.css";
-import Info from "../Información/Info";
+import Info from "../Informacion/Info";
 import InfoHome from "../InfoHome/InfoHome";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector, useDispatch } from "react-redux";
