@@ -71,6 +71,7 @@ export default function DueñoResponsable() {
         </div>
         <Link to="/adopciones">
           <button className={styles.button}>Ver mascotas en Adopcion</button>
+
         </Link>
       </div>
     </div>

@@ -35,6 +35,7 @@ const Solicitudes = ({adopcion}) =>{
         setModalIsOpen(false);
       };
 
+
     return(
         <div style={{ border: '1px solid black' }}>
             <h1>{adopcion.nombreCompleto}</h1>
