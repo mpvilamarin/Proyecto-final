@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
           isEmail: true,
         },
       },
-      contraseña: {
+      contrasenia: {
         type: DataTypes.STRING,
         allowNull: false,
       },
