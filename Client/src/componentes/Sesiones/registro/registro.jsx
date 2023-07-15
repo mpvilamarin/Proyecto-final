@@ -19,7 +19,7 @@ const Form = () => {
     direccion: "",
     telefono: "",
     email: "",
-    contrasenia: "",
+    password: "",
     fundadaEn: "",
     mision: "",
     borrado: false,
@@ -67,7 +67,7 @@ const Form = () => {
         direccion: "",
         telefono: "",
         email: "",
-        contrasenia: "",
+        password: "",
         fundadaEn: "",
         mision: "",
         borrado: false,
@@ -148,13 +148,13 @@ const Form = () => {
         <input
           className={styles.input}
           type="password"
-          value={input.contrasenia}
-          name="contrasenia"
+          value={input.password}
+          name="password"
           onChange={handleChange}
-          placeholder="contrasenia"
+          placeholder="password"
         />
-        {/* {errors.contrasenia && (
-          <p className={styles.errors}>{errors.contrasenia}</p>
+        {/* {errors.password && (
+          <p className={styles.errors}>{errors.password}</p>
         )} */}
         <input
           className={styles.input}

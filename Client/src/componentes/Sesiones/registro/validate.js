@@ -31,9 +31,9 @@ export const validate = (name, value, input) => {
                 error = "Ingrese un correo electrónico válido";
             }
             break;
-        case "contrasenia":
+        case "password":
             if (value.length > 8) {
-                error = "La contrasenia debe tener máximo 8 caracteres";
+                error = "La password debe tener máximo 8 caracteres";
             }
             break;
         default:

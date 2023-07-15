@@ -20,10 +20,10 @@ async function getRegistroAdmin(req,res){
 }
  
 async function postAdmin(req, res){
-    const {nombre, numeroIdentificacion, fechaNacimiento, email, contrasenia, tipo} = req.body
+    const {nombre, numeroIdentificacion, fechaNacimiento, email, password, tipo} = req.body
 
     try {
-        if(!nombre || !numeroIdentificacion || !fechaNacimiento || !email || !contrasenia){
+        if(!nombre || !numeroIdentificacion || !fechaNacimiento || !email || !password){
             return res.status(STATUS_ERROR).json({message:'se requieren mas datos'})
         }
 
@@ -33,7 +33,7 @@ async function postAdmin(req, res){
             numeroIdentificacion,
             fechaNacimiento,
             email,
-            contrasenia,
+            password,
             tipo:'admin',
         })
         

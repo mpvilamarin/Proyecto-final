@@ -22,9 +22,9 @@ export const validate = (name, value, input) => {
                 error = "Ingrese un correo electrónico válido";
             }
             break;
-        case "contrasenia":
+        case "password":
             if (value.length < 12) {
-                error = "La contraseña debe tener máximo 11 caracteres";
+                error = "La password debe tener máximo 11 caracteres";
             }
             break;
         default:
