@@ -58,7 +58,7 @@ const initialState = {
   usuarioAdmin: [],
   usuarioFundacion: [],
   usuarios: [],
-  usuario:[],
+  usuario: [],
   sesion: [],
 
   usuarioDetalle: [],
@@ -104,7 +104,7 @@ function rootReducer(state = initialState, action, payload) {
           ...action.payload,
           fundaciones: action.payload.fundaciones || [],
         },
-   //     usuarios:[]
+        //     usuarios:[]
       };
     case SORT_MASCOTAS_AZ:
       return {
@@ -237,7 +237,7 @@ function rootReducer(state = initialState, action, payload) {
       };
 
     case GET_USUARIO:
-      return{
+      return {
         ...state,
         usuario: action.payload
       }
@@ -353,12 +353,12 @@ function rootReducer(state = initialState, action, payload) {
         ),
       };
     case DELETE_FUNDACION:
-    return {
-      ...state,
-      fundaciones: state.fundaciones.filter(
-        (fundacion) => fundacion.id !== action.payload
-      ),
-    };
+      return {
+        ...state,
+        fundaciones: state.fundaciones.filter(
+          (fundacion) => fundacion.id !== action.payload
+        ),
+      };
 
     case UPDATE_FUNDACION:
       const updateFundaciones = state.fundaciones.map((fundacion) => {
@@ -433,7 +433,7 @@ function rootReducer(state = initialState, action, payload) {
       return { ...state }
 
     case REMOVEFAV:
-      return { ...state}
+      return { ...state }
 
 
     case GET_DONACIONES:
