@@ -38,8 +38,7 @@ const Solicitudes = ({adopcion}) =>{
     return(
         <div style={{ border: '1px solid black' }}>
             <h1>{adopcion.nombreCompleto}</h1>
-            <h3>Quiere adoptar a</h3>
-            <h1></h1>
+            <h3>Motivos de adopción</h3>
             <h4>{adopcion.motivoAdopcion}</h4>
             <button  onClick={handleOpenModal}>
               Ver más

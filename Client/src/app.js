@@ -44,10 +44,11 @@ import PerfilFund from "./componentes/Sesiones/perfilFun/perfilFund";
 // import CardFundaciones from './componentes/Cartas/cardFundacion'
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import DueñoResponsable from "./componentes/Informacion/DueñoResponsable/DueñoResponsable";
+import DueñoResponsable from "./componentes/Informaciongit/DueñoResponsable/DueñoResponsable";
 
 function App() {
-  axios.defaults.baseURL = "https://fundacion-mascotas-uz9u.onrender.com";
+ axios.defaults.baseURL = "https://fundacion-mascotas-uz9u.onrender.com";
+
   const usuarioAdmin = useSelector((state) => state.usuarioAdmin);
 
 
