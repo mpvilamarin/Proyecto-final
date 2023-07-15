@@ -18,7 +18,7 @@ const Inicio = () => {
 
   const [input, setInput] = useState({
     email: "",
-    contrasenia: "",
+    password: "",
   });
   const [errors, setErrors] = useState({});
   const [loginError, setLoginError] = useState("");
@@ -32,12 +32,12 @@ const Inicio = () => {
 
   const adminMap = admin.map((e) => ({
     email: e.email,
-    contrasenia: e.contrasenia,
+    password: e.password,
   }));
 
   const fundacionMap = fundacion.map((e) => ({
     email: e.email,
-    contrasenia: e.contrasenia,
+    password: e.password,
   }));
 
   console.log(fundacionMap)
@@ -59,11 +59,11 @@ const Inicio = () => {
 
     const isAdmin = adminMap.find(
       (admin) =>
-        admin.email === input.email && admin.contrasenia === input.contrasenia
+        admin.email === input.email && admin.password === input.password
     );
     const isFundacion = fundacionMap.find(
       (admin) =>
-        admin.email === input.email && admin.contrasenia === input.contrasenia
+        admin.email === input.email && admin.password === input.password
     );
 
     if (isAdmin) {
@@ -135,11 +135,11 @@ const Inicio = () => {
                 <div className={styles.field}>
                   <input
                     type="password"
-                    value={input.contrasenia}
-                    name="contrasenia"
+                    value={input.password}
+                    name="password"
                     onChange={handleChange}
                     className={styles.input}
-                    placeholder="contrasenia"
+                    placeholder="password"
                   />
                 </div>
                 <div className={styles.divBtn}>

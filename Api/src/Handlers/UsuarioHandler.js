@@ -95,7 +95,7 @@ async function postRegistroUsuario(req, res) {
 async function updateUsuario(req, res) {
   const { email } = req.params;
 
-  const { nombre, fechaNacimiento, contrasenia } = req.body;
+  const { nombre, fechaNacimiento, password } = req.body;
 
   try {
     const usuario = await Usuarios.findOne({
@@ -113,7 +113,7 @@ async function updateUsuario(req, res) {
     const updateUsuario = await usuario.update({
       nombre,
       fechaNacimiento,
-      contrasenia,
+      password,
     });
 
     return res.status(STATUS_OK).json(updateUsuario);

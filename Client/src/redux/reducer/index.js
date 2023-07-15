@@ -408,7 +408,7 @@ function rootReducer(state = initialState, action, payload) {
             ...usuario,
             nombre: action.payload.nombre,
             fechaNacimiento: action.payload.fechaNacimiento,
-            contrasenia: action.payload.contrasenia,
+            password: action.payload.password,
           };
         }
         return usuario;
