@@ -105,7 +105,7 @@ const Home = () => {
               <h2 className={styles.title}>¡La Magia de Adoptar!</h2>
               <p className={styles.text}>
                 {" "}
-                Evita la compra, ¡ADOPTA! Al optar por la adopción, estás
+                Evita la compra, ¡ADOPTA! Al optar por la Adopcion, estás
                 brindando una oportunidad de vida a los animales que más lo
                 necesitan
               </p>

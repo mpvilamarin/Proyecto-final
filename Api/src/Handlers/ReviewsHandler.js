@@ -36,12 +36,12 @@ async function getReviews(req, res) {
     });
 
     if (!reviews.length) {
-      return res.status(STATUS_ERROR).json({ message: 'No se encuentra información en la base de datos' });
+      return res.status(STATUS_ERROR).json({ message: 'No se encuentra Informacion en la base de datos' });
     } else {
       return res.status(STATUS_OK).json(reviews);
     }
   } catch (error) {
-    res.status(STATUS_ERROR).json({ message: `No se pudo obtener información de las reviews. Error: ${error}` });
+    res.status(STATUS_ERROR).json({ message: `No se pudo obtener Informacion de las reviews. Error: ${error}` });
   }
 }
 

@@ -50,7 +50,7 @@ const ModificarMascota = () => {
                 await dispatch(deleteMascota(id, nombre));
                 setActivo((prevActivo) => ({
                     ...prevActivo,
-                    [id]: !prevActivo[id], // Alternar el estado de la fundación específica
+                    [id]: !prevActivo[id], // Alternar el estado de la Fundacion específica
                 }));
                 alert(`La Mascota ${nombre} fue ${activo[id] ? 'activada' : 'desactivada'} con éxito`);
             } catch (error) {

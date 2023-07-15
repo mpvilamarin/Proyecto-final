@@ -34,11 +34,12 @@ const Solicitudes = ({adopcion}) =>{
       const handleCloseModal = () => {
         setModalIsOpen(false);
       };
- 
+
+
     return(
         <div style={{ border: '1px solid black' }}>
             <h1>{adopcion.nombreCompleto}</h1>
-            <h3>Motivos de adopción</h3>
+            <h3>Motivos de Adopcion</h3>
             <h4>{adopcion.motivoAdopcion}</h4>
             <button  onClick={handleOpenModal}>
               Ver más

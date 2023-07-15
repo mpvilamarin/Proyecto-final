@@ -65,7 +65,7 @@ export default function NavBar() {
             {isAuthenticated && !isAuthenticated && usuarioAdmin &&  (<Link to="/formMascota" className="nav-link">Crear Mascota</Link>)}
             { usuarioFundacion &&  (<Link to="/formMascota" className="nav-link">Crear Mascota</Link>)}
 
-            {user && user.role === "Fundación" && (
+            {user && user.role === "Fundacion" && (
               <Link to="/formFundaciones" className="nav-link">
                 Crear Fundacion
               </Link>

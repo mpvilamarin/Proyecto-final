@@ -99,11 +99,11 @@ const Inicio = () => {
               Usuario
             </button>
             <button
-              className={`${styles.toggleOption} ${selectedOption === "Fundación" ? styles.selectedOption : ""
+              className={`${styles.toggleOption} ${selectedOption === "Fundacion" ? styles.selectedOption : ""
                 }`}
-              onClick={() => setSelectedOption("Fundación")}
+              onClick={() => setSelectedOption("Fundacion")}
             >
-              Fundación
+              Fundacion
             </button>
           </div>
           {selectedOption === "Usuario" ? (
@@ -121,7 +121,7 @@ const Inicio = () => {
             <form className={styles.form} onSubmit={handleSubmit}>
               <div>
                 {/* <h1 className={styles.title}>INICIAR SESIÓN</h1>
-                <h1 className={styles.subtitle}>Fundación</h1> */}
+                <h1 className={styles.subtitle}>Fundacion</h1> */}
                 <div className={styles.field}>
                   <input
                     type="email"

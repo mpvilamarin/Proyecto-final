@@ -102,7 +102,7 @@ function FormFundaciones() {
               name="nombre"
               value={newFundacion.nombre}
               onChange={handleChange}
-              placeholder="Nombre de la fundación"
+              placeholder="Nombre de la Fundacion"
               className={invalidFields.includes("nombre") ? "is-invalid" : ""}
             />
           </Form.Group>

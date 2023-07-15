@@ -19,7 +19,7 @@ export default function Detalle({ mascotaId }) {
 
   const handleClickAdoptar = () => {
     if (isAuthenticated) {
-      // Obtener el ID de la mascota y el ID de la fundación
+      // Obtener el ID de la mascota y el ID de la Fundacion
       const mascotaId = selector.id;
       const fundacionId =
         selector.Fundaciones[0].MascotasFundaciones.FundacioneId;
