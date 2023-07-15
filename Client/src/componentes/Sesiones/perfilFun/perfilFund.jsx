@@ -5,7 +5,7 @@ import styles from './perfilFund.module.css';
 import fundaciones from "../../Cartas/fundacion.png";
 import CardMascota from "../../Cartas/cardMascotas";
 import Review from "../../Reviews/reviews";
-import Solicitudes from "../../Adopción/Solicitudes/solicitudes"
+import Solicitudes from "../../Adopcion/Solicitudes/solicitudes"
 import { Link } from "react-router-dom";
 
 

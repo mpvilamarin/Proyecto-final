@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import CardFundacion from "../Cartas/cardFundacion";
-import SortFundaciones from "../Fundación/sortFundacion";
+import SortFundaciones from "../Fundacion/sortFundacion";
 import SearchBar from "../SearchBar/searchBar";
 import style from "./Fundacion.module.css";
 import { useSelector } from "react-redux";

@@ -9,7 +9,7 @@ import {
   sortMascotasZA,
   filterMascotaByFundacion,
 } from "../../redux/Actions/filtroAndOrdenamiento.js";
-import Pagination from "./Paginación/paginacion.jsx";
+import Pagination from "./Paginacion/paginacion.jsx";
 
 import styles from "./adopcion.module.css";
 import CardAdop from "../Cartas/cardAdopcion.jsx";

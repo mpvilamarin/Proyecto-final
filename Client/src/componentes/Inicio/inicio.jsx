@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Login from "../Autenticación/LogIn/login";
+import Login from "../Autenticacion/LogIn/login";
 import { Link } from "react-router-dom";
 import styles from "./inicio.module.css";
 import { useDispatch, useSelector } from "react-redux";

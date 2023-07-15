@@ -5,8 +5,8 @@ import { getAllMascotas, getAllFundaciones, getNameFundaciones, getReviews } fro
 import style from './cards.module.css'; // Ruta del archivo CSS
 import fundaciones from './fundacion.png';
 import Card from 'react-bootstrap/Card';
-import FundacionesFilter from "../Fundación/filterFundacion";
-import SortFundaciones from "../Fundación/sortFundacion";
+import FundacionesFilter from "../Fundacion/filterFundacion";
+import SortFundaciones from "../Fundacion/sortFundacion";
 import StarRating from "./StarRating";
 
 
