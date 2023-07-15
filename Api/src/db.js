@@ -77,7 +77,7 @@ Fundaciones.belongsToMany(Mascotas, {
  Mascotas.belongsToMany(Usuarios, {
   through: "MascotasUsuarios",
   timestamps: false,
-});
+}); 
 Usuarios.belongsToMany(Mascotas, {
   through: "MascotasUsuarios",
   timestamps: false,
