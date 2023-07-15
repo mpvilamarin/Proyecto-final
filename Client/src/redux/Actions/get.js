@@ -47,6 +47,7 @@ export const getDetailMascota = (id) => {
   return async (dispatch) => {
     dispatch({ type: GET_DETAIL_MASCOTAS, payload: [] });
     await axios
+
       .get(`mascotas/${id}`)
       .then((res) => res.data)
       .then((data) => dispatch({ type: GET_DETAIL_MASCOTAS, payload: data }))
@@ -131,7 +132,9 @@ export const resetDetail = () => {
 export const getAdmin = () => {
   return async (dispatch) => {
     try {
+
       const response = await axios.get('/admin/')
+
       console.log(response)
       let  admin = response?.data?.map((e) => e);
 
@@ -161,7 +164,9 @@ export const getAdopciones = () =>{
 export const getDonaciones = () => {
   return async (dispatch) => {
     try {
+
       const response = await axios.get("/donaciones");
+
       dispatch({
         type: GET_DONACIONES,
         payload: response.data,
