@@ -21,7 +21,7 @@ import {
 export const getAllMascotas = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`/mascotas`);
+      const response = await axios.get(`/mascotas/`);
 
       let mascotas = response.data?.map((e) => e);
       dispatch({ type: GET_ALL_MASCOTAS, payload: mascotas });
@@ -47,8 +47,7 @@ export const getDetailMascota = (id) => {
   return async (dispatch) => {
     dispatch({ type: GET_DETAIL_MASCOTAS, payload: [] });
     await axios
-      .get(`https://fundacion-mascotas-uz9u.onrender.com/mascotas/${id}`)
-
+      .get(`mascotas/${id}`)
       .then((res) => res.data)
       .then((data) => dispatch({ type: GET_DETAIL_MASCOTAS, payload: data }))
       .catch((err) => console.log(err));
@@ -132,9 +131,7 @@ export const resetDetail = () => {
 export const getAdmin = () => {
   return async (dispatch) => {
     try {
-
-      const response = await axios.get('https://fundacion-mascotas-uz9u.onrender.com/admin')
-
+      const response = await axios.get('/admin/')
       console.log(response)
       let  admin = response?.data?.map((e) => e);
 
@@ -164,9 +161,7 @@ export const getAdopciones = () =>{
 export const getDonaciones = () => {
   return async (dispatch) => {
     try {
-
-      const response = await axios.get("https://fundacion-mascotas-uz9u.onrender.com/donaciones");
-
+      const response = await axios.get("/donaciones");
       dispatch({
         type: GET_DONACIONES,
         payload: response.data,

@@ -13,6 +13,7 @@ const sequelize = new Sequelize(DB_DEPLOY, {
       require: true,
     }
 
+
   }
 });
 const basename = path.basename(__filename);

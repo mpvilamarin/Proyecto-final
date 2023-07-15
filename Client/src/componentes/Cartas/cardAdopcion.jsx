@@ -37,7 +37,7 @@ const modalStyles = {
 
 const CardAdop = ({ mascota, indexMascota }) => {
 
-console.log(mascota)
+  console.log(mascota)
 
   const { user, isAuthenticated } = useAuth0();
 
@@ -51,9 +51,11 @@ console.log(mascota)
     if (isFav) {
       setIsFav(false);
       dispatch(removeFav(indexMascota, email));
+      localStorage.removeItem("isFav"); // Elimina el valor del local storage
     } else {
       setIsFav(true);
       dispatch(addFav(indexMascota, email));
+      localStorage.setItem("isFav", "true"); // Guarda el valor en el local storage
     }
   };
 
@@ -64,6 +66,12 @@ console.log(mascota)
   const handleCloseModal = () => {
     setModalIsOpen(false);
   };
+
+  // Verifica si el botón fue marcado como favorito en el pasado
+  useState(() => {
+    const isFavStored = localStorage.getItem("isFav");
+    setIsFav(isFavStored === "true");
+  }, []);
 
   if (mascota?.borrado === false) {
     return (

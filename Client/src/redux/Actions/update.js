@@ -7,13 +7,13 @@ import {
 
 //====================================>> DELETE <<=================================================================
 
-export const updateUsuario = (email, nombre, fechaNacimiento, contraseña) => {
+export const updateUsuario = (email, nombre, fechaNacimiento, contrasenia) => {
   return async (dispatch) => {
     try {
       const response = await axios.put(`/usuarios/${email}`, {
         nombre,
         fechaNacimiento,
-        contraseña,
+        contrasenia,
       });
       dispatch({
         type: UPDATE_USUARIOS,
