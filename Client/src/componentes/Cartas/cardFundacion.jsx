@@ -8,6 +8,10 @@ import Card from 'react-bootstrap/Card';
 import FundacionesFilter from "../Fundacion/filterFundacion";
 import SortFundaciones from "../Fundacion/sortFundacion";
 import StarRating from "./StarRating";
+import direccion from '../../assets/sendrb.png';
+import locacion from '../../assets/locationrb.png';
+import email from '../../assets/emailrb.png'
+
 
 
 
@@ -45,11 +49,11 @@ export default function CardsFundacion() {
                       <h2 className={style.cardInfo}>Email: {fundacion?.email}</h2>
                       <h2 className={style.cardInfo}>Misión: {fundacion?.mision}</h2>
                       <div className={style.contButton}>
-                      <Link to={`/fundacion/${fundacion.id}`}>
-                        <button className={style.button3}>
-                        Conocenos
-                        </button>
-                      </Link>
+                        <Link to={`/fundacion/${fundacion.id}`}>
+                          <button className={style.button3}>
+                            Conocenos
+                          </button>
+                        </Link>
                       </div>
                       <StarRating rating={Number(fundacion.Reviews && fundacion.Reviews[0]?.calificacion)} />
                     </Card.Text>
