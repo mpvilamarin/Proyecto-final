@@ -247,6 +247,12 @@
     margin: 5px;
   }
 }
+@media (max-width: 768px) {
+  .caja {
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+}
 
   /* .containerAnimales {
     display: flex;

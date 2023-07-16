@@ -1,9 +1,14 @@
 
 .container {
-  margin-top: 80px;
+  /* margin-top: 80px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
+
+  margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title {
@@ -38,12 +43,13 @@
 
 .textContainer {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 200;
   color: rgb(34, 49, 62);
   text-align: center;
   margin-top: 27px;
   margin-right: 60px;
+  
 }
 .p{
   margin-left: 60px;
@@ -60,6 +66,8 @@
 
 .wrapper{
   display: flex;
+  flex-wrap: wrap;
+    justify-content: center;
 }
 .image{
   max-width: 500px;
@@ -85,6 +93,39 @@ display: flex;
   padding: 10px;
   position: relative;
   filter: contrast(50%);
+}
+
+.FundRow,
+.MascotaRow {
+  /* Elimina las propiedades background-image y background-color */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+  height: 200px;
+  width: 200px;
+  margin-left: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+  filter: contrast(50%);
+}
+
+@media (max-width: 768px) {
+
+  .FundRow,
+  .MascotaRow {
+    margin-left: 0;
+    /* Ajusta el margen izquierdo a 0 */
+    width: 100%;
+    /* Ocupa todo el ancho disponible */
+
+  }
+
 }
 .FundRow:hover {
   /* Agrega los estilos que desees para el efecto de hover */
@@ -143,4 +184,18 @@ display: flex;
 }
 .Link{
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+
+  .imageFundacion .imageWrapper,
+  .imageDog .imageWrapper,
+  .FundRow {
+    display: none;
+  }
+}
+
+.MascotaRow--no-image {
+  margin-left: 10px;
+  /* Ajusta el margen izquierdo a 10px */
 }

@@ -9,6 +9,7 @@
 
 .infoHome {
   margin-left: 80px;
+  margin-bottom: -70px;
 }
 
 .page-container {
@@ -23,7 +24,7 @@
   border-radius: 15px;
   margin-right: 80px;
   margin-left: 80px;
-  margin-top: 30px;
+  margin-top: 0px;
   margin-bottom: 20px;
   background-color: whitesmoke;
 }
@@ -202,4 +203,41 @@
 
 .contImgPata {
   margin-top: -18px;
+}
+
+@media (max-width: 768px) {
+  .containerPadre {
+    grid-template-columns: 1fr;
+    /* Cambia la disposición a una sola columna */
+  }
+
+  .hijo2 {
+    border-right: none;
+    /* Elimina el borde derecho */
+    border-left: none;
+    /* Elimina el borde izquierdo */
+  }
+}
+@media (max-width: 767px) {
+
+  .hijo1 h2.title,
+  .hijo2 h2.title,
+  .hijo3 h2.title,
+  .text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .button {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 767px) {
+  .containerPadre {
+    flex-direction: column;
+  }
 }

@@ -11,8 +11,8 @@ export default function Nosotros() {
     <div className={styles.containerPrincipal}>
       <section className={styles.headercontainer}>
         <div className={styles.sideleft}>
-          <h1 className={styles.up}>Conoce a nuestro Staff</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident inventore magni doloribus distinctio expedita natus exercitationem rerum libero. Nostrum veritatis eos error asperiores a deserunt sunt architecto voluptatem fugiat et.</p>
+          <h1 className={styles.up}>Sobre nosotros</h1>
+          <p className={styles.pp}>Pet Connect es una plataforma de adopción de mascotas que une a fundaciones comprometidas con el bienestar animal y a personas que desean darles un hogar amoroso. Creada por estudiantes de Henry como su proyecto final de desarrollo web full stack, nuestra misión es facilitar la adopción responsable y brindar una experiencia única para encontrar la mascota perfecta. Únete a Pet Connect y forma parte de nuestra comunidad dedicada a crear vínculos duraderos entre mascotas y adoptantes.</p>
         </div>
         <div className={styles.sideright}>
           <img src={cachorros} alt="girl" />

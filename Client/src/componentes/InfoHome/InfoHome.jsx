@@ -6,6 +6,8 @@ import catAndDogHome from '../../assets/woman.png'
 import { Link } from "react-router-dom";
 
 export default function InfoHome() {
+
+
   return (
     <div className={st.wrapper}>
       <div className={st.container}>
@@ -33,7 +35,9 @@ export default function InfoHome() {
       <div className={st.imageContainer}>
 
         <div className={st.imageFundacion}>
-          <img src={fundacion} alt="Imagen 1" className={st.image} />
+          <div className={st.imageWrapper}>
+            <img src={fundacion} alt="Imagen 1" className={st.image} />
+          </div>
           <div className={st.FundRow}>
             <Link to='/fundaciones' className={st.Link}>
               <span className={st.span}>
@@ -42,8 +46,11 @@ export default function InfoHome() {
             </Link>
           </div>
         </div>
+
         <div className={st.imageDog}>
-          <img src={catAndDogHome} alt="Imagen 2" className={st.image} />
+          <div className={st.imageWrapper}>
+            <img src={catAndDogHome} alt="Imagen 2" className={st.image} />
+          </div>
           <div className={st.MascotaRow}>
             <Link to='/adopciones' className={st.Link}>
               <span className={st.span}>
