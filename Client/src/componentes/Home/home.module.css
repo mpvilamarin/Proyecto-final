@@ -205,39 +205,152 @@
   margin-top: -18px;
 }
 
-@media (max-width: 768px) {
-  .containerPadre {
-    grid-template-columns: 1fr;
-    /* Cambia la disposición a una sola columna */
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+
+ 
+  .container1 {
+    margin-top: 100px;
+    margin-bottom: 30px;
   }
 
-  .hijo2 {
-    border-right: none;
-    /* Elimina el borde derecho */
-    border-left: none;
-    /* Elimina el borde izquierdo */
+  .infoHome {
+    margin-left: 40px;
+  }
+
+  .containerPadre {
+    grid-template-columns: repeat(2, 1fr);
+    margin-right: 40px;
+    margin-left: 40px;
+  }
+
+  .contImg,
+  .contImg2,
+  .contImg3,
+  .contImg4 {
+    height: 250px;
+  }
+
+  .img,
+  .img2 {
+    height: 255px;
+  }
+
+  .img3 {
+    height: 250px;
+    width: 280px;
+  }
+
+  .img4 {
+    height: 265px;
+    width: 410px;
   }
 }
-@media (max-width: 767px) {
 
-  .hijo1 h2.title,
-  .hijo2 h2.title,
-  .hijo3 h2.title,
-  .text {
+@media (max-width: 768px) {
+  .container1 {
+    margin-top: 80px;
+    margin-bottom: 20px;
+  }
+
+  .infoHome {
+    margin-left: 20px;
+  }
+
+  .containerPadre {
+    grid-template-columns: repeat(1, 1fr);
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .contImg,
+  .contImg2,
+  .contImg3,
+  .contImg4 {
+    height: 200px;
+    width: 200px;
+  }
+
+  .img,
+  .img2 {
+    height: 205px;
+  }
+
+  .img3 {
+    height: 200px;
+    width: 240px;
+  }
+
+  .img4 {
+    height: 215px;
+    width: 360px;
+  }
+
+  .button {
+    width: 60%;
+  }
+  .button2 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  
+  .container1 {
+    margin-top: 60px;
+    margin-bottom: 10px;
+  }
+
+  .infoHome {
+    margin-left: 10px;
+  }
+
+  .containerPadre {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .text,
+  .text1,
+  .text2,
+  .text4 {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .contImg,
+  .contImg2,
+  .contImg3,
+  .contImg4 {
+    height: 150px;
+  }
+
+  .img,
+  .img2 {
+    height: 155px;
+  }
+
+  .img3 {
+    height: 150px;
+    width: 180px;
+  }
+
+  .img4 {
+    height: 165px;
+    width: 280px;
+  }
+
+  .button,
+  .button2 {
+    width: 90%;
     font-size: 16px;
   }
 }
 
-@media (max-width: 767px) {
-  .button {
-    width: 100%;
-    font-size: 14px;
-    padding: 8px;
-  }
-}
-
-@media (max-width: 767px) {
-  .containerPadre {
-    flex-direction: column;
-  }
-}

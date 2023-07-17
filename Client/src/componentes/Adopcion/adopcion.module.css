@@ -90,13 +90,9 @@
     flex-direction: column;
 }
 
-
-
-
 .containerAnimales>* {
   flex-basis: 25%;
 }
-
 
 .container h1 {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
