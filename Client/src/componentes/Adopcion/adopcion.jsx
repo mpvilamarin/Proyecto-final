@@ -27,7 +27,7 @@ const Adopcion = () => {
   const [generoFilter, setGeneroFilter] = useState("");
   const [ordenamiento, setOrdenamiento] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [elementsPerPage] = useState(8);
+  const [elementsPerPage] = useState(10);
   const [especie, setEspecie] = useState("");
   const petsFilter = useSelector((state) => state.mascotas);
 

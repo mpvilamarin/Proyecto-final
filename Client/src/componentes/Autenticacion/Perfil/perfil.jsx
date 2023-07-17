@@ -40,7 +40,7 @@ const Profile = () => {
         </div>
         <h2 className={styles.sub}>Mis peluditos favoritos</h2>
         <div>
-          <div>
+          <div className={styles.contCard}>
           {mascotas && (mascotas.map((mascota, indexMascota) => (
             <CardAdop
               mascota={mascota}

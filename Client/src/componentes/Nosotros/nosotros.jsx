@@ -13,7 +13,7 @@ export default function Nosotros() {
       <div className={styles.hero}>
         <h1 className={styles.title}>Sobre nosotros</h1>
         <p className={styles.pp}>Pet Connect es una plataforma de adopción de mascotas que une a fundaciones comprometidas con el bienestar animal y a personas que desean darles un hogar amoroso. Creada por estudiantes de Henry como su proyecto final de desarrollo web full stack, nuestra misión es facilitar la adopción responsable y brindar una experiencia única para encontrar la mascota perfecta. Únete a Pet Connect y forma parte de nuestra comunidad dedicada a crear vínculos duraderos entre mascotas y adoptantes.</p>
-      <img src={require("../../assets/MascotasNostros.png")} alt="Mascotas" className={styles.contHero} />
+        <img src={require("../../assets/MascotasNostros.png")} alt="Mascotas" className={styles.contHero} />
       </div>
       <div className={styles.container}>
         <div className={styles.contEquipo}>
@@ -56,21 +56,21 @@ export default function Nosotros() {
               </div>
             </div>
             <div className={styles.card}>
-              <img src={require("../../assets/Mari.png")} alt="Mari" className={styles.img} />
-              <h3 className={styles.name}>Maria Victoria Salazar</h3>
-              <h3 className={styles.sub}>Full Stack Developer</h3>
-              <div className={styles.redes}>
-                <a href="https://github.com/mvsalazarf" target="_blank" rel="noreferrer" className={styles.github}><FaGithub /></a>
-                <a href="http://www.linkedin.com/in/maria-salazar-18b907140" target="_blank" rel="noreferrer" className={styles.linkedin}><FaLinkedin /></a>
-              </div>
-            </div>
-            <div className={styles.card}>
               <img src={require("../../assets/Paula.png")} alt="Pau" className={styles.img} />
               <h3 className={styles.name}>Maria Paula Villamarin</h3>
               <h3 className={styles.sub}>Full Stack Developer</h3>
               <div className={styles.redes}>
                 <a href="https://github.com/mpvilamarin" target="_blank" rel="noreferrer" className={styles.github}><FaGithub /></a>
                 <a href="https://www.linkedin.com/in/mar%C3%ADa-paula-villamarin/" target="_blank" rel="noreferrer" className={styles.linkedin}><FaLinkedin /></a>
+              </div>
+            </div>
+            <div className={styles.card}>
+              <img src={require("../../assets/Mari.png")} alt="Mari" className={styles.img} />
+              <h3 className={styles.name}>Maria Victoria Salazar</h3>
+              <h3 className={styles.sub}>Full Stack Developer</h3>
+              <div className={styles.redes}>
+                <a href="https://github.com/mvsalazarf" target="_blank" rel="noreferrer" className={styles.github}><FaGithub /></a>
+                <a href="http://www.linkedin.com/in/maria-salazar-18b907140" target="_blank" rel="noreferrer" className={styles.linkedin}><FaLinkedin /></a>
               </div>
             </div>
             <div className={styles.card}>

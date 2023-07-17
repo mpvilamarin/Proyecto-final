@@ -129,13 +129,14 @@
 .button3:hover {
   background-color: #db713c !important;
   border: #db713c !important;
-  transform:translateY(-3px);
+  transform: translateY(-3px);
 }
 
 .image {
   width: 280px;
-  height: 172px;
+  height: 250px;
   justify-content: center;
+  object-fit: cover;
 }
 
 .favoriteIcon {
@@ -149,12 +150,12 @@
 }
 
 .cardTitle {
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 25px !important;
   font-weight: 600 !important;
-  text-align: center ;
+  text-align: center;
   color: #000 !important;
-  justify-content: center ;
+  justify-content: center;
 }
 
 .card-image {
@@ -214,7 +215,7 @@
 .cardInfo {
   font-size: 15px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
-margin-top: 15px;
+  margin-top: 15px;
 }
 
 .caja {
