@@ -30,7 +30,7 @@ export default function Info() {
                 <img src={iconoPaw} alt="Icono" className={styles.image} />
                 <h3 className={styles.h3}>ADOPTAR</h3>
                 <p className={styles.p}>
-                  Evita la compra, ¡ADOPTA! Al optar por la adopción, estás brindando una oportunidad de vida a dos animales: a tu nuevo compañero y al que ocupará su lugar en el refugio. Elige la mascota que desees recibir con todo su amor y compañía, y completa el formulario para iniciar este maravilloso vínculo.
+                  Evita la compra, ¡ADOPTA! Al optar por la Adopcion, estás brindando una oportunidad de vida a dos animales: a tu nuevo compañero y al que ocupará su lugar en el refugio. Elige la mascota que desees recibir con todo su amor y compañía, y completa el formulario para iniciar este maravilloso vínculo.
                 </p>
                 <Link to="/adopciones">
                   <button className={styles.button}>Conocer más</button>

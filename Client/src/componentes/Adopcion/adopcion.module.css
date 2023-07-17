@@ -90,13 +90,9 @@
     flex-direction: column;
 }
 
-
-
-
 .containerAnimales>* {
   flex-basis: 25%;
 }
-
 
 .container h1 {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -245,6 +241,12 @@
   .cardContainer>* {
     flex: 0 0 calc(50% - 10px);
     margin: 5px;
+  }
+}
+@media (max-width: 768px) {
+  .caja {
+    align-items: flex-start;
+    padding: 10px 20px;
   }
 }
 

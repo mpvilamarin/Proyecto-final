@@ -5,11 +5,11 @@ const STATUS_CREATED = 201;
 const STATUS_ERROR = 404;
 
 async function loginUsuarios(req, res) {
-  const { email, contraseña } = req.body;
+  const { email, password } = req.body;
 
 
   try {
-    const adminLogin = await Admin.findOne({ where: { email, contraseña } });
+    const adminLogin = await Admin.findOne({ where: { email, password } });
     if (adminLogin) {
       return res.status(STATUS_CREATED).json({
         message: 'Logueado con éxito como admin',
@@ -19,7 +19,7 @@ async function loginUsuarios(req, res) {
       });
     }
 
-    const fundacionLogin = await Fundaciones.findOne({ where: { email, contraseña } });
+    const fundacionLogin = await Fundaciones.findOne({ where: { email, password } });
     if (fundacionLogin) {
       return res.status(STATUS_CREATED).json({
         message: 'Logueado con éxito como fundación',

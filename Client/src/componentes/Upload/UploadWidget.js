@@ -6,8 +6,8 @@ const UploadWidget = ({ onImageUpload }) => {
   useEffect(() => {
     const widget = window.cloudinary.createUploadWidget(
       {
-        cloudName: "dy4jmodgl",
-        uploadPreset: "gbkoii7w",
+        cloudName: "desxgkda5",
+        uploadPreset: "ml_default",
       },
       (error, result) => {
         if (!error && result && result.event === "success") {

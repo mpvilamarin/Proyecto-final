@@ -38,17 +38,17 @@ const ModificarFundacion = () => {
   const [activo, setActivo] = useState(initialActivo);
 
   const handleDeleteClick = async (id, nombre) => {
-    const confirmacion = window.confirm(`¿Estás seguro de ${activo[id] ? 'activar' : 'desactivar'} la fundación ${nombre}?`);
+    const confirmacion = window.confirm(`¿Estás seguro de ${activo[id] ? 'activar' : 'desactivar'} la Fundacion ${nombre}?`);
     if (confirmacion) {
       try {
         await dispatch(deleteFundacion(id, nombre));
         setActivo((prevActivo) => ({
           ...prevActivo,
-          [id]: !prevActivo[id], // Alternar el estado de la fundación específica
+          [id]: !prevActivo[id], // Alternar el estado de la Fundacion específica
         }));
-        alert(`La fundación ${nombre} fue ${activo[id] ? 'desactivada' : 'activada'} con éxito`);
+        alert(`La Fundacion ${nombre} fue ${activo[id] ? 'desactivada' : 'activada'} con éxito`);
       } catch (error) {
-        alert(`Error al ${activo[id] ? 'desactivar' : 'activar'} la fundación ${nombre}: ${error}`);
+        alert(`Error al ${activo[id] ? 'desactivar' : 'activar'} la Fundacion ${nombre}: ${error}`);
       }
     }
   };
@@ -128,7 +128,7 @@ const ModificarFundacion = () => {
               <div key={index} className={styles.contendorFundacion} >
                 <div className={styles.fundacion}>
                   <p>
-                    <span key={index} className={styles.sub}>Fundación: {fundacion.nombre}</span>
+                    <span key={index} className={styles.sub}>Fundacion: {fundacion.nombre}</span>
                   </p>
 
 

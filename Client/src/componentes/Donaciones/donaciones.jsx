@@ -57,7 +57,7 @@ const Donaciones = () => {
     };
 
     axios
-      .post("http://localhost:3001/donaciones", donacion)
+      .post("/donaciones/", donacion)
       .then((res) => {
         const initPoint = res.data.response.body.init_point;
         window.open(initPoint);
@@ -102,7 +102,7 @@ const Donaciones = () => {
           </div>
           {newDonacion.monto && (
             <p className={styles.label}>
-              Le donarás a la fundación {newDonacion.fundacionNombre}: ${newDonacion.monto}
+              Le donarás a la Fundacion {newDonacion.fundacionNombre}: ${newDonacion.monto}
 
             </p>
           )}

@@ -58,7 +58,7 @@ const initialState = {
   usuarioAdmin: [],
   usuarioFundacion: [],
   usuarios: [],
-  usuario:[],
+  usuario: [],
   sesion: [],
 
   usuarioDetalle: [],
@@ -104,7 +104,7 @@ function rootReducer(state = initialState, action, payload) {
           ...action.payload,
           fundaciones: action.payload.fundaciones || [],
         },
-   //     usuarios:[]
+        //     usuarios:[]
       };
     case SORT_MASCOTAS_AZ:
       return {
@@ -219,7 +219,7 @@ function rootReducer(state = initialState, action, payload) {
         filteredFundaciones = state.fundacionesFiltradas;
       } else {
         filteredFundaciones = state.fundacionesFiltradas.filter((fundacion) => {
-          // Calcula el promedio de las puntuaciones de la fundación
+          // Calcula el promedio de las puntuaciones de la Fundacion
           const totalReviews = fundacion.Reviews.length;
           const sumPuntuaciones = fundacion.Reviews.reduce(
             (total, review) => total + review.calificacion,
@@ -237,7 +237,7 @@ function rootReducer(state = initialState, action, payload) {
       };
 
     case GET_USUARIO:
-      return{
+      return {
         ...state,
         usuario: action.payload
       }
@@ -353,12 +353,12 @@ function rootReducer(state = initialState, action, payload) {
         ),
       };
     case DELETE_FUNDACION:
-    return {
-      ...state,
-      fundaciones: state.fundaciones.filter(
-        (fundacion) => fundacion.id !== action.payload
-      ),
-    };
+      return {
+        ...state,
+        fundaciones: state.fundaciones.filter(
+          (fundacion) => fundacion.id !== action.payload
+        ),
+      };
 
     case UPDATE_FUNDACION:
       const updateFundaciones = state.fundaciones.map((fundacion) => {
@@ -408,7 +408,7 @@ function rootReducer(state = initialState, action, payload) {
             ...usuario,
             nombre: action.payload.nombre,
             fechaNacimiento: action.payload.fechaNacimiento,
-            contraseña: action.payload.contraseña,
+            password: action.payload.password,
           };
         }
         return usuario;
@@ -433,7 +433,7 @@ function rootReducer(state = initialState, action, payload) {
       return { ...state }
 
     case REMOVEFAV:
-      return { ...state}
+      return { ...state }
 
 
     case GET_DONACIONES:

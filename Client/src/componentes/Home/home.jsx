@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import style from "./home.module.css";
-import Info from "../Información/Info";
+import Info from "../Informacion/Info";
 import InfoHome from "../InfoHome/InfoHome";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector, useDispatch } from "react-redux";
@@ -18,15 +18,15 @@ const Home = () => {
 
 
   useEffect(() => {
-    // if (isAuthenticated) {
-    //   const usuarioExistente = usuarios.find(
-    //     (usuario) => usuario.email === user.email
-    //   );
+    if (isAuthenticated) {
+      const usuarioExistente = Object.values(usuarios).find(
+        (usuario) => usuario?.email === user.email
+      );
 
-    //   if (!usuarioExistente) {
+      if (!usuarioExistente) {
         dispatch(postUsuario(user));
-    //   }
-    // }
+      }
+    }
   }, [user, dispatch]);
 
 
@@ -105,7 +105,7 @@ const Home = () => {
               <h2 className={styles.title}>¡La Magia de Adoptar!</h2>
               <p className={styles.text}>
                 {" "}
-                Evita la compra, ¡ADOPTA! Al optar por la adopción, estás
+                Evita la compra, ¡ADOPTA! Al optar por la Adopcion, estás
                 brindando una oportunidad de vida a los animales que más lo
                 necesitan
               </p>

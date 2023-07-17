@@ -58,7 +58,7 @@ const FormReviews = ({fundacionNombre}) => {
 
   return (
     <div>
-      <h3>Calificar Fundación: {fundacionNombre}</h3>
+      <h3>Calificar Fundacion: {fundacionNombre}</h3>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Calificación:</label>

@@ -12,7 +12,7 @@ async function postFundacion(req, res) {
     direccion,
     telefono,
     email,
-    contraseña,
+    password,
     fundadaEn,
     mision,
     borrado,
@@ -43,7 +43,7 @@ async function postFundacion(req, res) {
       direccion,
       telefono,
       email,
-      contraseña,
+      password,
       fundadaEn,
       mision,
       borrado,
@@ -150,10 +150,10 @@ async function getFundacionById(req, res) {
 
 
 async function postAutenticarFundacion(req,res){
-  const { email, contraseña } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const fundacionLogin = await Fundaciones.findOne({ where: { email, contraseña } });
+    const fundacionLogin = await Fundaciones.findOne({ where: { email, password } });
     if (fundacionLogin) {
       return res.status(STATUS_CREATED).json({
         message: 'Logueado con éxito como fundación',

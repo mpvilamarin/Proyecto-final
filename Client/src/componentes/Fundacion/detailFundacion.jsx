@@ -57,7 +57,9 @@ const DetailFundacion = () => {
             </div>
             <div className={style.imagenFundacion}>
               {fundacion?.image ? (
-                <img src={fundacion?.image} alt="Fundación" />
+
+                <img src={fundacion?.image} alt="Fundacion" />
+
               ) : (
                 <img src={fundaciones} alt="image" />
               )}
@@ -68,7 +70,8 @@ const DetailFundacion = () => {
               <h5>Dirección: {fundacion?.direccion}</h5>
               <h5>Teléfono: {fundacion?.telefono}</h5>
               <h5>Email: {fundacion?.email}</h5>
-              {/* <h5>Fecha de Fundación: {fundacion?.fundadaEn}</h5> */}
+
+              {/* <h5>Fecha de Fundacion: {fundacion?.fundadaEn}</h5> */}
               <h5>Misión: {fundacion?.mision}</h5>
             </div>
           </div>

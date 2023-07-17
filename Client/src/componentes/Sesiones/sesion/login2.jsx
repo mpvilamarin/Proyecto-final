@@ -16,7 +16,7 @@ const Login2 = () => {
 
   const [input, setInput] = useState({
     email: '',
-    contraseña: '',
+    password: '',
   });
   const [errors, setErrors] = useState({});
   const [loginError, setLoginError] = useState('');
@@ -35,14 +35,14 @@ const Login2 = () => {
 
   const adminMap = admin.map((e) => ({
     email: e.email,
-    contraseña: e.contraseña
+    password: e.password
   }));
 
   const fundacion = useSelector((state) => state.fundaciones)
 
   const fundacionMap = fundacion.map((e) => ({
     email: e.email,
-    contraseña: e.contraseña
+    password: e.password
   }));
 
 
@@ -65,8 +65,8 @@ const Login2 = () => {
     event.preventDefault();
 
     
-    const isAdmin = adminMap.find((admin) => admin.email === input.email && admin.contraseña === input.contraseña);
-    const isFundacion = fundacionMap.find((admin) => admin.email === input.email && admin.contraseña === input.contraseña);
+    const isAdmin = adminMap.find((admin) => admin.email === input.email && admin.password === input.password);
+    const isFundacion = fundacionMap.find((admin) => admin.email === input.email && admin.password === input.password);
     
     if(isAdmin || isFundacion){
         setIsLoading(true);
@@ -112,14 +112,14 @@ const Login2 = () => {
           <div className={styles.field}>
             <input
               type="password"
-              value={input.contraseña}
-              name="contraseña"
+              value={input.password}
+              name="password"
               onChange={handleChange}
               className={styles.input}
               placeholder="Password"
             />
-            {errors.contraseña && (
-              <p className={styles.errors}>{errors.contraseña}</p>
+            {errors.password && (
+              <p className={styles.errors}>{errors.password}</p>
             )}
           </div>
           {loginError && <p className={styles.errors}>{loginError}</p>}
